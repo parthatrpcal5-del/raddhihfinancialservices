@@ -585,6 +585,18 @@ input,select,textarea{font-family:var(--ff-b)}
 
 /* ─── RESPONSIVE ADDITIONS ───────────────────────── */
 
+
+/* ─── CHAKRA VIDEO BLEND (removes white bg visually) ── */
+.ldr-chakra,
+.hw-svg,
+.bps-cwheel,
+.logo-chakra video,
+.logo-chakra.sm video {
+  mix-blend-mode: screen;
+  border-radius: 50%;
+  animation: none;
+}
+
 /* ─── VICTORY GRID (6 options, 3 cols) ──────────── */
 .bpq-opts.victory-grid { grid-template-columns: repeat(3, 1fr); }
 @media(max-width:768px){ .bpq-opts.victory-grid { grid-template-columns: 1fr 1fr; } }
