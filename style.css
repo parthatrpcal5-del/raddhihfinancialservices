@@ -1329,7 +1329,172 @@ select.form-input option { background: var(--navy-card); }
   a, button { cursor: pointer; }
 }
 
-/* ===== MOBILE TOUCH CURSORS ===== */
+/* ===== SARATHI SECTION ===== */
+.sarathi-section {
+  padding: 130px 0;
+  position: relative;
+  overflow: hidden;
+}
+.sarathi-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, #060d1a 0%, #0a1628 40%, #0d1f3c 70%, #091520 100%);
+}
+.sarathi-wheel-left {
+  position: absolute;
+  left: -120px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 500px; height: 500px;
+  animation: spinWheel 55s linear infinite;
+  pointer-events: none;
+}
+.sarathi-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+.sarathi-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sarathi-title .italic { font-style: italic; }
+.sarathi-verse {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding: 20px 24px;
+  background: rgba(201,168,76,0.05);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.verse-line {
+  width: 3px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  border-radius: 2px;
+  min-height: 64px;
+  flex-shrink: 0;
+}
+.verse-text {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-style: italic;
+  color: var(--gold-pale);
+  line-height: 1.8;
+  margin-bottom: 6px !important;
+}
+.verse-trans {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+.sarathi-desc {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+  line-height: 1.95;
+  margin-bottom: 18px;
+}
+/* Pillars */
+.sarathi-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sarathi-pillar {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px 20px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: var(--navy-card);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.sarathi-pillar::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  transform: scaleY(0);
+  transition: transform 0.4s ease;
+  transform-origin: top;
+}
+.sarathi-pillar:hover { border-color: rgba(201,168,76,0.25); transform: translateX(4px); }
+.sarathi-pillar:hover::before { transform: scaleY(1); }
+.pillar-icon {
+  position: relative;
+  width: 48px; height: 48px;
+  flex-shrink: 0;
+}
+.pillar-icon svg {
+  position: absolute; inset: 0;
+  animation: spinWheel 18s linear infinite;
+}
+.pillar-fa {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 0.95rem;
+  color: var(--gold);
+}
+.pillar-text h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+.pillar-text p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.75; }
+.sarathi-certbadges {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.cert-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: var(--gold-dim);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  flex: 1;
+  min-width: 130px;
+}
+.cert-badge > i { color: var(--gold); font-size: 1rem; flex-shrink: 0; }
+.cert-badge strong { display: block; font-size: 0.78rem; color: var(--text-primary); font-weight: 600; }
+.cert-badge span { font-size: 0.68rem; color: var(--gold); letter-spacing: 0.06em; }
+
+/* Form improvements */
+.formsubmit-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-top: 10px;
+  letter-spacing: 0.05em;
+}
+.formsubmit-note i { color: var(--gold); font-size: 0.7rem; }
+.success-note { font-size: 0.8rem; color: var(--gold); margin-top: -8px; }
+
+@media (max-width: 1000px) {
+  .sarathi-layout { grid-template-columns: 1fr; gap: 48px; }
+  .sarathi-wheel-left { display: none; }
+}
 @media (hover: none) {
   .cursor-outer, .cursor-inner { display: none; }
   body { cursor: auto; }
