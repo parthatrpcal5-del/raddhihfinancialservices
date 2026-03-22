@@ -1680,7 +1680,76 @@ for (var i=0;i<70;i++) particles.push({x:Math.random()*(W||1200),y:Math.random()
   requestAnimationFrame(drawP);
 })();
 
-// ── HERO WHEEL PARALLAX (video — spins itself, we only add mouse parallax) ──
+// ── HERO WHEEL: Detect nearest edge, slide in, then spin + subtle parallax ──
+(function() {
+  var wrap = document.querySelector('.hero-wheel-wrap');
+  var vid  = wrap ? wrap.querySelector('video') : null;
+  if (!wrap || !vid) return;
+
+  // Nearest edge detection
+  function nearestEdge(el) {
+    var r    = el.getBoundingClientRect();
+    var cx   = r.left + r.width  / 2;
+    var cy   = r.top  + r.height / 2;
+    var dL   = cx;
+    var dR   = window.innerWidth  - cx;
+    var dT   = cy;
+    var dB   = window.innerHeight - cy;
+    var min  = Math.min(dL, dR, dT, dB);
+    if (min === dR) return 'right';
+    if (min === dL) return 'left';
+    if (min === dT) return 'top';
+    return 'bottom';
+  }
+
+  // Set starting position based on nearest edge, then animate to centre
+  function initWheel() {
+    var edge   = nearestEdge(wrap);
+    var offset = '130%';
+    var startX = '0%', startY = '0%';
+    if (edge === 'right')  startX =  offset;
+    if (edge === 'left')   startX = '-' + offset;
+    if (edge === 'top')    startY = '-' + offset;
+    if (edge === 'bottom') startY =  offset;
+
+    // Force starting transform (off-screen + rotated)
+    vid.style.transition = 'none';
+    vid.style.transform  = 'translate('+startX+', '+startY+') rotate(0deg)';
+    vid.style.opacity    = '0';
+
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        // Slide in while rotating 180deg
+        vid.style.transition = 'transform 1.4s cubic-bezier(0.22,0.61,0.36,1), opacity 0.6s ease';
+        vid.style.transform  = 'translate(0%, 0%) rotate(180deg)';
+        vid.style.opacity    = '1';
+
+        // After slide-in finishes, hand off to continuous CSS spin
+        setTimeout(function() {
+          vid.style.transition = 'none';
+          vid.style.transform  = '';
+          vid.classList.add('spinning');
+        }, 1750);
+      });
+    });
+  }
+
+  // Wait until loader hides, then trigger
+  setTimeout(initWheel, 2600);
+
+  // Subtle parallax on mouse (after spin starts)
+  var pTX = 0, pTY = 0, pTX2 = 0, pTY2 = 0;
+  document.addEventListener('mousemove', function(e) {
+    pTX = (e.clientX / window.innerWidth  - 0.5) * 18;
+    pTY = (e.clientY / window.innerHeight - 0.5) * 18;
+  });
+  (function parallax() {
+    pTX2 += (pTX - pTX2) * 0.04;
+    pTY2 += (pTY - pTY2) * 0.04;
+    if (wrap) wrap.style.transform = 'translateY(-50%) translate('+pTX2+'px,'+pTY2+'px)';
+    requestAnimationFrame(parallax);
+  })();
+})();// ── HERO WHEEL PARALLAX (video — spins itself, we only add mouse parallax) ──
 var hwVid = document.querySelector('.hero-wheel-wrap svg');
 var hwTX = 0, hwTY = 0, hwTX2 = 0, hwTY2 = 0;
 document.addEventListener('mousemove', function(e) {
@@ -1846,7 +1915,7 @@ document.getElementById('cformOk').style.display='none';
 
 // ── CSS INJECTION ──────────────────────────────────────
 var s=document.createElement('style');
-s.textContent='@keyframes slideIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}} @keyframes slideOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(-30px)}} @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}} @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}} .cform-ok{flex-direction:column;align-items:center;justify-content:center;min-height:400px;text-align:center} #cur-dot{position:fixed;width:8px;height:8px;background:#c9a84c;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:none} #cur-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(201,168,76,0.55);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .2s,height .2s,border-color .2s} #cur-ring.big{width:52px;height:52px;border-color:rgba(201,168,76,0.3)}';
+s.textContent='video.spinning{animation:chakraSpin 12s linear infinite!important;transition:none!important} @keyframes slideIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}} @keyframes slideOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(-30px)}} @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}} @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}} .cform-ok{flex-direction:column;align-items:center;justify-content:center;min-height:400px;text-align:center} #cur-dot{position:fixed;width:8px;height:8px;background:#c9a84c;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:none} #cur-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(201,168,76,0.55);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .2s,height .2s,border-color .2s} #cur-ring.big{width:52px;height:52px;border-color:rgba(201,168,76,0.3)}';
 document.head.appendChild(s);
 </script>
 </body>
