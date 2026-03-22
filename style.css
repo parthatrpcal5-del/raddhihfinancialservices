@@ -103,8 +103,8 @@ input,select,textarea{font-family:var(--ff-b)}
   transition:opacity .7s ease,visibility .7s ease;
 }
 .ldr-inner{text-align:center}
-.ldr-chakra{width:140px;height:140px;margin:0 auto 28px;display:block;overflow:visible}
-.ldr-chakra{width:140px;height:140px;margin:0 auto 28px;display:block;overflow:visible}
+
+
 .ldr-name{font-family:var(--ff-d);font-size:1.6rem;font-weight:300;letter-spacing:.45em;color:var(--gold);margin-bottom:6px}
 .ldr-sub{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--w40);font-family:var(--ff-b)}
 
@@ -184,12 +184,8 @@ input,select,textarea{font-family:var(--ff-b)}
   background-image:linear-gradient(rgba(212,170,80,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(212,170,80,.04) 1px,transparent 1px);
   background-size:80px 80px;
 }
-.hero-wheel-wrap{
-  position:absolute;right:-6%;top:50%;transform:translateY(-50%);
-  width:min(580px,52vw);height:min(580px,52vw);
-  pointer-events:none;
-}
-.hw-svg{width:100%;height:100%;overflow:visible;display:block}
+
+
 .hero-body{position:relative;z-index:2;max-width:680px}
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:10px;
@@ -451,6 +447,66 @@ input,select,textarea{font-family:var(--ff-b)}
 .wa-btn:hover .wa-tip{opacity:1;transform:translateX(0)}
 
 /* ─── RESPONSIVE ─────────────────────────────────── */
+
+/* ─── LOADER CHAKRA ─── */
+.ldr-chakra {
+  width: 160px; height: 160px;
+  margin: 0 auto 28px;
+  display: block;
+  object-fit: contain;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  filter: brightness(1.1) saturate(1.3);
+  animation: ldrChakraSpin 6s linear infinite;
+}
+@keyframes ldrChakraSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+
+/* ─── HERO WHEEL — Slide in from right + continuous spin ─── */
+.hero-wheel-wrap {
+  position: absolute;
+  right: -6%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(580px, 52vw);
+  height: min(580px, 52vw);
+  pointer-events: none;
+}
+
+.hw-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  filter: brightness(1.1) saturate(1.3);
+  transform-origin: center center;
+  /* JS handles slide-in; .spinning class triggers continuous rotation */
+}
+/* Continuous spin after slide-in completes (added by JS) */
+video.spinning {
+  animation: chakraSpin 12s linear infinite !important;
+  transition: none !important;
+}
+@keyframes chakraSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes chakraSlideFromRight {
+  0%   { transform: translateX(120%) rotate(0deg);   opacity: 0; }
+  60%  { opacity: 1; }
+  100% { transform: translateX(0%)   rotate(180deg); opacity: 1; }
+}
+
+@keyframes chakraSpin {
+  from { transform: translateX(0%) rotate(180deg); }
+  to   { transform: translateX(0%) rotate(540deg); }
+}
+
 @media(max-width:1100px){
   .armory-grid{grid-template-columns:repeat(2,1fr)}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
@@ -462,7 +518,7 @@ input,select,textarea{font-family:var(--ff-b)}
   .testi-grid{grid-template-columns:1fr 1fr}
   .contact-grid{grid-template-columns:1fr;gap:48px}
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
-  .hero-wheel-wrap{opacity:.35;right:-18%}
+  
 }
 @media(max-width:768px){
   .nav-links{display:none}
@@ -577,7 +633,7 @@ input,select,textarea{font-family:var(--ff-b)}
 /* ─── RESPONSIVE ADDITIONS ───────────────────────── */
 
 
-/* ─── CHAKRA VIDEO BLEND (removes white bg visually) ── */
+
 /* mix-blend-mode: screen → white becomes invisible on dark backgrounds */
 .ldr-chakra {
   mix-blend-mode: screen;
@@ -642,4 +698,27 @@ video.hw-svg:not([src]) {
   border: 2px solid rgba(212,170,80,0.5);
   border-radius: 50%;
   background: radial-gradient(circle, rgba(212,170,80,0.08), transparent);
+}
+
+
+/* ─── BPS WHEEL SPIN ─── */
+.bps-wheel { width: 110px; height: 110px; margin: 0 auto; }
+.bps-cwheel {
+  width: 100%; height: 100%;
+  object-fit: contain; border-radius: 50%;
+  mix-blend-mode: screen;
+  filter: brightness(1.1) saturate(1.2);
+  animation: ldrChakraSpin 8s linear infinite;
+}
+
+
+/* ─── LOGO CHAKRA VIDEOS ─── */
+.logo-chakra video,
+.logo-chakra.sm video {
+  width: 100%; height: 100%;
+  object-fit: contain; border-radius: 50%;
+  display: block;
+  mix-blend-mode: screen;
+  filter: brightness(1.1) saturate(1.3);
+  animation: ldrChakraSpin 8s linear infinite;
 }
