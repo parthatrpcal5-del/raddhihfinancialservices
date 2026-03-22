@@ -980,14 +980,22 @@
 </button>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ===== LOADER =====
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const loader = document.getElementById('loader');
-    loader.style.opacity = '0';
-    setTimeout(() => { loader.style.display = 'none'; }, 700);
-  }, 2000);
-});
+// ===== LOADER — always hides, no dependency on window.load =====
+function hideLoader() {
+  const loader = document.getElementById('loader');
+  if (!loader) return;
+  loader.style.transition = 'opacity 0.6s ease';
+  loader.style.opacity = '0';
+  setTimeout(() => { loader.style.display = 'none'; }, 650);
+}
+// Hide after 2.5s no matter what
+setTimeout(hideLoader, 2500);
+// Also hide as soon as DOM is interactive
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => setTimeout(hideLoader, 1200));
+} else {
+  setTimeout(hideLoader, 800);
+}
 
 // ===== CUSTOM CURSOR =====
 const cursorOuter = document.getElementById('cursorOuter');
