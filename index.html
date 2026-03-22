@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Raddhih Financial Services &mdash; Your Kurukshetra Strategy</title>
+<meta name="description" content="Raddhih Financial Services &mdash; Mutual Funds, Insurance and ITR Filing. SEBI Registered 2014. Trusted by 400+ clients."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<link rel="stylesheet" href="style.css"/>
+<style>
+/* Loader auto-hides via CSS after 2.5s — no JS needed */
+@keyframes loaderFadeOut {
+  0%   { opacity: 1; pointer-events: all; }
+  85%  { opacity: 1; }
+  100% { opacity: 0; pointer-events: none; display: none; }
+}
+#loader {
+  animation: loaderFadeOut 0.7s ease 2.3s forwards;
+}
+@keyframes slideIn  { from{opacity:0;transform:translateX(30px)}  to{opacity:1;transform:translateX(0)} }
+@keyframes slideOut { from{opacity:1;transform:translateX(0)}  to{opacity:0;transform:translateX(-30px)} }
+@keyframes fadeUp   { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes shake    { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+.cform-ok { display:none; flex-direction:column; align-items:center; justify-content:center; min-height:400px; text-align:center; }
+#cur-dot  { position:fixed; width:8px; height:8px; background:#d4aa52; border-radius:50%; pointer-events:none; z-index:99999; transform:translate(-50%,-50%); left:0; top:0; }
+#cur-ring { position:fixed; width:36px; height:36px; border:1.5px solid rgba(212,170,80,.55); border-radius:50%; pointer-events:none; z-index:99998; transform:translate(-50%,-50%); transition:width .2s,height .2s,border-color .2s; left:0; top:0; }
+#cur-ring.big { width:52px; height:52px; border-color:rgba(212,170,80,.25); }
+</style>
+</head>
+<body>
+
+<!-- MUSIC BAR -->
+<div id="musicBar">
+  <div class="mb-left">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/></svg>
+    <span>Sacred Ambience</span>
+  </div>
+  <button id="musicBtn" onclick="toggleMusic()">
+    <svg id="musicIcon" viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+    <span id="musicTxt">Pause</span>
+  </button>
+  <div class="mb-wave playing" id="mbWave">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+</div>
+<iframe id="ytFrame" src="about:blank"
+  data-yt="https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&loop=1&playlist=Uezrcg6KJ44&controls=0&mute=0"
+  allow="autoplay; encrypted-media" style="display:none" title="bg-music"></iframe>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ldr-inner">
+    <svg class="ldr-chakra" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wgA" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4aa52" stop-opacity="0.95"/><stop offset="50%" stop-color="#f0da80" stop-opacity="0.75"/><stop offset="100%" stop-color="#aa8830" stop-opacity="0.85"/></linearGradient></defs><circle cx="100" cy="100" r="96.6" stroke="rgba(212,170,80,0.12)" stroke-width="0.8" stroke-dasharray="8 5"/><circle cx="100" cy="100" r="92.0" stroke="url(#wgA)" stroke-width="2.8"/><circle cx="100" cy="100" r="83.7" stroke="rgba(212,170,80,0.2)" stroke-width="0.8"/><circle cx="100" cy="100" r="70.0" stroke="rgba(212,170,80,0.3)" stroke-width="1.0"/><circle cx="100" cy="100" r="20.0" stroke="rgba(212,170,80,0.85)" stroke-width="1.8"/><circle cx="100" cy="100" r="10.0" fill="rgba(212,170,80,0.55)" stroke="rgba(212,170,80,0.95)" stroke-width="1.4"/><circle cx="100" cy="100" r="5.0" fill="rgba(212,170,80,1.0)"/><polygon points="120.0,103.6 120.0,96.4 192.0,99.0 192.0,101.0" fill="rgba(212,170,80,0.75)"/><circle cx="192.0" cy="100.0" r="3.2" fill="rgba(212,170,80,0.85)"/><polygon points="115.5,113.1 119.1,106.9 180.2,145.1 179.2,146.9" fill="rgba(212,170,80,0.45)"/><circle cx="179.7" cy="146.0" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="106.9,119.1 113.1,115.5 146.9,179.2 145.1,180.2" fill="rgba(212,170,80,0.45)"/><circle cx="146.0" cy="179.7" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="96.4,120.0 103.6,120.0 101.0,192.0 99.0,192.0" fill="rgba(212,170,80,0.75)"/><circle cx="100.0" cy="192.0" r="3.2" fill="rgba(212,170,80,0.85)"/><polygon points="86.9,115.5 93.1,119.1 54.9,180.2 53.1,179.2" fill="rgba(212,170,80,0.45)"/><circle cx="54.0" cy="179.7" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="80.9,106.9 84.5,113.1 20.8,146.9 19.8,145.1" fill="rgba(212,170,80,0.45)"/><circle cx="20.3" cy="146.0" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="80.0,96.4 80.0,103.6 8.0,101.0 8.0,99.0" fill="rgba(212,170,80,0.75)"/><circle cx="8.0" cy="100.0" r="3.2" fill="rgba(212,170,80,0.85)"/><polygon points="84.5,86.9 80.9,93.1 19.8,54.9 20.8,53.1" fill="rgba(212,170,80,0.45)"/><circle cx="20.3" cy="54.0" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="93.1,80.9 86.9,84.5 53.1,20.8 54.9,19.8" fill="rgba(212,170,80,0.45)"/><circle cx="54.0" cy="20.3" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="103.6,80.0 96.4,80.0 99.0,8.0 101.0,8.0" fill="rgba(212,170,80,0.75)"/><circle cx="100.0" cy="8.0" r="3.2" fill="rgba(212,170,80,0.85)"/><polygon points="113.1,84.5 106.9,80.9 145.1,19.8 146.9,20.8" fill="rgba(212,170,80,0.45)"/><circle cx="146.0" cy="20.3" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="119.1,93.1 115.5,86.9 179.2,53.1 180.2,54.9" fill="rgba(212,170,80,0.45)"/><circle cx="179.7" cy="54.0" r="1.8" fill="rgba(212,170,80,0.5)"/><circle cx="191.2" cy="112.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="185.0" cy="135.2" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="173.0" cy="156.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="156.0" cy="173.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="135.2" cy="185.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="112.0" cy="191.2" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="88.0" cy="191.2" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="64.8" cy="185.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="44.0" cy="173.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="27.0" cy="156.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="15.0" cy="135.2" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="8.8" cy="112.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="8.8" cy="88.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="15.0" cy="64.8" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="27.0" cy="44.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="44.0" cy="27.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="64.8" cy="15.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="88.0" cy="8.8" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="112.0" cy="8.8" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="135.2" cy="15.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="156.0" cy="27.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="173.0" cy="44.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="185.0" cy="64.8" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="191.2" cy="88.0" r="1.4" fill="rgba(212,170,80,0.14)"/></svg>
+    <p class="ldr-name">RADDHIH</p>
+    <p class="ldr-sub">FINANCIAL SERVICES</p>
+  </div>
+</div>
+
+<!-- CURSOR -->
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <div class="logo-chakra"><svg class="logo-wheel" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wgD" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4aa52" stop-opacity="0.95"/><stop offset="50%" stop-color="#f0da80" stop-opacity="0.75"/><stop offset="100%" stop-color="#aa8830" stop-opacity="0.85"/></linearGradient></defs><circle cx="18" cy="18" r="17.4" stroke="rgba(212,170,80,0.12)" stroke-width="0.1" stroke-dasharray="1 1"/><circle cx="18" cy="18" r="16.6" stroke="url(#wgD)" stroke-width="0.5"/><circle cx="18" cy="18" r="15.1" stroke="rgba(212,170,80,0.2)" stroke-width="0.1"/><circle cx="18" cy="18" r="12.6" stroke="rgba(212,170,80,0.3)" stroke-width="0.2"/><circle cx="18" cy="18" r="3.6" stroke="rgba(212,170,80,0.85)" stroke-width="0.3"/><circle cx="18" cy="18" r="1.8" fill="rgba(212,170,80,0.55)" stroke="rgba(212,170,80,0.95)" stroke-width="0.3"/><circle cx="18" cy="18" r="0.9" fill="rgba(212,170,80,1.0)"/><polygon points="21.6,18.6 21.6,17.4 34.6,17.8 34.6,18.2" fill="rgba(212,170,80,0.75)"/><circle cx="34.6" cy="18.0" r="0.6" fill="rgba(212,170,80,0.85)"/><polygon points="20.8,20.4 21.4,19.2 32.4,26.1 32.3,26.4" fill="rgba(212,170,80,0.45)"/><circle cx="32.3" cy="26.3" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="19.2,21.4 20.4,20.8 26.4,32.3 26.1,32.4" fill="rgba(212,170,80,0.45)"/><circle cx="26.3" cy="32.3" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="17.4,21.6 18.6,21.6 18.2,34.6 17.8,34.6" fill="rgba(212,170,80,0.75)"/><circle cx="18.0" cy="34.6" r="0.6" fill="rgba(212,170,80,0.85)"/><polygon points="15.6,20.8 16.8,21.4 9.9,32.4 9.6,32.3" fill="rgba(212,170,80,0.45)"/><circle cx="9.7" cy="32.3" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="14.6,19.2 15.2,20.4 3.7,26.4 3.6,26.1" fill="rgba(212,170,80,0.45)"/><circle cx="3.7" cy="26.3" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="14.4,17.4 14.4,18.6 1.4,18.2 1.4,17.8" fill="rgba(212,170,80,0.75)"/><circle cx="1.4" cy="18.0" r="0.6" fill="rgba(212,170,80,0.85)"/><polygon points="15.2,15.6 14.6,16.8 3.6,9.9 3.7,9.6" fill="rgba(212,170,80,0.45)"/><circle cx="3.7" cy="9.7" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="16.8,14.6 15.6,15.2 9.6,3.7 9.9,3.6" fill="rgba(212,170,80,0.45)"/><circle cx="9.7" cy="3.7" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="18.6,14.4 17.4,14.4 17.8,1.4 18.2,1.4" fill="rgba(212,170,80,0.75)"/><circle cx="18.0" cy="1.4" r="0.6" fill="rgba(212,170,80,0.85)"/><polygon points="20.4,15.2 19.2,14.6 26.1,3.6 26.4,3.7" fill="rgba(212,170,80,0.45)"/><circle cx="26.3" cy="3.7" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="21.4,16.8 20.8,15.6 32.3,9.6 32.4,9.9" fill="rgba(212,170,80,0.45)"/><circle cx="32.3" cy="9.7" r="0.3" fill="rgba(212,170,80,0.5)"/><circle cx="34.4" cy="20.2" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="33.3" cy="24.3" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="31.1" cy="28.1" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="28.1" cy="31.1" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="24.3" cy="33.3" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="20.2" cy="34.4" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="15.8" cy="34.4" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="11.7" cy="33.3" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="7.9" cy="31.1" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="4.9" cy="28.1" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="2.7" cy="24.3" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="1.6" cy="20.2" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="1.6" cy="15.8" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="2.7" cy="11.7" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="4.9" cy="7.9" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="7.9" cy="4.9" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="11.7" cy="2.7" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="15.8" cy="1.6" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="20.2" cy="1.6" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="24.3" cy="2.7" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="28.1" cy="4.9" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="31.1" cy="7.9" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="33.3" cy="11.7" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="34.4" cy="15.8" r="0.3" fill="rgba(212,170,80,0.14)"/></svg></div>
+      <div class="logo-words">
+        <span class="lw-main">Raddhih</span>
+        <span class="lw-sub">Financial Services</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#why-us">Why Us</a></li>
+      <li><a href="#armory">The Armory</a></li>
+      <li><a href="#battleplan">Battle Plan</a></li>
+      <li><a href="#stats">Impact</a></li>
+      <li><a href="#testimonials">Clients</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    <a href="#why-us">Why Us</a>
+    <a href="#armory">The Armory</a>
+    <a href="#battleplan">Battle Plan</a>
+    <a href="#stats">Impact</a>
+    <a href="#testimonials">Clients</a>
+    <a href="#contact">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-glow hg1"></div>
+  <div class="hero-glow hg2"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-wheel-wrap">
+    <svg class="hw-svg" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wgB" x1="0" y1="0" x2="500" y2="500" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4aa52" stop-opacity="0.85"/><stop offset="50%" stop-color="#f0da80" stop-opacity="0.68"/><stop offset="100%" stop-color="#aa8830" stop-opacity="0.77"/></linearGradient></defs><circle cx="250" cy="250" r="241.5" stroke="rgba(212,170,80,0.11)" stroke-width="2.0" stroke-dasharray="20 12"/><circle cx="250" cy="250" r="230.0" stroke="url(#wgB)" stroke-width="7.0"/><circle cx="250" cy="250" r="209.3" stroke="rgba(212,170,80,0.18)" stroke-width="2.0"/><circle cx="250" cy="250" r="175.0" stroke="rgba(212,170,80,0.27)" stroke-width="2.5"/><circle cx="250" cy="250" r="50.0" stroke="rgba(212,170,80,0.77)" stroke-width="4.5"/><circle cx="250" cy="250" r="25.0" fill="rgba(212,170,80,0.5)" stroke="rgba(212,170,80,0.85)" stroke-width="3.5"/><circle cx="250" cy="250" r="12.5" fill="rgba(212,170,80,0.9)"/><polygon points="300.0,259.0 300.0,241.0 480.0,247.5 480.0,252.5" fill="rgba(212,170,80,0.68)"/><circle cx="480.0" cy="250.0" r="8.0" fill="rgba(212,170,80,0.77)"/><polygon points="288.8,282.8 297.8,267.2 450.4,362.8 447.9,367.2" fill="rgba(212,170,80,0.41)"/><circle cx="449.2" cy="365.0" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="267.2,297.8 282.8,288.8 367.2,447.9 362.8,450.4" fill="rgba(212,170,80,0.41)"/><circle cx="365.0" cy="449.2" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="241.0,300.0 259.0,300.0 252.5,480.0 247.5,480.0" fill="rgba(212,170,80,0.68)"/><circle cx="250.0" cy="480.0" r="8.0" fill="rgba(212,170,80,0.77)"/><polygon points="217.2,288.8 232.8,297.8 137.2,450.4 132.8,447.9" fill="rgba(212,170,80,0.41)"/><circle cx="135.0" cy="449.2" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="202.2,267.2 211.2,282.8 52.1,367.2 49.6,362.8" fill="rgba(212,170,80,0.41)"/><circle cx="50.8" cy="365.0" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="200.0,241.0 200.0,259.0 20.0,252.5 20.0,247.5" fill="rgba(212,170,80,0.68)"/><circle cx="20.0" cy="250.0" r="8.0" fill="rgba(212,170,80,0.77)"/><polygon points="211.2,217.2 202.2,232.8 49.6,137.2 52.1,132.8" fill="rgba(212,170,80,0.41)"/><circle cx="50.8" cy="135.0" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="232.8,202.2 217.2,211.2 132.8,52.1 137.2,49.6" fill="rgba(212,170,80,0.41)"/><circle cx="135.0" cy="50.8" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="259.0,200.0 241.0,200.0 247.5,20.0 252.5,20.0" fill="rgba(212,170,80,0.68)"/><circle cx="250.0" cy="20.0" r="8.0" fill="rgba(212,170,80,0.77)"/><polygon points="282.8,211.2 267.2,202.2 362.8,49.6 367.2,52.1" fill="rgba(212,170,80,0.41)"/><circle cx="365.0" cy="50.8" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="297.8,232.8 288.8,217.2 447.9,132.8 450.4,137.2" fill="rgba(212,170,80,0.41)"/><circle cx="449.2" cy="135.0" r="4.5" fill="rgba(212,170,80,0.45)"/><circle cx="478.0" cy="280.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="462.5" cy="338.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="432.5" cy="390.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="390.0" cy="432.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="338.0" cy="462.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="280.0" cy="478.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="220.0" cy="478.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="162.0" cy="462.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="110.0" cy="432.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="67.5" cy="390.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="37.5" cy="338.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="22.0" cy="280.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="22.0" cy="220.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="37.5" cy="162.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="67.5" cy="110.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="110.0" cy="67.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="162.0" cy="37.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="220.0" cy="22.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="280.0" cy="22.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="338.0" cy="37.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="390.0" cy="67.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="432.5" cy="110.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="462.5" cy="162.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="478.0" cy="220.0" r="3.5" fill="rgba(212,170,80,0.13)"/></svg>
+  </div>
+  <div class="hero-body container">
+    <div class="hero-eyebrow reveal">
+      <span>&#10022;</span> SEBI Registered 2014 &nbsp;&middot;&nbsp; Kolkata, India <span>&#10022;</span>
+    </div>
+    <h1 class="hero-title reveal">
+      The Battlefield<br/>Is Your<br/><em>Financial Future</em>
+    </h1>
+    <p class="hero-sub reveal">
+      Every Arjun needs a Sarathi. We are your charioteer &mdash;<br class="dbr"/>
+      guiding you through market cycles, policy storms and life&apos;s<br class="dbr"/>
+      crossroads toward lasting wealth and unshakeable security.
+    </p>
+    <div class="hero-ctas reveal">
+      <a href="#battleplan" class="btn-gold">
+        Begin Your Battle Plan
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5h11M9 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#armory" class="btn-ghost">Explore The Armory</a>
+    </div>
+    <div class="hero-nums reveal">
+      <div class="hn-item"><strong>400+</strong><span>Warriors Guided</span></div>
+      <div class="hn-sep"></div>
+      <div class="hn-item"><strong>&#8377;10Cr+</strong><span>Assets Protected</span></div>
+      <div class="hn-sep"></div>
+      <div class="hn-item"><strong>10+ Yrs</strong><span>Experience</span></div>
+    </div>
+  </div>
+  <a href="#why-us" class="scroll-hint">
+    <div class="sh-line"></div>
+    <span>scroll</span>
+  </a>
+  <div class="section-credit">Designed by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Created by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Maintained by <span class="sc-name">Pragyo Roy</span></div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Dharma</span><em>&#10022;</em><span>Raksha</span><em>&#10022;</em>
+    <span>Lakshya</span><em>&#10022;</em><span>Sanchaya</span><em>&#10022;</em>
+    <span>Tax Planning</span><em>&#10022;</em><span>Insurance</span><em>&#10022;</em>
+    <span>Mutual Funds</span><em>&#10022;</em><span>Wealth Management</span><em>&#10022;</em>
+    <span>Dharma</span><em>&#10022;</em><span>Raksha</span><em>&#10022;</em>
+    <span>Lakshya</span><em>&#10022;</em><span>Sanchaya</span><em>&#10022;</em>
+    <span>Tax Planning</span><em>&#10022;</em><span>Insurance</span><em>&#10022;</em>
+    <span>Mutual Funds</span><em>&#10022;</em><span>Wealth Management</span><em>&#10022;</em>
+  </div>
+</div>
+
+<!-- WHY US -->
+<section id="why-us" class="why">
+  <div class="container">
+    <div class="sec-label reveal">Our Foundation</div>
+    <h2 class="sec-title reveal">The Sarathi Principles<br/><em>Why Families Trust Raddhih</em></h2>
+    <p class="sec-desc reveal">Like Arjuna&apos;s divine charioteer, we see the full battlefield &mdash; guiding you with wisdom, integrity and unwavering loyalty to your cause.</p>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="wc-glyph">01</div>
+        <div class="wc-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="1.5"/><path d="M16 24l5.5 5.5L33 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Fiduciary Integrity</h3>
+        <p>Zero hidden commissions. Every recommendation built on rigorous analysis and complete transparency &mdash; solely in your interest.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="wc-glyph">02</div>
+        <div class="wc-icon"><svg viewBox="0 0 48 48" fill="none"><path d="M24 8L10 14v14c0 10 6 18 14 22 8-4 14-12 14-22V14L24 8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <h3>Institutional Security</h3>
+        <p>SEBI-registered since 2014. RBI-compliant platforms. Bank-grade encryption protecting every client relationship we build.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="wc-glyph">03</div>
+        <div class="wc-icon"><svg viewBox="0 0 48 48" fill="none"><path d="M24 8l3.5 7.5 8.5 1.2-6.2 6 1.5 8.5L24 27l-7.3 4.2 1.5-8.5-6.2-6 8.5-1.2L24 8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <h3>10+ Years Battle-Tested</h3>
+        <p>A decade navigating market cycles, policy storms and financial crossroads &mdash; a verified track record that speaks for itself.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="wc-glyph">04</div>
+        <div class="wc-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="24" r="4" fill="currentColor" opacity="0.4"/><line x1="24" y1="8" x2="24" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="24" y1="28" x2="24" y2="40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="8" y1="24" x2="20" y2="24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="28" y1="24" x2="40" y2="24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Holistic Strategy</h3>
+        <p>From first SIP to retirement corpus &mdash; a complete financial ecosystem across investments, insurance and taxation.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="wc-glyph">05</div>
+        <div class="wc-icon"><svg viewBox="0 0 48 48" fill="none"><path d="M8 36V20l16-12 16 12v16" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M18 36v-9h12v9" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <h3>Bespoke Advisory</h3>
+        <p>No cookie-cutter portfolios. Every client receives a strategy aligned to their income, goals, risk appetite and life stage.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="wc-glyph">06</div>
+        <div class="wc-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="20" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 40c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Year-Round Support</h3>
+        <p>Markets don&apos;t follow business hours. Our advisors are reachable when it matters &mdash; responsive, dedicated, deeply invested.</p>
+      </div>
+    </div>
+  </div>
+  <div class="section-credit">Designed by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Created by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Maintained by <span class="sc-name">Pragyo Roy</span></div>
+</section>
+
+<!-- THE ARMORY -->
+<section id="armory" class="armory">
+  <div class="armory-glow ag1"></div>
+  <div class="armory-glow ag2"></div>
+  <div class="container">
+    <div class="sec-label gold-label reveal">The Armory</div>
+    <h2 class="sec-title light reveal">Your Four<br/><em>Weapons of Wealth</em></h2>
+    <p class="sec-desc light reveal">Every warrior needs the right weapons. We equip you with four precision instruments &mdash; each designed to conquer a specific battlefield of financial life.</p>
+    <div class="armory-grid">
+      <div class="arm-card reveal">
+        <div class="arm-top"><div class="arm-devanagari">&#2343;</div><span class="arm-tag">The Foundation</span></div>
+        <div class="arm-icon"><svg viewBox="0 0 64 64" fill="none"><rect x="10" y="8" width="44" height="48" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M20 24h24M20 32h16M20 40h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Dharma</h3>
+        <p class="arm-sanskrit">Tax Planning &amp; Compliance</p>
+        <p class="arm-desc">Your righteous foundation. Accurate ITR filing, ELSS tax savers, NPS optimization &mdash; ensuring you walk the path of compliance while keeping every rupee you have earned.</p>
+        <ul class="arm-list"><li>ITR-1 through ITR-4 Filing</li><li>ELSS &amp; NPS Tax Savings</li><li>Capital Gains &amp; Crypto Tax</li><li>Notice Handling &amp; Assessment</li></ul>
+        <a href="#contact" class="arm-link">Invoke Dharma <span>&#8594;</span></a>
+      </div>
+      <div class="arm-card arm-featured reveal">
+        <div class="arm-top"><div class="arm-devanagari">&#2352;</div><span class="arm-tag gold-tag">The Shield &#10022; Most Popular</span></div>
+        <div class="arm-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M32 6L10 14v20c0 14 10 24 22 28 12-4 22-14 22-28V14L32 6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M24 32l5 5 11-11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Raksha</h3>
+        <p class="arm-sanskrit">Risk Management &amp; Insurance</p>
+        <p class="arm-desc">The shield that guards your kingdom. Comprehensive protection for life, health and assets &mdash; we compare 30+ insurers so your family is never left exposed.</p>
+        <ul class="arm-list"><li>Term &amp; Life Insurance</li><li>Health &amp; Critical Illness Cover</li><li>Asset &amp; Vehicle Protection</li><li>Claims Assistance &amp; Support</li></ul>
+        <a href="#contact" class="arm-link">Raise the Shield <span>&#8594;</span></a>
+      </div>
+      <div class="arm-card reveal">
+        <div class="arm-top"><div class="arm-devanagari">&#2354;</div><span class="arm-tag">The Arrow</span></div>
+        <div class="arm-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M8 48L20 32l10 10L40 24l16 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M48 16v8h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Lakshya</h3>
+        <p class="arm-sanskrit">Goal-Based Investing</p>
+        <p class="arm-desc">The arrow aimed at your precise target &mdash; child&apos;s education, home ownership, retirement freedom. SIPs and mutual funds calibrated to hit every milestone.</p>
+        <ul class="arm-list"><li>SIP &amp; Lump Sum Investments</li><li>Goal-Based Fund Selection</li><li>Portfolio Review &amp; Rebalancing</li><li>Retirement &amp; Education Planning</li></ul>
+        <a href="#contact" class="arm-link">Aim the Arrow <span>&#8594;</span></a>
+      </div>
+      <div class="arm-card reveal">
+        <div class="arm-top"><div class="arm-devanagari">&#2360;</div><span class="arm-tag">The Treasury</span></div>
+        <div class="arm-icon"><svg viewBox="0 0 64 64" fill="none"><ellipse cx="32" cy="20" rx="20" ry="8" stroke="currentColor" stroke-width="1.5"/><path d="M12 20v24c0 4.4 9 8 20 8s20-3.6 20-8V20" stroke="currentColor" stroke-width="1.5"/><path d="M12 32c0 4.4 9 8 20 8s20-3.6 20-8" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <h3>Sanchaya</h3>
+        <p class="arm-sanskrit">Wealth Preservation</p>
+        <p class="arm-desc">Your royal treasury &mdash; protected and growing. Sovereign Gold Bonds, fixed income instruments and conservative allocation for wealth you have earned and must preserve.</p>
+        <ul class="arm-list"><li>Sovereign Gold Bonds (SGB)</li><li>Fixed Deposits &amp; Debt Funds</li><li>Conservative Hybrid Portfolios</li><li>Estate &amp; Legacy Planning</li></ul>
+        <a href="#contact" class="arm-link">Guard the Treasury <span>&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="section-credit">Designed by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Created by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Maintained by <span class="sc-name">Pragyo Roy</span></div>
+</section>
+
+<!-- BATTLE PLAN -->
+<section id="battleplan" class="battleplan">
+  <div class="container">
+    <div class="bp-header">
+      <div class="sec-label reveal">The Kurukshetra Strategy</div>
+      <h2 class="sec-title reveal">Your Financial<br/><em>Battle Plan</em></h2>
+      <p class="sec-desc reveal">Complete this 5-step assessment. We will craft your personalised <strong style="color:var(--gold)">3-page Kurukshetra Strategy Report</strong> &mdash; delivered to your inbox within <strong style="color:var(--gold-lt)">24&ndash;48 hours</strong>, completely free of charge.</p>
+    </div>
+    <div class="bp-wrap">
+      <div class="bp-progress" id="bpProgress">
+        <div class="bpp-item active" data-s="0"><span class="bpp-num">01</span><span class="bpp-lbl">Terrain</span></div>
+        <div class="bpp-line"></div>
+        <div class="bpp-item" data-s="1"><span class="bpp-num">02</span><span class="bpp-lbl">Quiver</span></div>
+        <div class="bpp-line"></div>
+        <div class="bpp-item" data-s="2"><span class="bpp-num">03</span><span class="bpp-lbl">Enemy</span></div>
+        <div class="bpp-line"></div>
+        <div class="bpp-item" data-s="3"><span class="bpp-num">04</span><span class="bpp-lbl">Victory</span></div>
+        <div class="bpp-line"></div>
+        <div class="bpp-item" data-s="4"><span class="bpp-num">05</span><span class="bpp-lbl">Charioteer</span></div>
+      </div>
+      <div class="bp-questions" id="bpQuestions">
+        <div class="bpq active" id="bpq0">
+          <div class="bpq-meta"><span class="bpq-tag">The Terrain</span><span class="bpq-n">01 of 05</span></div>
+          <h3>Where are you in your financial journey?</h3>
+          <p>Your current life stage determines the terrain we must navigate together.</p>
+          <div class="bpq-opts">
+            <label class="bpo"><input type="radio" name="terrain" value="Early Warrior (22-30) - Building foundations"/><div class="bpo-in"><span>&#127807;</span><strong>Early Warrior (22-30)</strong><small>Just started. Building foundations.</small></div></label>
+            <label class="bpo"><input type="radio" name="terrain" value="Mid-Battle (31-45) - Juggling goals and EMIs"/><div class="bpo-in"><span>&#9876;</span><strong>Mid-Battle (31-45)</strong><small>Earning well. Juggling goals and EMIs.</small></div></label>
+            <label class="bpo"><input type="radio" name="terrain" value="Consolidation (46-55) - Protecting what is built"/><div class="bpo-in"><span>&#127963;</span><strong>Consolidation (46-55)</strong><small>Peak earning. Protecting what is built.</small></div></label>
+            <label class="bpo"><input type="radio" name="terrain" value="Victory Lap (56+) - Legacy matters"/><div class="bpo-in"><span>&#128081;</span><strong>Victory Lap (56+)</strong><small>Approaching retirement. Legacy matters.</small></div></label>
+          </div>
+          <div class="bpq-nav"><button class="bp-btn-next" onclick="bpNext()">Next: The Quiver &#8594;</button></div>
+        </div>
+        <div class="bpq" id="bpq1">
+          <div class="bpq-meta"><span class="bpq-tag">The Quiver</span><span class="bpq-n">02 of 05</span></div>
+          <h3>What weapons do you currently hold?</h3>
+          <p>Your existing financial assets &mdash; select all that apply.</p>
+          <div class="bpq-opts multi">
+            <label class="bpo"><input type="checkbox" name="assets" value="Mutual Funds / SIPs"/><div class="bpo-in"><span>&#128200;</span><strong>Mutual Funds / SIPs</strong></div></label>
+            <label class="bpo"><input type="checkbox" name="assets" value="Direct Stocks"/><div class="bpo-in"><span>&#128202;</span><strong>Direct Stocks</strong></div></label>
+            <label class="bpo"><input type="checkbox" name="assets" value="FDs / PPF / RDs"/><div class="bpo-in"><span>&#127974;</span><strong>FDs / PPF / RDs</strong></div></label>
+            <label class="bpo"><input type="checkbox" name="assets" value="Gold / SGB"/><div class="bpo-in"><span>&#129351;</span><strong>Gold / SGB</strong></div></label>
+            <label class="bpo"><input type="checkbox" name="assets" value="Real Estate"/><div class="bpo-in"><span>&#127968;</span><strong>Real Estate</strong></div></label>
+            <label class="bpo"><input type="checkbox" name="assets" value="Starting Fresh - No existing assets"/><div class="bpo-in"><span>&#127807;</span><strong>Starting Fresh</strong></div></label>
+          </div>
+          <div class="bpq-nav"><button class="bp-btn-back" onclick="bpBack()">&#8592; Back</button><button class="bp-btn-next" onclick="bpNext()">Next: The Enemy &#8594;</button></div>
+        </div>
+        <div class="bpq" id="bpq2">
+          <div class="bpq-meta"><span class="bpq-tag">The Enemy</span><span class="bpq-n">03 of 05</span></div>
+          <h3>What keeps you awake at night?</h3>
+          <p>Name your greatest financial fear &mdash; we will build a strategy to defeat it.</p>
+          <div class="bpq-opts">
+            <label class="bpo"><input type="radio" name="enemy" value="Inflation eroding savings"/><div class="bpo-in"><span>&#128293;</span><strong>Inflation eroding my savings</strong></div></label>
+            <label class="bpo"><input type="radio" name="enemy" value="Market crashes destroying corpus"/><div class="bpo-in"><span>&#127754;</span><strong>Market crashes destroying my corpus</strong></div></label>
+            <label class="bpo"><input type="radio" name="enemy" value="Debt and EMIs out of control"/><div class="bpo-in"><span>&#9939;</span><strong>Debt and EMIs out of control</strong></div></label>
+            <label class="bpo"><input type="radio" name="enemy" value="Medical emergency wiping out savings"/><div class="bpo-in"><span>&#127973;</span><strong>Medical emergency wiping out savings</strong></div></label>
+            <label class="bpo"><input type="radio" name="enemy" value="Paying too much in taxes"/><div class="bpo-in"><span>&#128203;</span><strong>Paying too much in taxes</strong></div></label>
+          </div>
+          <div class="bpq-nav"><button class="bp-btn-back" onclick="bpBack()">&#8592; Back</button><button class="bp-btn-next" onclick="bpNext()">Next: The Victory &#8594;</button></div>
+        </div>
+        <div class="bpq" id="bpq3">
+          <div class="bpq-meta"><span class="bpq-tag">The Victory</span><span class="bpq-n">04 of 05</span></div>
+          <h3>What is your ultimate kingdom?</h3>
+          <p>Your primary financial goal &mdash; the victory you are fighting for. Select all that apply to your life.</p>
+          <div class="bpq-opts victory-grid">
+            <label class="bpo"><input type="radio" name="victory" value="Comfortable Early Retirement"/><div class="bpo-in"><span>&#127749;</span><strong>Comfortable Early Retirement</strong><small>Build a peaceful post-work life</small></div></label>
+            <label class="bpo"><input type="radio" name="victory" value="Child World-Class Education Fund"/><div class="bpo-in"><span>&#127891;</span><strong>Child&apos;s World-Class Education</strong><small>IIT, MBBS, Study Abroad corpus</small></div></label>
+            <label class="bpo"><input type="radio" name="victory" value="Children Marriage Planning Fund"/><div class="bpo-in"><span>&#128140;</span><strong>Children&apos;s Marriage Planning</strong><small>Dedicated marriage corpus &amp; celebration fund</small></div></label>
+            <label class="bpo"><input type="radio" name="victory" value="Own Dream Home"/><div class="bpo-in"><span>&#127969;</span><strong>Own My Dream Home</strong><small>Down payment &amp; EMI-free ownership</small></div></label>
+            <label class="bpo"><input type="radio" name="victory" value="Build Family Legacy and Generational Wealth"/><div class="bpo-in"><span>&#127795;</span><strong>Build a Family Legacy</strong><small>Wealth that outlasts generations</small></div></label>
+            <label class="bpo"><input type="radio" name="victory" value="Complete Financial Freedom (FIRE)"/><div class="bpo-in"><span>&#129413;</span><strong>Complete Financial Freedom (FIRE)</strong><small>Retire early, live freely</small></div></label>
+          </div>
+          <div class="bpq-nav"><button class="bp-btn-back" onclick="bpBack()">&#8592; Back</button><button class="bp-btn-next" onclick="bpNext()">Final Step &#8594;</button></div>
+        </div>
+        <div class="bpq" id="bpq4">
+          <div class="bpq-meta"><span class="bpq-tag">The Charioteer</span><span class="bpq-n">05 of 05</span></div>
+          <h3>How much guidance do you seek?</h3>
+          <p>Enter your details. Your personalised Kurukshetra Strategy Report will be prepared and our advisor will contact you directly.</p>
+          <div class="bpq-form">
+            <div class="bpf-row">
+              <div class="bpf-g"><label>Full Name *</label><input type="text" id="bp-name" placeholder="Arjun Sharma" required/></div>
+              <div class="bpf-g"><label>Phone *</label><input type="tel" id="bp-phone" placeholder="+91 98765 43210" required/></div>
+            </div>
+            <div class="bpf-g"><label>Email *</label><input type="email" id="bp-email" placeholder="arjun@email.com" required/></div>
+            <p class="bpq-eng-label">Desired Engagement Level:</p>
+            <div class="bpq-opts three-col">
+              <label class="bpo"><input type="radio" name="engage" value="Just the Plan - DIY with roadmap"/><div class="bpo-in"><span>&#127919;</span><strong>Just the Plan</strong><small>DIY with your roadmap</small></div></label>
+              <label class="bpo"><input type="radio" name="engage" value="Guided Journey - Occasional check-ins"/><div class="bpo-in"><span>&#129309;</span><strong>Guided Journey</strong><small>Occasional check-ins</small></div></label>
+              <label class="bpo"><input type="radio" name="engage" value="Full Sarathi - Complete management"/><div class="bpo-in"><span>&#128081;</span><strong>Full Sarathi</strong><small>Complete management</small></div></label>
+            </div>
+          </div>
+          <div class="bpq-nav"><button class="bp-btn-back" onclick="bpBack()">&#8592; Back</button><button class="bp-btn-submit" id="bpSubmitBtn" onclick="bpSubmit()"><span>Send My Battle Plan</span> &#8594;</button></div>
+        </div>
+      </div>
+      <div class="bp-success" id="bpSuccess">
+        <div class="bps-wheel">
+          <svg class="bps-cwheel" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wgC" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4aa52" stop-opacity="0.81"/><stop offset="50%" stop-color="#f0da80" stop-opacity="0.64"/><stop offset="100%" stop-color="#aa8830" stop-opacity="0.72"/></linearGradient></defs><circle cx="60" cy="60" r="58.0" stroke="rgba(212,170,80,0.1)" stroke-width="0.5" stroke-dasharray="5 3"/><circle cx="60" cy="60" r="55.2" stroke="url(#wgC)" stroke-width="1.7"/><circle cx="60" cy="60" r="50.2" stroke="rgba(212,170,80,0.17)" stroke-width="0.5"/><circle cx="60" cy="60" r="42.0" stroke="rgba(212,170,80,0.26)" stroke-width="0.6"/><circle cx="60" cy="60" r="12.0" stroke="rgba(212,170,80,0.72)" stroke-width="1.1"/><circle cx="60" cy="60" r="6.0" fill="rgba(212,170,80,0.47)" stroke="rgba(212,170,80,0.81)" stroke-width="0.8"/><circle cx="60" cy="60" r="3.0" fill="rgba(212,170,80,0.85)"/><polygon points="72.0,62.2 72.0,57.8 115.2,59.4 115.2,60.6" fill="rgba(212,170,80,0.64)"/><circle cx="115.2" cy="60.0" r="1.9" fill="rgba(212,170,80,0.72)"/><polygon points="69.3,67.9 71.5,64.1 108.1,87.1 107.5,88.1" fill="rgba(212,170,80,0.38)"/><circle cx="107.8" cy="87.6" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="64.1,71.5 67.9,69.3 88.1,107.5 87.1,108.1" fill="rgba(212,170,80,0.38)"/><circle cx="87.6" cy="107.8" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="57.8,72.0 62.2,72.0 60.6,115.2 59.4,115.2" fill="rgba(212,170,80,0.64)"/><circle cx="60.0" cy="115.2" r="1.9" fill="rgba(212,170,80,0.72)"/><polygon points="52.1,69.3 55.9,71.5 32.9,108.1 31.9,107.5" fill="rgba(212,170,80,0.38)"/><circle cx="32.4" cy="107.8" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="48.5,64.1 50.7,67.9 12.5,88.1 11.9,87.1" fill="rgba(212,170,80,0.38)"/><circle cx="12.2" cy="87.6" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="48.0,57.8 48.0,62.2 4.8,60.6 4.8,59.4" fill="rgba(212,170,80,0.64)"/><circle cx="4.8" cy="60.0" r="1.9" fill="rgba(212,170,80,0.72)"/><polygon points="50.7,52.1 48.5,55.9 11.9,32.9 12.5,31.9" fill="rgba(212,170,80,0.38)"/><circle cx="12.2" cy="32.4" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="55.9,48.5 52.1,50.7 31.9,12.5 32.9,11.9" fill="rgba(212,170,80,0.38)"/><circle cx="32.4" cy="12.2" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="62.2,48.0 57.8,48.0 59.4,4.8 60.6,4.8" fill="rgba(212,170,80,0.64)"/><circle cx="60.0" cy="4.8" r="1.9" fill="rgba(212,170,80,0.72)"/><polygon points="67.9,50.7 64.1,48.5 87.1,11.9 88.1,12.5" fill="rgba(212,170,80,0.38)"/><circle cx="87.6" cy="12.2" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="71.5,55.9 69.3,52.1 107.5,31.9 108.1,32.9" fill="rgba(212,170,80,0.38)"/><circle cx="107.8" cy="32.4" r="1.1" fill="rgba(212,170,80,0.42)"/><circle cx="114.7" cy="67.2" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="111.0" cy="81.1" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="103.8" cy="93.6" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="93.6" cy="103.8" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="81.1" cy="111.0" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="67.2" cy="114.7" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="52.8" cy="114.7" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="38.9" cy="111.0" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="26.4" cy="103.8" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="16.2" cy="93.6" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="9.0" cy="81.1" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="5.3" cy="67.2" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="5.3" cy="52.8" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="9.0" cy="38.9" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="16.2" cy="26.4" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="26.4" cy="16.2" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="38.9" cy="9.0" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="52.8" cy="5.3" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="67.2" cy="5.3" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="81.1" cy="9.0" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="93.6" cy="16.2" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="103.8" cy="26.4" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="111.0" cy="38.9" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="114.7" cy="52.8" r="0.8" fill="rgba(212,170,80,0.12)"/></svg>
+        </div>
+        <h3>Your Strategy Report is Being Prepared</h3>
+        <p>Your personalised <strong>Kurukshetra Strategy Report</strong> will be delivered to your inbox within <strong>24&ndash;48 hours</strong>. Our advisor will then contact you personally to walk you through every recommendation.</p>
+        <p class="bps-shloka"><em>&#x0928; &#x0939;&#x093F; &#x091C;&#x094D;&#x091E;&#x093E;&#x0928;&#x0947;&#x0928; &#x0938;&#x0926;&#x0943;&#x0936;&#x0902; &#x092A;&#x0935;&#x093F;&#x0924;&#x094D;&#x0930;&#x092E;&#x093F;&#x0939; &#x0935;&#x093F;&#x0926;&#x094D;&#x092F;&#x0924;&#x0947;</em><br/><span>"There is nothing as purifying as knowledge." &mdash; Bhagavad Gita 4.38</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="section-credit">Designed by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Created by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Maintained by <span class="sc-name">Pragyo Roy</span></div>
+</section>
+
+<!-- STATS -->
+<section id="stats" class="stats">
+  <div class="stats-glow sg1"></div>
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card reveal"><div class="sv"><span class="cnt" data-t="400">0</span><span class="su">+</span></div><p class="sn">Warriors Guided</p><p class="sd">Clients across India and NRI</p></div>
+      <div class="stat-card reveal"><div class="sv"><span class="sp">&#8377;</span><span class="cnt" data-t="10">0</span><span class="su">Cr+</span></div><p class="sn">Assets Under Advisory</p><p class="sd">Managed with institutional diligence</p></div>
+      <div class="stat-card reveal"><div class="sv"><span class="cnt" data-t="10">0</span><span class="su">+ Yrs</span></div><p class="sn">Battle Experience</p><p class="sd">SEBI Registered since 2014</p></div>
+      <div class="stat-card reveal"><div class="sv"><span class="cnt" data-t="98">0</span><span class="su">%</span></div><p class="sn">Client Retention</p><p class="sd">Because results speak louder</p></div>
+    </div>
+    <div class="stats-shloka reveal">
+      <div class="ssl"></div>
+      <p><em>&#x092F;&#x094B;&#x0917;&#x0938;&#x094D;&#x0925;&#x0903; &#x0915;&#x0941;&#x0930;&#x0941; &#x0915;&#x0930;&#x094D;&#x092E;&#x093E;&#x0923;&#x093F;</em> &mdash; Perform your duties, established in discipline. <span>Bhagavad Gita 2.48</span></p>
+      <div class="ssl"></div>
+    </div>
+  </div>
+  <div class="section-credit">Designed by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Created by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Maintained by <span class="sc-name">Pragyo Roy</span></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials">
+  <div class="container">
+    <div class="sec-label reveal">Client Stories</div>
+    <h2 class="sec-title reveal">Victories From<br/><em>The Field</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card reveal"><div class="tq">&ldquo;</div><p>Raddhih helped me start my first SIP at 26. Five years later my portfolio has tripled and I am fully on track for my home purchase. The guidance was honest, clear and deeply personal.</p><div class="tf"><div class="tav">AR</div><div><strong>Arjun Rathod</strong><span>Software Engineer, Bangalore</span></div></div><div class="ts">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+      <div class="testi-card reveal"><div class="tq">&ldquo;</div><p>I had been over-paying taxes for years. One consultation with Raddhih&apos;s team saved me over Rs 80,000 in a single filing. Their knowledge of deductions and ELSS is extraordinary.</p><div class="tf"><div class="tav">PM</div><div><strong>Priya Mehta</strong><span>Business Owner, Kolkata</span></div></div><div class="ts">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+      <div class="testi-card reveal"><div class="tq">&ldquo;</div><p>When I needed to claim insurance after my father&apos;s hospitalisation, Raddhih handled everything. We received the full claim in 8 days. Exceptional service.</p><div class="tf"><div class="tav">SK</div><div><strong>Sunita Kapoor</strong><span>School Principal, Howrah</span></div></div><div class="ts">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+      <div class="testi-card reveal"><div class="tq">&ldquo;</div><p>As an NRI managing investments in India, I was overwhelmed. Raddhih simplified everything and handles my annual ITR filing. Completely taken care of.</p><div class="tf"><div class="tav">VN</div><div><strong>Vikram Nair</strong><span>NRI Client, Dubai</span></div></div><div class="ts">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+      <div class="testi-card reveal"><div class="tq">&ldquo;</div><p>They declined a commission-heavy plan on my behalf and chose the better option. That act of integrity made me a client for life. Raddhih truly lives by fiduciary values.</p><div class="tf"><div class="tav">RD</div><div><strong>Rohit Das</strong><span>Senior Manager, FMCG</span></div></div><div class="ts">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+      <div class="testi-card reveal"><div class="tq">&ldquo;</div><p>After retirement I wasn&apos;t sure where to invest. Raddhih created a blend of debt funds, SGBs and senior citizen schemes. I now have peace of mind and steady monthly income.</p><div class="tf"><div class="tav">GC</div><div><strong>G. Chatterjee</strong><span>Retired IAS Officer, Kolkata</span></div></div><div class="ts">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+    </div>
+  </div>
+  <div class="section-credit">Designed by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Created by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Maintained by <span class="sc-name">Pragyo Roy</span></div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-section">
+  <div class="cta-glow ctg1"></div>
+  <div class="cta-glow ctg2"></div>
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="cta-eyebrow">&#10022; &nbsp; Limited Consultations This Month &nbsp; &#10022;</div>
+      <h2>Your Sarathi Awaits.<br/><em>The Battle Begins Now.</em></h2>
+      <p>Book a complimentary 30-minute financial health review &mdash; free, confidential, and potentially life-changing.</p>
+      <div class="cta-btns">
+        <a href="#battleplan" class="btn-gold">Begin Your Battle Plan</a>
+        <a href="tel:+919836667866" class="btn-ghost">&#128222; +91 98366 67866</a>
+      </div>
+    </div>
+  </div>
+  <div class="section-credit">Designed by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Created by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Maintained by <span class="sc-name">Pragyo Roy</span></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="cleft reveal">
+        <div class="sec-label">Command Centre</div>
+        <h2 class="sec-title">Let&apos;s Begin<br/><em>Your Journey</em></h2>
+        <p>Whether starting your first SIP, reviewing your shields, or filing your taxes &mdash; we are your Sarathi, ready to guide every step of the way.</p>
+        <div class="ci-list">
+          <div class="ci"><div class="ci-icon"><svg viewBox="0 0 22 22" fill="none"><path d="M11 21S3 14.5 3 9a8 8 0 0116 0c0 5.5-8 12-8 12z" stroke="currentColor" stroke-width="1.5"/><circle cx="11" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg></div><div><strong>Visit Us</strong><span>AD-137, Tara Palace, Rabindrapally<br/>Kestopur, Kolkata &mdash; 700 101<br/>West Bengal, India</span></div></div>
+          <div class="ci"><div class="ci-icon"><svg viewBox="0 0 22 22" fill="none"><path d="M20 15.5a2 2 0 01-2.2 2 18 18 0 01-7.9-2.8 17.8 17.8 0 01-5.5-5.5A18 18 0 012.1 1.3 2 2 0 014.1 3h3.3a2 2 0 012 1.6c.1 1.1.4 2.1.7 3.1a2 2 0 01-.4 2l-1.4 1.4a14.5 14.5 0 005.5 5.5l1.4-1.4a2 2 0 012-.4c1 .3 2 .6 3.1.7a2 2 0 011.6 2v3.1z" stroke="currentColor" stroke-width="1.5"/></svg></div><div><strong>Call / WhatsApp</strong><span>+91 98366 67866<br/>Mon&ndash;Sat &middot; 9 AM &ndash; 7 PM IST</span></div></div>
+          <div class="ci"><div class="ci-icon"><svg viewBox="0 0 22 22" fill="none"><rect x="2" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 7l9 6 9-6" stroke="currentColor" stroke-width="1.5"/></svg></div><div><strong>Email Us</strong><span>parthatrpcal5@gmail.com<br/>Reply within 24&ndash;48 business hours</span></div></div>
+        </div>
+        <div class="trust-marks">
+          <span>&#10022; SEBI Registered 2014</span>
+          <span>&#10022; IRDAI Certified</span>
+          <span>&#10022; ISO Compliant</span>
+        </div>
+      </div>
+      <div class="cright reveal">
+        <form id="cForm" class="cform">
+          <h3>Request a Consultation</h3>
+          <p>We respond personally within 24&ndash;48 business hours.</p>
+          <div class="cf-row">
+            <div class="cf-g"><label>First Name *</label><input type="text" id="cf-fname" placeholder="Arjun" required/></div>
+            <div class="cf-g"><label>Last Name *</label><input type="text" id="cf-lname" placeholder="Sharma" required/></div>
+          </div>
+          <div class="cf-g"><label>Email *</label><input type="email" id="cf-email" placeholder="arjun@email.com" required/></div>
+          <div class="cf-g"><label>Phone *</label><input type="tel" id="cf-phone" placeholder="+91 98765 43210" required/></div>
+          <div class="cf-g"><label>Weapon of Choice</label>
+            <select id="cf-service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option>Dharma &mdash; Tax Planning &amp; ITR</option>
+              <option>Raksha &mdash; Insurance Protection</option>
+              <option>Lakshya &mdash; Mutual Fund Investments</option>
+              <option>Sanchaya &mdash; Wealth Preservation</option>
+              <option>Full Battle Plan &mdash; Complete Advisory</option>
+            </select>
+          </div>
+          <div class="cf-g"><label>Message (Optional)</label><textarea id="cf-message" rows="3" placeholder="Tell us about your financial goals..."></textarea></div>
+          <button type="submit" class="cf-btn" id="cfBtn">
+            <span>Send My Request</span>
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5h11M9 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="cf-note">&#128274; Encrypted. Your details go directly to our advisor.</p>
+        </form>
+        <div class="cform-ok" id="cformOk">
+          <div class="cok-icon">&#10003;</div>
+          <h3>Consultation Request Sent!</h3>
+          <p>Our advisor has received your details and will contact you personally within <strong>24&ndash;48 business hours</strong> at the number and email you provided.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section-credit">Designed by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Created by <span class="sc-name">Pragyo Roy</span><span class="sc-sep"> | </span>Maintained by <span class="sc-name">Pragyo Roy</span></div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="fb">
+        <div class="fl">
+          <div class="logo-chakra sm"><svg class="logo-wheel" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wgE" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4aa52" stop-opacity="0.85"/><stop offset="50%" stop-color="#f0da80" stop-opacity="0.68"/><stop offset="100%" stop-color="#aa8830" stop-opacity="0.77"/></linearGradient></defs><circle cx="18" cy="18" r="17.4" stroke="rgba(212,170,80,0.11)" stroke-width="0.1" stroke-dasharray="1 1"/><circle cx="18" cy="18" r="16.6" stroke="url(#wgE)" stroke-width="0.5"/><circle cx="18" cy="18" r="15.1" stroke="rgba(212,170,80,0.18)" stroke-width="0.1"/><circle cx="18" cy="18" r="12.6" stroke="rgba(212,170,80,0.27)" stroke-width="0.2"/><circle cx="18" cy="18" r="3.6" stroke="rgba(212,170,80,0.77)" stroke-width="0.3"/><circle cx="18" cy="18" r="1.8" fill="rgba(212,170,80,0.5)" stroke="rgba(212,170,80,0.85)" stroke-width="0.3"/><circle cx="18" cy="18" r="0.9" fill="rgba(212,170,80,0.9)"/><polygon points="21.6,18.6 21.6,17.4 34.6,17.8 34.6,18.2" fill="rgba(212,170,80,0.68)"/><circle cx="34.6" cy="18.0" r="0.6" fill="rgba(212,170,80,0.77)"/><polygon points="20.8,20.4 21.4,19.2 32.4,26.1 32.3,26.4" fill="rgba(212,170,80,0.41)"/><circle cx="32.3" cy="26.3" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="19.2,21.4 20.4,20.8 26.4,32.3 26.1,32.4" fill="rgba(212,170,80,0.41)"/><circle cx="26.3" cy="32.3" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="17.4,21.6 18.6,21.6 18.2,34.6 17.8,34.6" fill="rgba(212,170,80,0.68)"/><circle cx="18.0" cy="34.6" r="0.6" fill="rgba(212,170,80,0.77)"/><polygon points="15.6,20.8 16.8,21.4 9.9,32.4 9.6,32.3" fill="rgba(212,170,80,0.41)"/><circle cx="9.7" cy="32.3" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="14.6,19.2 15.2,20.4 3.7,26.4 3.6,26.1" fill="rgba(212,170,80,0.41)"/><circle cx="3.7" cy="26.3" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="14.4,17.4 14.4,18.6 1.4,18.2 1.4,17.8" fill="rgba(212,170,80,0.68)"/><circle cx="1.4" cy="18.0" r="0.6" fill="rgba(212,170,80,0.77)"/><polygon points="15.2,15.6 14.6,16.8 3.6,9.9 3.7,9.6" fill="rgba(212,170,80,0.41)"/><circle cx="3.7" cy="9.7" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="16.8,14.6 15.6,15.2 9.6,3.7 9.9,3.6" fill="rgba(212,170,80,0.41)"/><circle cx="9.7" cy="3.7" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="18.6,14.4 17.4,14.4 17.8,1.4 18.2,1.4" fill="rgba(212,170,80,0.68)"/><circle cx="18.0" cy="1.4" r="0.6" fill="rgba(212,170,80,0.77)"/><polygon points="20.4,15.2 19.2,14.6 26.1,3.6 26.4,3.7" fill="rgba(212,170,80,0.41)"/><circle cx="26.3" cy="3.7" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="21.4,16.8 20.8,15.6 32.3,9.6 32.4,9.9" fill="rgba(212,170,80,0.41)"/><circle cx="32.3" cy="9.7" r="0.3" fill="rgba(212,170,80,0.45)"/><circle cx="34.4" cy="20.2" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="33.3" cy="24.3" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="31.1" cy="28.1" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="28.1" cy="31.1" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="24.3" cy="33.3" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="20.2" cy="34.4" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="15.8" cy="34.4" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="11.7" cy="33.3" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="7.9" cy="31.1" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="4.9" cy="28.1" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="2.7" cy="24.3" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="1.6" cy="20.2" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="1.6" cy="15.8" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="2.7" cy="11.7" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="4.9" cy="7.9" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="7.9" cy="4.9" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="11.7" cy="2.7" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="15.8" cy="1.6" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="20.2" cy="1.6" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="24.3" cy="2.7" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="28.1" cy="4.9" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="31.1" cy="7.9" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="33.3" cy="11.7" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="34.4" cy="15.8" r="0.3" fill="rgba(212,170,80,0.13)"/></svg></div>
+          <div class="logo-words"><span class="lw-main">Raddhih</span><span class="lw-sub">Financial Services</span></div>
+        </div>
+        <div class="trp-badge">
+          <div class="trp-dot">&#10022;</div>
+          TRP Certified &nbsp;&middot;&nbsp; Verified &amp; Trusted
+        </div>
+        <p>Building India&apos;s financial future &mdash; one warrior at a time. SEBI Registered since 2014, IRDAI Certified, deeply committed to your prosperity.</p>
+        <div class="fsoc">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+      </div>
+      <div class="fc"><h4>The Armory</h4><ul><li><a href="#armory">Dharma &mdash; Tax &amp; ITR</a></li><li><a href="#armory">Raksha &mdash; Insurance</a></li><li><a href="#armory">Lakshya &mdash; Mutual Funds</a></li><li><a href="#armory">Sanchaya &mdash; Wealth Preservation</a></li><li><a href="#battleplan">Battle Plan Assessment</a></li></ul></div>
+      <div class="fc"><h4>Company</h4><ul><li><a href="#why-us">About Raddhih</a></li><li><a href="#testimonials">Client Stories</a></li><li><a href="#contact">Contact</a></li><li><a href="#">Careers</a></li><li><a href="#">Partner With Us</a></li></ul></div>
+      <div class="fc"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">SEBI Registration</a></li><li><a href="#">Grievance Redressal</a></li><li><a href="#">Disclaimer</a></li></ul><div class="freg"><p>SEBI Reg: <span>2014</span></p><p>IRDAI Lic: <span>Certified</span></p></div></div>
+    </div>
+    <div class="footer-bot">
+      <p>&#169; 2025 Raddhih Financial Services. AD-137 Tara Palace, Rabindrapally, Kestopur, Kolkata 700101. +91 98366 67866 | parthatrpcal5@gmail.com</p>
+      <p class="fdisc">Mutual fund investments are subject to market risks. Read all scheme documents carefully before investing. Insurance is the subject matter of solicitation. SEBI Registered 2014.</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- CREDIT BAR -->
+<div id="creditBar">
+  <span class="cr-trp">&#10022; TRP Certified</span>
+  <span class="cr-sep">|</span>
+  <span>Created by <span class="cr-name">Pragyo Roy</span></span>
+  <span class="cr-sep">|</span>
+  <span>Designed by <span class="cr-name">Pragyo Roy</span></span>
+  <span class="cr-sep">|</span>
+  <span>Maintained by <span class="cr-name">Pragyo Roy</span></span>
+</div>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/919836667866?text=Jai%20Shree%20Krishna!%20I%20would%20like%20a%20free%20Kurukshetra%20Strategy%20consultation%20from%20Raddhih." class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 0C7.16 0 0 7.16 0 16c0 2.83.74 5.49 2.04 7.8L0 32l8.44-2.01A15.92 15.92 0 0016 32c8.84 0 16-7.16 16-16S24.84 0 16 0zm0 29.2a13.15 13.15 0 01-6.71-1.83l-.48-.29-4.98 1.19 1.21-4.84-.31-.5A13.16 13.16 0 1116 29.2zm7.23-9.86c-.4-.2-2.34-1.15-2.7-1.28-.36-.13-.63-.2-.89.2-.26.4-1.02 1.28-1.25 1.54-.23.26-.46.29-.86.1-.4-.2-1.68-.62-3.2-1.98-1.18-1.05-1.98-2.35-2.21-2.75-.23-.4-.02-.61.17-.81.18-.18.4-.46.6-.69.2-.23.26-.4.4-.66.13-.26.07-.49-.03-.69-.1-.2-.89-2.15-1.22-2.94-.32-.77-.65-.67-.89-.68h-.76c-.26 0-.69.1-1.05.49-.36.39-1.38 1.35-1.38 3.29s1.41 3.81 1.61 4.08c.2.26 2.78 4.24 6.73 5.95.94.4 1.67.65 2.24.83.94.3 1.8.26 2.47.16.75-.11 2.34-.96 2.67-1.88.33-.93.33-1.72.23-1.88-.1-.17-.36-.27-.76-.47z"/></svg>
+  <span class="wa-tip">Chat on WhatsApp</span>
+</a>
+
+<script>
+'use strict';
+
+/* ── EmailJS ── */
+var EMAILJS_KEY      = 'YOUR_PUBLIC_KEY';
+var EMAILJS_SERVICE  = 'gmail_raddhih';
+var EMAILJS_BP_TPL   = 'battleplan_template';
+var TO_EMAIL         = 'parthatrpcal5@gmail.com';
+try { emailjs.init(EMAILJS_KEY); } catch(e) {}
+
+/* ── LOADER ── */
+var loader = document.getElementById('loader');
+function hideLoader() {
+  if (loader) {
+    loader.style.opacity = '0';
+    loader.style.pointerEvents = 'none';
+    setTimeout(function() { loader.style.display = 'none'; }, 700);
+  }
+  document.body.style.overflow = '';
+  triggerHeroReveal();
+}
+/* Hide after 2.5s no matter what */
+setTimeout(hideLoader, 2500);
+
+/* ── MUSIC (autoplay unmuted, load iframe lazily) ── */
+var musicOn = true;
+setTimeout(function() {
+  var f = document.getElementById('ytFrame');
+  if (f) f.src = f.getAttribute('data-yt');
+}, 1200);
+
+function toggleMusic() {
+  var f    = document.getElementById('ytFrame');
+  var txt  = document.getElementById('musicTxt');
+  var wave = document.getElementById('mbWave');
+  var ico  = document.getElementById('musicIcon');
+  musicOn  = !musicOn;
+  if (musicOn) {
+    f.src = 'https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&loop=1&playlist=Uezrcg6KJ44&controls=0&mute=0';
+    txt.textContent = 'Pause';
+    wave.classList.add('playing');
+    ico.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>';
+  } else {
+    f.src = 'about:blank';
+    txt.textContent = 'Play';
+    wave.classList.remove('playing');
+    ico.innerHTML = '<path d="M8 5v14l11-7z"/>';
+  }
+}
+
+/* ── CUSTOM CURSOR ── */
+var cDot  = document.getElementById('cur-dot');
+var cRing = document.getElementById('cur-ring');
+var cX=innerWidth/2, cY=innerHeight/2, rX=cX, rY=cY;
+document.addEventListener('mousemove', function(e) { cX=e.clientX; cY=e.clientY; });
+(function moveCursor() {
+  rX += (cX-rX)*.13; rY += (cY-rY)*.13;
+  if (cDot)  { cDot.style.left  = cX+'px'; cDot.style.top  = cY+'px'; }
+  if (cRing) { cRing.style.left = rX+'px'; cRing.style.top = rY+'px'; }
+  requestAnimationFrame(moveCursor);
+})();
+document.querySelectorAll('a,button,.why-card,.arm-card,.testi-card,.bpo').forEach(function(el) {
+  el.addEventListener('mouseenter', function() { if(cRing) cRing.classList.add('big'); });
+  el.addEventListener('mouseleave', function() { if(cRing) cRing.classList.remove('big'); });
+});
+
+/* ── NAVBAR ── */
+var navbar = document.getElementById('navbar');
+window.addEventListener('scroll', function() {
+  navbar.classList.toggle('scrolled', scrollY > 50);
+}, {passive:true});
+var hbg = document.getElementById('hamburger');
+var mob = document.getElementById('mobMenu');
+hbg.addEventListener('click', function() {
+  var o = mob.classList.toggle('open');
+  hbg.classList.toggle('active', o);
+});
+document.querySelectorAll('.mob-menu a').forEach(function(a) {
+  a.addEventListener('click', function() { mob.classList.remove('open'); hbg.classList.remove('active'); });
+});
+
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var t = document.querySelector(a.getAttribute('href'));
+    if (!t) return;
+    e.preventDefault();
+    scrollTo({ top: t.getBoundingClientRect().top + scrollY - 72, behavior: 'smooth' });
+  });
+});
+
+/* ── PARTICLES CANVAS ── */
+var cvs = document.getElementById('heroCanvas');
+var ctx = cvs ? cvs.getContext('2d') : null;
+var W, H, pts = [];
+function rsz() { if(!cvs) return; W=cvs.width=innerWidth; H=cvs.height=innerHeight; }
+rsz(); window.addEventListener('resize', rsz, {passive:true});
+for (var i=0;i<70;i++) pts.push({x:Math.random()*(W||1200),y:Math.random()*(H||800),vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.4+.3,o:Math.random()*.45+.1});
+(function draw() {
+  if (!ctx) return;
+  ctx.clearRect(0,0,W,H);
+  pts.forEach(function(p) {
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle='rgba(212,170,80,'+p.o+')'; ctx.fill();
+  });
+  for(var i=0;i<pts.length;i++) for(var j=i+1;j<pts.length;j++) {
+    var dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=Math.sqrt(dx*dx+dy*dy);
+    if(d<110) { ctx.beginPath(); ctx.strokeStyle='rgba(212,170,80,'+(0.07*(1-d/110))+')'; ctx.lineWidth=.5; ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y); ctx.stroke(); }
+  }
+  requestAnimationFrame(draw);
+})();
+
+/* ── HERO WHEEL PARALLAX ── */
+var hwWrap = document.querySelector('.hero-wheel-wrap');
+var px=0,py=0,px2=0,py2=0;
+document.addEventListener('mousemove', function(e) { px=(e.clientX/innerWidth-.5)*22; py=(e.clientY/innerHeight-.5)*22; });
+(function prl() {
+  px2+=(px-px2)*.04; py2+=(py-py2)*.04;
+  if(hwWrap) hwWrap.style.transform='translateY(-50%) translate('+px2+'px,'+py2+'px)';
+  requestAnimationFrame(prl);
+})();
+
+/* ── SCROLL REVEAL ── */
+function triggerHeroReveal() {
+  document.querySelectorAll('.hero .reveal').forEach(function(el,i) {
+    setTimeout(function() { el.classList.add('visible'); }, i*160);
+  });
+}
+var revObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if(e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+}, {threshold:0.1, rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal:not(.hero .reveal)').forEach(function(el) { revObs.observe(el); });
+
+/* ── STAGGER DELAYS ── */
+document.querySelectorAll('.why-grid .why-card').forEach(function(el,i) { el.style.transitionDelay=(i%3*.1+.05)+'s'; });
+document.querySelectorAll('.armory-grid .arm-card').forEach(function(el,i) { el.style.transitionDelay=(i*.1+.05)+'s'; });
+document.querySelectorAll('.testi-grid .testi-card').forEach(function(el,i) { el.style.transitionDelay=(i%3*.1+.05)+'s'; });
+document.querySelectorAll('.stat-card').forEach(function(el,i) { el.style.transitionDelay=(i*.12)+'s'; });
+
+/* ── COUNTER ANIMATION ── */
+function animCount(el) {
+  var t=+el.dataset.t, dur=2000, s=performance.now();
+  (function u(now) {
+    var p=Math.min((now-s)/dur,1), v=1-Math.pow(1-p,3);
+    el.textContent=Math.round(t*v).toLocaleString('en-IN');
+    if(p<1) requestAnimationFrame(u);
+  })(s);
+}
+var cntObs=new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if(e.isIntersecting) { e.target.querySelectorAll('.cnt[data-t]').forEach(animCount); cntObs.unobserve(e.target); } });
+}, {threshold:0.4});
+var sEl=document.getElementById('stats'); if(sEl) cntObs.observe(sEl);
+
+/* ── 3D CARD TILT ── */
+document.querySelectorAll('.why-card,.arm-card,.testi-card').forEach(function(c) {
+  c.addEventListener('mousemove',function(e) {
+    var r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    c.style.transform='perspective(700px) rotateX('+(-y*6)+'deg) rotateY('+(x*6)+'deg) translateY(-5px)';
+  });
+  c.addEventListener('mouseleave',function() {
+    c.style.transition='all .5s cubic-bezier(.4,0,.2,1)'; c.style.transform='';
+    setTimeout(function() { c.style.transition=''; }, 500);
+  });
+});
+
+/* ── BATTLE PLAN ── */
+var bpCur=0, bpAns={};
+function bpNext() {
+  var q=document.getElementById('bpq'+bpCur);
+  var chk=q.querySelectorAll('input:checked');
+  if(chk.length===0 && bpCur<4) {
+    var opts=q.querySelector('.bpq-opts');
+    if(opts) { opts.style.animation='shake .4s ease'; setTimeout(function() { opts.style.animation=''; },400); }
+  }
+  if(bpCur<4) {
+    chk.forEach(function(inp) { bpAns['q'+bpCur]=(bpAns['q'+bpCur]||[]).concat(inp.value); });
+    q.style.animation='slideOut .3s ease forwards';
+    setTimeout(function() {
+      q.style.display='none'; q.style.animation=''; bpCur++;
+      var n=document.getElementById('bpq'+bpCur);
+      n.style.display='block'; n.style.animation='slideIn .4s ease forwards';
+      updateBpProg();
+    },280);
+  }
+}
+function bpBack() {
+  if(bpCur>0) {
+    var q=document.getElementById('bpq'+bpCur);
+    q.style.animation='slideOut .3s ease forwards';
+    setTimeout(function() {
+      q.style.display='none'; q.style.animation=''; bpCur--;
+      var p=document.getElementById('bpq'+bpCur);
+      p.style.display='block'; p.style.animation='slideIn .4s ease forwards';
+      updateBpProg();
+    },280);
+  }
+}
+function updateBpProg() {
+  document.querySelectorAll('.bpp-item').forEach(function(el,i) {
+    el.classList.remove('active','done');
+    if(i<bpCur) el.classList.add('done');
+    if(i===bpCur) el.classList.add('active');
+  });
+}
+function bpSubmit() {
+  var name=document.getElementById('bp-name').value.trim();
+  var email=document.getElementById('bp-email').value.trim();
+  var phone=document.getElementById('bp-phone').value.trim();
+  var engage=document.querySelector('input[name="engage"]:checked');
+  if(!name||!email||!phone) { alert('Please fill Name, Email and Phone.'); return; }
+  var btn=document.getElementById('bpSubmitBtn');
+  btn.innerHTML='Sending...'; btn.disabled=true;
+  document.querySelectorAll('#bpq4 input:checked').forEach(function(inp) { bpAns['q4']=(bpAns['q4']||[]).concat(inp.value); });
+  var params={
+    to_email:TO_EMAIL, from_name:name, client_email:email, client_phone:phone,
+    engagement:engage?engage.value:'Not specified',
+    terrain:(bpAns['q0']||[]).join(', ')||'Not answered',
+    assets:(bpAns['q1']||[]).join(', ')||'Not answered',
+    enemy:(bpAns['q2']||[]).join(', ')||'Not answered',
+    victory:(bpAns['q3']||[]).join(', ')||'Not answered',
+    subject:'NEW BATTLE PLAN from '+name
+  };
+  function showOk() {
+    document.getElementById('bpQuestions').style.display='none';
+    document.getElementById('bpProgress').style.display='none';
+    var s=document.getElementById('bpSuccess');
+    s.style.display='flex'; s.style.animation='fadeUp .6s ease forwards';
+  }
+  try {
+    emailjs.send(EMAILJS_SERVICE,EMAILJS_BP_TPL,params).then(showOk).catch(function() {
+      var b=encodeURIComponent('Battle Plan
+
+Name: '+name+'
+Email: '+email+'
+Phone: '+phone+'
+Goal: '+(bpAns['q3']||[]).join(', '));
+      window.open('mailto:'+TO_EMAIL+'?subject='+encodeURIComponent(params.subject)+'&body='+b,'_blank');
+      showOk();
+    });
+  } catch(err) {
+    var b=encodeURIComponent('Battle Plan
+
+Name: '+name+'
+Email: '+email+'
+Phone: '+phone);
+    window.open('mailto:'+TO_EMAIL+'?subject='+encodeURIComponent(params.subject)+'&body='+b,'_blank');
+    showOk();
+  }
+}
+for(var qi=1;qi<=4;qi++) { document.getElementById('bpq'+qi).style.display='none'; }
+document.getElementById('bpSuccess').style.display='none';
+
+/* ── CONTACT FORM ── */
+var cForm=document.getElementById('cForm');
+if(cForm) {
+  cForm.addEventListener('submit',function(e) {
+    e.preventDefault();
+    var fname=document.getElementById('cf-fname').value.trim();
+    var lname=document.getElementById('cf-lname').value.trim();
+    var email=document.getElementById('cf-email').value.trim();
+    var phone=document.getElementById('cf-phone').value.trim();
+    var svc=document.getElementById('cf-service').value;
+    var msg=document.getElementById('cf-message').value.trim();
+    var btn=document.getElementById('cfBtn');
+    btn.innerHTML='Sending...'; btn.disabled=true;
+    var params={
+      to_email:TO_EMAIL, from_name:fname+' '+lname,
+      client_email:email, client_phone:phone, service:svc,
+      message:msg||'No message.', subject:'CONSULTATION from '+fname+' '+lname
+    };
+    function showOk() {
+      cForm.style.display='none';
+      var ok=document.getElementById('cformOk');
+      ok.style.display='flex'; ok.style.animation='fadeUp .5s ease forwards';
+    }
+    try {
+      emailjs.send(EMAILJS_SERVICE,'contact_template',params).then(showOk).catch(function() {
+        var b=encodeURIComponent('Consultation
+
+Name: '+params.from_name+'
+Phone: '+phone+'
+Email: '+email+'
+Service: '+svc+'
+
+'+msg);
+        window.open('mailto:'+TO_EMAIL+'?subject='+encodeURIComponent(params.subject)+'&body='+b,'_blank');
+        showOk();
+      });
+    } catch(err) {
+      var b=encodeURIComponent('Consultation
+
+Name: '+params.from_name+'
+Phone: '+phone+'
+Email: '+email+'
+Service: '+svc+'
+
+'+msg);
+      window.open('mailto:'+TO_EMAIL+'?subject='+encodeURIComponent(params.subject)+'&body='+b,'_blank');
+      showOk();
+    }
+  });
+}
+document.getElementById('cformOk').style.display='none';
+
+/* CSS in head style tag */
+</script>
+</body>
+</html>
