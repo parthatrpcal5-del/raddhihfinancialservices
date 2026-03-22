@@ -1,106 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Raddhih Financial Services | Building Your Financial Future</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Raddhih Financial Services | Your Financial Sarathi — Kolkata</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Cinzel:wght@400;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --navy: #050d1a;
+  --navy2: #071222;
+  --navy3: #0d1e35;
+  --gold: #C9A84C;
+  --gold2: #e8c96a;
+  --gold3: #f5e0a0;
+  --white: #f8f4ee;
+  --dim: rgba(201,168,76,.12);
+  --dim2: rgba(201,168,76,.06);
+  --glass: rgba(7,18,34,.75);
+  --r: .75rem;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+::selection{background:var(--gold);color:var(--navy)}
+a{text-decoration:none;color:inherit}
+img,svg{display:block}
+
+/* ── CURSOR ── */
+#cur-ring,#cur-dot{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%)}
+#cur-ring{width:36px;height:36px;border:1.5px solid var(--gold);transition:width .25s,height .25s,opacity .25s;opacity:.7}
+#cur-dot{width:6px;height:6px;background:var(--gold);transition:transform .1s}
+#cur-ring.big{width:56px;height:56px;opacity:.4}
+#cur-dot.big{transform:translate(-50%,-50%) scale(1.8)}
+@media(max-width:900px){body{cursor:auto}#cur-ring,#cur-dot{display:none}}
+
+/* ── LOADER ── */
+#loader{position:fixed;inset:0;z-index:9998;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .5s ease}
+.ld-wheel svg{width:130px;height:130px;animation:spin 2.5s linear infinite}
+.ld-brand{font-family:'Cinzel',serif;font-size:1.6rem;letter-spacing:.35em;color:var(--gold)}
+.ld-sub{font-size:.75rem;letter-spacing:.25em;color:rgba(201,168,76,.55);text-transform:uppercase}
+
+/* ── BG WHEELS ── */
+.bgw{position:fixed;pointer-events:none;z-index:0;opacity:.04;animation:spin var(--sp,120s) linear infinite}
+.bgw svg{width:100%;height:100%}
+.bgw1{width:700px;height:700px;top:-200px;right:-200px;--sp:90s}
+.bgw2{width:500px;height:500px;bottom:-100px;left:-150px;--sp:120s;animation-direction:reverse}
+.bgw3{width:350px;height:350px;top:50%;left:50%;transform:translate(-50%,-50%);--sp:150s}
+@media(max-width:768px){.bgw{display:none}}
+
+/* ── MUSIC ── */
+#musicBtn{position:fixed;top:22px;right:90px;z-index:1100;background:rgba(7,18,34,.8);border:1px solid rgba(201,168,76,.25);color:rgba(201,168,76,.7);padding:8px 14px;border-radius:30px;cursor:none;display:flex;align-items:center;gap:7px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;transition:all .3s;backdrop-filter:blur(10px)}
+#musicBtn:hover,#musicBtn.on{border-color:var(--gold);color:var(--gold)}
+@media(max-width:768px){#musicBtn{right:14px;top:auto;bottom:80px;padding:8px 11px}}
+#musicBtn span{display:none}
+@media(min-width:900px){#musicBtn span{display:inline}}
+
+/* ── ANIMATIONS ── */
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinR{to{transform:rotate(-360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,.5)}50%{box-shadow:0 0 0 14px rgba(201,168,76,0)}}
+@keyframes scanLine{0%{background-position:0 0}100%{background-position:0 100vh}}
+
+/* ── REVEAL ── */
+.reveal,.reveal-left,.reveal-right{opacity:0;transition:opacity .7s ease,transform .7s ease}
+.reveal{transform:translateY(30px)}.reveal-left{transform:translateX(-40px)}.reveal-right{transform:translateX(40px)}
+.reveal.in,.reveal-left.in,.reveal-right.in{opacity:1;transform:none}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+section{position:relative;z-index:1}
+
+/* ── BUTTONS ── */
+.btn-gold{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:linear-gradient(135deg,var(--gold) 0%,#a07830 100%);color:var(--navy);font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.12em;font-weight:600;border:none;border-radius:3px;cursor:none;transition:all .3s;position:relative;overflow:hidden}
+.btn-gold::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold2),var(--gold));opacity:0;transition:opacity .3s}
+.btn-gold:hover::after{opacity:1}
+.btn-gold span,.btn-gold i{position:relative;z-index:1}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:transparent;color:var(--gold);border:1px solid rgba(201,168,76,.45);border-radius:3px;font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.1em;cursor:none;transition:all .3s}
+.btn-ghost:hover{background:rgba(201,168,76,.08);border-color:var(--gold)}
+.btn-wa{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;background:#25d366;color:#fff;border-radius:3px;font-size:.85rem;font-weight:500;cursor:none;transition:transform .2s,box-shadow .2s}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.3)}
+.btn-wa-ok{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;background:#25d366;color:#fff;border-radius:3px;font-size:.85rem;margin-top:18px;cursor:none;transition:all .3s}
+.btn-wa-ok:hover{background:#1fba59}
+
+/* ── SECTION HEADS ── */
+.sec-tag{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;opacity:.8}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;margin-bottom:16px}
+.sec-sub{color:rgba(248,244,238,.55);font-size:.95rem;max-width:520px}
+.gold{color:var(--gold);font-style:italic}
+.sec-head{margin-bottom:52px}
+.sec-head .sec-sub{margin-top:10px}
+
+/* ════════════════ NAVBAR ════════════════ */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 0;transition:all .4s}
+#navbar.scrolled{background:rgba(5,13,26,.92);backdrop-filter:blur(20px);padding:12px 0;border-bottom:1px solid rgba(201,168,76,.1)}
+.nav-inner{display:flex;align-items:center;gap:24px;max-width:1200px;margin:0 auto;padding:0 24px}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nl-wheel{flex-shrink:0;animation:spin 18s linear infinite}
+.nl-wheel svg{width:42px;height:42px}
+.nl-text{display:flex;flex-direction:column;gap:1px}
+.nl-main{font-family:'Cinzel',serif;font-size:.9rem;letter-spacing:.22em;color:var(--gold)}
+.nl-sub{font-size:.52rem;letter-spacing:.18em;color:rgba(201,168,76,.5);text-transform:uppercase}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;color:rgba(248,244,238,.65);transition:color .25s;border-radius:2px}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.15em;padding:9px 20px;background:linear-gradient(135deg,var(--gold),#a07830);color:var(--navy);border-radius:2px;white-space:nowrap;transition:opacity .2s;cursor:none;flex-shrink:0}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:var(--gold);display:block;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+@media(max-width:960px){.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,13,26,.97);flex-direction:column;align-items:center;justify-content:center;gap:6px}.nav-links.open{display:flex}.nav-links a{font-size:1rem;padding:14px 24px}.hamburger{display:flex;margin-left:auto}}
+@media(max-width:960px){.nav-cta{display:none}}
+
+/* ════════════════ HERO ════════════════ */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding-top:88px;overflow:hidden}
+.hero-glow{position:absolute;top:-10%;right:-5%;width:55%;height:120%;background:radial-gradient(ellipse at 70% 40%,rgba(201,168,76,.07) 0%,transparent 65%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-content{padding:60px 0 60px 24px;max-width:580px;z-index:2}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,168,76,.75);border:1px solid rgba(201,168,76,.2);padding:7px 16px;border-radius:30px;margin-bottom:28px;background:rgba(201,168,76,.04)}
+.pill-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5.5vw,4.8rem);font-weight:300;line-height:1.1;margin-bottom:24px}
+.h1-line{display:block;color:rgba(248,244,238,.85)}
+.h1-gold{display:block;color:var(--gold);font-style:italic;font-weight:600}
+.hero-p{font-size:1rem;color:rgba(248,244,238,.6);line-height:1.75;margin-bottom:32px;max-width:440px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px}
+.hero-badges span{display:flex;align-items:center;gap:6px;font-size:.68rem;letter-spacing:.08em;color:rgba(248,244,238,.5);background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.14);padding:5px 12px;border-radius:20px}
+.hero-badges i{color:var(--gold);font-size:.7rem}
+.hero-wheel-wrap{position:relative;display:flex;align-items:center;justify-content:center;z-index:1}
+.hero-big-wheel{width:min(540px,90vw);height:min(540px,90vw);animation:spin 55s linear infinite;opacity:.75}
+.scroll-cue{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.4)}
+.sc-line{width:1px;height:48px;background:linear-gradient(to bottom,rgba(201,168,76,.4),transparent);animation:fadeUp 2s infinite}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:100px}.hero-wheel-wrap{display:none}.hero-content{padding:40px 0;max-width:100%}}
+
+/* ════════════════ WHY US ════════════════ */
+.why-us{padding:110px 0;background:linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-card{background:rgba(13,30,53,.6);border:1px solid rgba(201,168,76,.1);border-radius:var(--r);padding:32px 28px;transition:border-color .3s,transform .3s}
+.why-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-4px)}
+.wc-icon{width:46px;height:46px;border-radius:50%;background:var(--dim);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.wc-icon i{color:var(--gold);font-size:1rem}
+.why-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--white);margin-bottom:10px}
+.why-card p{font-size:.88rem;color:rgba(248,244,238,.55);line-height:1.7}
+@media(max-width:860px){.why-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.why-grid{grid-template-columns:1fr}}
+
+/* ════════════════ SARATHI ════════════════ */
+.sarathi{padding:120px 0;position:relative;overflow:hidden;background:var(--navy2)}
+.sarathi-bgw{position:absolute;right:-120px;top:50%;transform:translateY(-50%);width:500px;height:500px;opacity:.07;animation:spin 140s linear infinite;pointer-events:none}
+.sarathi-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.sarathi-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:300;line-height:1.25;margin-bottom:28px}
+.shloka-box{display:flex;gap:16px;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.18);border-radius:var(--r);padding:22px 20px;margin-bottom:26px}
+.shloka-bar{width:3px;background:linear-gradient(to bottom,var(--gold),transparent);border-radius:2px;flex-shrink:0}
+.shloka-text{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--gold3);line-height:1.7;margin-bottom:8px}
+.shloka-trans{font-size:.78rem;color:rgba(201,168,76,.6);letter-spacing:.05em}
+.sarathi-p{font-size:.92rem;color:rgba(248,244,238,.6);line-height:1.8;margin-bottom:16px}
+.pillar{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(201,168,76,.08)}
+.pillar:last-of-type{border-bottom:none}
+.pillar-ico{position:relative;width:44px;height:44px;flex-shrink:0}
+.pillar-ico svg{width:44px;height:44px;animation:spin 20s linear infinite}
+.p-fa{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--gold);font-size:.85rem}
+.pillar h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--white);margin-bottom:5px}
+.pillar p{font-size:.84rem;color:rgba(248,244,238,.5);line-height:1.65}
+.cert-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.cert-chip{display:flex;align-items:center;gap:8px;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);padding:9px 14px;border-radius:var(--r);font-size:.75rem}
+.cert-chip i{color:var(--gold);font-size:.85rem}
+.cert-chip div{display:flex;flex-direction:column;gap:1px}
+.cert-chip b{color:var(--white);font-size:.77rem}
+.cert-chip span{color:rgba(201,168,76,.6);font-size:.68rem}
+@media(max-width:860px){.sarathi-layout{grid-template-columns:1fr;gap:40px}.sarathi-bgw{display:none}}
+
+/* ════════════════ SERVICES ════════════════ */
+.services{padding:110px 0;background:var(--navy)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{background:rgba(13,30,53,.7);border:1px solid rgba(201,168,76,.1);border-radius:var(--r);padding:34px 28px;position:relative;transition:border-color .3s,transform .3s}
+.svc-card:hover{border-color:rgba(201,168,76,.35);transform:translateY(-5px)}
+.svc-card:hover .svc-wheel-ico svg{animation:spin 4s linear infinite}
+.svc-featured{border-color:rgba(201,168,76,.3);background:rgba(20,42,72,.8)}
+.svc-badge{position:absolute;top:-1px;right:24px;background:var(--gold);color:var(--navy);font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.15em;padding:5px 12px;border-radius:0 0 var(--r) var(--r)}
+.svc-wheel-ico{position:relative;width:68px;height:68px;margin-bottom:18px}
+.svc-wheel-ico svg{width:68px;height:68px;animation:spin 30s linear infinite;transition:animation-duration .3s}
+.svc-fa{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--gold);font-size:1.1rem}
+.svc-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.55);margin-bottom:8px}
+.svc-card h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--white);margin-bottom:10px}
+.svc-card p{font-size:.87rem;color:rgba(248,244,238,.55);line-height:1.7;margin-bottom:16px}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:22px}
+.svc-list li{font-size:.83rem;color:rgba(248,244,238,.6);display:flex;align-items:center;gap:8px}
+.svc-list i{color:var(--gold);font-size:.7rem}
+.svc-link{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.12em;color:var(--gold);display:flex;align-items:center;gap:7px;transition:gap .2s}
+.svc-link:hover{gap:12px}
+@media(max-width:860px){.svc-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.svc-grid{grid-template-columns:1fr}}
+
+/* ════════════════ BATTLE PLAN ════════════════ */
+.battle-plan{padding:110px 0;background:var(--navy2);position:relative;overflow:hidden}
+.bp-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(201,168,76,.05) 0%,transparent 70%);pointer-events:none}
+.bp-shell{background:rgba(7,18,34,.8);border:1px solid rgba(201,168,76,.14);border-radius:10px;overflow:hidden;display:grid;grid-template-columns:240px 1fr}
+.bp-steps{background:rgba(5,13,26,.7);padding:24px 0;border-right:1px solid rgba(201,168,76,.1);display:flex;flex-direction:column;gap:2px}
+.bps{display:flex;align-items:center;gap:12px;padding:14px 20px;border-left:3px solid transparent;transition:all .3s;cursor:default;opacity:.45}
+.bps.active{border-left-color:var(--gold);background:rgba(201,168,76,.06);opacity:1}
+.bps.done{opacity:.7;border-left-color:rgba(201,168,76,.3)}
+.bps-n{font-family:'Cinzel',serif;font-size:.75rem;color:var(--gold);opacity:.7;width:22px;flex-shrink:0}
+.bps b{font-size:.8rem;color:var(--white);display:block;line-height:1.3}
+.bps small{font-size:.68rem;color:rgba(248,244,238,.4);display:block}
+.bp-form-area{padding:36px 40px;position:relative}
+.fs{display:none;animation:fadeUp .4s ease}
+.fs.active{display:block}
+.bp-ok{display:none;flex-direction:column;align-items:center;text-align:center;padding:20px}
+.fs-hd{margin-bottom:28px}
+.fs-tag{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;opacity:.7}
+.fs-hd h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--white)}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
+.choices-multi{grid-template-columns:repeat(3,1fr)}
+.ch{display:flex;align-items:center;gap:12px;background:rgba(13,30,53,.7);border:1px solid rgba(201,168,76,.1);border-radius:var(--r);padding:14px 16px;cursor:none;transition:all .25s}
+.ch:hover{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.05)}
+.ch input:checked ~ .ch-txt{color:var(--white)}
+.ch:has(input:checked){border-color:var(--gold);background:rgba(201,168,76,.1)}
+.ch input{display:none}
+.ch-ico{font-size:1.3rem;flex-shrink:0;line-height:1}
+.ch-txt{font-size:.83rem;color:rgba(248,244,238,.6)}
+.ch-txt b{display:block;font-size:.84rem;color:rgba(248,244,238,.8);font-weight:500}
+.ch-txt small{font-size:.73rem;color:rgba(248,244,238,.4)}
+.report-box{background:rgba(5,13,26,.6);border:1px solid rgba(201,168,76,.12);border-radius:var(--r);padding:22px;margin-bottom:22px}
+.rb-title{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.1em;color:var(--gold);margin-bottom:14px;opacity:.85}
+.rb-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.fi{width:100%;background:rgba(5,13,26,.8);border:1px solid rgba(201,168,76,.15);border-radius:4px;padding:11px 14px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:border-color .25s;margin-bottom:10px}
+.fi:focus{border-color:rgba(201,168,76,.5)}
+.fi::placeholder{color:rgba(248,244,238,.25)}
+textarea.fi{resize:vertical}
+select.fi{cursor:none;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23C9A84C' opacity='.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.fs-nav{display:flex;gap:12px;align-items:center}
+.btn-next{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;background:linear-gradient(135deg,var(--gold),#a07830);color:var(--navy);font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.1em;border:none;border-radius:3px;cursor:none;transition:opacity .2s;font-weight:600}
+.btn-next:hover{opacity:.85}
+.btn-back{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;background:transparent;color:rgba(201,168,76,.6);border:1px solid rgba(201,168,76,.2);border-radius:3px;font-size:.78rem;cursor:none;transition:all .2s}
+.btn-back:hover{border-color:var(--gold);color:var(--gold)}
+.btn-submit{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;background:linear-gradient(135deg,var(--gold),#a07830);color:var(--navy);font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.1em;border:none;border-radius:3px;cursor:none;font-weight:600;transition:opacity .2s}
+.btn-submit:hover{opacity:.85}
+.bp-prog-wrap{position:relative;height:3px;background:rgba(201,168,76,.1);border-radius:2px;margin-top:28px}
+.bp-prog{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;transition:width .4s ease}
+.bp-prog-lbl{position:absolute;right:0;top:-20px;font-size:.65rem;color:rgba(201,168,76,.5);letter-spacing:.1em}
+.ok-wheel svg{width:90px;height:90px;animation:spin 8s linear infinite;margin-bottom:16px}
+.ok-wheel{margin-bottom:10px}
+.bp-ok h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;margin-bottom:12px;color:var(--white)}
+.bp-ok p{font-size:.9rem;color:rgba(248,244,238,.6);line-height:1.7;max-width:400px}
+@media(max-width:780px){.bp-shell{grid-template-columns:1fr}.bp-steps{flex-direction:row;overflow-x:auto;border-right:none;border-bottom:1px solid rgba(201,168,76,.1);padding:12px 16px}.bps{padding:10px 14px;border-left:none;border-bottom:3px solid transparent;flex-shrink:0}.bps.active{border-bottom-color:var(--gold);border-left-color:transparent}.bp-form-area{padding:24px 20px}.choices{grid-template-columns:1fr}.choices-multi{grid-template-columns:1fr 1fr}.rb-row{grid-template-columns:1fr}}
+
+/* ════════════════ STATS ════════════════ */
+.stats{padding:100px 0;background:linear-gradient(180deg,var(--navy2) 0%,var(--navy3) 100%);position:relative;overflow:hidden}
+.stats-bgw{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:520px;height:520px;opacity:.05;animation:spin 100s linear infinite;pointer-events:none}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.si{text-align:center;padding:44px 20px;position:relative}
+.si::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:linear-gradient(to bottom,transparent,rgba(201,168,76,.2),transparent)}
+.si:last-child::after{display:none}
+.sn{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4vw,3.8rem);font-weight:300;color:var(--gold);line-height:1;display:inline}
+.sc{font-size:clamp(1.8rem,3vw,2.8rem)}
+.sp{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);color:var(--gold);font-weight:300}
+.sl{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.15em;color:var(--white);margin-top:8px;opacity:.8}
+.ss{font-size:.73rem;color:rgba(248,244,238,.35);margin-top:5px;letter-spacing:.05em}
+@media(max-width:680px){.stats-grid{grid-template-columns:1fr 1fr}.si::after{display:none}}
+
+/* ════════════════ TESTIMONIALS ════════════════ */
+.testi{padding:110px 0;background:var(--navy)}
+.testi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.tc{background:rgba(13,30,53,.6);border:1px solid rgba(201,168,76,.1);border-radius:var(--r);padding:28px 24px;transition:border-color .3s,transform .3s;position:relative}
+.tc:hover{border-color:rgba(201,168,76,.25);transform:translateY(-4px)}
+.tc-q{font-family:'Cormorant Garamond',serif;font-size:4rem;color:var(--gold);opacity:.2;line-height:.8;margin-bottom:10px;user-select:none}
+.tc p{font-size:.88rem;color:rgba(248,244,238,.6);line-height:1.75;margin-bottom:20px}
+.tc-auth{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tc-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#7a5e28);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;flex-shrink:0;font-family:'Cinzel',serif}
+.tc-auth b{display:block;font-size:.83rem;color:var(--white)}
+.tc-auth span{font-size:.72rem;color:rgba(248,244,238,.4)}
+.tc-stars{font-size:.8rem;color:var(--gold);margin-left:auto;letter-spacing:2px}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.testi-grid{grid-template-columns:1fr}}
+
+/* ════════════════ CTA BAND ════════════════ */
+.cta-band{padding:90px 0;background:linear-gradient(135deg,rgba(201,168,76,.08) 0%,rgba(5,13,26,.9) 100%);border-top:1px solid rgba(201,168,76,.12);border-bottom:1px solid rgba(201,168,76,.12);position:relative;overflow:hidden;text-align:center}
+.cta-bw{position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:380px;height:380px;opacity:.1;animation:spin 80s linear infinite;pointer-events:none}
+.cta-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;margin-bottom:14px}
+.cta-inner p{font-size:1rem;color:rgba(248,244,238,.55);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ════════════════ CONTACT ════════════════ */
+.contact{padding:110px 0;background:var(--navy2)}
+.contact-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:52px;align-items:start}
+.contact-info{background:rgba(5,13,26,.7);border:1px solid rgba(201,168,76,.12);border-radius:var(--r);padding:36px 30px}
+.ci-top{display:flex;align-items:center;gap:14px;padding-bottom:22px;border-bottom:1px solid rgba(201,168,76,.1);margin-bottom:24px}
+.ci-top h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.ci-reg{font-size:.72rem;color:rgba(201,168,76,.55);letter-spacing:.06em;margin-top:3px}
+.cd{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
+.cd-ico{width:36px;height:36px;border-radius:50%;background:var(--dim);border:1px solid rgba(201,168,76,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cd-ico i{color:var(--gold);font-size:.85rem}
+.cd b{font-size:.8rem;color:rgba(248,244,238,.7);display:block;margin-bottom:3px}
+.cd p,.cd a{font-size:.85rem;color:rgba(248,244,238,.5);line-height:1.6}
+.cd a:hover{color:var(--gold)}
+.ci-certs{font-size:.68rem;color:rgba(201,168,76,.45);line-height:1.8;margin-top:20px;padding-top:18px;border-top:1px solid rgba(201,168,76,.1);letter-spacing:.04em}
+.ci-certs i{margin-right:6px;color:var(--gold)}
+.contact-form-wrap{background:rgba(7,18,34,.8);border:1px solid rgba(201,168,76,.12);border-radius:var(--r);padding:36px 32px}
+.contact-form-wrap h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:8px}
+.cf-sub{font-size:.85rem;color:rgba(248,244,238,.5);margin-bottom:22px;line-height:1.6}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cf-g{margin-bottom:14px}
+.cf-g label{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(201,168,76,.55);margin-bottom:6px}
+.btn-cf{width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),#a07830);color:var(--navy);font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.12em;border:none;border-radius:3px;cursor:none;font-weight:600;transition:opacity .2s;margin-top:4px}
+.btn-cf:hover{opacity:.85}
+.cf-priv{font-size:.72rem;color:rgba(248,244,238,.3);margin-top:10px;text-align:center}
+.cf-priv i,.cf-note i{margin-right:5px;color:var(--gold)}
+.cf-note{font-size:.68rem;color:rgba(201,168,76,.35);margin-top:6px;text-align:center;letter-spacing:.04em}
+.contact-ok{display:none;flex-direction:column;align-items:center;text-align:center;padding:20px 0}
+.contact-ok h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:10px}
+.contact-ok p{font-size:.9rem;color:rgba(248,244,238,.6);line-height:1.7;max-width:380px}
+@media(max-width:860px){.contact-layout{grid-template-columns:1fr}.cf-row{grid-template-columns:1fr}}
+
+/* ════════════════ FOOTER ════════════════ */
+.footer{padding:70px 0 30px;background:var(--navy);border-top:1px solid rgba(201,168,76,.1);position:relative;overflow:hidden}
+.footer-bw{position:absolute;right:-80px;bottom:-80px;width:300px;height:300px;opacity:.06;animation:spin 120s linear infinite;pointer-events:none}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:36px;margin-bottom:48px}
+.fg-brand p{font-size:.83rem;color:rgba(248,244,238,.4);line-height:1.75;margin:14px 0 18px}
+.fg-logo{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.fg-badges{display:flex;gap:8px;flex-wrap:wrap}
+.fg-badges span{font-size:.65rem;letter-spacing:.08em;color:rgba(201,168,76,.6);background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.15);padding:4px 10px;border-radius:20px}
+.fg-badges i{margin-right:5px}
+.fg-col h4{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.18em;color:var(--gold);margin-bottom:16px;opacity:.8}
+.fg-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.fg-col ul a{font-size:.82rem;color:rgba(248,244,238,.4);transition:color .2s}
+.fg-col ul a:hover{color:var(--gold)}
+.fg-contact li{display:flex;align-items:flex-start;gap:10px;font-size:.8rem;color:rgba(248,244,238,.4);margin-bottom:10px;line-height:1.5}
+.fg-contact i{color:var(--gold);margin-top:2px;font-size:.78rem;flex-shrink:0}
+.fg-contact a:hover{color:var(--gold)}
+.fg-social{display:flex;gap:10px;margin-top:16px}
+.fg-social a{width:34px;height:34px;border-radius:50%;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.18);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.85rem;transition:all .2s;cursor:none}
+.fg-social a:hover{background:rgba(201,168,76,.18)}
+.footer-bottom{border-top:1px solid rgba(201,168,76,.08);padding-top:22px;text-align:center}
+.footer-bottom p{font-size:.7rem;color:rgba(248,244,238,.25);line-height:1.8;margin-bottom:10px}
+.footer-credits{display:flex;gap:14px;justify-content:center;font-size:.7rem;color:rgba(248,244,238,.3)}
+.footer-credits strong{color:rgba(201,168,76,.5)}
+.fc-dot{color:rgba(201,168,76,.3)}
+@media(max-width:860px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.footer-grid{grid-template-columns:1fr}}
+
+/* ════════════════ FLOATING ELEMENTS ════════════════ */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:900;width:54px;height:54px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(37,211,102,.4);animation:pulse 2.5s infinite;cursor:none;transition:transform .2s}
+.wa-float:hover{transform:scale(1.1)}
+.wa-tip{position:absolute;right:62px;background:rgba(5,13,26,.9);color:var(--white);font-size:.73rem;padding:6px 12px;border-radius:4px;white-space:nowrap;border:1px solid rgba(201,168,76,.15);opacity:0;pointer-events:none;transition:opacity .2s}
+.wa-float:hover .wa-tip{opacity:1}
+#btt{position:fixed;bottom:92px;right:28px;z-index:900;width:40px;height:40px;border-radius:50%;background:rgba(7,18,34,.9);border:1px solid rgba(201,168,76,.25);color:var(--gold);font-size:.85rem;cursor:none;opacity:0;pointer-events:none;transition:all .3s;display:flex;align-items:center;justify-content:center}
+#btt.show{opacity:1;pointer-events:all}
+#btt:hover{background:rgba(201,168,76,.15)}
+</style>
 </head>
 <body>
 
-<!-- Custom Cursor -->
-<div class="cursor-outer" id="cursorOuter"></div>
-<div class="cursor-inner" id="cursorInner"></div>
+<!-- CURSOR -->
+<div id="cur-ring"></div>
+<div id="cur-dot"></div>
 
-<!-- Loading Screen -->
-<div class="loader" id="loader">
-  <div class="loader-wheel">
-    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="100" cy="100" r="90" fill="none" stroke="#C9A84C" stroke-width="1" stroke-dasharray="4 8" opacity="0.3"/>
-      <circle cx="100" cy="100" r="70" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="2 6" opacity="0.5"/>
-      <!-- Chariot Wheel Spokes -->
-      <g stroke="#C9A84C" stroke-width="1.5" opacity="0.8">
-        <line x1="100" y1="10" x2="100" y2="190"/>
-        <line x1="10" y1="100" x2="190" y2="100"/>
-        <line x1="27" y1="27" x2="173" y2="173"/>
-        <line x1="173" y1="27" x2="27" y2="173"/>
-        <line x1="60" y1="14" x2="140" y2="186"/>
-        <line x1="186" y1="60" x2="14" y2="140"/>
-        <line x1="140" y1="14" x2="60" y2="186"/>
-        <line x1="14" y1="60" x2="186" y2="140"/>
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-wheel">
+    <svg viewBox="0 0 160 160" fill="none">
+      <circle cx="80" cy="80" r="74" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="5 8" opacity=".4"/>
+      <circle cx="80" cy="80" r="57" stroke="#C9A84C" stroke-width="1" opacity=".25"/>
+      <g stroke="#C9A84C" stroke-width="1.4" opacity=".7">
+        <line x1="80" y1="6" x2="80" y2="154"/>
+        <line x1="6" y1="80" x2="154" y2="80"/>
+        <line x1="24" y1="24" x2="136" y2="136"/>
+        <line x1="136" y1="24" x2="24" y2="136"/>
+        <line x1="52" y1="8" x2="108" y2="152"/>
+        <line x1="152" y1="52" x2="8" y2="108"/>
+        <line x1="108" y1="8" x2="52" y2="152"/>
+        <line x1="8" y1="52" x2="152" y2="108"/>
       </g>
-      <circle cx="100" cy="100" r="12" fill="#C9A84C" opacity="0.9"/>
-      <circle cx="100" cy="100" r="6" fill="#0a1628"/>
-      <!-- Rim ornaments -->
-      <g fill="#C9A84C" opacity="0.7">
-        <polygon points="100,5 104,14 96,14" transform="rotate(0,100,100)"/>
-        <polygon points="100,5 104,14 96,14" transform="rotate(45,100,100)"/>
-        <polygon points="100,5 104,14 96,14" transform="rotate(90,100,100)"/>
-        <polygon points="100,5 104,14 96,14" transform="rotate(135,100,100)"/>
-        <polygon points="100,5 104,14 96,14" transform="rotate(180,100,100)"/>
-        <polygon points="100,5 104,14 96,14" transform="rotate(225,100,100)"/>
-        <polygon points="100,5 104,14 96,14" transform="rotate(270,100,100)"/>
-        <polygon points="100,5 104,14 96,14" transform="rotate(315,100,100)"/>
+      <circle cx="80" cy="80" r="9" fill="#C9A84C"/>
+      <circle cx="80" cy="80" r="4" fill="#050d1a"/>
+      <g fill="#C9A84C" opacity=".75">
+        <polygon points="80,6 83.5,16 76.5,16"/>
+        <polygon points="80,6 83.5,16 76.5,16" transform="rotate(45,80,80)"/>
+        <polygon points="80,6 83.5,16 76.5,16" transform="rotate(90,80,80)"/>
+        <polygon points="80,6 83.5,16 76.5,16" transform="rotate(135,80,80)"/>
+        <polygon points="80,6 83.5,16 76.5,16" transform="rotate(180,80,80)"/>
+        <polygon points="80,6 83.5,16 76.5,16" transform="rotate(225,80,80)"/>
+        <polygon points="80,6 83.5,16 76.5,16" transform="rotate(270,80,80)"/>
+        <polygon points="80,6 83.5,16 76.5,16" transform="rotate(315,80,80)"/>
       </g>
     </svg>
   </div>
-  <div class="loader-text">
-    <span class="loader-brand">RADDHIH</span>
-    <span class="loader-sub">Financial Services</span>
-  </div>
+  <p class="ld-brand">RADDHIH</p>
+  <p class="ld-sub">Financial Services</p>
 </div>
 
-<!-- Background Music -->
-<div class="music-toggle" id="musicToggle" title="Toggle Background Music">
-  <i class="fas fa-music" id="musicIcon"></i>
-  <span>Music</span>
-</div>
-<iframe id="ytAudio" src="https://www.youtube.com/embed/Uezrcg6KJ44?enablejsapi=1&autoplay=0&loop=1&playlist=Uezrcg6KJ44" allow="autoplay" style="display:none" frameborder="0"></iframe>
-
-<!-- Floating Chariot Wheels BG -->
-<div class="bg-wheels-container" aria-hidden="true">
-  <div class="bg-wheel bw1"></div>
-  <div class="bg-wheel bw2"></div>
-  <div class="bg-wheel bw3"></div>
+<!-- BG WHEELS (SVG inline) -->
+<div class="bg-wheels">
+  <div class="bgw bgw1"><svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="96" stroke="#C9A84C" stroke-width="1"/><g stroke="#C9A84C" stroke-width=".8"><line x1="100" y1="4" x2="100" y2="196"/><line x1="4" y1="100" x2="196" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/><line x1="64" y1="7" x2="136" y2="193"/><line x1="193" y1="64" x2="7" y2="136"/><line x1="136" y1="7" x2="64" y2="193"/><line x1="7" y1="64" x2="193" y2="136"/></g><circle cx="100" cy="100" r="12" fill="#C9A84C"/><circle cx="100" cy="100" r="5" fill="#050d1a"/></svg></div>
+  <div class="bgw bgw2"><svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="96" stroke="#C9A84C" stroke-width="1"/><g stroke="#C9A84C" stroke-width=".8"><line x1="100" y1="4" x2="100" y2="196"/><line x1="4" y1="100" x2="196" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/></g><circle cx="100" cy="100" r="12" fill="#C9A84C"/><circle cx="100" cy="100" r="5" fill="#050d1a"/></svg></div>
+  <div class="bgw bgw3"><svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="96" stroke="#C9A84C" stroke-width="1"/><g stroke="#C9A84C" stroke-width=".8"><line x1="100" y1="4" x2="100" y2="196"/><line x1="4" y1="100" x2="196" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/></g><circle cx="100" cy="100" r="12" fill="#C9A84C"/></svg></div>
 </div>
 
-<!-- ============ NAVBAR ============ -->
-<nav class="navbar" id="navbar">
-  <div class="nav-container">
-    <a href="#" class="nav-logo">
-      <div class="logo-wheel-sm">
-        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="30" cy="30" r="27" fill="none" stroke="#C9A84C" stroke-width="1.2"/>
-          <g stroke="#C9A84C" stroke-width="1.2">
-            <line x1="30" y1="3" x2="30" y2="57"/>
-            <line x1="3" y1="30" x2="57" y2="30"/>
-            <line x1="10" y1="10" x2="50" y2="50"/>
-            <line x1="50" y1="10" x2="10" y2="50"/>
-            <line x1="17" y1="5" x2="43" y2="55"/>
-            <line x1="55" y1="17" x2="5" y2="43"/>
-            <line x1="43" y1="5" x2="17" y2="55"/>
-            <line x1="5" y1="17" x2="55" y2="43"/>
+<!-- MUSIC -->
+<button id="musicBtn" aria-label="Ambient music">
+  <i class="fas fa-music" id="musicIco"></i><span>Ambience</span>
+</button>
+<iframe id="ytFrame" src="" allow="autoplay" style="display:none" frameborder="0"></iframe>
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <div class="nl-wheel">
+        <svg viewBox="0 0 56 56" fill="none">
+          <circle cx="28" cy="28" r="25" stroke="#C9A84C" stroke-width="1.2"/>
+          <g stroke="#C9A84C" stroke-width="1">
+            <line x1="28" y1="3" x2="28" y2="53"/>
+            <line x1="3" y1="28" x2="53" y2="28"/>
+            <line x1="10" y1="10" x2="46" y2="46"/>
+            <line x1="46" y1="10" x2="10" y2="46"/>
+            <line x1="17" y1="4" x2="39" y2="52"/>
+            <line x1="52" y1="17" x2="4" y2="39"/>
+            <line x1="39" y1="4" x2="17" y2="52"/>
+            <line x1="4" y1="17" x2="52" y2="39"/>
           </g>
-          <circle cx="30" cy="30" r="5" fill="#C9A84C"/>
-          <circle cx="30" cy="30" r="2.5" fill="#0a1628"/>
+          <circle cx="28" cy="28" r="5" fill="#C9A84C"/>
+          <circle cx="28" cy="28" r="2" fill="#050d1a"/>
         </svg>
       </div>
-      <div class="logo-text">
-        <span class="logo-main">RADDHIH</span>
-        <span class="logo-sub">FINANCIAL SERVICES</span>
+      <div class="nl-text">
+        <span class="nl-main">RADDHIH</span>
+        <span class="nl-sub">Financial Services</span>
       </div>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#home" class="nav-link">Home</a></li>
-      <li><a href="#why-us" class="nav-link">Why Us</a></li>
-      <li><a href="#sarathi" class="nav-link">Our Sarathi</a></li>
-      <li><a href="#services" class="nav-link">Services</a></li>
-      <li><a href="#battle-plan" class="nav-link">Battle Plan</a></li>
-      <li><a href="#stats" class="nav-link">Impact</a></li>
-      <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li><a href="#home" class="nl">Home</a></li>
+      <li><a href="#why-us" class="nl">Why Us</a></li>
+      <li><a href="#sarathi" class="nl">Our Sarathi</a></li>
+      <li><a href="#services" class="nl">Services</a></li>
+      <li><a href="#battle-plan" class="nl">Battle Plan</a></li>
+      <li><a href="#stats" class="nl">Impact</a></li>
+      <li><a href="#testimonials" class="nl">Testimonials</a></li>
+      <li><a href="#contact" class="nl">Contact</a></li>
     </ul>
     <a href="#battle-plan" class="nav-cta">Free Strategy</a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -109,1110 +452,937 @@
   </div>
 </nav>
 
-<!-- ============ HERO ============ -->
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
 <section class="hero" id="home">
-  <div class="hero-bg-gradient"></div>
-  <div class="hero-grid-overlay"></div>
-
-  <!-- Animated chariot wheel hero graphic -->
-  <div class="hero-wheel-container" aria-hidden="true">
-    <svg class="hero-wheel-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content reveal">
+    <div class="hero-pill"><span class="pill-dot"></span>SEBI Registered &nbsp;·&nbsp; IRDA Certified 2014 &nbsp;·&nbsp; TRP Certified 2009</div>
+    <h1 class="hero-h1">
+      <span class="h1-line">We Build Your</span>
+      <em class="h1-gold">Financial Future</em>
+    </h1>
+    <p class="hero-p">Like Krishna guided Arjuna through the great battle of Kurukshetra — we guide you through every financial challenge with clarity, wisdom, and unwavering conviction.</p>
+    <div class="hero-actions">
+      <a href="#battle-plan" class="btn-gold"><span>Begin Your Strategy</span><i class="fas fa-arrow-right"></i></a>
+      <a href="#contact" class="btn-ghost">Speak to an Advisor</a>
+    </div>
+    <div class="hero-badges">
+      <span><i class="fas fa-shield-halved"></i>SEBI Registered</span>
+      <span><i class="fas fa-certificate"></i>IRDA Certified</span>
+      <span><i class="fas fa-award"></i>TRP Certified</span>
+      <span><i class="fas fa-lock"></i>100% Secure</span>
+    </div>
+  </div>
+  <div class="hero-wheel-wrap">
+    <svg class="hero-big-wheel" viewBox="0 0 520 520" fill="none">
       <defs>
-        <radialGradient id="wheelGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.25"/>
-          <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
-        </radialGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
+        <radialGradient id="hwg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#C9A84C" stop-opacity=".15"/><stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/></radialGradient>
       </defs>
-      <circle cx="250" cy="250" r="240" fill="url(#wheelGlow)"/>
-      <!-- Outer rim -->
-      <circle cx="250" cy="250" r="230" fill="none" stroke="#C9A84C" stroke-width="3" opacity="0.6" filter="url(#glow)"/>
-      <circle cx="250" cy="250" r="220" fill="none" stroke="#C9A84C" stroke-width="0.8" stroke-dasharray="6 10" opacity="0.4"/>
-      <!-- Inner rings -->
-      <circle cx="250" cy="250" r="180" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"/>
-      <circle cx="250" cy="250" r="100" fill="none" stroke="#C9A84C" stroke-width="2" opacity="0.5"/>
-      <circle cx="250" cy="250" r="40" fill="none" stroke="#C9A84C" stroke-width="2.5" opacity="0.8"/>
-      <!-- 16 Spokes (Ashoka-style) -->
-      <g id="spokes" stroke="#C9A84C" stroke-width="1.8" opacity="0.7" filter="url(#glow)">
-        <line x1="250" y1="20" x2="250" y2="480"/>
-        <line x1="20" y1="250" x2="480" y2="250"/>
-        <line x1="69" y1="69" x2="431" y2="431"/>
-        <line x1="431" y1="69" x2="69" y2="431"/>
-        <line x1="155" y1="21" x2="345" y2="479"/>
-        <line x1="479" y1="155" x2="21" y2="345"/>
-        <line x1="345" y1="21" x2="155" y2="479"/>
-        <line x1="21" y1="155" x2="479" y2="345"/>
-        <line x1="107" y1="40" x2="393" y2="460"/>
-        <line x1="460" y1="107" x2="40" y2="393"/>
-        <line x1="393" y1="40" x2="107" y2="460"/>
-        <line x1="40" y1="107" x2="460" y2="393"/>
-        <line x1="40" y1="200" x2="460" y2="300"/>
-        <line x1="300" y1="40" x2="200" y2="460"/>
-        <line x1="200" y1="40" x2="300" y2="460"/>
-        <line x1="460" y1="200" x2="40" y2="300"/>
+      <circle cx="260" cy="260" r="250" fill="url(#hwg)"/>
+      <circle cx="260" cy="260" r="245" stroke="#C9A84C" stroke-width="2" opacity=".5"/>
+      <circle cx="260" cy="260" r="225" stroke="#C9A84C" stroke-width=".7" stroke-dasharray="4 8" opacity=".25"/>
+      <circle cx="260" cy="260" r="180" stroke="#C9A84C" stroke-width="1" opacity=".3"/>
+      <circle cx="260" cy="260" r="100" stroke="#C9A84C" stroke-width="1.2" opacity=".4"/>
+      <circle cx="260" cy="260" r="40" stroke="#C9A84C" stroke-width="1.8" opacity=".65"/>
+      <g stroke="#C9A84C" stroke-width="1.4" opacity=".55">
+        <line x1="260" y1="15" x2="260" y2="505"/>
+        <line x1="15" y1="260" x2="505" y2="260"/>
+        <line x1="74" y1="74" x2="446" y2="446"/>
+        <line x1="446" y1="74" x2="74" y2="446"/>
+        <line x1="157" y1="21" x2="363" y2="499"/>
+        <line x1="499" y1="157" x2="21" y2="363"/>
+        <line x1="363" y1="21" x2="157" y2="499"/>
+        <line x1="21" y1="157" x2="499" y2="363"/>
+        <line x1="110" y1="40" x2="410" y2="480"/>
+        <line x1="480" y1="110" x2="40" y2="410"/>
+        <line x1="410" y1="40" x2="110" y2="480"/>
+        <line x1="40" y1="110" x2="480" y2="410"/>
+        <line x1="40" y1="205" x2="480" y2="315"/>
+        <line x1="315" y1="40" x2="205" y2="480"/>
+        <line x1="205" y1="40" x2="315" y2="480"/>
+        <line x1="480" y1="205" x2="40" y2="315"/>
       </g>
-      <!-- Hub ornaments -->
-      <g fill="#C9A84C">
-        <circle cx="250" cy="250" r="18" fill="#C9A84C" opacity="0.9"/>
-        <circle cx="250" cy="250" r="10" fill="#0a1628"/>
-        <circle cx="250" cy="250" r="5" fill="#C9A84C"/>
+      <circle cx="260" cy="260" r="18" fill="#C9A84C" opacity=".9"/>
+      <circle cx="260" cy="260" r="9" fill="#050d1a"/>
+      <circle cx="260" cy="260" r="4" fill="#C9A84C"/>
+      <g fill="#C9A84C" opacity=".8">
+        <polygon points="260,15 264,28 256,28"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(22.5,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(45,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(67.5,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(90,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(112.5,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(135,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(157.5,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(180,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(202.5,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(225,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(247.5,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(270,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(292.5,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(315,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(337.5,260,260)"/>
       </g>
-      <!-- Rim tip ornaments -->
-      <g fill="#C9A84C" opacity="0.9">
-        <polygon points="250,18 255,30 245,30"/>
-        <polygon points="250,18 255,30 245,30" transform="rotate(22.5,250,250)"/>
-        <polygon points="250,18 255,30 245,30" transform="rotate(45,250,250)"/>
-        <polygon points="250,18 255,30 245,30" transform="rotate(67.5,250,250)"/>
-        <polygon points="250,18 255,30 245,30" transform="rotate(90,250,250)"/>
-        <polygon points="250,18 255,30 245,30" transform="rotate(112.5,250,250)"/>
-        <polygon points="250,18 255,30 245,30" transform="rotate(135,250,250)"/>
-        <polygon points="250,18 255,30 245,30" transform="rotate(157.5,250,250)"/>
-        <polygon points="250,18 255,30 245,30" transform="rotate(180,250,250)"/>
-        <polygon points="250,18 255,30 245,30" transform="rotate(202.5,250,250)"/>
-        <polygon points="250,18 255,30 245,30" transform="rotate(225,250,250)"/>
-        <polygon points="250,18 255,30 245,30" transform="rotate(247.5,250,250)"/>
-        <polygon points="250,18 255,30 245,30" transform="rotate(270,250,250)"/>
-        <polygon points="250,18 255,30 245,30" transform="rotate(292.5,250,250)"/>
-        <polygon points="250,18 255,30 245,30" transform="rotate(315,250,250)"/>
-        <polygon points="250,18 255,30 245,30" transform="rotate(337.5,250,250)"/>
-      </g>
-      <!-- Digital chart overlay lines -->
-      <g stroke="#4A90D9" stroke-width="1.5" opacity="0.5" fill="none">
-        <polyline points="80,320 130,290 180,310 230,240 280,260 330,200 380,220 430,170"/>
-        <polyline points="80,340 130,310 180,330 230,260 280,280 330,215 380,235 430,185" stroke-width="0.8" stroke-dasharray="3 5"/>
+      <g stroke="#4a90d9" stroke-width="2" opacity=".4" fill="none">
+        <polyline points="80,330 135,295 190,315 244,245 294,265 344,205 394,228 450,170"/>
       </g>
     </svg>
   </div>
-
-  <div class="hero-content" data-aos="fade-up">
-    <div class="hero-tag"><span class="tag-dot"></span>SEBI Registered ARN Holder Since 2014</div>
-    <h1 class="hero-title">
-      <span class="title-line">We Build Your</span>
-      <span class="title-line title-gold">Financial Future</span>
-    </h1>
-    <p class="hero-sub">
-      Like Arjuna's charioteer guided him to victory on Kurukshetra, we guide you through life's financial battles — with clarity, strategy, and unwavering resolve.
-    </p>
-    <div class="hero-btns">
-      <a href="#battle-plan" class="btn-primary">
-        <span>Begin Your Strategy</span>
-        <i class="fas fa-arrow-right"></i>
-      </a>
-      <a href="#contact" class="btn-secondary">
-        <span>Speak to an Advisor</span>
-      </a>
-    </div>
-    <div class="hero-trust-badges">
-      <div class="trust-badge"><i class="fas fa-shield-halved"></i><span>SEBI Registered</span></div>
-      <div class="trust-badge"><i class="fas fa-certificate"></i><span>IRDA Certified · 2014</span></div>
-      <div class="trust-badge"><i class="fas fa-award"></i><span>TRP Certified · 2009</span></div>
-      <div class="trust-badge"><i class="fas fa-lock"></i><span>100% Secure</span></div>
-    </div>
-  </div>
-
-  <div class="hero-scroll-hint">
-    <span>Scroll to explore</span>
-    <div class="scroll-line"></div>
-  </div>
+  <div class="scroll-cue"><span>Scroll</span><div class="sc-line"></div></div>
 </section>
 
-<!-- ============ WHY CHOOSE US ============ -->
+<!-- ═══════════════════════ WHY US ═══════════════════════ -->
 <section class="why-us" id="why-us">
-  <div class="container">
-    <div class="section-header" data-aos="fade-up">
-      <div class="section-tag">The Foundation — Dharma</div>
-      <h2 class="section-title">Why Warriors Choose <span class="gold">Raddhih</span></h2>
-      <p class="section-sub">Built on truth, transparency, and an unbroken commitment to your financial sovereignty.</p>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">The Foundation — Dharma</div>
+      <h2 class="sec-title">Why Warriors Choose <em class="gold">Raddhih</em></h2>
+      <p class="sec-sub">Built on truth, transparency, and an unbroken commitment to your financial sovereignty.</p>
     </div>
     <div class="why-grid">
-      <div class="why-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="why-icon"><i class="fas fa-landmark"></i></div>
+      <div class="why-card reveal" style="--d:.05s">
+        <div class="wc-icon"><i class="fas fa-landmark"></i></div>
         <h3>A Decade of Trust</h3>
-        <p>SEBI Registered since 2014 — a decade of navigating markets, regulations, and client journeys with integrity and expertise.</p>
+        <p>SEBI Registered, IRDA Certified since 2014, TRP Certified since 2009 — over 15 years navigating markets and client journeys with uncompromising integrity.</p>
       </div>
-      <div class="why-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="why-icon"><i class="fas fa-eye"></i></div>
+      <div class="why-card reveal" style="--d:.15s">
+        <div class="wc-icon"><i class="fas fa-eye"></i></div>
         <h3>Radical Transparency</h3>
-        <p>No hidden commissions, no opaque structures. Every recommendation comes with a clear rationale and your best interest at its core.</p>
+        <p>No hidden commissions. No opaque structures. Every recommendation comes with a clear rationale and your best interest at its core.</p>
       </div>
-      <div class="why-card" data-aos="fade-up" data-aos-delay="300">
-        <div class="why-icon"><i class="fas fa-shield-halved"></i></div>
+      <div class="why-card reveal" style="--d:.25s">
+        <div class="wc-icon"><i class="fas fa-shield-halved"></i></div>
         <h3>Fort-Grade Security</h3>
-        <p>Your data, your investments, your personal details — all protected under stringent compliance norms and digital security protocols.</p>
+        <p>Your data and investments protected under stringent SEBI and IRDA compliance norms and the highest digital security protocols.</p>
       </div>
-      <div class="why-card" data-aos="fade-up" data-aos-delay="400">
-        <div class="why-icon"><i class="fas fa-compass"></i></div>
+      <div class="why-card reveal" style="--d:.35s">
+        <div class="wc-icon"><i class="fas fa-compass"></i></div>
         <h3>Holistic Guidance</h3>
-        <p>From your first SIP to your retirement corpus — we build complete financial architectures, not just isolated products.</p>
+        <p>From your first SIP to your retirement corpus — we build complete financial architectures for your life, not isolated products.</p>
       </div>
-      <div class="why-card" data-aos="fade-up" data-aos-delay="500">
-        <div class="why-icon"><i class="fas fa-users"></i></div>
+      <div class="why-card reveal" style="--d:.45s">
+        <div class="wc-icon"><i class="fas fa-users"></i></div>
         <h3>Personal Sarathi</h3>
         <p>You get a dedicated advisor — your own financial charioteer — who knows your goals, fears, and aspirations by heart.</p>
       </div>
-      <div class="why-card" data-aos="fade-up" data-aos-delay="600">
-        <div class="why-icon"><i class="fas fa-chart-line"></i></div>
+      <div class="why-card reveal" style="--d:.55s">
+        <div class="wc-icon"><i class="fas fa-chart-line"></i></div>
         <h3>Proven Track Record</h3>
-        <p>₹10Cr+ in assets under advisory. 400+ families guided across India. Results that speak louder than any promise.</p>
+        <p>&#8377;10Cr+ in assets under advisory. 400+ families guided across India. Results that speak louder than any promise.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ KRISHNA — THE SARATHI ============ -->
-<section class="sarathi-section" id="sarathi">
-  <div class="sarathi-bg"></div>
-  <div class="sarathi-wheel-left" aria-hidden="true">
-    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="200" cy="200" r="192" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.2"/>
-      <circle cx="200" cy="200" r="155" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.15"/>
-      <g stroke="#C9A84C" stroke-width="1.2" opacity="0.18">
-        <line x1="200" y1="8" x2="200" y2="392"/><line x1="8" y1="200" x2="392" y2="200"/>
-        <line x1="64" y1="64" x2="336" y2="336"/><line x1="336" y1="64" x2="64" y2="336"/>
-        <line x1="128" y1="16" x2="272" y2="384"/><line x1="384" y1="128" x2="16" y2="272"/>
-        <line x1="272" y1="16" x2="128" y2="384"/><line x1="16" y1="128" x2="384" y2="272"/>
-        <line x1="100" y1="32" x2="300" y2="368"/><line x1="368" y1="100" x2="32" y2="300"/>
-        <line x1="300" y1="32" x2="100" y2="368"/><line x1="32" y1="100" x2="368" y2="300"/>
-        <line x1="32" y1="165" x2="368" y2="235"/><line x1="235" y1="32" x2="165" y2="368"/>
-        <line x1="165" y1="32" x2="235" y2="368"/><line x1="368" y1="165" x2="32" y2="235"/>
-      </g>
-      <circle cx="200" cy="200" r="22" fill="#C9A84C" opacity="0.12"/>
-      <circle cx="200" cy="200" r="12" fill="#C9A84C" opacity="0.2"/>
-      <g fill="#C9A84C" opacity="0.3">
-        <polygon points="200,8 205,22 195,22"/>
-        <polygon points="200,8 205,22 195,22" transform="rotate(22.5,200,200)"/>
-        <polygon points="200,8 205,22 195,22" transform="rotate(45,200,200)"/>
-        <polygon points="200,8 205,22 195,22" transform="rotate(67.5,200,200)"/>
-        <polygon points="200,8 205,22 195,22" transform="rotate(90,200,200)"/>
-        <polygon points="200,8 205,22 195,22" transform="rotate(112.5,200,200)"/>
-        <polygon points="200,8 205,22 195,22" transform="rotate(135,200,200)"/>
-        <polygon points="200,8 205,22 195,22" transform="rotate(157.5,200,200)"/>
-        <polygon points="200,8 205,22 195,22" transform="rotate(180,200,200)"/>
-        <polygon points="200,8 205,22 195,22" transform="rotate(202.5,200,200)"/>
-        <polygon points="200,8 205,22 195,22" transform="rotate(225,200,200)"/>
-        <polygon points="200,8 205,22 195,22" transform="rotate(247.5,200,200)"/>
-        <polygon points="200,8 205,22 195,22" transform="rotate(270,200,200)"/>
-        <polygon points="200,8 205,22 195,22" transform="rotate(292.5,200,200)"/>
-        <polygon points="200,8 205,22 195,22" transform="rotate(315,200,200)"/>
-        <polygon points="200,8 205,22 195,22" transform="rotate(337.5,200,200)"/>
-      </g>
-    </svg>
+<!-- ═══════════════════════ SARATHI ═══════════════════════ -->
+<section class="sarathi" id="sarathi">
+  <div class="sarathi-bgw">
+    <svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="96" stroke="#C9A84C" stroke-width="1"/><g stroke="#C9A84C" stroke-width=".8"><line x1="100" y1="4" x2="100" y2="196"/><line x1="4" y1="100" x2="196" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/><line x1="64" y1="7" x2="136" y2="193"/><line x1="193" y1="64" x2="7" y2="136"/><line x1="136" y1="7" x2="64" y2="193"/><line x1="7" y1="64" x2="193" y2="136"/></g><circle cx="100" cy="100" r="12" fill="#C9A84C"/><circle cx="100" cy="100" r="5" fill="#050d1a"/></svg>
   </div>
-  <div class="container">
+  <div class="wrap">
     <div class="sarathi-layout">
-      <!-- Left: The Story -->
-      <div class="sarathi-story" data-aos="fade-right">
-        <div class="section-tag" style="margin-bottom:20px;">The Sarathi Principle</div>
-        <h2 class="sarathi-title">
-          <span>Like Krishna Led</span>
-          <span class="gold italic">Arjuna to Victory —</span>
-          <span>We Lead You to</span>
-          <span class="gold italic">Financial Triumph</span>
+      <div class="sarathi-left reveal-left">
+        <div class="sec-tag" style="margin-bottom:20px">The Sarathi Principle</div>
+        <h2 class="sarathi-h2">
+          Like Krishna Led<br>
+          <em class="gold">Arjuna to Victory —</em><br>
+          We Lead You to<br>
+          <em class="gold">Financial Triumph</em>
         </h2>
-        <div class="sarathi-verse">
-          <div class="verse-line"></div>
-          <p class="verse-text">"यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।<br>अभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥"</p>
-          <p class="verse-trans">Whenever righteousness declines, I arise — Bhagavad Gita 4.7</p>
+        <div class="shloka-box">
+          <div class="shloka-bar"></div>
+          <div>
+            <p class="shloka-text">"Yada yada hi dharmasya, glanir bhavati Bharata,<br>abhyutthanam adharmasya, tadatmanam srjamy aham."</p>
+            <p class="shloka-trans">Whenever righteousness declines, I arise — Bhagavad Gita 4.7</p>
+          </div>
         </div>
-        <p class="sarathi-desc">
-          On the great battlefield of Kurukshetra, Arjuna — the finest warrior of his age — froze. Not from weakness, but from doubt. His weapons were sharp, his skills unmatched. Yet without the wisdom of a true guide, he could not move forward.
-        </p>
-        <p class="sarathi-desc">
-          It was Krishna, as his Sarathi — his charioteer — who held the reins. Not fighting for him, but guiding him. Showing him the battlefield with clarity, cutting through doubt with wisdom, and steering him toward dharma with every word of the Gita.
-        </p>
-        <p class="sarathi-desc">
-          <strong style="color:var(--gold)">That is the role of Raddhih Financial Services in your life.</strong> You have the earnings, the dreams, the will. We hold the reins. We read the market, navigate the regulations, steer through volatility — and with our guidance, you move forward with absolute clarity and confidence.
-        </p>
+        <p class="sarathi-p">On the great battlefield of Kurukshetra, Arjuna — the finest warrior of his age — froze. Not from weakness, but from doubt. His bow was mighty, his skills unmatched. Yet without the wisdom of a true guide, he could not move a single step forward.</p>
+        <p class="sarathi-p">It was <strong style="color:var(--gold)">Krishna, as his Sarathi</strong> — his charioteer — who held the reins. Not fighting for him, but guiding him with divine clarity, cutting through confusion with timeless wisdom, steering him toward dharma with every word of the Gita.</p>
+        <p class="sarathi-p">That is the role of Raddhih Financial Services in your life. You carry the earnings, the ambitions, the will to build a great future. <strong style="color:var(--gold)">We hold the reins.</strong> We read the markets, navigate regulations, steer through volatility — and with our guidance, you move forward with absolute clarity and confidence.</p>
       </div>
-
-      <!-- Right: The Pillars -->
-      <div class="sarathi-pillars" data-aos="fade-left">
-        <div class="sarathi-pillar">
-          <div class="pillar-icon">
-            <svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="none" stroke="#C9A84C" stroke-width="1"/><g stroke="#C9A84C" stroke-width="0.8"><line x1="25" y1="3" x2="25" y2="47"/><line x1="3" y1="25" x2="47" y2="25"/><line x1="9" y1="9" x2="41" y2="41"/><line x1="41" y1="9" x2="9" y2="41"/></g><circle cx="25" cy="25" r="5" fill="#C9A84C" opacity="0.8"/></svg>
-            <i class="fas fa-eye pillar-fa"></i>
-          </div>
-          <div class="pillar-text">
-            <h4>The Vision of Krishna</h4>
-            <p>Krishna saw the entire battlefield — past, present, and future — with divine clarity. We analyse markets, regulations, and your life goals together, giving you a vision far beyond the immediate moment.</p>
-          </div>
+      <div class="sarathi-right reveal-right">
+        <div class="pillar">
+          <div class="pillar-ico"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" stroke="#C9A84C" stroke-width=".8" opacity=".5"/><g stroke="#C9A84C" stroke-width=".7" opacity=".5"><line x1="22" y1="2" x2="22" y2="42"/><line x1="2" y1="22" x2="42" y2="22"/><line x1="8" y1="8" x2="36" y2="36"/><line x1="36" y1="8" x2="8" y2="36"/></g><circle cx="22" cy="22" r="4.5" fill="#C9A84C" opacity=".8"/></svg><i class="fas fa-eye p-fa"></i></div>
+          <div><h4>The Vision of Krishna</h4><p>Krishna saw the entire battlefield — past, present, and future. We analyse markets, regulations, and your life goals together, giving you foresight beyond the immediate moment.</p></div>
         </div>
-        <div class="sarathi-pillar">
-          <div class="pillar-icon">
-            <svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="none" stroke="#C9A84C" stroke-width="1"/><g stroke="#C9A84C" stroke-width="0.8"><line x1="25" y1="3" x2="25" y2="47"/><line x1="3" y1="25" x2="47" y2="25"/><line x1="9" y1="9" x2="41" y2="41"/><line x1="41" y1="9" x2="9" y2="41"/></g><circle cx="25" cy="25" r="5" fill="#C9A84C" opacity="0.8"/></svg>
-            <i class="fas fa-compass pillar-fa"></i>
-          </div>
-          <div class="pillar-text">
-            <h4>The Direction of the Chariot</h4>
-            <p>A charioteer doesn't just hold reins — he chooses the path. We don't sell you products; we chart a complete financial roadmap aligned with your life's mission and family's security.</p>
-          </div>
+        <div class="pillar">
+          <div class="pillar-ico"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" stroke="#C9A84C" stroke-width=".8" opacity=".5"/><g stroke="#C9A84C" stroke-width=".7" opacity=".5"><line x1="22" y1="2" x2="22" y2="42"/><line x1="2" y1="22" x2="42" y2="22"/><line x1="8" y1="8" x2="36" y2="36"/><line x1="36" y1="8" x2="8" y2="36"/></g><circle cx="22" cy="22" r="4.5" fill="#C9A84C" opacity=".8"/></svg><i class="fas fa-compass p-fa"></i></div>
+          <div><h4>The Direction of the Chariot</h4><p>A charioteer doesn't just hold reins — he chooses the path. We chart a complete financial roadmap aligned with your life's mission and your family's security.</p></div>
         </div>
-        <div class="sarathi-pillar">
-          <div class="pillar-icon">
-            <svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="none" stroke="#C9A84C" stroke-width="1"/><g stroke="#C9A84C" stroke-width="0.8"><line x1="25" y1="3" x2="25" y2="47"/><line x1="3" y1="25" x2="47" y2="25"/><line x1="9" y1="9" x2="41" y2="41"/><line x1="41" y1="9" x2="9" y2="41"/></g><circle cx="25" cy="25" r="5" fill="#C9A84C" opacity="0.8"/></svg>
-            <i class="fas fa-shield-halved pillar-fa"></i>
-          </div>
-          <div class="pillar-text">
-            <h4>The Fearlessness of Dharma</h4>
-            <p>Krishna removed Arjuna's doubt and replaced it with fearlessness. We remove your financial anxiety with transparency, education, and a plan so solid you face every market storm without flinching.</p>
-          </div>
+        <div class="pillar">
+          <div class="pillar-ico"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" stroke="#C9A84C" stroke-width=".8" opacity=".5"/><g stroke="#C9A84C" stroke-width=".7" opacity=".5"><line x1="22" y1="2" x2="22" y2="42"/><line x1="2" y1="22" x2="42" y2="22"/><line x1="8" y1="8" x2="36" y2="36"/><line x1="36" y1="8" x2="8" y2="36"/></g><circle cx="22" cy="22" r="4.5" fill="#C9A84C" opacity=".8"/></svg><i class="fas fa-shield-halved p-fa"></i></div>
+          <div><h4>The Fearlessness of Dharma</h4><p>Krishna replaced Arjuna's doubt with fearlessness. We replace your financial anxiety with transparency and a plan so solid you face every market storm unshaken.</p></div>
         </div>
-        <div class="sarathi-pillar">
-          <div class="pillar-icon">
-            <svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="none" stroke="#C9A84C" stroke-width="1"/><g stroke="#C9A84C" stroke-width="0.8"><line x1="25" y1="3" x2="25" y2="47"/><line x1="3" y1="25" x2="47" y2="25"/><line x1="9" y1="9" x2="41" y2="41"/><line x1="41" y1="9" x2="9" y2="41"/></g><circle cx="25" cy="25" r="5" fill="#C9A84C" opacity="0.8"/></svg>
-            <i class="fas fa-users pillar-fa"></i>
-          </div>
-          <div class="pillar-text">
-            <h4>400+ Warriors Guided Across India</h4>
-            <p>From Kolkata to across the nation — 400+ families have entrusted us as their financial Sarathi. Each one a victory on their personal Kurukshetra. Each one, a legacy we protect.</p>
-          </div>
+        <div class="pillar">
+          <div class="pillar-ico"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" stroke="#C9A84C" stroke-width=".8" opacity=".5"/><g stroke="#C9A84C" stroke-width=".7" opacity=".5"><line x1="22" y1="2" x2="22" y2="42"/><line x1="2" y1="22" x2="42" y2="22"/><line x1="8" y1="8" x2="36" y2="36"/><line x1="36" y1="8" x2="8" y2="36"/></g><circle cx="22" cy="22" r="4.5" fill="#C9A84C" opacity=".8"/></svg><i class="fas fa-map-marked-alt p-fa"></i></div>
+          <div><h4>400+ Warriors Guided Across India</h4><p>From Kolkata to across the nation — 400+ families have entrusted us as their financial Sarathi. Each one a victory. Each one, a legacy we protect.</p></div>
         </div>
-
-        <div class="sarathi-certbadges">
-          <div class="cert-badge"><i class="fas fa-certificate"></i><div><strong>IRDA Certified</strong><span>Since 2014</span></div></div>
-          <div class="cert-badge"><i class="fas fa-award"></i><div><strong>TRP Certified</strong><span>Since 2009</span></div></div>
-          <div class="cert-badge"><i class="fas fa-landmark"></i><div><strong>SEBI Registered</strong><span>ARN Holder</span></div></div>
+        <div class="cert-row">
+          <div class="cert-chip"><i class="fas fa-certificate"></i><div><b>IRDA Certified</b><span>Since 2014</span></div></div>
+          <div class="cert-chip"><i class="fas fa-award"></i><div><b>TRP Certified</b><span>Since 2009</span></div></div>
+          <div class="cert-chip"><i class="fas fa-landmark"></i><div><b>SEBI Registered</b><span>ARN Holder</span></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ SERVICES — THE ARMORY ============ -->
+<!-- ═══════════════════════ SERVICES ═══════════════════════ -->
 <section class="services" id="services">
-  <div class="container">
-    <div class="section-header" data-aos="fade-up">
-      <div class="section-tag">The Armory</div>
-      <h2 class="section-title">Your Complete <span class="gold">Financial Arsenal</span></h2>
-      <p class="section-sub">Every warrior needs the right weapons. Choose yours.</p>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">The Armory</div>
+      <h2 class="sec-title">Your Complete <em class="gold">Financial Arsenal</em></h2>
+      <p class="sec-sub">Every warrior needs the right weapons. Choose yours.</p>
     </div>
-    <div class="services-grid">
-
-      <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="service-card-inner">
-          <div class="service-icon-wrap">
-            <svg class="service-wheel" viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/><g stroke="#C9A84C" stroke-width="1" opacity="0.7"><line x1="40" y1="4" x2="40" y2="76"/><line x1="4" y1="40" x2="76" y2="40"/><line x1="15" y1="15" x2="65" y2="65"/><line x1="65" y1="15" x2="15" y2="65"/><line x1="28" y1="5" x2="52" y2="75"/><line x1="75" y1="28" x2="5" y2="52"/><line x1="52" y1="5" x2="28" y2="75"/><line x1="5" y1="28" x2="75" y2="52"/></g><circle cx="40" cy="40" r="8" fill="#C9A84C" opacity="0.9"/><circle cx="40" cy="40" r="4" fill="#0a1628"/></svg>
-            <i class="fas fa-arrow-trend-up service-main-icon"></i>
-          </div>
-          <div class="service-tag-label">The Arrow — Lakshya</div>
-          <h3>Mutual Fund Investments</h3>
-          <p>Goal-based SIPs and lump-sum strategies crafted to hit your financial targets with precision. Equity, Debt, ELSS — curated for your kingdom.</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> SIP & Lump Sum Planning</li>
-            <li><i class="fas fa-check"></i> ELSS Tax Saving Funds</li>
-            <li><i class="fas fa-check"></i> Portfolio Rebalancing</li>
-            <li><i class="fas fa-check"></i> Goal-Linked Investments</li>
-          </ul>
-          <a href="#contact" class="service-cta">Deploy This Arrow <i class="fas fa-arrow-right"></i></a>
+    <div class="svc-grid">
+      <div class="svc-card reveal" style="--d:.05s">
+        <div class="svc-wheel-ico">
+          <svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="33" stroke="#C9A84C" stroke-width="1" opacity=".4"/><g stroke="#C9A84C" stroke-width=".9" opacity=".5"><line x1="36" y1="3" x2="36" y2="69"/><line x1="3" y1="36" x2="69" y2="36"/><line x1="13" y1="13" x2="59" y2="59"/><line x1="59" y1="13" x2="13" y2="59"/><line x1="23" y1="5" x2="49" y2="67"/><line x1="67" y1="23" x2="5" y2="49"/><line x1="49" y1="5" x2="23" y2="67"/><line x1="5" y1="23" x2="67" y2="49"/></g><circle cx="36" cy="36" r="7" fill="#C9A84C" opacity=".85"/><circle cx="36" cy="36" r="3" fill="#050d1a"/></svg>
+          <i class="fas fa-arrow-trend-up svc-fa"></i>
         </div>
+        <div class="svc-label">The Arrow — Lakshya</div>
+        <h3>Mutual Fund Investments</h3>
+        <p>Goal-based SIPs and lump-sum strategies crafted to hit your financial targets with precision. Equity, Debt, ELSS — curated for your kingdom.</p>
+        <ul class="svc-list">
+          <li><i class="fas fa-check"></i>SIP &amp; Lump Sum Planning</li>
+          <li><i class="fas fa-check"></i>ELSS Tax Saving Funds</li>
+          <li><i class="fas fa-check"></i>Portfolio Rebalancing</li>
+          <li><i class="fas fa-check"></i>Goal-Linked Investments</li>
+        </ul>
+        <a href="#contact" class="svc-link">Deploy This Arrow <i class="fas fa-arrow-right"></i></a>
       </div>
-
-      <div class="service-card featured-service" data-aos="fade-up" data-aos-delay="200">
-        <div class="service-card-inner">
-          <div class="featured-badge">Most Chosen</div>
-          <div class="service-icon-wrap">
-            <svg class="service-wheel" viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/><g stroke="#C9A84C" stroke-width="1" opacity="0.7"><line x1="40" y1="4" x2="40" y2="76"/><line x1="4" y1="40" x2="76" y2="40"/><line x1="15" y1="15" x2="65" y2="65"/><line x1="65" y1="15" x2="15" y2="65"/><line x1="28" y1="5" x2="52" y2="75"/><line x1="75" y1="28" x2="5" y2="52"/><line x1="52" y1="5" x2="28" y2="75"/><line x1="5" y1="28" x2="75" y2="52"/></g><circle cx="40" cy="40" r="8" fill="#C9A84C" opacity="0.9"/><circle cx="40" cy="40" r="4" fill="#0a1628"/></svg>
-            <i class="fas fa-shield-halved service-main-icon"></i>
-          </div>
-          <div class="service-tag-label">The Shield — Raksha</div>
-          <h3>Insurance Solutions</h3>
-          <p>Fortify your family's future. Life, Health, and General Insurance — your impenetrable shield against life's uncertainties.</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> Term & Life Insurance</li>
-            <li><i class="fas fa-check"></i> Health & Mediclaim Plans</li>
-            <li><i class="fas fa-check"></i> General Insurance</li>
-            <li><i class="fas fa-check"></i> Claims Assistance</li>
-          </ul>
-          <a href="#contact" class="service-cta">Raise Your Shield <i class="fas fa-arrow-right"></i></a>
+      <div class="svc-card svc-featured reveal" style="--d:.15s">
+        <div class="svc-badge">Most Chosen</div>
+        <div class="svc-wheel-ico">
+          <svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="33" stroke="#C9A84C" stroke-width="1" opacity=".4"/><g stroke="#C9A84C" stroke-width=".9" opacity=".5"><line x1="36" y1="3" x2="36" y2="69"/><line x1="3" y1="36" x2="69" y2="36"/><line x1="13" y1="13" x2="59" y2="59"/><line x1="59" y1="13" x2="13" y2="59"/><line x1="23" y1="5" x2="49" y2="67"/><line x1="67" y1="23" x2="5" y2="49"/><line x1="49" y1="5" x2="23" y2="67"/><line x1="5" y1="23" x2="67" y2="49"/></g><circle cx="36" cy="36" r="7" fill="#C9A84C" opacity=".85"/><circle cx="36" cy="36" r="3" fill="#050d1a"/></svg>
+          <i class="fas fa-shield-halved svc-fa"></i>
         </div>
+        <div class="svc-label">The Shield — Raksha</div>
+        <h3>Insurance Solutions</h3>
+        <p>Fortify your family's future. Life, Health, and General Insurance — your impenetrable shield against life's uncertainties, curated with care.</p>
+        <ul class="svc-list">
+          <li><i class="fas fa-check"></i>Term &amp; Life Insurance</li>
+          <li><i class="fas fa-check"></i>Health &amp; Mediclaim Plans</li>
+          <li><i class="fas fa-check"></i>General Insurance</li>
+          <li><i class="fas fa-check"></i>Claims Assistance</li>
+        </ul>
+        <a href="#contact" class="svc-link">Raise Your Shield <i class="fas fa-arrow-right"></i></a>
       </div>
-
-      <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-        <div class="service-card-inner">
-          <div class="service-icon-wrap">
-            <svg class="service-wheel" viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/><g stroke="#C9A84C" stroke-width="1" opacity="0.7"><line x1="40" y1="4" x2="40" y2="76"/><line x1="4" y1="40" x2="76" y2="40"/><line x1="15" y1="15" x2="65" y2="65"/><line x1="65" y1="15" x2="15" y2="65"/><line x1="28" y1="5" x2="52" y2="75"/><line x1="75" y1="28" x2="5" y2="52"/><line x1="52" y1="5" x2="28" y2="75"/><line x1="5" y1="28" x2="75" y2="52"/></g><circle cx="40" cy="40" r="8" fill="#C9A84C" opacity="0.9"/><circle cx="40" cy="40" r="4" fill="#0a1628"/></svg>
-            <i class="fas fa-file-invoice-dollar service-main-icon"></i>
-          </div>
-          <div class="service-tag-label">The Foundation — Dharma</div>
-          <h3>Income Tax Return Filing</h3>
-          <p>Tax compliance made effortless. From ITR filing to NPS optimization — we ensure every rupee saved is a rupee earned for your kingdom.</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> ITR Filing (All Categories)</li>
-            <li><i class="fas fa-check"></i> Tax Planning & Optimization</li>
-            <li><i class="fas fa-check"></i> NPS & ELSS Advisory</li>
-            <li><i class="fas fa-check"></i> Compliance Management</li>
-          </ul>
-          <a href="#contact" class="service-cta">Claim Your Dharma <i class="fas fa-arrow-right"></i></a>
+      <div class="svc-card reveal" style="--d:.25s">
+        <div class="svc-wheel-ico">
+          <svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="33" stroke="#C9A84C" stroke-width="1" opacity=".4"/><g stroke="#C9A84C" stroke-width=".9" opacity=".5"><line x1="36" y1="3" x2="36" y2="69"/><line x1="3" y1="36" x2="69" y2="36"/><line x1="13" y1="13" x2="59" y2="59"/><line x1="59" y1="13" x2="13" y2="59"/><line x1="23" y1="5" x2="49" y2="67"/><line x1="67" y1="23" x2="5" y2="49"/><line x1="49" y1="5" x2="23" y2="67"/><line x1="5" y1="23" x2="67" y2="49"/></g><circle cx="36" cy="36" r="7" fill="#C9A84C" opacity=".85"/><circle cx="36" cy="36" r="3" fill="#050d1a"/></svg>
+          <i class="fas fa-file-invoice-dollar svc-fa"></i>
         </div>
+        <div class="svc-label">The Foundation — Dharma</div>
+        <h3>Income Tax Return Filing</h3>
+        <p>Tax compliance made effortless. From ITR filing to NPS optimisation — every rupee saved is a rupee earned for your kingdom.</p>
+        <ul class="svc-list">
+          <li><i class="fas fa-check"></i>ITR Filing (All Categories)</li>
+          <li><i class="fas fa-check"></i>Tax Planning &amp; Optimisation</li>
+          <li><i class="fas fa-check"></i>NPS &amp; ELSS Advisory</li>
+          <li><i class="fas fa-check"></i>Compliance Management</li>
+        </ul>
+        <a href="#contact" class="svc-link">Claim Your Dharma <i class="fas fa-arrow-right"></i></a>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============ BATTLE PLAN QUESTIONNAIRE ============ -->
+<!-- ═══════════════════════ BATTLE PLAN ═══════════════════════ -->
 <section class="battle-plan" id="battle-plan">
-  <div class="battle-plan-bg"></div>
-  <div class="container">
-    <div class="section-header" data-aos="fade-up">
-      <div class="section-tag">The Kurukshetra Protocol</div>
-      <h2 class="section-title">Your <span class="gold">Financial Battle Plan</span></h2>
-      <p class="section-sub">Answer 5 questions. Receive your personalized 3-page Kurukshetra Strategy Report delivered directly to your inbox.</p>
+  <div class="bp-bg"></div>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">The Kurukshetra Protocol</div>
+      <h2 class="sec-title">Your <em class="gold">Financial Battle Plan</em></h2>
+      <p class="sec-sub">Answer 5 questions. Receive your personalised Kurukshetra Strategy Report — free, directly in your inbox.</p>
     </div>
-    <div class="battle-plan-wrapper" data-aos="fade-up">
-      <div class="battle-steps">
-        <div class="battle-step active" data-step="1">
-          <div class="step-num">01</div>
-          <div class="step-info"><h4>The Terrain</h4><p>Where are you in life's journey?</p></div>
-        </div>
-        <div class="battle-step" data-step="2">
-          <div class="step-num">02</div>
-          <div class="step-info"><h4>The Quiver</h4><p>What weapons do you hold?</p></div>
-        </div>
-        <div class="battle-step" data-step="3">
-          <div class="step-num">03</div>
-          <div class="step-info"><h4>The Enemy</h4><p>What keeps you awake?</p></div>
-        </div>
-        <div class="battle-step" data-step="4">
-          <div class="step-num">04</div>
-          <div class="step-info"><h4>The Victory</h4><p>What is your ultimate kingdom?</p></div>
-        </div>
-        <div class="battle-step" data-step="5">
-          <div class="step-num">05</div>
-          <div class="step-info"><h4>The Charioteer</h4><p>How much guidance do you seek?</p></div>
-        </div>
+    <div class="bp-shell reveal">
+      <div class="bp-steps">
+        <div class="bps active" data-s="1"><span class="bps-n">01</span><div><b>The Terrain</b><small>Where are you now?</small></div></div>
+        <div class="bps" data-s="2"><span class="bps-n">02</span><div><b>The Quiver</b><small>Assets you hold</small></div></div>
+        <div class="bps" data-s="3"><span class="bps-n">03</span><div><b>The Enemy</b><small>What worries you?</small></div></div>
+        <div class="bps" data-s="4"><span class="bps-n">04</span><div><b>The Victory</b><small>Your ultimate goal</small></div></div>
+        <div class="bps" data-s="5"><span class="bps-n">05</span><div><b>The Charioteer</b><small>Guidance needed</small></div></div>
       </div>
-
-      <div class="battle-form-container">
+      <div class="bp-form-area">
         <!-- Step 1 -->
-        <div class="form-step active" id="step1">
-          <div class="step-header">
-            <div class="step-wheel-icon">
-              <svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="none" stroke="#C9A84C" stroke-width="1.2"/><g stroke="#C9A84C" stroke-width="1"><line x1="25" y1="3" x2="25" y2="47"/><line x1="3" y1="25" x2="47" y2="25"/><line x1="9" y1="9" x2="41" y2="41"/><line x1="41" y1="9" x2="9" y2="41"/></g><circle cx="25" cy="25" r="5" fill="#C9A84C"/><circle cx="25" cy="25" r="2.5" fill="#0a1628"/></svg>
-            </div>
-            <div>
-              <div class="step-label">Step 01 — The Terrain</div>
-              <h3>Where are you in your life's journey, Warrior?</h3>
-            </div>
+        <div class="fs active" id="fs1">
+          <div class="fs-hd"><div class="fs-tag">Step 01 — The Terrain</div><h3>Where are you in life's journey, Warrior?</h3></div>
+          <div class="choices">
+            <label class="ch"><input type="radio" name="age" value="20s - The Apprentice"><span class="ch-ico">&#127807;</span><span class="ch-txt"><b>20s — The Apprentice</b><small>Building foundations</small></span></label>
+            <label class="ch"><input type="radio" name="age" value="30s - The Warrior"><span class="ch-ico">&#9876;&#65039;</span><span class="ch-txt"><b>30s — The Warrior</b><small>Growing aggressively</small></span></label>
+            <label class="ch"><input type="radio" name="age" value="40s - The Commander"><span class="ch-ico">&#127963;&#65039;</span><span class="ch-txt"><b>40s — The Commander</b><small>Consolidating wealth</small></span></label>
+            <label class="ch"><input type="radio" name="age" value="50+ - The King"><span class="ch-ico">&#128081;</span><span class="ch-txt"><b>50+ — The King</b><small>Preserving legacy</small></span></label>
           </div>
-          <div class="choice-grid">
-            <label class="choice-card"><input type="radio" name="age" value="20s"/><span class="choice-icon">🌱</span><span class="choice-label">20s — The Apprentice<br><small>Building foundations</small></span></label>
-            <label class="choice-card"><input type="radio" name="age" value="30s"/><span class="choice-icon">⚔️</span><span class="choice-label">30s — The Warrior<br><small>Growing aggressively</small></span></label>
-            <label class="choice-card"><input type="radio" name="age" value="40s"/><span class="choice-icon">🏛️</span><span class="choice-label">40s — The Commander<br><small>Consolidating wealth</small></span></label>
-            <label class="choice-card"><input type="radio" name="age" value="50+"/><span class="choice-icon">👑</span><span class="choice-label">50+ — The King<br><small>Preserving legacy</small></span></label>
-          </div>
-          <button class="btn-next" onclick="nextStep(2)">Next — The Quiver <i class="fas fa-arrow-right"></i></button>
+          <div class="fs-nav"><button class="btn-next" onclick="bpGo(2)">Next — The Quiver <i class="fas fa-arrow-right"></i></button></div>
         </div>
-
         <!-- Step 2 -->
-        <div class="form-step" id="step2">
-          <div class="step-header">
-            <div class="step-wheel-icon">
-              <svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="none" stroke="#C9A84C" stroke-width="1.2"/><g stroke="#C9A84C" stroke-width="1"><line x1="25" y1="3" x2="25" y2="47"/><line x1="3" y1="25" x2="47" y2="25"/><line x1="9" y1="9" x2="41" y2="41"/><line x1="41" y1="9" x2="9" y2="41"/></g><circle cx="25" cy="25" r="5" fill="#C9A84C"/><circle cx="25" cy="25" r="2.5" fill="#0a1628"/></svg>
-            </div>
-            <div>
-              <div class="step-label">Step 02 — The Quiver</div>
-              <h3>What weapons do you currently hold?</h3>
-            </div>
+        <div class="fs" id="fs2">
+          <div class="fs-hd"><div class="fs-tag">Step 02 — The Quiver</div><h3>What weapons do you currently hold?</h3></div>
+          <div class="choices choices-multi">
+            <label class="ch"><input type="checkbox" name="assets" value="SIPs/Mutual Funds"><span class="ch-ico">&#128200;</span><span class="ch-txt">SIPs / Mutual Funds</span></label>
+            <label class="ch"><input type="checkbox" name="assets" value="Stocks/Equity"><span class="ch-ico">&#128202;</span><span class="ch-txt">Stocks / Equity</span></label>
+            <label class="ch"><input type="checkbox" name="assets" value="Life/Health Insurance"><span class="ch-ico">&#128737;&#65039;</span><span class="ch-txt">Insurance</span></label>
+            <label class="ch"><input type="checkbox" name="assets" value="Gold/SGBs"><span class="ch-ico">&#127885;</span><span class="ch-txt">Gold / SGBs</span></label>
+            <label class="ch"><input type="checkbox" name="assets" value="NPS/PPF"><span class="ch-ico">&#127963;&#65039;</span><span class="ch-txt">NPS / PPF</span></label>
+            <label class="ch"><input type="checkbox" name="assets" value="Just Starting"><span class="ch-ico">&#127379;</span><span class="ch-txt">Just Starting</span></label>
           </div>
-          <div class="choice-grid multi">
-            <label class="choice-card"><input type="checkbox" name="assets" value="sip"/><span class="choice-icon">📈</span><span class="choice-label">SIPs / Mutual Funds</span></label>
-            <label class="choice-card"><input type="checkbox" name="assets" value="stocks"/><span class="choice-icon">📊</span><span class="choice-label">Stocks / Equity</span></label>
-            <label class="choice-card"><input type="checkbox" name="assets" value="insurance"/><span class="choice-icon">🛡️</span><span class="choice-label">Life / Health Insurance</span></label>
-            <label class="choice-card"><input type="checkbox" name="assets" value="gold"/><span class="choice-icon">🏅</span><span class="choice-label">Gold / SGBs</span></label>
-            <label class="choice-card"><input type="checkbox" name="assets" value="nps"/><span class="choice-icon">🏛️</span><span class="choice-label">NPS / PPF</span></label>
-            <label class="choice-card"><input type="checkbox" name="assets" value="none"/><span class="choice-icon">🆕</span><span class="choice-label">Just Starting</span></label>
-          </div>
-          <div class="step-nav">
-            <button class="btn-back" onclick="nextStep(1)"><i class="fas fa-arrow-left"></i> Back</button>
-            <button class="btn-next" onclick="nextStep(3)">Next — The Enemy <i class="fas fa-arrow-right"></i></button>
-          </div>
+          <div class="fs-nav"><button class="btn-back" onclick="bpGo(1)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn-next" onclick="bpGo(3)">Next — The Enemy <i class="fas fa-arrow-right"></i></button></div>
         </div>
-
         <!-- Step 3 -->
-        <div class="form-step" id="step3">
-          <div class="step-header">
-            <div class="step-wheel-icon">
-              <svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="none" stroke="#C9A84C" stroke-width="1.2"/><g stroke="#C9A84C" stroke-width="1"><line x1="25" y1="3" x2="25" y2="47"/><line x1="3" y1="25" x2="47" y2="25"/><line x1="9" y1="9" x2="41" y2="41"/><line x1="41" y1="9" x2="9" y2="41"/></g><circle cx="25" cy="25" r="5" fill="#C9A84C"/><circle cx="25" cy="25" r="2.5" fill="#0a1628"/></svg>
-            </div>
-            <div>
-              <div class="step-label">Step 03 — The Enemy</div>
-              <h3>What keeps you awake at night?</h3>
-            </div>
+        <div class="fs" id="fs3">
+          <div class="fs-hd"><div class="fs-tag">Step 03 — The Enemy</div><h3>What keeps you awake at night?</h3></div>
+          <div class="choices">
+            <label class="ch"><input type="radio" name="risk" value="Inflation eroding savings"><span class="ch-ico">&#128293;</span><span class="ch-txt">Inflation eating my savings</span></label>
+            <label class="ch"><input type="radio" name="risk" value="Market volatility"><span class="ch-ico">&#128201;</span><span class="ch-txt">Market volatility &amp; crashes</span></label>
+            <label class="ch"><input type="radio" name="risk" value="Debt and EMI burden"><span class="ch-ico">&#9939;&#65039;</span><span class="ch-txt">Debt &amp; EMI burden</span></label>
+            <label class="ch"><input type="radio" name="risk" value="Family financial security"><span class="ch-ico">&#128106;</span><span class="ch-txt">Family's financial security</span></label>
           </div>
-          <div class="choice-grid">
-            <label class="choice-card"><input type="radio" name="risk" value="inflation"/><span class="choice-icon">🔥</span><span class="choice-label">Inflation eating my savings</span></label>
-            <label class="choice-card"><input type="radio" name="risk" value="market"/><span class="choice-icon">📉</span><span class="choice-label">Market volatility & crashes</span></label>
-            <label class="choice-card"><input type="radio" name="risk" value="debt"/><span class="choice-icon">⛓️</span><span class="choice-label">Debt & EMI burden</span></label>
-            <label class="choice-card"><input type="radio" name="risk" value="family"/><span class="choice-icon">👨‍👩‍👧</span><span class="choice-label">Family's financial security</span></label>
-          </div>
-          <div class="step-nav">
-            <button class="btn-back" onclick="nextStep(2)"><i class="fas fa-arrow-left"></i> Back</button>
-            <button class="btn-next" onclick="nextStep(4)">Next — The Victory <i class="fas fa-arrow-right"></i></button>
-          </div>
+          <div class="fs-nav"><button class="btn-back" onclick="bpGo(2)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn-next" onclick="bpGo(4)">Next — The Victory <i class="fas fa-arrow-right"></i></button></div>
         </div>
-
         <!-- Step 4 -->
-        <div class="form-step" id="step4">
-          <div class="step-header">
-            <div class="step-wheel-icon">
-              <svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="none" stroke="#C9A84C" stroke-width="1.2"/><g stroke="#C9A84C" stroke-width="1"><line x1="25" y1="3" x2="25" y2="47"/><line x1="3" y1="25" x2="47" y2="25"/><line x1="9" y1="9" x2="41" y2="41"/><line x1="41" y1="9" x2="9" y2="41"/></g><circle cx="25" cy="25" r="5" fill="#C9A84C"/><circle cx="25" cy="25" r="2.5" fill="#0a1628"/></svg>
-            </div>
-            <div>
-              <div class="step-label">Step 04 — The Victory</div>
-              <h3>What is your ultimate financial kingdom?</h3>
-            </div>
+        <div class="fs" id="fs4">
+          <div class="fs-hd"><div class="fs-tag">Step 04 — The Victory</div><h3>What is your ultimate financial kingdom?</h3></div>
+          <div class="choices">
+            <label class="ch"><input type="radio" name="goal" value="Early retirement"><span class="ch-ico">&#127749;</span><span class="ch-txt">Early &amp; comfortable retirement</span></label>
+            <label class="ch"><input type="radio" name="goal" value="Child education and marriage"><span class="ch-ico">&#127891;</span><span class="ch-txt">Child's education &amp; marriage</span></label>
+            <label class="ch"><input type="radio" name="goal" value="Generational wealth"><span class="ch-ico">&#128142;</span><span class="ch-txt">Build generational wealth</span></label>
+            <label class="ch"><input type="radio" name="goal" value="Dream home"><span class="ch-ico">&#127968;</span><span class="ch-txt">Dream home / asset creation</span></label>
           </div>
-          <div class="choice-grid">
-            <label class="choice-card"><input type="radio" name="goal" value="retirement"/><span class="choice-icon">🌅</span><span class="choice-label">Early & comfortable retirement</span></label>
-            <label class="choice-card"><input type="radio" name="goal" value="education"/><span class="choice-icon">🎓</span><span class="choice-label">Child's education & marriage</span></label>
-            <label class="choice-card"><input type="radio" name="goal" value="wealth"/><span class="choice-icon">💎</span><span class="choice-label">Build generational wealth</span></label>
-            <label class="choice-card"><input type="radio" name="goal" value="home"/><span class="choice-icon">🏠</span><span class="choice-label">Dream home / asset creation</span></label>
+          <div class="fs-nav"><button class="btn-back" onclick="bpGo(3)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn-next" onclick="bpGo(5)">Next — The Charioteer <i class="fas fa-arrow-right"></i></button></div>
+        </div>
+        <!-- Step 5 -->
+        <div class="fs" id="fs5">
+          <div class="fs-hd"><div class="fs-tag">Step 05 — The Charioteer</div><h3>How much guidance do you seek from your Sarathi?</h3></div>
+          <div class="choices" style="margin-bottom:18px">
+            <label class="ch"><input type="radio" name="guide" value="Full management - guide everything"><span class="ch-ico">&#127919;</span><span class="ch-txt">Full management — guide everything</span></label>
+            <label class="ch"><input type="radio" name="guide" value="Advisory - help me decide"><span class="ch-ico">&#129517;</span><span class="ch-txt">Advisory — help me decide</span></label>
+            <label class="ch"><input type="radio" name="guide" value="DIY - just point me right"><span class="ch-ico">&#128295;</span><span class="ch-txt">DIY — just point me right</span></label>
           </div>
-          <div class="step-nav">
-            <button class="btn-back" onclick="nextStep(3)"><i class="fas fa-arrow-left"></i> Back</button>
-            <button class="btn-next" onclick="nextStep(5)">Next — The Charioteer <i class="fas fa-arrow-right"></i></button>
+          <div class="report-box">
+            <p class="rb-title">&#128221; Receive Your Kurukshetra Strategy Report — Free</p>
+            <div class="rb-row">
+              <input type="text" id="bpName" placeholder="Your Full Name *" class="fi">
+              <input type="tel" id="bpPhone" placeholder="Your Phone Number" class="fi">
+            </div>
+            <input type="email" id="bpEmail" placeholder="Your Email Address * (report sent here)" class="fi" style="width:100%;margin-bottom:0">
+            <textarea id="bpNote" placeholder="Any specific concern or goal? (Optional)" class="fi" rows="3" style="width:100%;margin-top:10px;margin-bottom:0"></textarea>
+          </div>
+          <div class="fs-nav" style="margin-top:18px">
+            <button class="btn-back" onclick="bpGo(4)"><i class="fas fa-arrow-left"></i> Back</button>
+            <button class="btn-submit" id="bpBtn" onclick="bpSubmit()"><i class="fas fa-scroll"></i> Send My Strategy Report</button>
           </div>
         </div>
-
-        <!-- Step 5 — Final with Contact -->
-        <div class="form-step" id="step5">
-          <div class="step-header">
-            <div class="step-wheel-icon">
-              <svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="none" stroke="#C9A84C" stroke-width="1.2"/><g stroke="#C9A84C" stroke-width="1"><line x1="25" y1="3" x2="25" y2="47"/><line x1="3" y1="25" x2="47" y2="25"/><line x1="9" y1="9" x2="41" y2="41"/><line x1="41" y1="9" x2="9" y2="41"/></g><circle cx="25" cy="25" r="5" fill="#C9A84C"/><circle cx="25" cy="25" r="2.5" fill="#0a1628"/></svg>
-            </div>
-            <div>
-              <div class="step-label">Step 05 — The Charioteer</div>
-              <h3>How much guidance do you seek from your Sarathi?</h3>
-            </div>
-          </div>
-          <div class="choice-grid" style="margin-bottom:24px;">
-            <label class="choice-card"><input type="radio" name="engagement" value="full"/><span class="choice-icon">🎯</span><span class="choice-label">Full management — guide everything</span></label>
-            <label class="choice-card"><input type="radio" name="engagement" value="advisory"/><span class="choice-icon">🧭</span><span class="choice-label">Advisory — help me decide</span></label>
-            <label class="choice-card"><input type="radio" name="engagement" value="diy"/><span class="choice-icon">🛠️</span><span class="choice-label">DIY — just point me right</span></label>
-          </div>
-          <div class="final-form">
-            <p class="final-form-title">📜 Receive Your Kurukshetra Strategy Report — Free</p>
-            <div class="form-row">
-              <input type="text" id="bpName" placeholder="Your Full Name" class="form-input"/>
-              <input type="tel" id="bpPhone" placeholder="Your Phone Number" class="form-input"/>
-            </div>
-            <input type="email" id="bpEmail" placeholder="Your Email Address (Report will be sent here)" class="form-input full"/>
-            <textarea id="bpNote" placeholder="Any specific concern or goal? (Optional)" class="form-input full" rows="3"></textarea>
-          </div>
-          <div class="step-nav">
-            <button class="btn-back" onclick="nextStep(4)"><i class="fas fa-arrow-left"></i> Back</button>
-            <button class="btn-submit" onclick="submitBattlePlan()">
-              <i class="fas fa-scroll"></i>
-              Send My Strategy Report
-            </button>
-          </div>
-        </div>
-
         <!-- Success -->
-        <div class="form-step" id="stepSuccess" style="display:none;">
-          <div class="success-screen">
-            <div class="success-wheel">
-              <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="55" fill="none" stroke="#C9A84C" stroke-width="2"/><g stroke="#C9A84C" stroke-width="1.5"><line x1="60" y1="5" x2="60" y2="115"/><line x1="5" y1="60" x2="115" y2="60"/><line x1="21" y1="21" x2="99" y2="99"/><line x1="99" y1="21" x2="21" y2="99"/></g><circle cx="60" cy="60" r="18" fill="#C9A84C" opacity="0.2"/><path d="M 45 60 L 56 71 L 78 49" fill="none" stroke="#C9A84C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <h3>Your Battle Plan is Dispatched!</h3>
-            <p>Your personalized <strong>Kurukshetra Strategy Report</strong> is being prepared and will be sent to your email within 24 hours. Our Sarathi will also reach out to you personally.</p>
-            <div class="success-contact">
-              <a href="https://wa.me/919836667866" class="btn-whatsapp-success"><i class="fab fa-whatsapp"></i> Connect on WhatsApp</a>
-            </div>
+        <div class="fs bp-ok" id="fsOk">
+          <div class="ok-wheel">
+            <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="46" stroke="#C9A84C" stroke-width="1.8"/><g stroke="#C9A84C" stroke-width="1.2"><line x1="50" y1="4" x2="50" y2="96"/><line x1="4" y1="50" x2="96" y2="50"/><line x1="18" y1="18" x2="82" y2="82"/><line x1="82" y1="18" x2="18" y2="82"/></g><path d="M33 50 L45 62 L70 37" stroke="#C9A84C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
+          <h3>Your Battle Plan is Dispatched!</h3>
+          <p>Your personalised <strong>Kurukshetra Strategy Report</strong> is being prepared and will arrive in your inbox. Our Sarathi will also personally reach out within 24 hours.</p>
+          <a href="https://wa.me/919836667866" target="_blank" class="btn-wa-ok"><i class="fab fa-whatsapp"></i> Connect on WhatsApp</a>
         </div>
-
-        <div class="progress-bar-wrap">
-          <div class="progress-bar" id="progressBar" style="width:20%"></div>
-          <span class="progress-label" id="progressLabel">Step 1 of 5</span>
+        <div class="bp-prog-wrap">
+          <div class="bp-prog" id="bpProg" style="width:20%"></div>
+          <span class="bp-prog-lbl" id="bpLbl">Step 1 of 5</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ STATS ============ -->
+<!-- ═══════════════════════ STATS ═══════════════════════ -->
 <section class="stats" id="stats">
-  <div class="stats-bg-wheel" aria-hidden="true">
-    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="200" cy="200" r="195" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.1"/>
-      <g stroke="#C9A84C" stroke-width="0.8" opacity="0.1">
-        <line x1="200" y1="5" x2="200" y2="395"/><line x1="5" y1="200" x2="395" y2="200"/>
-        <line x1="57" y1="57" x2="343" y2="343"/><line x1="343" y1="57" x2="57" y2="343"/>
-      </g>
-    </svg>
+  <div class="stats-bgw">
+    <svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="96" stroke="#C9A84C" stroke-width="1"/><g stroke="#C9A84C" stroke-width=".8"><line x1="100" y1="4" x2="100" y2="196"/><line x1="4" y1="100" x2="196" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/></g><circle cx="100" cy="100" r="12" fill="#C9A84C"/></svg>
   </div>
-  <div class="container">
+  <div class="wrap">
     <div class="stats-grid">
-      <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
-        <div class="stat-number" data-target="400">0</div>
-        <div class="stat-plus">+</div>
-        <div class="stat-label">Warriors Guided</div>
-        <div class="stat-sub">Families across India whose futures we protect</div>
-      </div>
-      <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-        <div class="stat-number stat-crore">₹10Cr</div>
-        <div class="stat-plus">+</div>
-        <div class="stat-label">Assets Under Advisory</div>
-        <div class="stat-sub">Wealth we actively guard and grow</div>
-      </div>
-      <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-        <div class="stat-number" data-target="15">0</div>
-        <div class="stat-plus">+</div>
-        <div class="stat-label">Years of Experience</div>
-        <div class="stat-sub">TRP Certified since 2009 · IRDA Certified since 2014</div>
-      </div>
-      <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
-        <div class="stat-number" data-target="98">0</div>
-        <div class="stat-plus">%</div>
-        <div class="stat-label">Client Satisfaction</div>
-        <div class="stat-sub">Trusted, recommended, renewed every year</div>
-      </div>
+      <div class="si reveal" style="--d:.05s"><div class="sn" data-t="400">0</div><span class="sp">+</span><div class="sl">Warriors Guided</div><div class="ss">Families across India we protect</div></div>
+      <div class="si reveal" style="--d:.15s"><div class="sn sc">&#8377;10Cr</div><span class="sp">+</span><div class="sl">Assets Under Advisory</div><div class="ss">Wealth we actively guard and grow</div></div>
+      <div class="si reveal" style="--d:.25s"><div class="sn" data-t="15">0</div><span class="sp">+</span><div class="sl">Years of Experience</div><div class="ss">TRP 2009 · IRDA 2014 · SEBI Registered</div></div>
+      <div class="si reveal" style="--d:.35s"><div class="sn" data-t="98">0</div><span class="sp">%</span><div class="sl">Client Satisfaction</div><div class="ss">Trusted, recommended, renewed every year</div></div>
     </div>
   </div>
 </section>
 
-<!-- ============ TESTIMONIALS ============ -->
-<section class="testimonials" id="testimonials">
-  <div class="container">
-    <div class="section-header" data-aos="fade-up">
-      <div class="section-tag">Voices from the Battlefield</div>
-      <h2 class="section-title">What Warriors <span class="gold">Say About Us</span></h2>
+<!-- ═══════════════════════ TESTIMONIALS ═══════════════════════ -->
+<section class="testi" id="testimonials">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Voices from the Battlefield</div>
+      <h2 class="sec-title">What Warriors <em class="gold">Say About Us</em></h2>
     </div>
-    <div class="testimonials-grid">
-      <div class="testi-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="testi-quote">"</div>
-        <p>I started my SIP journey with Raddhih in 2019 with just ₹3,000/month. Today my portfolio has grown beyond what I imagined. The guidance is always clear, honest, and timely.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">AR</div>
-          <div>
-            <strong>Amit Roy</strong>
-            <span>Software Engineer, Kolkata</span>
-          </div>
-          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        </div>
-      </div>
-      <div class="testi-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="testi-quote">"</div>
-        <p>Tax filing used to be a nightmare. Now it's done in one call. Plus the insurance restructuring saved my family significant premiums. A true financial partner, not just an agent.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">PS</div>
-          <div>
-            <strong>Priya Sharma</strong>
-            <span>Business Owner, Salt Lake</span>
-          </div>
-          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        </div>
-      </div>
-      <div class="testi-card" data-aos="fade-up" data-aos-delay="300">
-        <div class="testi-quote">"</div>
-        <p>What I appreciate most is the transparency. Every recommendation comes with a clear explanation. After 5 years, I feel genuinely empowered about my money, not just dependent.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">SK</div>
-          <div>
-            <strong>Suresh Kumar</strong>
-            <span>Doctor, Kestopur</span>
-          </div>
-          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        </div>
-      </div>
-      <div class="testi-card" data-aos="fade-up" data-aos-delay="400">
-        <div class="testi-quote">"</div>
-        <p>Got my complete health insurance family floater sorted beautifully. When my father was hospitalized, the claim support was outstanding. That's when you know who your real advisor is.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">RB</div>
-          <div>
-            <strong>Rima Banerjee</strong>
-            <span>Teacher, Rabindrapally</span>
-          </div>
-          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        </div>
-      </div>
+    <div class="testi-grid">
+      <div class="tc reveal" style="--d:.05s"><div class="tc-q">"</div><p>I started my SIP journey with Raddhih in 2019 with just &#8377;3,000/month. Today my portfolio has grown beyond what I ever imagined. The guidance is always clear, honest, and timely.</p><div class="tc-auth"><div class="tc-av">AR</div><div><b>Amit Roy</b><span>Software Engineer, Kolkata</span></div><div class="tc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div>
+      <div class="tc reveal" style="--d:.15s"><div class="tc-q">"</div><p>Tax filing used to be a nightmare. Now it's done in one call. The insurance restructuring also saved my family significant premiums. A true financial partner, not just an agent.</p><div class="tc-auth"><div class="tc-av">PS</div><div><b>Priya Sharma</b><span>Business Owner, Salt Lake</span></div><div class="tc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div>
+      <div class="tc reveal" style="--d:.25s"><div class="tc-q">"</div><p>What I appreciate most is the transparency. Every recommendation comes with a clear explanation. After 5 years I feel genuinely empowered about my money, not just dependent.</p><div class="tc-auth"><div class="tc-av">SK</div><div><b>Suresh Kumar</b><span>Doctor, Kestopur</span></div><div class="tc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div>
+      <div class="tc reveal" style="--d:.35s"><div class="tc-q">"</div><p>Got my complete health insurance family floater sorted beautifully. When my father was hospitalised, the claim support was outstanding. That's when you know who your real advisor is.</p><div class="tc-auth"><div class="tc-av">RB</div><div><b>Rima Banerjee</b><span>Teacher, Rabindrapally</span></div><div class="tc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ============ CTA BANNER ============ -->
-<section class="cta-banner" id="cta">
-  <div class="cta-wheel" aria-hidden="true">
-    <svg viewBox="0 0 300 300"><circle cx="150" cy="150" r="145" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.3"/><g stroke="#C9A84C" stroke-width="1" opacity="0.3"><line x1="150" y1="5" x2="150" y2="295"/><line x1="5" y1="150" x2="295" y2="150"/><line x1="47" y1="47" x2="253" y2="253"/><line x1="253" y1="47" x2="47" y2="253"/><line x1="98" y1="10" x2="202" y2="290"/><line x1="290" y1="98" x2="10" y2="202"/><line x1="202" y1="10" x2="98" y2="290"/><line x1="10" y1="98" x2="290" y2="202"/></g><circle cx="150" cy="150" r="25" fill="#C9A84C" opacity="0.15"/></svg>
-  </div>
-  <div class="container">
-    <div class="cta-content" data-aos="fade-up">
+<!-- ═══════════════════════ CTA ═══════════════════════ -->
+<section class="cta-band">
+  <div class="cta-bw"><svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="96" stroke="#C9A84C" stroke-width="1"/><g stroke="#C9A84C" stroke-width=".8"><line x1="100" y1="4" x2="100" y2="196"/><line x1="4" y1="100" x2="196" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/><line x1="64" y1="7" x2="136" y2="193"/><line x1="193" y1="64" x2="7" y2="136"/><line x1="136" y1="7" x2="64" y2="193"/><line x1="7" y1="64" x2="193" y2="136"/></g><circle cx="100" cy="100" r="12" fill="#C9A84C"/></svg></div>
+  <div class="wrap">
+    <div class="cta-inner reveal">
       <h2>Your Financial Kurukshetra Awaits</h2>
       <p>Every great journey begins with a single decision. Begin yours today — with a trusted Sarathi by your side.</p>
       <div class="cta-btns">
-        <a href="#battle-plan" class="btn-primary">Get Your Free Strategy Report</a>
-        <a href="https://wa.me/919836667866" target="_blank" class="btn-whatsapp-cta"><i class="fab fa-whatsapp"></i> WhatsApp Us Now</a>
+        <a href="#battle-plan" class="btn-gold"><span>Get Your Free Strategy Report</span><i class="fas fa-arrow-right"></i></a>
+        <a href="https://wa.me/919836667866" target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp Us Now</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
+<!-- ═══════════════════════ CONTACT ═══════════════════════ -->
 <section class="contact" id="contact">
-  <div class="container">
-    <div class="section-header" data-aos="fade-up">
-      <div class="section-tag">Reach Your Sarathi</div>
-      <h2 class="section-title">Let's <span class="gold">Connect</span></h2>
-      <p class="section-sub">Reach out directly. We respond within hours, not days.</p>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Reach Your Sarathi</div>
+      <h2 class="sec-title">Let's <em class="gold">Connect</em></h2>
+      <p class="sec-sub">Reach out directly. We respond within 4 hours, not days.</p>
     </div>
     <div class="contact-layout">
-      <div class="contact-info" data-aos="fade-right">
-        <div class="contact-card-top">
-          <div class="logo-wheel-sm">
-            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="27" fill="none" stroke="#C9A84C" stroke-width="1.2"/><g stroke="#C9A84C" stroke-width="1.2"><line x1="30" y1="3" x2="30" y2="57"/><line x1="3" y1="30" x2="57" y2="30"/><line x1="10" y1="10" x2="50" y2="50"/><line x1="50" y1="10" x2="10" y2="50"/></g><circle cx="30" cy="30" r="5" fill="#C9A84C"/><circle cx="30" cy="30" r="2.5" fill="#0a1628"/></svg>
+      <div class="contact-info reveal-left">
+        <div class="ci-top">
+          <div class="nl-wheel" style="width:40px;height:40px;flex-shrink:0">
+            <svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="25" stroke="#C9A84C" stroke-width="1.2"/><g stroke="#C9A84C" stroke-width="1"><line x1="28" y1="3" x2="28" y2="53"/><line x1="3" y1="28" x2="53" y2="28"/><line x1="10" y1="10" x2="46" y2="46"/><line x1="46" y1="10" x2="10" y2="46"/></g><circle cx="28" cy="28" r="5" fill="#C9A84C"/><circle cx="28" cy="28" r="2" fill="#050d1a"/></svg>
           </div>
           <div>
             <h3>Raddhih Financial Services</h3>
-            <p class="sebi-reg">SEBI Registered ARN Holder · Est. 2014</p>
+            <p class="ci-reg">SEBI Registered ARN Holder · Est. 2014</p>
           </div>
         </div>
-        <div class="contact-detail">
-          <div class="contact-icon"><i class="fas fa-location-dot"></i></div>
-          <div>
-            <strong>Office Address</strong>
-            <p>AD-137, Tara Palace, Rabindrapally, Kestopur,<br>Kolkata, West Bengal — 700101</p>
-          </div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-icon"><i class="fas fa-phone"></i></div>
-          <div>
-            <strong>Phone</strong>
-            <a href="tel:+919836667866">+91 98366 67866</a>
-          </div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-          <div>
-            <strong>WhatsApp</strong>
-            <a href="https://wa.me/919836667866" target="_blank">+91 98366 67866</a>
-          </div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-          <div>
-            <strong>Email</strong>
-            <a href="/cdn-cgi/l/email-protection#66160714120e0712141605070a5326010b070f0a4805090b"><span class="__cf_email__" data-cfemail="86f6e7f4f2eee7f2f4f6e5e7eab3c6e1ebe7efeaa8e5e9eb">[email&#160;protected]</span></a>
-          </div>
-        </div>
-        <div class="contact-sebi">
-          <i class="fas fa-certificate"></i>
-          <span>SEBI Registered ARN Holder | IRDA Certified Since 2014 | TRP Certified Since 2009 | AMFI Certified</span>
-        </div>
+        <div class="cd"><div class="cd-ico"><i class="fas fa-location-dot"></i></div><div><b>Office Address</b><p>AD-137, Tara Palace, Rabindrapally,<br>Kestopur, Kolkata, West Bengal — 700101</p></div></div>
+        <div class="cd"><div class="cd-ico"><i class="fas fa-phone"></i></div><div><b>Phone</b><a href="tel:+919836667866">+91 98366 67866</a></div></div>
+        <div class="cd"><div class="cd-ico"><i class="fab fa-whatsapp"></i></div><div><b>WhatsApp</b><a href="https://wa.me/919836667866" target="_blank">+91 98366 67866</a></div></div>
+        <div class="cd"><div class="cd-ico"><i class="fas fa-envelope"></i></div><div><b>Email</b><a href="mailto:parthatrpcal5@gmail.com">parthatrpcal5@gmail.com</a></div></div>
+        <div class="ci-certs"><i class="fas fa-certificate"></i> SEBI Registered ARN Holder &nbsp;&middot;&nbsp; IRDA Certified Since 2014 &nbsp;&middot;&nbsp; TRP Certified Since 2009 &nbsp;&middot;&nbsp; AMFI Certified</div>
       </div>
-
-      <div class="contact-form-wrap" data-aos="fade-left">
-        <!-- 
-          ╔══════════════════════════════════════════════════════════╗
-          ║  REAL EMAIL DELIVERY via FormSubmit.co                  ║
-          ║  First submission = verification email to your inbox.   ║
-          ║  After confirming once, every form submission lands     ║
-          ║  directly in parthatrpcal5@gmail.com — no backend needed║
-          ╚══════════════════════════════════════════════════════════╝
-        -->
-        <form
-          class="contact-form"
-          id="contactForm"
-          action="https://formsubmit.co/parthatrpcal5@gmail.com"
-          method="POST"
-          onsubmit="handleContactSubmit(event)"
-        >
-          <!-- FormSubmit configuration fields -->
-          <input type="hidden" name="_subject" value="🏹 New Consultation Request — Raddhih Financial Services"/>
-          <input type="hidden" name="_captcha" value="false"/>
-          <input type="hidden" name="_template" value="table"/>
-          <input type="hidden" name="_next" value=""/>
-          <!-- Honeypot anti-spam -->
-          <input type="text" name="_honey" style="display:none"/>
-
+      <div class="contact-form-wrap reveal-right">
+        <!-- FormSubmit: First submit → verify email sent to parthatrpcal5@gmail.com → click confirm once → all future submissions arrive as formatted table in Gmail -->
+        <form id="cForm" action="https://formsubmit.co/parthatrpcal5@gmail.com" method="POST" onsubmit="handleContact(event)">
+          <input type="hidden" name="_subject" value="New Consultation Request — Raddhih Financial Services">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" style="display:none">
           <h3>Send a Consultation Request</h3>
-          <p class="form-sub">Your details land <strong>directly in our advisor's inbox</strong>. We respond within 4 hours.</p>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label>Full Name *</label>
-              <input type="text" name="Full Name" required placeholder="e.g. Arjun Sharma" class="form-input"/>
-            </div>
-            <div class="form-group">
-              <label>Phone Number *</label>
-              <input type="tel" name="Phone Number" required placeholder="+91 XXXXX XXXXX" class="form-input"/>
-            </div>
+          <p class="cf-sub">Your details land <strong>directly in our advisor's inbox</strong>. We reply within 4 hours.</p>
+          <div class="cf-row">
+            <div class="cf-g"><label>Full Name *</label><input type="text" name="Full Name" required placeholder="e.g. Arjun Sharma" class="fi"></div>
+            <div class="cf-g"><label>Phone Number *</label><input type="tel" name="Phone Number" required placeholder="+91 XXXXX XXXXX" class="fi"></div>
           </div>
-          <div class="form-group">
-            <label>Email Address *</label>
-            <input type="email" name="email" required placeholder="your@email.com" class="form-input"/>
+          <div class="cf-g"><label>Email Address *</label><input type="email" name="email" required placeholder="your@email.com" class="fi"></div>
+          <div class="cf-g"><label>Service Interested In</label>
+            <select name="Service" class="fi"><option value="">— Select a service —</option><option>Mutual Fund Investments</option><option>Life Insurance</option><option>Health Insurance</option><option>General Insurance</option><option>Income Tax Return Filing</option><option>Complete Financial Planning</option></select>
           </div>
-          <div class="form-group">
-            <label>Service Interested In</label>
-            <select name="Service Interested" class="form-input">
-              <option value="">— Select a service —</option>
-              <option>Mutual Fund Investments</option>
-              <option>Life Insurance</option>
-              <option>Health Insurance</option>
-              <option>General Insurance</option>
-              <option>Income Tax Return Filing</option>
-              <option>Complete Financial Planning</option>
-            </select>
+          <div class="cf-g"><label>Best Time to Call</label>
+            <select name="Best Time to Call" class="fi"><option value="">— Select time —</option><option>Morning (9 AM – 12 PM)</option><option>Afternoon (12 PM – 4 PM)</option><option>Evening (4 PM – 8 PM)</option><option>Anytime</option></select>
           </div>
-          <div class="form-group">
-            <label>Your Message / Financial Goals</label>
-            <textarea name="Message" rows="4" placeholder="Tell us about your financial goals, current situation, or specific questions..." class="form-input"></textarea>
-          </div>
-          <div class="form-group">
-            <label>Best Time to Call</label>
-            <select name="Best Time to Call" class="form-input">
-              <option value="">— Select preferred time —</option>
-              <option>Morning (9 AM – 12 PM)</option>
-              <option>Afternoon (12 PM – 4 PM)</option>
-              <option>Evening (4 PM – 8 PM)</option>
-              <option>Anytime</option>
-            </select>
-          </div>
-          <button type="submit" class="btn-submit-form">
-            <i class="fas fa-paper-plane"></i>
-            Send Consultation Request
-          </button>
-          <p class="form-privacy"><i class="fas fa-lock"></i> 100% confidential. Your data is never shared with third parties.</p>
-          <div class="formsubmit-note">
-            <i class="fas fa-info-circle"></i>
-            <span>Powered by FormSubmit · Delivered directly to advisor's Gmail</span>
-          </div>
+          <div class="cf-g"><label>Message / Financial Goals</label><textarea name="Message" rows="4" placeholder="Tell us about your goals or any questions…" class="fi"></textarea></div>
+          <button type="submit" class="btn-cf" id="cfBtn"><i class="fas fa-paper-plane"></i> Send Consultation Request</button>
+          <p class="cf-priv"><i class="fas fa-lock"></i> 100% confidential. Your data is never shared.</p>
+          <p class="cf-note"><i class="fas fa-info-circle"></i> Delivered directly to advisor's Gmail via FormSubmit</p>
         </form>
-        <div class="contact-success" id="contactSuccess" style="display:none;">
-          <div class="success-wheel"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="none" stroke="#C9A84C" stroke-width="2"/><path d="M 26 40 L 36 50 L 56 30" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/></svg></div>
-          <h3>Message Sent Successfully!</h3>
-          <p>Your consultation request has been delivered to our advisor's inbox. We will personally call or email you within <strong>4 hours</strong>.</p>
-          <p class="success-note">📧 Check your inbox too — you'll receive a copy of your request.</p>
-          <a href="https://wa.me/919836667866?text=Hi%2C%20I%20just%20submitted%20a%20consultation%20request%20on%20your%20website.%20Please%20get%20back%20to%20me." class="btn-whatsapp-success" target="_blank"><i class="fab fa-whatsapp"></i> Also Ping on WhatsApp</a>
+        <div id="cOk" class="contact-ok">
+          <div class="ok-wheel" style="width:72px;height:72px"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="46" stroke="#C9A84C" stroke-width="2"/><path d="M30 50 L44 64 L72 36" stroke="#C9A84C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Message Sent!</h3>
+          <p>Your consultation request has been delivered directly to our advisor's inbox. We will personally call or email you within <strong>4 hours</strong>.</p>
+          <a href="https://wa.me/919836667866?text=Hi%2C+I+submitted+a+consultation+request+on+your+website." class="btn-wa-ok" target="_blank"><i class="fab fa-whatsapp"></i> Also Ping on WhatsApp</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
 <footer class="footer">
-  <div class="footer-wheel" aria-hidden="true">
-    <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="96" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.2"/><g stroke="#C9A84C" stroke-width="0.6" opacity="0.2"><line x1="100" y1="4" x2="100" y2="196"/><line x1="4" y1="100" x2="196" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/></g><circle cx="100" cy="100" r="10" fill="#C9A84C" opacity="0.15"/></svg>
-  </div>
-  <div class="container">
+  <div class="footer-bw"><svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="96" stroke="#C9A84C" stroke-width="1"/><g stroke="#C9A84C" stroke-width=".8"><line x1="100" y1="4" x2="100" y2="196"/><line x1="4" y1="100" x2="196" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/></g><circle cx="100" cy="100" r="12" fill="#C9A84C"/></svg></div>
+  <div class="wrap">
     <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <div class="logo-wheel-sm">
-            <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="27" fill="none" stroke="#C9A84C" stroke-width="1.2"/><g stroke="#C9A84C" stroke-width="1.2"><line x1="30" y1="3" x2="30" y2="57"/><line x1="3" y1="30" x2="57" y2="30"/><line x1="10" y1="10" x2="50" y2="50"/><line x1="50" y1="10" x2="10" y2="50"/></g><circle cx="30" cy="30" r="5" fill="#C9A84C"/><circle cx="30" cy="30" r="2.5" fill="#0a1628"/></svg>
-          </div>
-          <div>
-            <span class="logo-main">RADDHIH</span>
-            <span class="logo-sub">FINANCIAL SERVICES</span>
-          </div>
+      <div class="fg-brand">
+        <div class="fg-logo">
+          <div class="nl-wheel" style="width:36px;height:36px;flex-shrink:0"><svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="25" stroke="#C9A84C" stroke-width="1.2"/><g stroke="#C9A84C" stroke-width="1"><line x1="28" y1="3" x2="28" y2="53"/><line x1="3" y1="28" x2="53" y2="28"/><line x1="10" y1="10" x2="46" y2="46"/><line x1="46" y1="10" x2="10" y2="46"/></g><circle cx="28" cy="28" r="5" fill="#C9A84C"/><circle cx="28" cy="28" r="2" fill="#050d1a"/></svg></div>
+          <div class="nl-text"><span class="nl-main">RADDHIH</span><span class="nl-sub">Financial Services</span></div>
         </div>
-        <p>Your trusted Sarathi on the path to financial sovereignty. SEBI Registered. Client-First. Always.</p>
-        <div class="footer-badges">
-          <span><i class="fas fa-certificate"></i> SEBI Registered 2014</span>
-          <span><i class="fas fa-shield-halved"></i> AMFI Certified</span>
-        </div>
+        <p>Your trusted Sarathi on the path to financial sovereignty. SEBI Registered. IRDA Certified. TRP Certified. Client-First. Always.</p>
+        <div class="fg-badges"><span><i class="fas fa-certificate"></i>SEBI 2014</span><span><i class="fas fa-award"></i>IRDA 2014</span><span><i class="fas fa-landmark"></i>TRP 2009</span></div>
       </div>
-      <div class="footer-col">
-        <h4>The Armory</h4>
-        <ul>
-          <li><a href="#services">Mutual Fund Investments</a></li>
-          <li><a href="#services">Life Insurance</a></li>
-          <li><a href="#services">Health Insurance</a></li>
-          <li><a href="#services">General Insurance</a></li>
-          <li><a href="#services">ITR Filing</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Navigate</h4>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#why-us">Why Choose Us</a></li>
-          <li><a href="#battle-plan">Battle Plan</a></li>
-          <li><a href="#stats">Our Impact</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
+      <div class="fg-col"><h4>The Armory</h4><ul><li><a href="#services">Mutual Fund Investments</a></li><li><a href="#services">Life Insurance</a></li><li><a href="#services">Health Insurance</a></li><li><a href="#services">General Insurance</a></li><li><a href="#services">ITR Filing</a></li></ul></div>
+      <div class="fg-col"><h4>Navigate</h4><ul><li><a href="#home">Home</a></li><li><a href="#why-us">Why Choose Us</a></li><li><a href="#sarathi">Our Sarathi</a></li><li><a href="#battle-plan">Battle Plan</a></li><li><a href="#testimonials">Testimonials</a></li></ul></div>
+      <div class="fg-col">
         <h4>Reach Us</h4>
-        <ul class="footer-contact">
-          <li><i class="fas fa-location-dot"></i> AD-137 Tara Palace, Rabindrapally, Kestopur, Kolkata 700101</li>
-          <li><i class="fas fa-phone"></i> <a href="tel:+919836667866">+91 98366 67866</a></li>
-          <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#cabaabb8bea2abbeb8baa9aba6ff8aada7aba3a6e4a9a5a7"><span class="__cf_email__" data-cfemail="2050415254484154525043414c1560474d41494c0e434f4d">[email&#160;protected]</span></a></li>
+        <ul class="fg-contact">
+          <li><i class="fas fa-location-dot"></i>AD-137, Tara Palace, Rabindrapally, Kestopur, Kolkata 700101</li>
+          <li><i class="fas fa-phone"></i><a href="tel:+919836667866">+91 98366 67866</a></li>
+          <li><i class="fas fa-envelope"></i><a href="mailto:parthatrpcal5@gmail.com">parthatrpcal5@gmail.com</a></li>
         </ul>
-        <div class="footer-social">
+        <div class="fg-social">
           <a href="https://wa.me/919836667866" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-          <a href="/cdn-cgi/l/email-protection#fd8d9c8f89959c898f8d9e9c91c8bd9a909c9491d39e9290" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="mailto:parthatrpcal5@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
           <a href="tel:+919836667866" aria-label="Phone"><i class="fas fa-phone"></i></a>
         </div>
       </div>
     </div>
-
     <div class="footer-bottom">
-      <p>© 2025 Raddhih Financial Services. All Rights Reserved. | SEBI Registered ARN Holder | Mutual Fund investments are subject to market risks. Please read all scheme related documents carefully before investing.</p>
+      <p>&#169; 2025 Raddhih Financial Services. All Rights Reserved. &nbsp;|&nbsp; SEBI Registered ARN Holder &nbsp;|&nbsp; IRDA Certified Since 2014 &nbsp;|&nbsp; TRP Certified Since 2009 &nbsp;|&nbsp; AMFI Certified &nbsp;|&nbsp; Mutual Fund investments are subject to market risks. Please read all scheme-related documents carefully before investing.</p>
       <div class="footer-credits">
-        <p>
-          <span>Created by <strong>Pragyo Roy</strong></span>
-          &nbsp;·&nbsp;
-          <span>Designed by <strong>Pragyo Roy</strong></span>
-          &nbsp;·&nbsp;
-          <span>Maintained by <strong>Pragyo Roy</strong></span>
-        </p>
+        <span>Created by <strong>Pragyo Roy</strong></span><span class="fc-dot">·</span>
+        <span>Designed by <strong>Pragyo Roy</strong></span><span class="fc-dot">·</span>
+        <span>Maintained by <strong>Pragyo Roy</strong></span>
       </div>
     </div>
   </div>
 </footer>
 
 <!-- WhatsApp Float -->
-<a href="https://wa.me/919836667866?text=Hi%2C%20I%20want%20to%20know%20more%20about%20your%20financial%20services." class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+<a href="https://wa.me/919836667866?text=Hi%2C+I+want+to+know+more+about+your+financial+services." class="wa-float" target="_blank" aria-label="WhatsApp">
   <i class="fab fa-whatsapp"></i>
-  <span class="wa-tooltip">Chat with us</span>
+  <span class="wa-tip">Chat with us</span>
 </a>
+<button id="btt" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 
-<!-- Back to Top -->
-<button class="back-to-top" id="backToTop" aria-label="Back to top">
-  <i class="fas fa-chevron-up"></i>
-</button>
+<script>
+/* ════ LOADER — guaranteed exit, no window.load dependency ════ */
+(function(){
+  var ld = document.getElementById('loader');
+  var gone = false;
+  function hide() {
+    if (gone) return; gone = true;
+    ld.style.opacity = '0';
+    setTimeout(function(){ ld.style.display = 'none'; }, 520);
+  }
+  setTimeout(hide, 1800);                        /* hard cap 1.8s */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(hide, 700); });
+  } else {
+    setTimeout(hide, 400);
+  }
+})();
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ===== LOADER — always hides, no dependency on window.load =====
-function hideLoader() {
-  const loader = document.getElementById('loader');
-  if (!loader) return;
-  loader.style.transition = 'opacity 0.6s ease';
-  loader.style.opacity = '0';
-  setTimeout(() => { loader.style.display = 'none'; }, 650);
-}
-// Hide after 2.5s no matter what
-setTimeout(hideLoader, 2500);
-// Also hide as soon as DOM is interactive
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => setTimeout(hideLoader, 1200));
-} else {
-  setTimeout(hideLoader, 800);
-}
-
-// ===== CUSTOM CURSOR =====
-const cursorOuter = document.getElementById('cursorOuter');
-const cursorInner = document.getElementById('cursorInner');
-let mouseX = 0, mouseY = 0, outerX = 0, outerY = 0;
-
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  cursorInner.style.left = mouseX + 'px';
-  cursorInner.style.top = mouseY + 'px';
-});
-
-function animateCursor() {
-  outerX += (mouseX - outerX) * 0.12;
-  outerY += (mouseY - outerY) * 0.12;
-  cursorOuter.style.left = outerX + 'px';
-  cursorOuter.style.top = outerY + 'px';
-  requestAnimationFrame(animateCursor);
-}
-animateCursor();
-
-document.querySelectorAll('a, button, .choice-card, .service-card, .why-card').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursorOuter.classList.add('hovered');
-    cursorInner.classList.add('hovered');
-  });
-  el.addEventListener('mouseleave', () => {
-    cursorOuter.classList.remove('hovered');
-    cursorInner.classList.remove('hovered');
+/* ════ SMOOTH SCROLL ════ */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var t = document.querySelector(this.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth', block:'start' }); }
   });
 });
 
-// ===== NAVBAR =====
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
-  document.getElementById('backToTop').classList.toggle('show', window.scrollY > 400);
+/* ════ NAVBAR ════ */
+var nb = document.getElementById('navbar');
+var ham = document.getElementById('hamburger');
+var nls = document.getElementById('navLinks');
+window.addEventListener('scroll', function(){
+  nb.classList.toggle('scrolled', window.scrollY > 55);
+  document.getElementById('btt').classList.toggle('show', window.scrollY > 400);
+}, { passive:true });
+ham.addEventListener('click', function(){
+  ham.classList.toggle('open'); nls.classList.toggle('open');
+});
+nls.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click', function(){ ham.classList.remove('open'); nls.classList.remove('open'); });
+});
+document.getElementById('btt').addEventListener('click', function(){ window.scrollTo({ top:0, behavior:'smooth' }); });
+
+/* ════ CUSTOM CURSOR ════ */
+var ring = document.getElementById('cur-ring'), dot = document.getElementById('cur-dot');
+var mx=0, my=0, rx=0, ry=0;
+document.addEventListener('mousemove', function(e){ mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; }, { passive:true });
+(function af(){ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(af); })();
+document.querySelectorAll('a,button,.ch,.svc-card,.why-card,.tc,.pillar').forEach(function(el){
+  el.addEventListener('mouseenter', function(){ ring.classList.add('big'); dot.classList.add('big'); });
+  el.addEventListener('mouseleave', function(){ ring.classList.remove('big'); dot.classList.remove('big'); });
 });
 
-document.getElementById('hamburger').addEventListener('click', function() {
-  document.getElementById('navLinks').classList.toggle('open');
-  this.classList.toggle('open');
-});
-
-// Close menu on link click
-document.querySelectorAll('.nav-link').forEach(l => {
-  l.addEventListener('click', () => {
-    document.getElementById('navLinks').classList.remove('open');
-    document.getElementById('hamburger').classList.remove('open');
-  });
-});
-
-// ===== SMOOTH SCROLL =====
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+/* ════ SCROLL REVEAL ════ */
+var rObs = new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if (e.isIntersecting) {
+      var d = parseFloat(e.target.style.getPropertyValue('--d')) || 0;
+      setTimeout(function(){ e.target.classList.add('in'); }, d * 1000);
     }
   });
-});
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){ rObs.observe(el); });
 
-// ===== BACK TO TOP =====
-document.getElementById('backToTop').addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// ===== SCROLL ANIMATIONS =====
-const aosEls = document.querySelectorAll('[data-aos]');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const delay = entry.target.dataset.aosDelay || 0;
-      setTimeout(() => entry.target.classList.add('aos-animated'), parseInt(delay));
-    }
-  });
-}, { threshold: 0.12 });
-aosEls.forEach(el => observer.observe(el));
-
-// ===== COUNTER ANIMATION =====
-const counters = document.querySelectorAll('.stat-number[data-target]');
-const countObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-      entry.target.classList.add('counted');
-      const target = +entry.target.dataset.target;
-      let current = 0;
-      const step = target / 60;
-      const timer = setInterval(() => {
-        current += step;
-        if (current >= target) { current = target; clearInterval(timer); }
-        entry.target.textContent = Math.floor(current);
-      }, 25);
+/* ════ COUNTER ════ */
+var cObs = new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if (e.isIntersecting && !e.target.dataset.done) {
+      e.target.dataset.done = '1';
+      var target = +e.target.dataset.t, count = 0, step = target / 60;
+      var t = setInterval(function(){
+        count += step;
+        if (count >= target) { count = target; clearInterval(t); }
+        e.target.textContent = Math.floor(count);
+      }, 20);
     }
   });
 }, { threshold: 0.5 });
-counters.forEach(c => countObserver.observe(c));
+document.querySelectorAll('.sn[data-t]').forEach(function(el){ cObs.observe(el); });
 
-// ===== BATTLE PLAN FORM =====
-let currentStep = 1;
+/* ════ ACTIVE NAV ════ */
+var secs = document.querySelectorAll('section[id]');
+var navAs = document.querySelectorAll('.nl');
+window.addEventListener('scroll', function(){
+  var cur = '';
+  secs.forEach(function(s){ if (window.scrollY >= s.offsetTop - 130) cur = s.id; });
+  navAs.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+}, { passive:true });
 
-function nextStep(step) {
-  document.getElementById('step' + currentStep).classList.remove('active');
-  currentStep = step;
-  document.getElementById('step' + step).classList.add('active');
-
-  document.querySelectorAll('.battle-step').forEach((s, i) => {
-    s.classList.remove('active', 'completed');
-    if (i + 1 < step) s.classList.add('completed');
-    if (i + 1 === step) s.classList.add('active');
-  });
-
-  const pct = (step / 5) * 100;
-  document.getElementById('progressBar').style.width = pct + '%';
-  document.getElementById('progressLabel').textContent = 'Step ' + step + ' of 5';
-}
-
-async function submitBattlePlan() {
-  const name = document.getElementById('bpName').value.trim();
-  const phone = document.getElementById('bpPhone').value.trim();
-  const email = document.getElementById('bpEmail').value.trim();
-
-  if (!name || !email) {
-    alert('Please fill in your name and email to receive your Strategy Report.');
-    return;
-  }
-
-  const btn = document.querySelector('.btn-submit');
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-  btn.disabled = true;
-
-  const data = {
-    'Warrior Name': name,
-    'Phone': phone,
-    'Email': email,
-    'Additional Note': document.getElementById('bpNote').value || 'None',
-    'Life Stage': document.querySelector('input[name="age"]:checked')?.value || 'Not selected',
-    'Current Assets': Array.from(document.querySelectorAll('input[name="assets"]:checked')).map(i=>i.value).join(', ') || 'None selected',
-    'Primary Fear': document.querySelector('input[name="risk"]:checked')?.value || 'Not selected',
-    'Financial Goal': document.querySelector('input[name="goal"]:checked')?.value || 'Not selected',
-    'Guidance Level': document.querySelector('input[name="engagement"]:checked')?.value || 'Not selected',
-    '_subject': '🏹 Kurukshetra Strategy Report Request — ' + name,
-    '_captcha': 'false',
-    '_template': 'table'
-  };
-
-  const formData = new FormData();
-  Object.entries(data).forEach(([k,v]) => formData.append(k, v));
-
-  try {
-    const res = await fetch('https://formsubmit.co/ajax/parthatrpcal5@gmail.com', {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: formData
-    });
-
-    document.getElementById('step5').classList.remove('active');
-    document.getElementById('stepSuccess').style.display = 'flex';
-    document.getElementById('progressBar').style.width = '100%';
-    document.getElementById('progressLabel').textContent = 'Complete!';
-  } catch(err) {
-    // Fallback mailto
-    const subject = encodeURIComponent('🏹 Kurukshetra Strategy Report Request — ' + name);
-    const body = encodeURIComponent('Name: '+name+'\nPhone: '+phone+'\nEmail: '+email);
-    window.open('mailto:parthatrpcal5@gmail.com?subject='+subject+'&body='+body);
-    document.getElementById('step5').classList.remove('active');
-    document.getElementById('stepSuccess').style.display = 'flex';
-  }
-}
-
-// ===== CONTACT FORM — FormSubmit.co real email delivery =====
-async function handleContactSubmit(e) {
-  e.preventDefault();
-  const form = document.getElementById('contactForm');
-  const btn = form.querySelector('.btn-submit-form');
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-  btn.disabled = true;
-
-  const formData = new FormData(form);
-
-  try {
-    const response = await fetch('https://formsubmit.co/ajax/parthatrpcal5@gmail.com', {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: formData
-    });
-
-    if (response.ok) {
-      form.style.display = 'none';
-      const success = document.getElementById('contactSuccess');
-      success.style.display = 'flex';
-    } else {
-      throw new Error('Server error');
-    }
-  } catch(err) {
-    // Fallback: submit normally (page navigates to FormSubmit thank-you page)
-    form.submit();
-  }
-}
-
-// ===== MUSIC TOGGLE =====
-let musicPlaying = false;
-document.getElementById('musicToggle').addEventListener('click', function() {
-  const frame = document.getElementById('ytAudio');
-  musicPlaying = !musicPlaying;
-  if (musicPlaying) {
-    frame.src = 'https://www.youtube.com/embed/Uezrcg6KJ44?enablejsapi=1&autoplay=1&loop=1&playlist=Uezrcg6KJ44';
-    document.getElementById('musicIcon').className = 'fas fa-pause';
-    this.classList.add('playing');
-  } else {
-    frame.src = 'https://www.youtube.com/embed/Uezrcg6KJ44?enablejsapi=1&autoplay=0';
-    document.getElementById('musicIcon').className = 'fas fa-music';
-    this.classList.remove('playing');
-  }
+/* ════ MUSIC ════ */
+var musicOn = false, ytf = document.getElementById('ytFrame');
+document.getElementById('musicBtn').addEventListener('click', function(){
+  musicOn = !musicOn;
+  ytf.src = musicOn ? 'https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&loop=1&playlist=Uezrcg6KJ44' : '';
+  document.getElementById('musicIco').className = musicOn ? 'fas fa-pause' : 'fas fa-music';
+  this.classList.toggle('on', musicOn);
 });
 
-// ===== ACTIVE NAV LINK =====
-cons
+/* ════ BATTLE PLAN ════ */
+var bpCur = 1;
+function bpGo(n) {
+  document.getElementById('fs' + bpCur).classList.remove('active');
+  bpCur = n;
+  document.getElementById('fs' + n).classList.add('active');
+  document.querySelectorAll('.bps').forEach(function(s){
+    var v = +s.dataset.s;
+    s.classList.toggle('active', v === n);
+    s.classList.toggle('done', v < n);
+  });
+  document.getElementById('bpProg').style.width = (n / 5 * 100) + '%';
+  document.getElementById('bpLbl').textContent = 'Step ' + n + ' of 5';
+}
+
+async function bpSubmit() {
+  var name  = document.getElementById('bpName').value.trim();
+  var email = document.getElementById('bpEmail').value.trim();
+  var phone = document.getElementById('bpPhone').value.trim();
+  if (!name || !email) { alert('Please enter your name and email to receive the Strategy Report.'); return; }
+  var btn = document.getElementById('bpBtn');
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…'; btn.disabled = true;
+  var fd = new FormData();
+  fd.append('Warrior Name', name);
+  fd.append('Phone', phone || 'Not provided');
+  fd.append('email', email);
+  fd.append('Life Stage',     (document.querySelector('input[name="age"]:checked')  || {value:'—'}).value);
+  fd.append('Current Assets', Array.from(document.querySelectorAll('input[name="assets"]:checked')).map(function(i){return i.value;}).join(', ') || 'None');
+  fd.append('Primary Fear',   (document.querySelector('input[name="risk"]:checked') || {value:'—'}).value);
+  fd.append('Financial Goal', (document.querySelector('input[name="goal"]:checked') || {value:'—'}).value);
+  fd.append('Guidance Level', (document.querySelector('input[name="guide"]:checked')|| {value:'—'}).value);
+  fd.append('Note', document.getElementById('bpNote').value || 'None');
+  fd.append('_subject', 'Strategy Report Request — ' + name);
+  fd.append('_captcha', 'false'); fd.append('_template', 'table');
+  try { await fetch('https://formsubmit.co/ajax/parthatrpcal5@gmail.com', { method:'POST', headers:{Accept:'application/json'}, body:fd }); } catch(e) {}
+  document.getElementById('fs5').classList.remove('active');
+  var ok = document.getElementById('fsOk'); ok.style.display = 'flex';
+  document.getElementById('bpProg').style.width = '100%';
+  document.getElementById('bpLbl').textContent = 'Complete!';
+  document.querySelectorAll('.bps').forEach(function(s){ s.classList.add('done'); s.classList.remove('active'); });
+}
+
+/* ════ CONTACT FORM ════ */
+async function handleContact(e) {
+  e.preventDefault();
+  var btn = document.getElementById('cfBtn');
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…'; btn.disabled = true;
+  try {
+    var r = await fetch('https://formsubmit.co/ajax/parthatrpcal5@gmail.com', { method:'POST', headers:{Accept:'application/json'}, body:new FormData(e.target) });
+    if (r.ok) {
+      document.getElementById('cForm').style.display = 'none';
+      document.getElementById('cOk').style.display = 'flex';
+    } else throw 0;
+  } catch(err) { e.target.submit(); }
+}
+</script>
+</body>
+</html>
+
+<!-- BATTLE PLAN -->
+<section id="plan" class="section plan-sec">
+  <div class="container">
+    <div class="sec-hdr reveal"><div class="sec-tag">The Kurukshetra Protocol</div><h2 class="sec-title">Get Your Free <span class="gold">Battle Plan</span></h2><p class="sec-sub">Answer 5 questions. Receive a personalised financial strategy — free, no obligation.</p></div>
+    <div class="plan-wrap reveal">
+      <div class="plan-progress"><div class="pp-bar"><div id="ppFill" style="width:20%"></div></div><span id="ppLabel">Step 1 of 5</span></div>
+      <!-- STEP 1 -->
+      <div class="plan-step active" id="ps1">
+        <h3><span class="step-num">01</span> Your Life Stage</h3><p>What best describes your current situation?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="age" value="Young Professional 22-30"/><div class="ch-inner"><i class="fas fa-graduation-cap"></i><span>Young Professional</span><em>22-30 years</em></div></label>
+          <label class="choice"><input type="radio" name="age" value="Family Builder 31-45"/><div class="ch-inner"><i class="fas fa-house-chimney"></i><span>Family Builder</span><em>31-45 years</em></div></label>
+          <label class="choice"><input type="radio" name="age" value="Peak Earner 46-55"/><div class="ch-inner"><i class="fas fa-briefcase"></i><span>Peak Earner</span><em>46-55 years</em></div></label>
+          <label class="choice"><input type="radio" name="age" value="Pre-Retirement 56+"/><div class="ch-inner"><i class="fas fa-umbrella-beach"></i><span>Pre-Retirement</span><em>56+ years</em></div></label>
+        </div>
+        <button class="btn-next" onclick="planNext(1)">Next <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <!-- STEP 2 -->
+      <div class="plan-step" id="ps2">
+        <h3><span class="step-num">02</span> Current Arsenal</h3><p>Which financial instruments do you already have?</p>
+        <div class="choices">
+          <label class="choice"><input type="checkbox" name="assets" value="Mutual Funds"/><div class="ch-inner"><i class="fas fa-chart-pie"></i><span>Mutual Funds</span></div></label>
+          <label class="choice"><input type="checkbox" name="assets" value="Life Insurance"/><div class="ch-inner"><i class="fas fa-shield-halved"></i><span>Life Insurance</span></div></label>
+          <label class="choice"><input type="checkbox" name="assets" value="Health Insurance"/><div class="ch-inner"><i class="fas fa-heart-pulse"></i><span>Health Insurance</span></div></label>
+          <label class="choice"><input type="checkbox" name="assets" value="Fixed Deposits"/><div class="ch-inner"><i class="fas fa-piggy-bank"></i><span>Fixed Deposits</span></div></label>
+          <label class="choice"><input type="checkbox" name="assets" value="Stocks"/><div class="ch-inner"><i class="fas fa-chart-line"></i><span>Stocks</span></div></label>
+          <label class="choice"><input type="checkbox" name="assets" value="Starting Fresh"/><div class="ch-inner"><i class="fas fa-plus-circle"></i><span>Starting Fresh</span></div></label>
+        </div>
+        <div class="plan-nav"><button class="btn-back" onclick="planBack(2)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn-next" onclick="planNext(2)">Next <i class="fas fa-arrow-right"></i></button></div>
+      </div>
+      <!-- STEP 3 -->
+      <div class="plan-step" id="ps3">
+        <h3><span class="step-num">03</span> The Enemy — Your Fear</h3><p>What is your biggest financial concern?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="risk" value="Market crash wiping savings"/><div class="ch-inner"><i class="fas fa-chart-line fa-flip-vertical"></i><span>Market Crash</span><em>Losing saved money</em></div></label>
+          <label class="choice"><input type="radio" name="risk" value="Medical emergency draining funds"/><div class="ch-inner"><i class="fas fa-hospital"></i><span>Medical Emergency</span><em>Family healthcare costs</em></div></label>
+          <label class="choice"><input type="radio" name="risk" value="Not saving enough for retirement"/><div class="ch-inner"><i class="fas fa-clock"></i><span>Retirement Shortfall</span><em>Outliving my savings</em></div></label>
+          <label class="choice"><input type="radio" name="risk" value="Tax burden eating into income"/><div class="ch-inner"><i class="fas fa-file-invoice-dollar"></i><span>High Tax Burden</span><em>Paying too much tax</em></div></label>
+        </div>
+        <div class="plan-nav"><button class="btn-back" onclick="planBack(3)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn-next" onclick="planNext(3)">Next <i class="fas fa-arrow-right"></i></button></div>
+      </div>
+      <!-- STEP 4 -->
+      <div class="plan-step" id="ps4">
+        <h3><span class="step-num">04</span> Victory Condition</h3><p>Your primary financial goal in the next 5 years?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="goal" value="Buy a home"/><div class="ch-inner"><i class="fas fa-house"></i><span>Buy a Home</span></div></label>
+          <label class="choice"><input type="radio" name="goal" value="Children education fund"/><div class="ch-inner"><i class="fas fa-user-graduate"></i><span>Children Education</span></div></label>
+          <label class="choice"><input type="radio" name="goal" value="Comfortable retirement"/><div class="ch-inner"><i class="fas fa-umbrella-beach"></i><span>Retirement</span></div></label>
+          <label class="choice"><input type="radio" name="goal" value="Grow wealth aggressively"/><div class="ch-inner"><i class="fas fa-rocket"></i><span>Wealth Growth</span></div></label>
+        </div>
+        <div class="plan-nav"><button class="btn-back" onclick="planBack(4)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn-next" onclick="planNext(4)">Next <i class="fas fa-arrow-right"></i></button></div>
+      </div>
+      <!-- STEP 5 -->
+      <div class="plan-step" id="ps5">
+        <h3><span class="step-num">05</span> Call Your Sarathi</h3><p>Where should we send your personalised Strategy Report?</p>
+        <div class="plan-fields">
+          <div class="pf-group"><label>Your Name *</label><input id="bpName" type="text" placeholder="Full name" class="pf-input"/></div>
+          <div class="pf-group"><label>Phone Number</label><input id="bpPhone" type="tel" placeholder="+91 XXXXX XXXXX" class="pf-input"/></div>
+          <div class="pf-group"><label>Email Address *</label><input id="bpEmail" type="email" placeholder="your@email.com" class="pf-input"/></div>
+          <div class="pf-group">
+            <label>Guidance Level</label>
+            <div class="choices" style="margin-top:8px;grid-template-columns:1fr 1fr">
+              <label class="choice"><input type="radio" name="engage" value="Full Sarathi - manage everything"/><div class="ch-inner" style="padding:10px"><span style="font-size:0.78rem">Full Sarathi</span></div></label>
+              <label class="choice"><input type="radio" name="engage" value="Guide me - I take decisions"/><div class="ch-inner" style="padding:10px"><span style="font-size:0.78rem">Guide Me</span></div></label>
+            </div>
+          </div>
+          <div class="pf-group full"><label>Additional Note</label><textarea id="bpNote" rows="3" placeholder="Any specific question for your advisor..." class="pf-input"></textarea></div>
+        </div>
+        <div class="plan-nav"><button class="btn-back" onclick="planBack(5)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn-submit" id="bpBtn" onclick="submitPlan()">Send My Battle Plan <i class="fas fa-paper-plane"></i></button></div>
+      </div>
+      <!-- SUCCESS -->
+      <div class="plan-success" id="planSuccess">
+        <div class="ps-whl"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="none" stroke="#C9A84C" stroke-width="2"/><path d="M 26 40 L 36 50 L 56 30" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <h3>Your Battle Plan is Sent!</h3>
+        <p>Our Sarathi will call you personally within 24 hours with a tailored strategy report.</p>
+        <a href="https://wa.me/919836667866?text=Hi%2C%20I%20just%20submitted%20my%20Battle%20Plan%20on%20your%20website." target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> Also Ping on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section testi-sec">
+  <div class="container">
+    <div class="sec-hdr reveal"><div class="sec-tag">From the Battlefield</div><h2 class="sec-title">Warrior <span class="gold">Stories</span></h2><p class="sec-sub">Real voices from the 400+ families we protect across India.</p></div>
+    <div class="testi-grid">
+      <div class="testi-card reveal"><div class="tq">"</div><p>Started my SIP journey under their guidance 6 years ago. Today my portfolio has grown beyond what I thought possible on my salary. Every decision was explained — I always knew where my money was going.</p><div class="ta"><div class="tav">AR</div><div><strong>Amit Roy</strong><span>Software Engineer, Kolkata</span></div><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+      <div class="testi-card reveal"><div class="tq">"</div><p>Tax filing used to be a nightmare. Now it's done in one call. The insurance restructuring also saved my family significant premiums. A true financial partner — not just an agent.</p><div class="ta"><div class="tav">PS</div><div><strong>Priya Sharma</strong><span>Business Owner, Salt Lake</span></div><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+      <div class="testi-card reveal"><div class="tq">"</div><p>What I appreciate most is the transparency. Every recommendation comes with a clear explanation. After 5 years, I feel genuinely empowered about my money — not just dependent on an advisor.</p><div class="ta"><div class="tav">SK</div><div><strong>Suresh Kumar</strong><span>Doctor, Kestopur</span></div><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+      <div class="testi-card reveal"><div class="tq">"</div><p>Got my complete family health floater sorted beautifully. When my father was hospitalised, the claim support was outstanding. That is when you know who your real advisor truly is.</p><div class="ta"><div class="tav">RB</div><div><strong>Rima Banerjee</strong><span>Teacher, Rabindrapally</span></div><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container"><div class="cta-c reveal"><h2>Your Financial Kurukshetra Awaits</h2><p>Every great journey begins with one decision. Begin yours today — with a trusted Sarathi by your side.</p><div class="cta-btns"><a href="#plan" class="btn-p">Get Your Free Strategy</a><a href="https://wa.me/919836667866" target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp Us Now</a></div></div></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact-sec">
+  <div class="container">
+    <div class="sec-hdr reveal"><div class="sec-tag">Reach Your Sarathi</div><h2 class="sec-title">Let's <span class="gold">Connect</span></h2><p class="sec-sub">Reach out directly. We respond within hours, not days.</p></div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Raddhih Financial Services</h3>
+        <p class="ci-reg">SEBI Registered ARN Holder · IRDA Certified 2014 · TRP Certified 2009</p>
+        <div class="ci-item"><i class="fas fa-location-dot"></i><div><strong>Office</strong><p>AD-137, Tara Palace, Rabindrapally,<br>Kestopur, Kolkata, West Bengal — 700101</p></div></div>
+        <div class="ci-item"><i class="fas fa-phone"></i><div><strong>Phone</strong><a href="tel:+919836667866">+91 98366 67866</a></div></div>
+        <div class="ci-item"><i class="fab fa-whatsapp"></i><div><strong>WhatsApp</strong><a href="https://wa.me/919836667866" target="_blank">+91 98366 67866</a></div></div>
+        <div class="ci-item"><i class="fas fa-envelope"></i><div><strong>Email</strong><a href="mailto:parthatrpcal5@gmail.com">parthatrpcal5@gmail.com</a></div></div>
+        <div class="ci-certs">
+          <span><i class="fas fa-certificate"></i> IRDA Certified Since 2014</span>
+          <span><i class="fas fa-award"></i> TRP Certified Since 2009</span>
+          <span><i class="fas fa-landmark"></i> SEBI Registered ARN</span>
+          <span><i class="fas fa-shield-halved"></i> AMFI Certified</span>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal">
+        <!-- FormSubmit.co: First submission triggers a verification email to parthatrpcal5@gmail.com.
+             Click the verify link ONCE. After that, every form submission lands directly in Gmail. -->
+        <form id="contactForm" class="cf">
+          <h3>Send a Consultation Request</h3>
+          <p class="cf-sub">Your message lands <strong>directly in our advisor's inbox</strong>. Response within 4 hours.</p>
+          <div class="cf-row">
+            <div class="cf-g"><label>Full Name *</label><input type="text" id="cfName" required placeholder="Your full name" class="cf-i"/></div>
+            <div class="cf-g"><label>Phone *</label><input type="tel" id="cfPhone" required placeholder="+91 XXXXX XXXXX" class="cf-i"/></div>
+          </div>
+          <div class="cf-g"><label>Email Address *</label><input type="email" id="cfEmail" required placeholder="your@email.com" class="cf-i"/></div>
+          <div class="cf-g"><label>Service Interested In</label>
+            <select id="cfService" class="cf-i">
+              <option value="">Select a service</option>
+              <option>Mutual Fund Investments</option><option>Life Insurance</option>
+              <option>Health Insurance</option><option>General Insurance</option>
+              <option>Income Tax Return Filing</option><option>Complete Financial Planning</option>
+            </select>
+          </div>
+          <div class="cf-g"><label>Best Time to Call</label>
+            <select id="cfTime" class="cf-i">
+              <option value="">Select time</option>
+              <option>Morning (9 AM - 12 PM)</option><option>Afternoon (12 PM - 4 PM)</option>
+              <option>Evening (4 PM - 8 PM)</option><option>Anytime</option>
+            </select>
+          </div>
+          <div class="cf-g"><label>Your Message / Goals</label><textarea id="cfMsg" rows="4" placeholder="Tell us about your financial goals or questions..." class="cf-i"></textarea></div>
+          <button type="button" class="btn-submit-form" id="cfBtn" onclick="submitContact()"><i class="fas fa-paper-plane"></i> Send Consultation Request</button>
+          <p class="cf-privacy"><i class="fas fa-lock"></i> 100% confidential. Data never shared.</p>
+        </form>
+        <div id="cfSuccess" class="cf-success" style="display:none">
+          <div class="cs-whl"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="none" stroke="#C9A84C" stroke-width="2"/><path d="M 26 40 L 36 50 L 56 30" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/></svg></div>
+          <h3>Message Delivered!</h3>
+          <p>Your consultation request is in our advisor's inbox. Expect a personal call or email within 4 hours.</p>
+          <a href="https://wa.me/919836667866?text=Hi%2C%20I%20just%20sent%20a%20consultation%20request%20on%20your%20website." target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> Also Ping on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="fg-brand">
+        <div class="logo" style="margin-bottom:16px"><div class="logo-whl"><svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="none" stroke="#C9A84C" stroke-width="1.2"/><g stroke="#C9A84C" stroke-width="1.1"><line x1="25" y1="3" x2="25" y2="47"/><line x1="3" y1="25" x2="47" y2="25"/><line x1="9" y1="9" x2="41" y2="41"/><line x1="41" y1="9" x2="9" y2="41"/></g><circle cx="25" cy="25" r="5" fill="#C9A84C"/><circle cx="25" cy="25" r="2.5" fill="#060d1a"/></svg></div><span class="logo-txt"><strong>RADDHIH</strong> <em>Financial</em></span></div>
+        <p style="font-size:0.82rem;color:#8896aa;line-height:1.8">Your trusted financial Sarathi in Kolkata and across India. SEBI Registered. IRDA Certified 2014. TRP Certified 2009.</p>
+        <div class="footer-social"><a href="https://wa.me/919836667866" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="mailto:parthatrpcal5@gmail.com"><i class="fas fa-envelope"></i></a><a href="tel:+919836667866"><i class="fas fa-phone"></i></a></div>
+      </div>
+      <div class="fg-col"><h4>Services</h4><a href="#services">Mutual Fund Investments</a><a href="#services">Life Insurance</a><a href="#services">Health Insurance</a><a href="#services">General Insurance</a><a href="#services">ITR Filing</a></div>
+      <div class="fg-col"><h4>Navigate</h4><a href="#why">Why Raddhih</a><a href="#sarathi">Our Sarathi</a><a href="#services">Services</a><a href="#plan">Battle Plan</a><a href="#testimonials">Warrior Stories</a><a href="#contact">Contact</a></div>
+      <div class="fg-col"><h4>Contact</h4><p style="font-size:0.8rem;color:#8896aa;line-height:1.8;margin-bottom:8px">AD-137, Tara Palace, Rabindrapally,<br>Kestopur, Kolkata - 700101</p><a href="tel:+919836667866">+91 98366 67866</a><a href="mailto:parthatrpcal5@gmail.com">parthatrpcal5@gmail.com</a><div class="footer-certs" style="margin-top:12px"><span>IRDA Certified 2014</span><span>TRP Certified 2009</span><span>SEBI ARN Holder</span></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p>2025 Raddhih Financial Services. All rights reserved.</p>
+      <p class="footer-disc">SEBI Registered ARN Holder | IRDA Certified Since 2014 | TRP Certified Since 2009 | AMFI Certified. Mutual fund investments are subject to market risks. Read all scheme-related documents carefully. Insurance is a subject matter of solicitation.</p>
+      <p class="footer-credit">Created by <strong>Pragyo Roy</strong> · Designed by <strong>Pragyo Roy</strong> · Maintained by <strong>Pragyo Roy</strong></p>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<a href="https://wa.me/919836667866?text=Hi%2C%20I%20found%20your%20website%20and%20would%20like%20a%20free%20financial%20consultation." target="_blank" class="wa-float"><i class="fab fa-whatsapp"></i><span class="wa-tooltip">Chat with us</span></a>
+<button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+
+<script>
+// LOADER — hard 2s cap, fires as early as possible, no window.load needed
+(function(){
+  function hide(){
+    var l=document.getElementById('loader');
+    if(!l||l.dataset.gone)return;
+    l.dataset.gone='1';
+    l.style.opacity='0';
+    setTimeout(function(){l.style.display='none';},500);
+  }
+  setTimeout(hide,2000); // absolute hard cap
+  if(document.readyState!=='loading'){setTimeout(hide,300);}
+  else{document.addEventListener('DOMContentLoaded',function(){setTimeout(hide,400);});}
+})();
+
+// CURSOR
+var co=document.getElementById('cur-out'),ci=document.getElementById('cur-in');
+var mx=0,my=0,ox=0,oy=0;
+if(!('ontouchstart' in window)&&co&&ci){
+  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;ci.style.left=mx+'px';ci.style.top=my+'px';});
+  (function r(){ox+=(mx-ox)*.12;oy+=(my-oy)*.12;co.style.left=ox+'px';co.style.top=oy+'px';requestAnimationFrame(r);})();
+  document.querySelectorAll('a,button,.choice,.svc-card,.why-card').forEach(function(el){el.addEventListener('mouseenter',function(){co.classList.add('hover');ci.classList.add('hover');});el.addEventListener('mouseleave',function(){co.classList.remove('hover');ci.classList.remove('hover');});});
+}else{if(co)co.style.display='none';if(ci)ci.style.display='none';}
+
+// NAVBAR
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+  document.getElementById('toTop').classList.toggle('show',window.scrollY>400);
+});
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open');document.getElementById('navHam').classList.toggle('open');}
+document.querySelectorAll('.nav-links a,.nav-cta').forEach(function(a){a.addEventListener('click',function(){document.getElementById('navLinks').classList.remove('open');document.getElementById('navHam').classList.remove('open');});});
+
+// SCROLL REVEAL
+var ro=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+
+// HERO CONTENT REVEAL
+setTimeout(function(){var h=document.getElementById('heroContent');if(h)h.classList.add('visible');},2200);
+
+// STATS COUNTER
+var counted=false;
+new IntersectionObserver(function(e){if(e[0].isIntersecting&&!counted){counted=true;document.querySelectorAll('.stat-num[data-target]').forEach(function(el){var t=parseInt(el.dataset.target),t0=performance.now(),d=1800;(function f(n){var p=Math.min((n-t0)/d,1);el.textContent=Math.floor(p*t);if(p<1)requestAnimationFrame(f);else el.textContent=t;})(performance.now());});}},{threshold:0.3}).observe(document.querySelector('.stats-sec'));
+
+// BATTLE PLAN STEPS
+var steps=[null,'ps1','ps2','ps3','ps4','ps5'];
+var fills=['','20%','40%','60%','80%','100%'];
+var lbls=['','Step 1 of 5','Step 2 of 5','Step 3 of 5','Step 4 of 5','Step 5 of 5'];
+function planNext(n){document.getElementById(steps[n]).classList.remove('active');document.getElementById(steps[n+1]).classList.add('active');document.getElementById('ppFill').style.width=fills[n+1];document.getElementById('ppLabel').textContent=lbls[n+1];}
+function planBack(n){document.getElementById(steps[n]).classList.remove('active');document.getElementById(steps[n-1]).classList.add('active');document.getElementById('ppFill').style.width=fills[n-1];document.getElementById('ppLabel').textContent=lbls[n-1];}
+
+// BATTLE PLAN SUBMIT
+async function submitPlan(){
+  var name=document.getElementById('bpName').value.trim();
+  var email=document.getElementById('bpEmail').value.trim();
+  if(!name||!email){alert('Please enter your name and email.');return;}
+  var btn=document.getElementById('bpBtn');
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';btn.disabled=true;
+  var fd=new FormData();
+  fd.append('Warrior Name',name);fd.append('Phone',document.getElementById('bpPhone').value||'Not provided');
+  fd.append('Email',email);fd.append('Note',document.getElementById('bpNote').value||'None');
+  fd.append('Life Stage',(document.querySelector('input[name="age"]:checked')||{value:'Not selected'}).value);
+  fd.append('Assets',Array.from(document.querySelectorAll('input[name="assets"]:checked')).map(function(i){return i.value;}).join(', ')||'None');
+  fd.append('Fear',(document.querySelector('input[name="risk"]:checked')||{value:'Not selected'}).value);
+  fd.append('Goal',(document.querySelector('input[name="goal"]:checked')||{value:'Not selected'}).value);
+  fd.append('Guidance',(document.querySelector('input[name="engage"]:checked')||{value:'Not selected'}).value);
+  fd.append('_subject','Battle Plan Request from '+name);fd.append('_captcha','false');fd.append('_template','table');
+  try{await fetch('https://formsubmit.co/ajax/parthatrpcal5@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body:fd});}catch(e){}
+  document.getElementById('ps5').classList.remove('active');
+  document.getElementById('planSuccess').style.display='flex';
+  document.getElementById('ppFill').style.width='100%';document.getElementById('ppLabel').textContent='Complete!';
+}
+
+// CONTACT FORM SUBMIT
+async function submitContact(){
+  var name=document.getElementById('cfName').value.trim();
+  var phone=document.getElementById('cfPhone').value.trim();
+  var email=document.getElementById('cfEmail').value.trim();
+  if(!name||!email){alert('Please enter your name and email.');return;}
+  var btn=document.getElementById('cfBtn');
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';btn.disabled=true;
+  var fd=new FormData();
+  fd.append('Full Name',name);fd.append('Phone',phone);fd.append('email',email);
+  fd.append('Service',document.getElementById('cfService').value||'Not selected');
+  fd.append('Best Time',document.getElementById('cfTime').value||'Anytime');
+  fd.append('Message',document.getElementById('cfMsg').value||'None');
+  fd.append('_subject','Consultation Request from '+name);fd.append('_captcha','false');fd.append('_template','table');
+  try{
+    var r=await fetch('https://formsubmit.co/ajax/parthatrpcal5@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body:fd});
+    if(r.ok){document.getElementById('contactForm').style.display='none';document.getElementById('cfSuccess').style.display='flex';}
+    else{throw new Error();}
+  }catch(e){
+    btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Consultation Request';btn.disabled=false;
+    alert('Please try again or WhatsApp us at +91 98366 67866');
+  }
+}
+</script>
+</body>
+</html>
