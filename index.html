@@ -4,39 +4,47 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Raddhih Financial Services &mdash; Your Kurukshetra Strategy</title>
-<meta name="description" content="Raddhih Financial Services &mdash; Mutual Funds, Insurance and ITR Filing. SEBI Registered 2014. Trusted by 300+ clients."/>
+<meta name="description" content="Raddhih Financial Services &mdash; Mutual Funds, Insurance and ITR Filing. SEBI Registered 2014. Trusted by 400+ clients."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <link rel="stylesheet" href="style.css"/>
+<style>
+@keyframes slideIn  { from{opacity:0;transform:translateX(30px)}  to{opacity:1;transform:translateX(0)} }
+@keyframes slideOut { from{opacity:1;transform:translateX(0)}  to{opacity:0;transform:translateX(-30px)} }
+@keyframes fadeUp   { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes shake    { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+.cform-ok { display:none; flex-direction:column; align-items:center; justify-content:center; min-height:400px; text-align:center; }
+#cur-dot  { position:fixed; width:8px; height:8px; background:#d4aa52; border-radius:50%; pointer-events:none; z-index:99999; transform:translate(-50%,-50%); left:0; top:0; }
+#cur-ring { position:fixed; width:36px; height:36px; border:1.5px solid rgba(212,170,80,.55); border-radius:50%; pointer-events:none; z-index:99998; transform:translate(-50%,-50%); transition:width .2s,height .2s,border-color .2s; left:0; top:0; }
+#cur-ring.big { width:52px; height:52px; border-color:rgba(212,170,80,.25); }
+</style>
 </head>
 <body>
 
-<!-- BACKGROUND AMBIENT AUDIO — Autoplays with sound when page opens -->
+<!-- MUSIC BAR -->
 <div id="musicBar">
   <div class="mb-left">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/></svg>
     <span>Sacred Ambience</span>
   </div>
   <button id="musicBtn" onclick="toggleMusic()">
-    <svg id="musicPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-    <span id="musicBtnTxt">Pause</span>
+    <svg id="musicIcon" viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+    <span id="musicTxt">Pause</span>
   </button>
   <div class="mb-wave playing" id="mbWave">
     <span></span><span></span><span></span><span></span><span></span>
   </div>
 </div>
-<!-- Auto-unmuted from start — autoplay=1 mute=0 -->
-<iframe id="ytFrame"
-  data-src="https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&loop=1&playlist=Uezrcg6KJ44&controls=0&mute=0&enablejsapi=1" src="about:blank"
-  allow="autoplay; encrypted-media"
-  style="display:none" title="bg"></iframe>
+<iframe id="ytFrame" src="about:blank"
+  data-yt="https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&loop=1&playlist=Uezrcg6KJ44&controls=0&mute=0"
+  allow="autoplay; encrypted-media" style="display:none" title="bg-music"></iframe>
 
 <!-- LOADER -->
 <div id="loader">
   <div class="ldr-inner">
-<svg class="ldr-chakra" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wg_uid_1" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4aa52" stop-opacity="0.95"/><stop offset="50%" stop-color="#f0da80" stop-opacity="0.75"/><stop offset="100%" stop-color="#aa8830" stop-opacity="0.85"/></linearGradient></defs><circle cx="100" cy="100" r="96.6" stroke="rgba(212,170,80,0.12)" stroke-width="0.8" stroke-dasharray="8 5"/><circle cx="100" cy="100" r="92.0" stroke="url(#wg_uid_1)" stroke-width="2.8"/><circle cx="100" cy="100" r="83.7" stroke="rgba(212,170,80,0.2)" stroke-width="0.8"/><circle cx="100" cy="100" r="70.0" stroke="rgba(212,170,80,0.3)" stroke-width="1.0"/><circle cx="100" cy="100" r="20.0" stroke="rgba(212,170,80,0.85)" stroke-width="1.8"/><circle cx="100" cy="100" r="10.0" fill="rgba(212,170,80,0.55)" stroke="rgba(212,170,80,0.95)" stroke-width="1.4"/><circle cx="100" cy="100" r="5.0" fill="rgba(212,170,80,1.0)"/><polygon points="120.0,103.6 120.0,96.4 192.0,99.0 192.0,101.0" fill="rgba(212,170,80,0.75)"/><circle cx="192.0" cy="100.0" r="3.2" fill="rgba(212,170,80,0.85)"/><polygon points="115.5,113.1 119.1,106.9 180.2,145.1 179.2,146.9" fill="rgba(212,170,80,0.45)"/><circle cx="179.7" cy="146.0" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="106.9,119.1 113.1,115.5 146.9,179.2 145.1,180.2" fill="rgba(212,170,80,0.45)"/><circle cx="146.0" cy="179.7" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="96.4,120.0 103.6,120.0 101.0,192.0 99.0,192.0" fill="rgba(212,170,80,0.75)"/><circle cx="100.0" cy="192.0" r="3.2" fill="rgba(212,170,80,0.85)"/><polygon points="86.9,115.5 93.1,119.1 54.9,180.2 53.1,179.2" fill="rgba(212,170,80,0.45)"/><circle cx="54.0" cy="179.7" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="80.9,106.9 84.5,113.1 20.8,146.9 19.8,145.1" fill="rgba(212,170,80,0.45)"/><circle cx="20.3" cy="146.0" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="80.0,96.4 80.0,103.6 8.0,101.0 8.0,99.0" fill="rgba(212,170,80,0.75)"/><circle cx="8.0" cy="100.0" r="3.2" fill="rgba(212,170,80,0.85)"/><polygon points="84.5,86.9 80.9,93.1 19.8,54.9 20.8,53.1" fill="rgba(212,170,80,0.45)"/><circle cx="20.3" cy="54.0" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="93.1,80.9 86.9,84.5 53.1,20.8 54.9,19.8" fill="rgba(212,170,80,0.45)"/><circle cx="54.0" cy="20.3" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="103.6,80.0 96.4,80.0 99.0,8.0 101.0,8.0" fill="rgba(212,170,80,0.75)"/><circle cx="100.0" cy="8.0" r="3.2" fill="rgba(212,170,80,0.85)"/><polygon points="113.1,84.5 106.9,80.9 145.1,19.8 146.9,20.8" fill="rgba(212,170,80,0.45)"/><circle cx="146.0" cy="20.3" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="119.1,93.1 115.5,86.9 179.2,53.1 180.2,54.9" fill="rgba(212,170,80,0.45)"/><circle cx="179.7" cy="54.0" r="1.8" fill="rgba(212,170,80,0.5)"/><circle cx="191.2" cy="112.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="185.0" cy="135.2" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="173.0" cy="156.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="156.0" cy="173.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="135.2" cy="185.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="112.0" cy="191.2" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="88.0" cy="191.2" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="64.8" cy="185.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="44.0" cy="173.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="27.0" cy="156.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="15.0" cy="135.2" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="8.8" cy="112.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="8.8" cy="88.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="15.0" cy="64.8" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="27.0" cy="44.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="44.0" cy="27.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="64.8" cy="15.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="88.0" cy="8.8" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="112.0" cy="8.8" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="135.2" cy="15.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="156.0" cy="27.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="173.0" cy="44.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="185.0" cy="64.8" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="191.2" cy="88.0" r="1.4" fill="rgba(212,170,80,0.14)"/></svg>
+    <svg class="ldr-chakra" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wgA" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4aa52" stop-opacity="0.95"/><stop offset="50%" stop-color="#f0da80" stop-opacity="0.75"/><stop offset="100%" stop-color="#aa8830" stop-opacity="0.85"/></linearGradient></defs><circle cx="100" cy="100" r="96.6" stroke="rgba(212,170,80,0.12)" stroke-width="0.8" stroke-dasharray="8 5"/><circle cx="100" cy="100" r="92.0" stroke="url(#wgA)" stroke-width="2.8"/><circle cx="100" cy="100" r="83.7" stroke="rgba(212,170,80,0.2)" stroke-width="0.8"/><circle cx="100" cy="100" r="70.0" stroke="rgba(212,170,80,0.3)" stroke-width="1.0"/><circle cx="100" cy="100" r="20.0" stroke="rgba(212,170,80,0.85)" stroke-width="1.8"/><circle cx="100" cy="100" r="10.0" fill="rgba(212,170,80,0.55)" stroke="rgba(212,170,80,0.95)" stroke-width="1.4"/><circle cx="100" cy="100" r="5.0" fill="rgba(212,170,80,1.0)"/><polygon points="120.0,103.6 120.0,96.4 192.0,99.0 192.0,101.0" fill="rgba(212,170,80,0.75)"/><circle cx="192.0" cy="100.0" r="3.2" fill="rgba(212,170,80,0.85)"/><polygon points="115.5,113.1 119.1,106.9 180.2,145.1 179.2,146.9" fill="rgba(212,170,80,0.45)"/><circle cx="179.7" cy="146.0" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="106.9,119.1 113.1,115.5 146.9,179.2 145.1,180.2" fill="rgba(212,170,80,0.45)"/><circle cx="146.0" cy="179.7" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="96.4,120.0 103.6,120.0 101.0,192.0 99.0,192.0" fill="rgba(212,170,80,0.75)"/><circle cx="100.0" cy="192.0" r="3.2" fill="rgba(212,170,80,0.85)"/><polygon points="86.9,115.5 93.1,119.1 54.9,180.2 53.1,179.2" fill="rgba(212,170,80,0.45)"/><circle cx="54.0" cy="179.7" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="80.9,106.9 84.5,113.1 20.8,146.9 19.8,145.1" fill="rgba(212,170,80,0.45)"/><circle cx="20.3" cy="146.0" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="80.0,96.4 80.0,103.6 8.0,101.0 8.0,99.0" fill="rgba(212,170,80,0.75)"/><circle cx="8.0" cy="100.0" r="3.2" fill="rgba(212,170,80,0.85)"/><polygon points="84.5,86.9 80.9,93.1 19.8,54.9 20.8,53.1" fill="rgba(212,170,80,0.45)"/><circle cx="20.3" cy="54.0" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="93.1,80.9 86.9,84.5 53.1,20.8 54.9,19.8" fill="rgba(212,170,80,0.45)"/><circle cx="54.0" cy="20.3" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="103.6,80.0 96.4,80.0 99.0,8.0 101.0,8.0" fill="rgba(212,170,80,0.75)"/><circle cx="100.0" cy="8.0" r="3.2" fill="rgba(212,170,80,0.85)"/><polygon points="113.1,84.5 106.9,80.9 145.1,19.8 146.9,20.8" fill="rgba(212,170,80,0.45)"/><circle cx="146.0" cy="20.3" r="1.8" fill="rgba(212,170,80,0.5)"/><polygon points="119.1,93.1 115.5,86.9 179.2,53.1 180.2,54.9" fill="rgba(212,170,80,0.45)"/><circle cx="179.7" cy="54.0" r="1.8" fill="rgba(212,170,80,0.5)"/><circle cx="191.2" cy="112.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="185.0" cy="135.2" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="173.0" cy="156.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="156.0" cy="173.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="135.2" cy="185.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="112.0" cy="191.2" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="88.0" cy="191.2" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="64.8" cy="185.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="44.0" cy="173.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="27.0" cy="156.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="15.0" cy="135.2" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="8.8" cy="112.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="8.8" cy="88.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="15.0" cy="64.8" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="27.0" cy="44.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="44.0" cy="27.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="64.8" cy="15.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="88.0" cy="8.8" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="112.0" cy="8.8" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="135.2" cy="15.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="156.0" cy="27.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="173.0" cy="44.0" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="185.0" cy="64.8" r="1.4" fill="rgba(212,170,80,0.14)"/><circle cx="191.2" cy="88.0" r="1.4" fill="rgba(212,170,80,0.14)"/></svg>
     <p class="ldr-name">RADDHIH</p>
     <p class="ldr-sub">FINANCIAL SERVICES</p>
   </div>
@@ -50,7 +58,7 @@
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#home" class="nav-logo">
-      <div class="logo-chakra"><svg class="logo-wheel" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wg_uid_2" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4aa52" stop-opacity="0.85"/><stop offset="50%" stop-color="#f0da80" stop-opacity="0.68"/><stop offset="100%" stop-color="#aa8830" stop-opacity="0.77"/></linearGradient></defs><circle cx="18" cy="18" r="17.4" stroke="rgba(212,170,80,0.11)" stroke-width="0.1" stroke-dasharray="1 1"/><circle cx="18" cy="18" r="16.6" stroke="url(#wg_uid_2)" stroke-width="0.5"/><circle cx="18" cy="18" r="15.1" stroke="rgba(212,170,80,0.18)" stroke-width="0.1"/><circle cx="18" cy="18" r="12.6" stroke="rgba(212,170,80,0.27)" stroke-width="0.2"/><circle cx="18" cy="18" r="3.6" stroke="rgba(212,170,80,0.77)" stroke-width="0.3"/><circle cx="18" cy="18" r="1.8" fill="rgba(212,170,80,0.5)" stroke="rgba(212,170,80,0.85)" stroke-width="0.3"/><circle cx="18" cy="18" r="0.9" fill="rgba(212,170,80,0.9)"/><polygon points="21.6,18.6 21.6,17.4 34.6,17.8 34.6,18.2" fill="rgba(212,170,80,0.68)"/><circle cx="34.6" cy="18.0" r="0.6" fill="rgba(212,170,80,0.77)"/><polygon points="20.8,20.4 21.4,19.2 32.4,26.1 32.3,26.4" fill="rgba(212,170,80,0.41)"/><circle cx="32.3" cy="26.3" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="19.2,21.4 20.4,20.8 26.4,32.3 26.1,32.4" fill="rgba(212,170,80,0.41)"/><circle cx="26.3" cy="32.3" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="17.4,21.6 18.6,21.6 18.2,34.6 17.8,34.6" fill="rgba(212,170,80,0.68)"/><circle cx="18.0" cy="34.6" r="0.6" fill="rgba(212,170,80,0.77)"/><polygon points="15.6,20.8 16.8,21.4 9.9,32.4 9.6,32.3" fill="rgba(212,170,80,0.41)"/><circle cx="9.7" cy="32.3" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="14.6,19.2 15.2,20.4 3.7,26.4 3.6,26.1" fill="rgba(212,170,80,0.41)"/><circle cx="3.7" cy="26.3" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="14.4,17.4 14.4,18.6 1.4,18.2 1.4,17.8" fill="rgba(212,170,80,0.68)"/><circle cx="1.4" cy="18.0" r="0.6" fill="rgba(212,170,80,0.77)"/><polygon points="15.2,15.6 14.6,16.8 3.6,9.9 3.7,9.6" fill="rgba(212,170,80,0.41)"/><circle cx="3.7" cy="9.7" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="16.8,14.6 15.6,15.2 9.6,3.7 9.9,3.6" fill="rgba(212,170,80,0.41)"/><circle cx="9.7" cy="3.7" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="18.6,14.4 17.4,14.4 17.8,1.4 18.2,1.4" fill="rgba(212,170,80,0.68)"/><circle cx="18.0" cy="1.4" r="0.6" fill="rgba(212,170,80,0.77)"/><polygon points="20.4,15.2 19.2,14.6 26.1,3.6 26.4,3.7" fill="rgba(212,170,80,0.41)"/><circle cx="26.3" cy="3.7" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="21.4,16.8 20.8,15.6 32.3,9.6 32.4,9.9" fill="rgba(212,170,80,0.41)"/><circle cx="32.3" cy="9.7" r="0.3" fill="rgba(212,170,80,0.45)"/><circle cx="34.4" cy="20.2" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="33.3" cy="24.3" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="31.1" cy="28.1" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="28.1" cy="31.1" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="24.3" cy="33.3" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="20.2" cy="34.4" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="15.8" cy="34.4" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="11.7" cy="33.3" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="7.9" cy="31.1" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="4.9" cy="28.1" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="2.7" cy="24.3" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="1.6" cy="20.2" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="1.6" cy="15.8" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="2.7" cy="11.7" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="4.9" cy="7.9" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="7.9" cy="4.9" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="11.7" cy="2.7" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="15.8" cy="1.6" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="20.2" cy="1.6" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="24.3" cy="2.7" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="28.1" cy="4.9" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="31.1" cy="7.9" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="33.3" cy="11.7" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="34.4" cy="15.8" r="0.3" fill="rgba(212,170,80,0.13)"/></svg></div>
+      <div class="logo-chakra"><svg class="logo-wheel" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wgD" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4aa52" stop-opacity="0.95"/><stop offset="50%" stop-color="#f0da80" stop-opacity="0.75"/><stop offset="100%" stop-color="#aa8830" stop-opacity="0.85"/></linearGradient></defs><circle cx="18" cy="18" r="17.4" stroke="rgba(212,170,80,0.12)" stroke-width="0.1" stroke-dasharray="1 1"/><circle cx="18" cy="18" r="16.6" stroke="url(#wgD)" stroke-width="0.5"/><circle cx="18" cy="18" r="15.1" stroke="rgba(212,170,80,0.2)" stroke-width="0.1"/><circle cx="18" cy="18" r="12.6" stroke="rgba(212,170,80,0.3)" stroke-width="0.2"/><circle cx="18" cy="18" r="3.6" stroke="rgba(212,170,80,0.85)" stroke-width="0.3"/><circle cx="18" cy="18" r="1.8" fill="rgba(212,170,80,0.55)" stroke="rgba(212,170,80,0.95)" stroke-width="0.3"/><circle cx="18" cy="18" r="0.9" fill="rgba(212,170,80,1.0)"/><polygon points="21.6,18.6 21.6,17.4 34.6,17.8 34.6,18.2" fill="rgba(212,170,80,0.75)"/><circle cx="34.6" cy="18.0" r="0.6" fill="rgba(212,170,80,0.85)"/><polygon points="20.8,20.4 21.4,19.2 32.4,26.1 32.3,26.4" fill="rgba(212,170,80,0.45)"/><circle cx="32.3" cy="26.3" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="19.2,21.4 20.4,20.8 26.4,32.3 26.1,32.4" fill="rgba(212,170,80,0.45)"/><circle cx="26.3" cy="32.3" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="17.4,21.6 18.6,21.6 18.2,34.6 17.8,34.6" fill="rgba(212,170,80,0.75)"/><circle cx="18.0" cy="34.6" r="0.6" fill="rgba(212,170,80,0.85)"/><polygon points="15.6,20.8 16.8,21.4 9.9,32.4 9.6,32.3" fill="rgba(212,170,80,0.45)"/><circle cx="9.7" cy="32.3" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="14.6,19.2 15.2,20.4 3.7,26.4 3.6,26.1" fill="rgba(212,170,80,0.45)"/><circle cx="3.7" cy="26.3" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="14.4,17.4 14.4,18.6 1.4,18.2 1.4,17.8" fill="rgba(212,170,80,0.75)"/><circle cx="1.4" cy="18.0" r="0.6" fill="rgba(212,170,80,0.85)"/><polygon points="15.2,15.6 14.6,16.8 3.6,9.9 3.7,9.6" fill="rgba(212,170,80,0.45)"/><circle cx="3.7" cy="9.7" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="16.8,14.6 15.6,15.2 9.6,3.7 9.9,3.6" fill="rgba(212,170,80,0.45)"/><circle cx="9.7" cy="3.7" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="18.6,14.4 17.4,14.4 17.8,1.4 18.2,1.4" fill="rgba(212,170,80,0.75)"/><circle cx="18.0" cy="1.4" r="0.6" fill="rgba(212,170,80,0.85)"/><polygon points="20.4,15.2 19.2,14.6 26.1,3.6 26.4,3.7" fill="rgba(212,170,80,0.45)"/><circle cx="26.3" cy="3.7" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="21.4,16.8 20.8,15.6 32.3,9.6 32.4,9.9" fill="rgba(212,170,80,0.45)"/><circle cx="32.3" cy="9.7" r="0.3" fill="rgba(212,170,80,0.5)"/><circle cx="34.4" cy="20.2" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="33.3" cy="24.3" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="31.1" cy="28.1" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="28.1" cy="31.1" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="24.3" cy="33.3" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="20.2" cy="34.4" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="15.8" cy="34.4" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="11.7" cy="33.3" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="7.9" cy="31.1" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="4.9" cy="28.1" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="2.7" cy="24.3" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="1.6" cy="20.2" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="1.6" cy="15.8" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="2.7" cy="11.7" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="4.9" cy="7.9" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="7.9" cy="4.9" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="11.7" cy="2.7" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="15.8" cy="1.6" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="20.2" cy="1.6" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="24.3" cy="2.7" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="28.1" cy="4.9" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="31.1" cy="7.9" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="33.3" cy="11.7" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="34.4" cy="15.8" r="0.3" fill="rgba(212,170,80,0.14)"/></svg></div>
       <div class="logo-words">
         <span class="lw-main">Raddhih</span>
         <span class="lw-sub">Financial Services</span>
@@ -85,7 +93,7 @@
   <div class="hero-glow hg2"></div>
   <div class="hero-grid-lines"></div>
   <div class="hero-wheel-wrap">
-    <svg class="hw-svg" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wg_uid_3" x1="0" y1="0" x2="500" y2="500" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4aa52" stop-opacity="0.85"/><stop offset="50%" stop-color="#f0da80" stop-opacity="0.68"/><stop offset="100%" stop-color="#aa8830" stop-opacity="0.77"/></linearGradient></defs><circle cx="250" cy="250" r="241.5" stroke="rgba(212,170,80,0.11)" stroke-width="2.0" stroke-dasharray="20 12"/><circle cx="250" cy="250" r="230.0" stroke="url(#wg_uid_3)" stroke-width="7.0"/><circle cx="250" cy="250" r="209.3" stroke="rgba(212,170,80,0.18)" stroke-width="2.0"/><circle cx="250" cy="250" r="175.0" stroke="rgba(212,170,80,0.27)" stroke-width="2.5"/><circle cx="250" cy="250" r="50.0" stroke="rgba(212,170,80,0.77)" stroke-width="4.5"/><circle cx="250" cy="250" r="25.0" fill="rgba(212,170,80,0.5)" stroke="rgba(212,170,80,0.85)" stroke-width="3.5"/><circle cx="250" cy="250" r="12.5" fill="rgba(212,170,80,0.9)"/><polygon points="300.0,259.0 300.0,241.0 480.0,247.5 480.0,252.5" fill="rgba(212,170,80,0.68)"/><circle cx="480.0" cy="250.0" r="8.0" fill="rgba(212,170,80,0.77)"/><polygon points="288.8,282.8 297.8,267.2 450.4,362.8 447.9,367.2" fill="rgba(212,170,80,0.41)"/><circle cx="449.2" cy="365.0" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="267.2,297.8 282.8,288.8 367.2,447.9 362.8,450.4" fill="rgba(212,170,80,0.41)"/><circle cx="365.0" cy="449.2" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="241.0,300.0 259.0,300.0 252.5,480.0 247.5,480.0" fill="rgba(212,170,80,0.68)"/><circle cx="250.0" cy="480.0" r="8.0" fill="rgba(212,170,80,0.77)"/><polygon points="217.2,288.8 232.8,297.8 137.2,450.4 132.8,447.9" fill="rgba(212,170,80,0.41)"/><circle cx="135.0" cy="449.2" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="202.2,267.2 211.2,282.8 52.1,367.2 49.6,362.8" fill="rgba(212,170,80,0.41)"/><circle cx="50.8" cy="365.0" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="200.0,241.0 200.0,259.0 20.0,252.5 20.0,247.5" fill="rgba(212,170,80,0.68)"/><circle cx="20.0" cy="250.0" r="8.0" fill="rgba(212,170,80,0.77)"/><polygon points="211.2,217.2 202.2,232.8 49.6,137.2 52.1,132.8" fill="rgba(212,170,80,0.41)"/><circle cx="50.8" cy="135.0" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="232.8,202.2 217.2,211.2 132.8,52.1 137.2,49.6" fill="rgba(212,170,80,0.41)"/><circle cx="135.0" cy="50.8" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="259.0,200.0 241.0,200.0 247.5,20.0 252.5,20.0" fill="rgba(212,170,80,0.68)"/><circle cx="250.0" cy="20.0" r="8.0" fill="rgba(212,170,80,0.77)"/><polygon points="282.8,211.2 267.2,202.2 362.8,49.6 367.2,52.1" fill="rgba(212,170,80,0.41)"/><circle cx="365.0" cy="50.8" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="297.8,232.8 288.8,217.2 447.9,132.8 450.4,137.2" fill="rgba(212,170,80,0.41)"/><circle cx="449.2" cy="135.0" r="4.5" fill="rgba(212,170,80,0.45)"/><circle cx="478.0" cy="280.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="462.5" cy="338.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="432.5" cy="390.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="390.0" cy="432.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="338.0" cy="462.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="280.0" cy="478.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="220.0" cy="478.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="162.0" cy="462.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="110.0" cy="432.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="67.5" cy="390.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="37.5" cy="338.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="22.0" cy="280.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="22.0" cy="220.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="37.5" cy="162.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="67.5" cy="110.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="110.0" cy="67.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="162.0" cy="37.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="220.0" cy="22.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="280.0" cy="22.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="338.0" cy="37.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="390.0" cy="67.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="432.5" cy="110.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="462.5" cy="162.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="478.0" cy="220.0" r="3.5" fill="rgba(212,170,80,0.13)"/></svg>
+    <svg class="hw-svg" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wgB" x1="0" y1="0" x2="500" y2="500" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4aa52" stop-opacity="0.85"/><stop offset="50%" stop-color="#f0da80" stop-opacity="0.68"/><stop offset="100%" stop-color="#aa8830" stop-opacity="0.77"/></linearGradient></defs><circle cx="250" cy="250" r="241.5" stroke="rgba(212,170,80,0.11)" stroke-width="2.0" stroke-dasharray="20 12"/><circle cx="250" cy="250" r="230.0" stroke="url(#wgB)" stroke-width="7.0"/><circle cx="250" cy="250" r="209.3" stroke="rgba(212,170,80,0.18)" stroke-width="2.0"/><circle cx="250" cy="250" r="175.0" stroke="rgba(212,170,80,0.27)" stroke-width="2.5"/><circle cx="250" cy="250" r="50.0" stroke="rgba(212,170,80,0.77)" stroke-width="4.5"/><circle cx="250" cy="250" r="25.0" fill="rgba(212,170,80,0.5)" stroke="rgba(212,170,80,0.85)" stroke-width="3.5"/><circle cx="250" cy="250" r="12.5" fill="rgba(212,170,80,0.9)"/><polygon points="300.0,259.0 300.0,241.0 480.0,247.5 480.0,252.5" fill="rgba(212,170,80,0.68)"/><circle cx="480.0" cy="250.0" r="8.0" fill="rgba(212,170,80,0.77)"/><polygon points="288.8,282.8 297.8,267.2 450.4,362.8 447.9,367.2" fill="rgba(212,170,80,0.41)"/><circle cx="449.2" cy="365.0" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="267.2,297.8 282.8,288.8 367.2,447.9 362.8,450.4" fill="rgba(212,170,80,0.41)"/><circle cx="365.0" cy="449.2" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="241.0,300.0 259.0,300.0 252.5,480.0 247.5,480.0" fill="rgba(212,170,80,0.68)"/><circle cx="250.0" cy="480.0" r="8.0" fill="rgba(212,170,80,0.77)"/><polygon points="217.2,288.8 232.8,297.8 137.2,450.4 132.8,447.9" fill="rgba(212,170,80,0.41)"/><circle cx="135.0" cy="449.2" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="202.2,267.2 211.2,282.8 52.1,367.2 49.6,362.8" fill="rgba(212,170,80,0.41)"/><circle cx="50.8" cy="365.0" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="200.0,241.0 200.0,259.0 20.0,252.5 20.0,247.5" fill="rgba(212,170,80,0.68)"/><circle cx="20.0" cy="250.0" r="8.0" fill="rgba(212,170,80,0.77)"/><polygon points="211.2,217.2 202.2,232.8 49.6,137.2 52.1,132.8" fill="rgba(212,170,80,0.41)"/><circle cx="50.8" cy="135.0" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="232.8,202.2 217.2,211.2 132.8,52.1 137.2,49.6" fill="rgba(212,170,80,0.41)"/><circle cx="135.0" cy="50.8" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="259.0,200.0 241.0,200.0 247.5,20.0 252.5,20.0" fill="rgba(212,170,80,0.68)"/><circle cx="250.0" cy="20.0" r="8.0" fill="rgba(212,170,80,0.77)"/><polygon points="282.8,211.2 267.2,202.2 362.8,49.6 367.2,52.1" fill="rgba(212,170,80,0.41)"/><circle cx="365.0" cy="50.8" r="4.5" fill="rgba(212,170,80,0.45)"/><polygon points="297.8,232.8 288.8,217.2 447.9,132.8 450.4,137.2" fill="rgba(212,170,80,0.41)"/><circle cx="449.2" cy="135.0" r="4.5" fill="rgba(212,170,80,0.45)"/><circle cx="478.0" cy="280.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="462.5" cy="338.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="432.5" cy="390.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="390.0" cy="432.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="338.0" cy="462.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="280.0" cy="478.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="220.0" cy="478.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="162.0" cy="462.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="110.0" cy="432.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="67.5" cy="390.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="37.5" cy="338.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="22.0" cy="280.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="22.0" cy="220.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="37.5" cy="162.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="67.5" cy="110.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="110.0" cy="67.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="162.0" cy="37.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="220.0" cy="22.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="280.0" cy="22.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="338.0" cy="37.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="390.0" cy="67.5" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="432.5" cy="110.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="462.5" cy="162.0" r="3.5" fill="rgba(212,170,80,0.13)"/><circle cx="478.0" cy="220.0" r="3.5" fill="rgba(212,170,80,0.13)"/></svg>
   </div>
   <div class="hero-body container">
     <div class="hero-eyebrow reveal">
@@ -326,7 +334,7 @@
       </div>
       <div class="bp-success" id="bpSuccess">
         <div class="bps-wheel">
-          <svg class="bps-cwheel" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wg_uid_4" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4aa52" stop-opacity="0.81"/><stop offset="50%" stop-color="#f0da80" stop-opacity="0.64"/><stop offset="100%" stop-color="#aa8830" stop-opacity="0.72"/></linearGradient></defs><circle cx="60" cy="60" r="58.0" stroke="rgba(212,170,80,0.1)" stroke-width="0.5" stroke-dasharray="5 3"/><circle cx="60" cy="60" r="55.2" stroke="url(#wg_uid_4)" stroke-width="1.7"/><circle cx="60" cy="60" r="50.2" stroke="rgba(212,170,80,0.17)" stroke-width="0.5"/><circle cx="60" cy="60" r="42.0" stroke="rgba(212,170,80,0.26)" stroke-width="0.6"/><circle cx="60" cy="60" r="12.0" stroke="rgba(212,170,80,0.72)" stroke-width="1.1"/><circle cx="60" cy="60" r="6.0" fill="rgba(212,170,80,0.47)" stroke="rgba(212,170,80,0.81)" stroke-width="0.8"/><circle cx="60" cy="60" r="3.0" fill="rgba(212,170,80,0.85)"/><polygon points="72.0,62.2 72.0,57.8 115.2,59.4 115.2,60.6" fill="rgba(212,170,80,0.64)"/><circle cx="115.2" cy="60.0" r="1.9" fill="rgba(212,170,80,0.72)"/><polygon points="69.3,67.9 71.5,64.1 108.1,87.1 107.5,88.1" fill="rgba(212,170,80,0.38)"/><circle cx="107.8" cy="87.6" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="64.1,71.5 67.9,69.3 88.1,107.5 87.1,108.1" fill="rgba(212,170,80,0.38)"/><circle cx="87.6" cy="107.8" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="57.8,72.0 62.2,72.0 60.6,115.2 59.4,115.2" fill="rgba(212,170,80,0.64)"/><circle cx="60.0" cy="115.2" r="1.9" fill="rgba(212,170,80,0.72)"/><polygon points="52.1,69.3 55.9,71.5 32.9,108.1 31.9,107.5" fill="rgba(212,170,80,0.38)"/><circle cx="32.4" cy="107.8" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="48.5,64.1 50.7,67.9 12.5,88.1 11.9,87.1" fill="rgba(212,170,80,0.38)"/><circle cx="12.2" cy="87.6" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="48.0,57.8 48.0,62.2 4.8,60.6 4.8,59.4" fill="rgba(212,170,80,0.64)"/><circle cx="4.8" cy="60.0" r="1.9" fill="rgba(212,170,80,0.72)"/><polygon points="50.7,52.1 48.5,55.9 11.9,32.9 12.5,31.9" fill="rgba(212,170,80,0.38)"/><circle cx="12.2" cy="32.4" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="55.9,48.5 52.1,50.7 31.9,12.5 32.9,11.9" fill="rgba(212,170,80,0.38)"/><circle cx="32.4" cy="12.2" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="62.2,48.0 57.8,48.0 59.4,4.8 60.6,4.8" fill="rgba(212,170,80,0.64)"/><circle cx="60.0" cy="4.8" r="1.9" fill="rgba(212,170,80,0.72)"/><polygon points="67.9,50.7 64.1,48.5 87.1,11.9 88.1,12.5" fill="rgba(212,170,80,0.38)"/><circle cx="87.6" cy="12.2" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="71.5,55.9 69.3,52.1 107.5,31.9 108.1,32.9" fill="rgba(212,170,80,0.38)"/><circle cx="107.8" cy="32.4" r="1.1" fill="rgba(212,170,80,0.42)"/><circle cx="114.7" cy="67.2" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="111.0" cy="81.1" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="103.8" cy="93.6" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="93.6" cy="103.8" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="81.1" cy="111.0" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="67.2" cy="114.7" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="52.8" cy="114.7" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="38.9" cy="111.0" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="26.4" cy="103.8" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="16.2" cy="93.6" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="9.0" cy="81.1" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="5.3" cy="67.2" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="5.3" cy="52.8" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="9.0" cy="38.9" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="16.2" cy="26.4" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="26.4" cy="16.2" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="38.9" cy="9.0" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="52.8" cy="5.3" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="67.2" cy="5.3" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="81.1" cy="9.0" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="93.6" cy="16.2" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="103.8" cy="26.4" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="111.0" cy="38.9" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="114.7" cy="52.8" r="0.8" fill="rgba(212,170,80,0.12)"/></svg>
+          <svg class="bps-cwheel" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wgC" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4aa52" stop-opacity="0.81"/><stop offset="50%" stop-color="#f0da80" stop-opacity="0.64"/><stop offset="100%" stop-color="#aa8830" stop-opacity="0.72"/></linearGradient></defs><circle cx="60" cy="60" r="58.0" stroke="rgba(212,170,80,0.1)" stroke-width="0.5" stroke-dasharray="5 3"/><circle cx="60" cy="60" r="55.2" stroke="url(#wgC)" stroke-width="1.7"/><circle cx="60" cy="60" r="50.2" stroke="rgba(212,170,80,0.17)" stroke-width="0.5"/><circle cx="60" cy="60" r="42.0" stroke="rgba(212,170,80,0.26)" stroke-width="0.6"/><circle cx="60" cy="60" r="12.0" stroke="rgba(212,170,80,0.72)" stroke-width="1.1"/><circle cx="60" cy="60" r="6.0" fill="rgba(212,170,80,0.47)" stroke="rgba(212,170,80,0.81)" stroke-width="0.8"/><circle cx="60" cy="60" r="3.0" fill="rgba(212,170,80,0.85)"/><polygon points="72.0,62.2 72.0,57.8 115.2,59.4 115.2,60.6" fill="rgba(212,170,80,0.64)"/><circle cx="115.2" cy="60.0" r="1.9" fill="rgba(212,170,80,0.72)"/><polygon points="69.3,67.9 71.5,64.1 108.1,87.1 107.5,88.1" fill="rgba(212,170,80,0.38)"/><circle cx="107.8" cy="87.6" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="64.1,71.5 67.9,69.3 88.1,107.5 87.1,108.1" fill="rgba(212,170,80,0.38)"/><circle cx="87.6" cy="107.8" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="57.8,72.0 62.2,72.0 60.6,115.2 59.4,115.2" fill="rgba(212,170,80,0.64)"/><circle cx="60.0" cy="115.2" r="1.9" fill="rgba(212,170,80,0.72)"/><polygon points="52.1,69.3 55.9,71.5 32.9,108.1 31.9,107.5" fill="rgba(212,170,80,0.38)"/><circle cx="32.4" cy="107.8" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="48.5,64.1 50.7,67.9 12.5,88.1 11.9,87.1" fill="rgba(212,170,80,0.38)"/><circle cx="12.2" cy="87.6" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="48.0,57.8 48.0,62.2 4.8,60.6 4.8,59.4" fill="rgba(212,170,80,0.64)"/><circle cx="4.8" cy="60.0" r="1.9" fill="rgba(212,170,80,0.72)"/><polygon points="50.7,52.1 48.5,55.9 11.9,32.9 12.5,31.9" fill="rgba(212,170,80,0.38)"/><circle cx="12.2" cy="32.4" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="55.9,48.5 52.1,50.7 31.9,12.5 32.9,11.9" fill="rgba(212,170,80,0.38)"/><circle cx="32.4" cy="12.2" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="62.2,48.0 57.8,48.0 59.4,4.8 60.6,4.8" fill="rgba(212,170,80,0.64)"/><circle cx="60.0" cy="4.8" r="1.9" fill="rgba(212,170,80,0.72)"/><polygon points="67.9,50.7 64.1,48.5 87.1,11.9 88.1,12.5" fill="rgba(212,170,80,0.38)"/><circle cx="87.6" cy="12.2" r="1.1" fill="rgba(212,170,80,0.42)"/><polygon points="71.5,55.9 69.3,52.1 107.5,31.9 108.1,32.9" fill="rgba(212,170,80,0.38)"/><circle cx="107.8" cy="32.4" r="1.1" fill="rgba(212,170,80,0.42)"/><circle cx="114.7" cy="67.2" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="111.0" cy="81.1" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="103.8" cy="93.6" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="93.6" cy="103.8" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="81.1" cy="111.0" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="67.2" cy="114.7" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="52.8" cy="114.7" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="38.9" cy="111.0" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="26.4" cy="103.8" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="16.2" cy="93.6" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="9.0" cy="81.1" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="5.3" cy="67.2" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="5.3" cy="52.8" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="9.0" cy="38.9" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="16.2" cy="26.4" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="26.4" cy="16.2" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="38.9" cy="9.0" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="52.8" cy="5.3" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="67.2" cy="5.3" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="81.1" cy="9.0" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="93.6" cy="16.2" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="103.8" cy="26.4" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="111.0" cy="38.9" r="0.8" fill="rgba(212,170,80,0.12)"/><circle cx="114.7" cy="52.8" r="0.8" fill="rgba(212,170,80,0.12)"/></svg>
         </div>
         <h3>Your Strategy Report is Being Prepared</h3>
         <p>Your personalised <strong>Kurukshetra Strategy Report</strong> will be delivered to your inbox within <strong>24&ndash;48 hours</strong>. Our advisor will then contact you personally to walk you through every recommendation.</p>
@@ -449,7 +457,7 @@
     <div class="footer-grid">
       <div class="fb">
         <div class="fl">
-          <div class="logo-chakra sm"><svg class="logo-wheel" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gw36log" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4aa52" stop-opacity="0.95"/><stop offset="50%" stop-color="#f0da80" stop-opacity="0.75"/><stop offset="100%" stop-color="#aa8830" stop-opacity="0.85"/></linearGradient></defs><circle cx="18" cy="18" r="17.4" stroke="rgba(212,170,80,0.12)" stroke-width="0.1" stroke-dasharray="1 1"/><circle cx="18" cy="18" r="16.6" stroke="url(#gw36log)" stroke-width="0.5"/><circle cx="18" cy="18" r="15.1" stroke="rgba(212,170,80,0.2)" stroke-width="0.1"/><circle cx="18" cy="18" r="12.6" stroke="rgba(212,170,80,0.3)" stroke-width="0.2"/><circle cx="18" cy="18" r="3.6" stroke="rgba(212,170,80,0.85)" stroke-width="0.3"/><circle cx="18" cy="18" r="1.8" fill="rgba(212,170,80,0.55)" stroke="rgba(212,170,80,0.95)" stroke-width="0.3"/><circle cx="18" cy="18" r="0.9" fill="rgba(212,170,80,1.0)"/><polygon points="21.6,18.6 21.6,17.4 34.6,17.8 34.6,18.2" fill="rgba(212,170,80,0.75)"/><circle cx="34.6" cy="18.0" r="0.6" fill="rgba(212,170,80,0.85)"/><polygon points="20.8,20.4 21.4,19.2 32.4,26.1 32.3,26.4" fill="rgba(212,170,80,0.45)"/><circle cx="32.3" cy="26.3" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="19.2,21.4 20.4,20.8 26.4,32.3 26.1,32.4" fill="rgba(212,170,80,0.45)"/><circle cx="26.3" cy="32.3" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="17.4,21.6 18.6,21.6 18.2,34.6 17.8,34.6" fill="rgba(212,170,80,0.75)"/><circle cx="18.0" cy="34.6" r="0.6" fill="rgba(212,170,80,0.85)"/><polygon points="15.6,20.8 16.8,21.4 9.9,32.4 9.6,32.3" fill="rgba(212,170,80,0.45)"/><circle cx="9.7" cy="32.3" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="14.6,19.2 15.2,20.4 3.7,26.4 3.6,26.1" fill="rgba(212,170,80,0.45)"/><circle cx="3.7" cy="26.3" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="14.4,17.4 14.4,18.6 1.4,18.2 1.4,17.8" fill="rgba(212,170,80,0.75)"/><circle cx="1.4" cy="18.0" r="0.6" fill="rgba(212,170,80,0.85)"/><polygon points="15.2,15.6 14.6,16.8 3.6,9.9 3.7,9.6" fill="rgba(212,170,80,0.45)"/><circle cx="3.7" cy="9.7" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="16.8,14.6 15.6,15.2 9.6,3.7 9.9,3.6" fill="rgba(212,170,80,0.45)"/><circle cx="9.7" cy="3.7" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="18.6,14.4 17.4,14.4 17.8,1.4 18.2,1.4" fill="rgba(212,170,80,0.75)"/><circle cx="18.0" cy="1.4" r="0.6" fill="rgba(212,170,80,0.85)"/><polygon points="20.4,15.2 19.2,14.6 26.1,3.6 26.4,3.7" fill="rgba(212,170,80,0.45)"/><circle cx="26.3" cy="3.7" r="0.3" fill="rgba(212,170,80,0.5)"/><polygon points="21.4,16.8 20.8,15.6 32.3,9.6 32.4,9.9" fill="rgba(212,170,80,0.45)"/><circle cx="32.3" cy="9.7" r="0.3" fill="rgba(212,170,80,0.5)"/><circle cx="34.4" cy="20.2" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="33.3" cy="24.3" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="31.1" cy="28.1" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="28.1" cy="31.1" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="24.3" cy="33.3" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="20.2" cy="34.4" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="15.8" cy="34.4" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="11.7" cy="33.3" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="7.9" cy="31.1" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="4.9" cy="28.1" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="2.7" cy="24.3" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="1.6" cy="20.2" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="1.6" cy="15.8" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="2.7" cy="11.7" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="4.9" cy="7.9" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="7.9" cy="4.9" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="11.7" cy="2.7" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="15.8" cy="1.6" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="20.2" cy="1.6" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="24.3" cy="2.7" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="28.1" cy="4.9" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="31.1" cy="7.9" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="33.3" cy="11.7" r="0.3" fill="rgba(212,170,80,0.14)"/><circle cx="34.4" cy="15.8" r="0.3" fill="rgba(212,170,80,0.14)"/></svg></div>
+          <div class="logo-chakra sm"><svg class="logo-wheel" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wgE" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#d4aa52" stop-opacity="0.85"/><stop offset="50%" stop-color="#f0da80" stop-opacity="0.68"/><stop offset="100%" stop-color="#aa8830" stop-opacity="0.77"/></linearGradient></defs><circle cx="18" cy="18" r="17.4" stroke="rgba(212,170,80,0.11)" stroke-width="0.1" stroke-dasharray="1 1"/><circle cx="18" cy="18" r="16.6" stroke="url(#wgE)" stroke-width="0.5"/><circle cx="18" cy="18" r="15.1" stroke="rgba(212,170,80,0.18)" stroke-width="0.1"/><circle cx="18" cy="18" r="12.6" stroke="rgba(212,170,80,0.27)" stroke-width="0.2"/><circle cx="18" cy="18" r="3.6" stroke="rgba(212,170,80,0.77)" stroke-width="0.3"/><circle cx="18" cy="18" r="1.8" fill="rgba(212,170,80,0.5)" stroke="rgba(212,170,80,0.85)" stroke-width="0.3"/><circle cx="18" cy="18" r="0.9" fill="rgba(212,170,80,0.9)"/><polygon points="21.6,18.6 21.6,17.4 34.6,17.8 34.6,18.2" fill="rgba(212,170,80,0.68)"/><circle cx="34.6" cy="18.0" r="0.6" fill="rgba(212,170,80,0.77)"/><polygon points="20.8,20.4 21.4,19.2 32.4,26.1 32.3,26.4" fill="rgba(212,170,80,0.41)"/><circle cx="32.3" cy="26.3" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="19.2,21.4 20.4,20.8 26.4,32.3 26.1,32.4" fill="rgba(212,170,80,0.41)"/><circle cx="26.3" cy="32.3" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="17.4,21.6 18.6,21.6 18.2,34.6 17.8,34.6" fill="rgba(212,170,80,0.68)"/><circle cx="18.0" cy="34.6" r="0.6" fill="rgba(212,170,80,0.77)"/><polygon points="15.6,20.8 16.8,21.4 9.9,32.4 9.6,32.3" fill="rgba(212,170,80,0.41)"/><circle cx="9.7" cy="32.3" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="14.6,19.2 15.2,20.4 3.7,26.4 3.6,26.1" fill="rgba(212,170,80,0.41)"/><circle cx="3.7" cy="26.3" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="14.4,17.4 14.4,18.6 1.4,18.2 1.4,17.8" fill="rgba(212,170,80,0.68)"/><circle cx="1.4" cy="18.0" r="0.6" fill="rgba(212,170,80,0.77)"/><polygon points="15.2,15.6 14.6,16.8 3.6,9.9 3.7,9.6" fill="rgba(212,170,80,0.41)"/><circle cx="3.7" cy="9.7" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="16.8,14.6 15.6,15.2 9.6,3.7 9.9,3.6" fill="rgba(212,170,80,0.41)"/><circle cx="9.7" cy="3.7" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="18.6,14.4 17.4,14.4 17.8,1.4 18.2,1.4" fill="rgba(212,170,80,0.68)"/><circle cx="18.0" cy="1.4" r="0.6" fill="rgba(212,170,80,0.77)"/><polygon points="20.4,15.2 19.2,14.6 26.1,3.6 26.4,3.7" fill="rgba(212,170,80,0.41)"/><circle cx="26.3" cy="3.7" r="0.3" fill="rgba(212,170,80,0.45)"/><polygon points="21.4,16.8 20.8,15.6 32.3,9.6 32.4,9.9" fill="rgba(212,170,80,0.41)"/><circle cx="32.3" cy="9.7" r="0.3" fill="rgba(212,170,80,0.45)"/><circle cx="34.4" cy="20.2" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="33.3" cy="24.3" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="31.1" cy="28.1" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="28.1" cy="31.1" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="24.3" cy="33.3" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="20.2" cy="34.4" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="15.8" cy="34.4" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="11.7" cy="33.3" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="7.9" cy="31.1" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="4.9" cy="28.1" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="2.7" cy="24.3" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="1.6" cy="20.2" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="1.6" cy="15.8" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="2.7" cy="11.7" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="4.9" cy="7.9" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="7.9" cy="4.9" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="11.7" cy="2.7" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="15.8" cy="1.6" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="20.2" cy="1.6" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="24.3" cy="2.7" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="28.1" cy="4.9" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="31.1" cy="7.9" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="33.3" cy="11.7" r="0.3" fill="rgba(212,170,80,0.13)"/><circle cx="34.4" cy="15.8" r="0.3" fill="rgba(212,170,80,0.13)"/></svg></div>
           <div class="logo-words"><span class="lw-main">Raddhih</span><span class="lw-sub">Financial Services</span></div>
         </div>
         <div class="trp-badge">
@@ -474,6 +482,7 @@
   </div>
 </footer>
 
+
 <!-- CREDIT BAR -->
 <div id="creditBar">
   <span class="cr-trp">&#10022; TRP Certified</span>
@@ -484,8 +493,9 @@
   <span class="cr-sep">|</span>
   <span>Maintained by <span class="cr-name">Pragyo Roy</span></span>
 </div>
+
 <!-- WhatsApp Float -->
-<a href="https://wa.me/919836667866?text=Jai%20Shree%20Krishna!%20I%20would%20like%20a%20free%20Kurukshetra%20Strategy%20consultation%20from%20Raddhih%20Financial%20Services." class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a href="https://wa.me/919836667866?text=Jai%20Shree%20Krishna!%20I%20would%20like%20a%20free%20Kurukshetra%20Strategy%20consultation%20from%20Raddhih." class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 0C7.16 0 0 7.16 0 16c0 2.83.74 5.49 2.04 7.8L0 32l8.44-2.01A15.92 15.92 0 0016 32c8.84 0 16-7.16 16-16S24.84 0 16 0zm0 29.2a13.15 13.15 0 01-6.71-1.83l-.48-.29-4.98 1.19 1.21-4.84-.31-.5A13.16 13.16 0 1116 29.2zm7.23-9.86c-.4-.2-2.34-1.15-2.7-1.28-.36-.13-.63-.2-.89.2-.26.4-1.02 1.28-1.25 1.54-.23.26-.46.29-.86.1-.4-.2-1.68-.62-3.2-1.98-1.18-1.05-1.98-2.35-2.21-2.75-.23-.4-.02-.61.17-.81.18-.18.4-.46.6-.69.2-.23.26-.4.4-.66.13-.26.07-.49-.03-.69-.1-.2-.89-2.15-1.22-2.94-.32-.77-.65-.67-.89-.68h-.76c-.26 0-.69.1-1.05.49-.36.39-1.38 1.35-1.38 3.29s1.41 3.81 1.61 4.08c.2.26 2.78 4.24 6.73 5.95.94.4 1.67.65 2.24.83.94.3 1.8.26 2.47.16.75-.11 2.34-.96 2.67-1.88.33-.93.33-1.72.23-1.88-.1-.17-.36-.27-.76-.47z"/></svg>
   <span class="wa-tip">Chat on WhatsApp</span>
 </a>
@@ -493,327 +503,312 @@
 <script>
 'use strict';
 
-// ── EmailJS INIT ─────────────────────────────────────
-// To activate email delivery:
-// 1. Go to https://emailjs.com and create a free account
-// 2. Create a service (Gmail with parthatrpcal5@gmail.com)
-// 3. Create two email templates (IDs: battleplan_template and contact_template)
-// 4. Replace YOUR_PUBLIC_KEY below with your EmailJS Public Key
-var EMAILJS_KEY = 'YOUR_PUBLIC_KEY';
-var EMAILJS_SERVICE = 'gmail_raddhih';
-var EMAILJS_BP_TEMPLATE = 'battleplan_template';
-var EMAILJS_CF_TEMPLATE = 'contact_template';
-var TO_EMAIL = 'parthatrpcal5@gmail.com';
+/* ── EmailJS ── */
+var EMAILJS_KEY      = 'YOUR_PUBLIC_KEY';
+var EMAILJS_SERVICE  = 'gmail_raddhih';
+var EMAILJS_BP_TPL   = 'battleplan_template';
+var TO_EMAIL         = 'parthatrpcal5@gmail.com';
 try { emailjs.init(EMAILJS_KEY); } catch(e) {}
 
-// ── MUSIC CONTROL — Autoplays with sound on page load ──
-var musicPlaying = true;  // music plays from the start
-var ytFrame = document.getElementById('ytFrame');
-
-// Wave animation runs immediately (music is playing)
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    var wave = document.getElementById('mbWave');
-    var icon = document.getElementById('musicPlayIcon');
-    if (wave) wave.classList.add('playing');
-    if (icon) icon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>';
-  }, 500);
-});
-
-function toggleMusic() {
-  var btn  = document.getElementById('musicBtnTxt');
-  var wave = document.getElementById('mbWave');
-  var icon = document.getElementById('musicPlayIcon');
-  if (musicPlaying) {
-    // Pause
-    musicPlaying = false;
-    ytFrame.src = 'https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=0&loop=1&playlist=Uezrcg6KJ44&controls=0&mute=0';
-    if (btn)  btn.textContent = 'Play';
-    if (wave) wave.classList.remove('playing');
-    if (icon) icon.innerHTML  = '<path d="M8 5v14l11-7z"/>';
-  } else {
-    // Resume
-    musicPlaying = true;
-    ytFrame.src = 'https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&loop=1&playlist=Uezrcg6KJ44&controls=0&mute=0';
-    if (btn)  btn.textContent = 'Pause';
-    if (wave) wave.classList.add('playing');
-    if (icon) icon.innerHTML  = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>';
-  }
-}
-
-// ── LOADER ─────────────────────────────────────────
-var loader = document.getElementById('loader');
+/* ── LOADER (max 2 s, never stuck) ── */
+var loader  = document.getElementById('loader');
+var _hidden = false;
 document.body.style.overflow = 'hidden';
-
-// Load YouTube lazily so it never blocks page load
-function loadYoutube() {
-  var yt = document.getElementById('ytFrame');
-  if (yt && yt.dataset.src) {
-    yt.src = yt.dataset.src;
-    // Update music JS to use the now-loaded src
-  }
-}
-setTimeout(loadYoutube, 1500);
-
 function hideLoader() {
-  if (!loader || loader._hidden) return;
-  loader._hidden = true;
-  loader.style.transition = 'opacity 0.6s ease';
-  loader.style.opacity = '0';
-  setTimeout(function() {
-    loader.style.visibility = 'hidden';
-  }, 600);
+  if (_hidden) return;
+  _hidden = true;
+  loader.style.transition = 'opacity .6s ease';
+  loader.style.opacity    = '0';
+  setTimeout(function() { loader.style.display = 'none'; }, 650);
   document.body.style.overflow = '';
   triggerHeroReveal();
 }
-
-// Hide after 2s max — don't wait for iframe/youtube to load
 setTimeout(hideLoader, 2000);
-// Also hide on window load in case page loads faster
-window.addEventListener('load', function() { setTimeout(hideLoader, 400); });
+window.addEventListener('load', function() { setTimeout(hideLoader, 300); });
 
-// ── CUSTOM CURSOR (FIXED) ─────────────────────────
-var curDot = document.getElementById('cur-dot');
-var curRing = document.getElementById('cur-ring');
-var curX = window.innerWidth/2, curY = window.innerHeight/2;
-var ringX = curX, ringY = curY;
-document.addEventListener('mousemove', function(e) { curX = e.clientX; curY = e.clientY; });
-(function animCursor() {
-  ringX += (curX - ringX) * 0.14;
-  ringY += (curY - ringY) * 0.14;
-  if (curDot)  { curDot.style.left  = curX + 'px'; curDot.style.top  = curY + 'px'; }
-  if (curRing) { curRing.style.left = ringX + 'px'; curRing.style.top = ringY + 'px'; }
-  requestAnimationFrame(animCursor);
+/* ── MUSIC (autoplay unmuted, load iframe lazily) ── */
+var musicOn = true;
+setTimeout(function() {
+  var f = document.getElementById('ytFrame');
+  if (f) f.src = f.getAttribute('data-yt');
+}, 1200);
+
+function toggleMusic() {
+  var f    = document.getElementById('ytFrame');
+  var txt  = document.getElementById('musicTxt');
+  var wave = document.getElementById('mbWave');
+  var ico  = document.getElementById('musicIcon');
+  musicOn  = !musicOn;
+  if (musicOn) {
+    f.src = 'https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&loop=1&playlist=Uezrcg6KJ44&controls=0&mute=0';
+    txt.textContent = 'Pause';
+    wave.classList.add('playing');
+    ico.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>';
+  } else {
+    f.src = 'about:blank';
+    txt.textContent = 'Play';
+    wave.classList.remove('playing');
+    ico.innerHTML = '<path d="M8 5v14l11-7z"/>';
+  }
+}
+
+/* ── CUSTOM CURSOR ── */
+var cDot  = document.getElementById('cur-dot');
+var cRing = document.getElementById('cur-ring');
+var cX=innerWidth/2, cY=innerHeight/2, rX=cX, rY=cY;
+document.addEventListener('mousemove', function(e) { cX=e.clientX; cY=e.clientY; });
+(function moveCursor() {
+  rX += (cX-rX)*.13; rY += (cY-rY)*.13;
+  if (cDot)  { cDot.style.left  = cX+'px'; cDot.style.top  = cY+'px'; }
+  if (cRing) { cRing.style.left = rX+'px'; cRing.style.top = rY+'px'; }
+  requestAnimationFrame(moveCursor);
 })();
 document.querySelectorAll('a,button,.why-card,.arm-card,.testi-card,.bpo').forEach(function(el) {
-  el.addEventListener('mouseenter', function() { if (curRing) curRing.classList.add('big'); });
-  el.addEventListener('mouseleave', function() { if (curRing) curRing.classList.remove('big'); });
+  el.addEventListener('mouseenter', function() { if(cRing) cRing.classList.add('big'); });
+  el.addEventListener('mouseleave', function() { if(cRing) cRing.classList.remove('big'); });
 });
 
-// ── NAVBAR ─────────────────────────────────────────
+/* ── NAVBAR ── */
 var navbar = document.getElementById('navbar');
-window.addEventListener('scroll', function() { navbar.classList.toggle('scrolled', window.scrollY > 50); }, {passive:true});
-var hamburger = document.getElementById('hamburger');
-var mobMenu = document.getElementById('mobMenu');
-hamburger.addEventListener('click', function() { var o=mobMenu.classList.toggle('open'); hamburger.classList.toggle('active',o); });
-document.querySelectorAll('.mob-menu a').forEach(function(a) { a.addEventListener('click', function() { mobMenu.classList.remove('open'); hamburger.classList.remove('active'); }); });
+window.addEventListener('scroll', function() {
+  navbar.classList.toggle('scrolled', scrollY > 50);
+}, {passive:true});
+var hbg = document.getElementById('hamburger');
+var mob = document.getElementById('mobMenu');
+hbg.addEventListener('click', function() {
+  var o = mob.classList.toggle('open');
+  hbg.classList.toggle('active', o);
+});
+document.querySelectorAll('.mob-menu a').forEach(function(a) {
+  a.addEventListener('click', function() { mob.classList.remove('open'); hbg.classList.remove('active'); });
+});
 
-// ── SMOOTH SCROLL ──────────────────────────────────
+/* ── SMOOTH SCROLL ── */
 document.querySelectorAll('a[href^="#"]').forEach(function(a) {
   a.addEventListener('click', function(e) {
     var t = document.querySelector(a.getAttribute('href'));
-    if (!t) return; e.preventDefault();
-    window.scrollTo({ top: t.getBoundingClientRect().top + scrollY - 72, behavior: 'smooth' });
+    if (!t) return;
+    e.preventDefault();
+    scrollTo({ top: t.getBoundingClientRect().top + scrollY - 72, behavior: 'smooth' });
   });
 });
 
-// ── HERO CANVAS PARTICLES ──────────────────────────
-var canvas = document.getElementById('heroCanvas');
-var ctx = canvas ? canvas.getContext('2d') : null;
-var W, H, particles = [];
-function resizeCanvas() { if (!canvas) return; W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas, {passive:true});
-for (var i=0;i<70;i++) particles.push({x:Math.random()*(W||1200),y:Math.random()*(H||800),vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.4+.3,o:Math.random()*.45+.1});
-(function drawP() {
+/* ── PARTICLES CANVAS ── */
+var cvs = document.getElementById('heroCanvas');
+var ctx = cvs ? cvs.getContext('2d') : null;
+var W, H, pts = [];
+function rsz() { if(!cvs) return; W=cvs.width=innerWidth; H=cvs.height=innerHeight; }
+rsz(); window.addEventListener('resize', rsz, {passive:true});
+for (var i=0;i<70;i++) pts.push({x:Math.random()*(W||1200),y:Math.random()*(H||800),vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.4+.3,o:Math.random()*.45+.1});
+(function draw() {
   if (!ctx) return;
   ctx.clearRect(0,0,W,H);
-  particles.forEach(function(p) {
+  pts.forEach(function(p) {
     p.x+=p.vx; p.y+=p.vy;
     if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
     ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle='rgba(201,168,76,'+p.o+')'; ctx.fill();
+    ctx.fillStyle='rgba(212,170,80,'+p.o+')'; ctx.fill();
   });
-  for(var i=0;i<particles.length;i++) for(var j=i+1;j<particles.length;j++) {
-    var dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);
-    if(d<110){ctx.beginPath();ctx.strokeStyle='rgba(201,168,76,'+(0.07*(1-d/110))+')';ctx.lineWidth=.5;ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();}
+  for(var i=0;i<pts.length;i++) for(var j=i+1;j<pts.length;j++) {
+    var dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=Math.sqrt(dx*dx+dy*dy);
+    if(d<110) { ctx.beginPath(); ctx.strokeStyle='rgba(212,170,80,'+(0.07*(1-d/110))+')'; ctx.lineWidth=.5; ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y); ctx.stroke(); }
   }
-  requestAnimationFrame(drawP);
+  requestAnimationFrame(draw);
 })();
 
-// ── HERO WHEEL — SVG spins via CSS; mouse parallax on wrapper only ──
-(function() {
-  var wrap = document.querySelector('.hero-wheel-wrap');
-  var px = 0, py = 0, px2 = 0, py2 = 0;
-  document.addEventListener('mousemove', function(e) {
-    px = (e.clientX / window.innerWidth  - 0.5) * 20;
-    py = (e.clientY / window.innerHeight - 0.5) * 20;
+/* ── HERO WHEEL PARALLAX ── */
+var hwWrap = document.querySelector('.hero-wheel-wrap');
+var px=0,py=0,px2=0,py2=0;
+document.addEventListener('mousemove', function(e) { px=(e.clientX/innerWidth-.5)*22; py=(e.clientY/innerHeight-.5)*22; });
+(function prl() {
+  px2+=(px-px2)*.04; py2+=(py-py2)*.04;
+  if(hwWrap) hwWrap.style.transform='translateY(-50%) translate('+px2+'px,'+py2+'px)';
+  requestAnimationFrame(prl);
+})();
+
+/* ── SCROLL REVEAL ── */
+function triggerHeroReveal() {
+  document.querySelectorAll('.hero .reveal').forEach(function(el,i) {
+    setTimeout(function() { el.classList.add('visible'); }, i*160);
   });
-  (function loop() {
-    px2 += (px - px2) * 0.04;
-    py2 += (py - py2) * 0.04;
-    if (wrap) wrap.style.transform = 'translateY(-50%) translate(' + px2 + 'px,' + py2 + 'px)';
-    requestAnimationFrame(loop);
-  })();
-})();
-})();// ── HERO WHEEL PARALLAX (video — spins itself, we only add mouse parallax) ──
-var hwVid = document.querySelector('.hero-wheel-wrap svg');
-var hwTX = 0, hwTY = 0, hwTX2 = 0, hwTY2 = 0;
-document.addEventListener('mousemove', function(e) {
-  hwTX = (e.clientX/innerWidth - 0.5) * 30;
-  hwTY = (e.clientY/innerHeight - 0.5) * 30;
-});
-(function parallaxWheel() {
-  hwTX2 += (hwTX - hwTX2) * 0.04;
-  hwTY2 += (hwTY - hwTY2) * 0.04;
-  if (hwVid) hwVid.style.transform = 'translate('+hwTX2+'px,'+hwTY2+'px)';
-  requestAnimationFrame(parallaxWheel);
-})();
-// The SVG chakra wheels animate via CSS/SVG animateTransform — no JS rotation needed.
+}
+var revObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if(e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+}, {threshold:0.1, rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal:not(.hero .reveal)').forEach(function(el) { revObs.observe(el); });
 
-// ── SCROLL REVEAL ──────────────────────────────────
-function triggerHeroReveal() { document.querySelectorAll('.hero .reveal').forEach(function(el,i) { setTimeout(function(){el.classList.add('visible');},i*170); }); }
-var revObs = new IntersectionObserver(function(e) { e.forEach(function(en) { if(en.isIntersecting){en.target.classList.add('visible');revObs.unobserve(en.target);} }); },{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.reveal:not(.hero .reveal)').forEach(function(el){revObs.observe(el);});
+/* ── STAGGER DELAYS ── */
+document.querySelectorAll('.why-grid .why-card').forEach(function(el,i) { el.style.transitionDelay=(i%3*.1+.05)+'s'; });
+document.querySelectorAll('.armory-grid .arm-card').forEach(function(el,i) { el.style.transitionDelay=(i*.1+.05)+'s'; });
+document.querySelectorAll('.testi-grid .testi-card').forEach(function(el,i) { el.style.transitionDelay=(i%3*.1+.05)+'s'; });
+document.querySelectorAll('.stat-card').forEach(function(el,i) { el.style.transitionDelay=(i*.12)+'s'; });
 
-// ── STAGGER ─────────────────────────────────────────
-document.querySelectorAll('.why-grid .why-card').forEach(function(el,i){el.style.transitionDelay=(i%3*0.1+0.05)+'s';});
-document.querySelectorAll('.armory-grid .arm-card').forEach(function(el,i){el.style.transitionDelay=(i*0.1+0.05)+'s';});
-document.querySelectorAll('.testi-grid .testi-card').forEach(function(el,i){el.style.transitionDelay=(i%3*0.1+0.05)+'s';});
-document.querySelectorAll('.stat-card').forEach(function(el,i){el.style.transitionDelay=(i*0.12)+'s';});
-
-// ── COUNTERS ────────────────────────────────────────
+/* ── COUNTER ANIMATION ── */
 function animCount(el) {
-  var target=+el.dataset.t, dur=2000, start=performance.now();
-  (function u(now){var p=Math.min((now-start)/dur,1),v=1-Math.pow(1-p,3); el.textContent=Math.round(target*v).toLocaleString('en-IN'); if(p<1)requestAnimationFrame(u);})((start));
+  var t=+el.dataset.t, dur=2000, s=performance.now();
+  (function u(now) {
+    var p=Math.min((now-s)/dur,1), v=1-Math.pow(1-p,3);
+    el.textContent=Math.round(t*v).toLocaleString('en-IN');
+    if(p<1) requestAnimationFrame(u);
+  })(s);
 }
-var cntObs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.querySelectorAll('.cnt[data-t]').forEach(animCount);cntObs.unobserve(en.target);}})},{threshold:0.4});
-var statsEl=document.getElementById('stats'); if(statsEl)cntObs.observe(statsEl);
+var cntObs=new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if(e.isIntersecting) { e.target.querySelectorAll('.cnt[data-t]').forEach(animCount); cntObs.unobserve(e.target); } });
+}, {threshold:0.4});
+var sEl=document.getElementById('stats'); if(sEl) cntObs.observe(sEl);
 
-// ── 3D CARD TILT ────────────────────────────────────
-document.querySelectorAll('.why-card,.arm-card,.testi-card').forEach(function(card){
-  card.addEventListener('mousemove',function(e){var r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform='perspective(700px) rotateX('+(-y*6)+'deg) rotateY('+(x*6)+'deg) translateY(-5px)';});
-  card.addEventListener('mouseleave',function(){card.style.transition='all .5s cubic-bezier(.4,0,.2,1)';card.style.transform='';setTimeout(function(){card.style.transition='';},500);});
+/* ── 3D CARD TILT ── */
+document.querySelectorAll('.why-card,.arm-card,.testi-card').forEach(function(c) {
+  c.addEventListener('mousemove',function(e) {
+    var r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    c.style.transform='perspective(700px) rotateX('+(-y*6)+'deg) rotateY('+(x*6)+'deg) translateY(-5px)';
+  });
+  c.addEventListener('mouseleave',function() {
+    c.style.transition='all .5s cubic-bezier(.4,0,.2,1)'; c.style.transform='';
+    setTimeout(function() { c.style.transition=''; }, 500);
+  });
 });
 
-// ── BATTLE PLAN ──────────────────────────────────────
-var bpCur=0;
-var bpAnswers={};
-function bpNext(){
-  // Save answer before advancing
+/* ── BATTLE PLAN ── */
+var bpCur=0, bpAns={};
+function bpNext() {
   var q=document.getElementById('bpq'+bpCur);
-  var checked=q.querySelectorAll('input:checked');
-  if(checked.length===0 && bpCur<4){
-    // Shake the options if nothing selected
+  var chk=q.querySelectorAll('input:checked');
+  if(chk.length===0 && bpCur<4) {
     var opts=q.querySelector('.bpq-opts');
-    if(opts){opts.style.animation='shake .4s ease'; setTimeout(function(){opts.style.animation='';},400);}
+    if(opts) { opts.style.animation='shake .4s ease'; setTimeout(function() { opts.style.animation=''; },400); }
   }
-  if(bpCur<4){
-    // Collect checked values
-    checked.forEach(function(inp){ bpAnswers['q'+bpCur]=(bpAnswers['q'+bpCur]||[]).concat(inp.value); });
+  if(bpCur<4) {
+    chk.forEach(function(inp) { bpAns['q'+bpCur]=(bpAns['q'+bpCur]||[]).concat(inp.value); });
     q.style.animation='slideOut .3s ease forwards';
-    setTimeout(function(){q.style.display='none';q.style.animation='';bpCur++;var n=document.getElementById('bpq'+bpCur);n.style.display='block';n.style.animation='slideIn .4s ease forwards';updateBpProg();},280);
+    setTimeout(function() {
+      q.style.display='none'; q.style.animation=''; bpCur++;
+      var n=document.getElementById('bpq'+bpCur);
+      n.style.display='block'; n.style.animation='slideIn .4s ease forwards';
+      updateBpProg();
+    },280);
   }
 }
-function bpBack(){
-  if(bpCur>0){
+function bpBack() {
+  if(bpCur>0) {
     var q=document.getElementById('bpq'+bpCur);
     q.style.animation='slideOut .3s ease forwards';
-    setTimeout(function(){q.style.display='none';q.style.animation='';bpCur--;var p=document.getElementById('bpq'+bpCur);p.style.display='block';p.style.animation='slideIn .4s ease forwards';updateBpProg();},280);
+    setTimeout(function() {
+      q.style.display='none'; q.style.animation=''; bpCur--;
+      var p=document.getElementById('bpq'+bpCur);
+      p.style.display='block'; p.style.animation='slideIn .4s ease forwards';
+      updateBpProg();
+    },280);
   }
 }
-function updateBpProg(){
-  document.querySelectorAll('.bpp-item').forEach(function(el,i){el.classList.remove('active','done');if(i<bpCur)el.classList.add('done');if(i===bpCur)el.classList.add('active');});
+function updateBpProg() {
+  document.querySelectorAll('.bpp-item').forEach(function(el,i) {
+    el.classList.remove('active','done');
+    if(i<bpCur) el.classList.add('done');
+    if(i===bpCur) el.classList.add('active');
+  });
 }
-function bpSubmit(){
+function bpSubmit() {
   var name=document.getElementById('bp-name').value.trim();
   var email=document.getElementById('bp-email').value.trim();
   var phone=document.getElementById('bp-phone').value.trim();
   var engage=document.querySelector('input[name="engage"]:checked');
-  if(!name||!email||!phone){alert('Please fill Name, Email and Phone to continue.');return;}
+  if(!name||!email||!phone) { alert('Please fill Name, Email and Phone.'); return; }
   var btn=document.getElementById('bpSubmitBtn');
-  btn.innerHTML='&#9696; Sending Report Request...'; btn.disabled=true;
-
-  // Collect all answers
-  document.querySelectorAll('#bpq4 input:checked').forEach(function(inp){bpAnswers['q4']=(bpAnswers['q4']||[]).concat(inp.value);});
-
+  btn.innerHTML='Sending...'; btn.disabled=true;
+  document.querySelectorAll('#bpq4 input:checked').forEach(function(inp) { bpAns['q4']=(bpAns['q4']||[]).concat(inp.value); });
   var params={
-    to_email: TO_EMAIL,
-    from_name: name,
-    client_email: email,
-    client_phone: phone,
-    engagement: engage ? engage.value : 'Not specified',
-    terrain: (bpAnswers['q0']||[]).join(', ') || 'Not answered',
-    assets: (bpAnswers['q1']||[]).join(', ') || 'Not answered',
-    enemy: (bpAnswers['q2']||[]).join(', ') || 'Not answered',
-    victory: (bpAnswers['q3']||[]).join(', ') || 'Not answered',
-    subject: 'NEW BATTLE PLAN REQUEST from ' + name,
-    message: 'Client ' + name + ' has completed the Kurukshetra Battle Plan Assessment. Phone: ' + phone + ' | Email: ' + email
+    to_email:TO_EMAIL, from_name:name, client_email:email, client_phone:phone,
+    engagement:engage?engage.value:'Not specified',
+    terrain:(bpAns['q0']||[]).join(', ')||'Not answered',
+    assets:(bpAns['q1']||[]).join(', ')||'Not answered',
+    enemy:(bpAns['q2']||[]).join(', ')||'Not answered',
+    victory:(bpAns['q3']||[]).join(', ')||'Not answered',
+    subject:'NEW BATTLE PLAN from '+name
   };
-
-  // Try EmailJS, fall back to mailto
+  function showOk() {
+    document.getElementById('bpQuestions').style.display='none';
+    document.getElementById('bpProgress').style.display='none';
+    var s=document.getElementById('bpSuccess');
+    s.style.display='flex'; s.style.animation='fadeUp .6s ease forwards';
+  }
   try {
-    emailjs.send(EMAILJS_SERVICE, EMAILJS_BP_TEMPLATE, params)
-      .then(function(){ showBpSuccess(name); })
-      .catch(function(){ sendMailtoFallback(params); showBpSuccess(name); });
-  } catch(e) { sendMailtoFallback(params); showBpSuccess(name); }
-}
-function showBpSuccess(name){
-  document.getElementById('bpQuestions').style.display='none';
-  document.getElementById('bpProgress').style.display='none';
-  var suc=document.getElementById('bpSuccess');
-  suc.style.display='flex'; suc.style.animation='fadeUp .6s ease forwards';
-}
-function sendMailtoFallback(p){
-  var body=encodeURIComponent('NEW BATTLE PLAN\n\nName: '+p.from_name+'\nEmail: '+p.client_email+'\nPhone: '+p.client_phone+'\nEngagement: '+p.engagement+'\n\nTerrain: '+p.terrain+'\nAssets: '+p.assets+'\nFear: '+p.enemy+'\nGoal: '+p.victory);
-  window.open('mailto:'+TO_EMAIL+'?subject='+encodeURIComponent(p.subject)+'&body='+body,'_blank');
-}
+    emailjs.send(EMAILJS_SERVICE,EMAILJS_BP_TPL,params).then(showOk).catch(function() {
+      var b=encodeURIComponent('Battle Plan
 
-// Init: hide steps 1-4 and success
-for(var qi=1;qi<=4;qi++){document.getElementById('bpq'+qi).style.display='none';}
+Name: '+name+'
+Email: '+email+'
+Phone: '+phone+'
+Goal: '+(bpAns['q3']||[]).join(', '));
+      window.open('mailto:'+TO_EMAIL+'?subject='+encodeURIComponent(params.subject)+'&body='+b,'_blank');
+      showOk();
+    });
+  } catch(err) {
+    var b=encodeURIComponent('Battle Plan
+
+Name: '+name+'
+Email: '+email+'
+Phone: '+phone);
+    window.open('mailto:'+TO_EMAIL+'?subject='+encodeURIComponent(params.subject)+'&body='+b,'_blank');
+    showOk();
+  }
+}
+for(var qi=1;qi<=4;qi++) { document.getElementById('bpq'+qi).style.display='none'; }
 document.getElementById('bpSuccess').style.display='none';
 
-// ── CONTACT FORM ──────────────────────────────────────
+/* ── CONTACT FORM ── */
 var cForm=document.getElementById('cForm');
-if(cForm){
-  cForm.addEventListener('submit',function(e){
+if(cForm) {
+  cForm.addEventListener('submit',function(e) {
     e.preventDefault();
     var fname=document.getElementById('cf-fname').value.trim();
     var lname=document.getElementById('cf-lname').value.trim();
     var email=document.getElementById('cf-email').value.trim();
     var phone=document.getElementById('cf-phone').value.trim();
-    var service=document.getElementById('cf-service').value;
-    var message=document.getElementById('cf-message').value.trim();
+    var svc=document.getElementById('cf-service').value;
+    var msg=document.getElementById('cf-message').value.trim();
     var btn=document.getElementById('cfBtn');
-    btn.innerHTML='&#9696; Sending...'; btn.disabled=true;
-
+    btn.innerHTML='Sending...'; btn.disabled=true;
     var params={
-      to_email: TO_EMAIL,
-      from_name: fname+' '+lname,
-      client_email: email,
-      client_phone: phone,
-      service: service,
-      message: message||'No message provided.',
-      subject: 'NEW CONSULTATION REQUEST from '+fname+' '+lname
+      to_email:TO_EMAIL, from_name:fname+' '+lname,
+      client_email:email, client_phone:phone, service:svc,
+      message:msg||'No message.', subject:'CONSULTATION from '+fname+' '+lname
     };
-
-    function showContactSuccess(){
+    function showOk() {
       cForm.style.display='none';
       var ok=document.getElementById('cformOk');
       ok.style.display='flex'; ok.style.animation='fadeUp .5s ease forwards';
     }
-
     try {
-      emailjs.send(EMAILJS_SERVICE,'contact_template',params)
-        .then(function(){ showContactSuccess(); })
-        .catch(function(){
-          var body=encodeURIComponent('CONSULTATION REQUEST\n\nName: '+params.from_name+'\nEmail: '+params.client_email+'\nPhone: '+params.client_phone+'\nService: '+params.service+'\nMessage: '+params.message);
-          window.open('mailto:'+TO_EMAIL+'?subject='+encodeURIComponent(params.subject)+'&body='+body,'_blank');
-          showContactSuccess();
-        });
+      emailjs.send(EMAILJS_SERVICE,'contact_template',params).then(showOk).catch(function() {
+        var b=encodeURIComponent('Consultation
+
+Name: '+params.from_name+'
+Phone: '+phone+'
+Email: '+email+'
+Service: '+svc+'
+
+'+msg);
+        window.open('mailto:'+TO_EMAIL+'?subject='+encodeURIComponent(params.subject)+'&body='+b,'_blank');
+        showOk();
+      });
     } catch(err) {
-      var body=encodeURIComponent('CONSULTATION REQUEST\n\nName: '+params.from_name+'\nEmail: '+params.client_email+'\nPhone: '+params.client_phone+'\nService: '+params.service+'\nMessage: '+params.message);
-      window.open('mailto:'+TO_EMAIL+'?subject='+encodeURIComponent(params.subject)+'&body='+body,'_blank');
-      showContactSuccess();
+      var b=encodeURIComponent('Consultation
+
+Name: '+params.from_name+'
+Phone: '+phone+'
+Email: '+email+'
+Service: '+svc+'
+
+'+msg);
+      window.open('mailto:'+TO_EMAIL+'?subject='+encodeURIComponent(params.subject)+'&body='+b,'_blank');
+      showOk();
     }
   });
 }
 document.getElementById('cformOk').style.display='none';
 
-// ── CSS INJECTION ──────────────────────────────────────
-var s=document.createElement('style');
-s.textContent='@keyframes slideIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}} @keyframes slideOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(-30px)}} @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}} @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}} .cform-ok{flex-direction:column;align-items:center;justify-content:center;min-height:400px;text-align:center} #cur-dot{position:fixed;width:8px;height:8px;background:#c9a84c;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:none} #cur-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(201,168,76,0.55);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .2s,height .2s,border-color .2s} #cur-ring.big{width:52px;height:52px;border-color:rgba(201,168,76,0.3)}';
-document.head.appendChild(s);
+/* CSS in head style tag */
 </script>
 </body>
 </html>
