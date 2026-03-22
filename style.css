@@ -97,10 +97,15 @@ input,select,textarea{font-family:var(--ff-b)}
 @media(max-width:768px){#cur-dot,#cur-ring{display:none}}
 
 /* ─── LOADER ─────────────────────────────────────── */
-#loader{
-  position:fixed;inset:0;background:#000000;z-index:9999;
-  display:flex;align-items:center;justify-content:center;
-  transition:opacity .7s ease,visibility .7s ease;
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #0f0f1c;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* CSS handles fade — no JS needed */
 }
 .ldr-inner{text-align:center}
 
