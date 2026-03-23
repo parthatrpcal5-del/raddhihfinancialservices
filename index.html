@@ -359,6 +359,8 @@ select.fi{cursor:none;appearance:none;-webkit-appearance:none;background-image:u
 #btt.show{opacity:1;pointer-events:all}
 #btt:hover{background:rgba(201,168,76,.15)}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init("JcpOhuT8aIhqQ3HbB");</script>
 </head>
 <body>
 
@@ -871,12 +873,7 @@ select.fi{cursor:none;appearance:none;-webkit-appearance:none;background-image:u
       </div>
       <div class="contact-form-wrap reveal-right">
         <!-- FormSubmit: First submit → verify email sent to parthatrpcal5@gmail.com → click confirm once → all future submissions arrive as formatted table in Gmail -->
-        <form id="cForm" action="https://formsubmit.co/parthatrpcal5@gmail.com" method="POST" onsubmit="handleContact(event)">
-          <input type="hidden" name="_subject" value="New Consultation Request — Raddhih Financial Services">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_autoresponse" value="Namaste! Thank you for reaching out to Raddhih Financial Services. We have received your consultation request and are deeply honoured by your trust. Your personalised Kurukshetra Strategy Report is being carefully prepared based on your actual needs, goals, and life stage — not a generic template. Our Senior Sarathi, Partha Sarathi Roy, will personally review your profile and reach out to you within 24 to 48 hours. We look forward to guiding you on your path to financial sovereignty. With warm regards, Team Raddhih Financial Services">
-          <input type="text" name="_honey" style="display:none">
+        <form id="cForm" onsubmit="handleContact(event)">
           <h3>Send a Consultation Request</h3>
           <p class="cf-sub">Your details land <strong>directly in our advisor's inbox</strong>. We reply within 4 hours.</p>
           <div class="cf-row">
@@ -1087,8 +1084,20 @@ async function bpSubmit() {
   fd.append('Guidance Level', (document.querySelector('input[name="guide"]:checked')|| {value:'—'}).value);
   fd.append('Note', document.getElementById('bpNote').value || 'None');
   fd.append('_subject', 'Strategy Report Request — ' + name);
-  fd.append('_autoresponse', 'Namaste! Thank you for reaching out to Raddhih Financial Services. We have received your consultation request and are deeply honoured by your trust. Your personalised Kurukshetra Strategy Report is being carefully prepared based on your actual needs, goals, and life stage — not a generic template. Our Senior Sarathi, Partha Sarathi Roy, will personally review your profile and reach out to you within 24 to 48 hours. We look forward to guiding you on your path to financial sovereignty. With warm regards, Team Raddhih Financial Services'); fd.append('_captcha', 'false'); fd.append('_template', 'table');
-  try { await fetch('https://formsubmit.co/ajax/parthatrpcal5@gmail.com', { method:'POST', headers:{Accept:'application/json'}, body:fd }); } catch(e) {}
+  fd.append('_captcha', 'false'); fd.append('_template', 'table');
+  try {
+    var bpParams = {
+      from_name:  fd.get('Warrior Name'),
+      phone:      fd.get('Phone'),
+      from_email: fd.get('email'),
+      service:    fd.get('Life Stage') + ' | ' + fd.get('Financial Goal'),
+      call_time:  fd.get('Guidance Level'),
+      message:    'Fear: ' + fd.get('Primary Fear') + ' | Assets: ' + fd.get('Current Assets') + ' | Note: ' + fd.get('Note'),
+      time:       new Date().toLocaleString('en-IN', {timeZone:'Asia/Kolkata'})
+    };
+    await emailjs.send('service_aj22ubl', 'template_gfasjib', bpParams);
+    await emailjs.send('service_aj22ubl', 'template_rzw3gxh', bpParams);
+  } catch(err) { console.error('EmailJS BP error:', err); }
   document.getElementById('fs5').classList.remove('active');
   var ok = document.getElementById('fsOk'); ok.style.display = 'flex';
   document.getElementById('bpProg').style.width = '100%';
@@ -1096,8 +1105,33 @@ async function bpSubmit() {
   document.querySelectorAll('.bps').forEach(function(s){ s.classList.add('done'); s.classList.remove('active'); });
 }
 
-/* ════ CONTACT FORM ════ */
+/* ════ CONTACT FORM — EmailJS ════ */
 async function handleContact(e) {
   e.preventDefault();
   var btn = document.getElementById('cfBtn');
-  btn.innerHTML = '<i class="fas fa-spinner fa-spi
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…'; btn.disabled = true;
+  var form = e.target;
+  var params = {
+    from_name:  form.querySelector('[name="Full Name"]').value,
+    phone:      form.querySelector('[name="Phone Number"]').value,
+    from_email: form.querySelector('[name="email"]').value,
+    service:    form.querySelector('[name="Service"]').value,
+    call_time:  form.querySelector('[name="Best Time to Call"]').value,
+    message:    (form.querySelector('[name="Message"]') ? form.querySelector('[name="Message"]').value : ''),
+    time:       new Date().toLocaleString('en-IN', {timeZone:'Asia/Kolkata'})
+  };
+  try {
+    await emailjs.send('service_aj22ubl', 'template_gfasjib', params);
+    await emailjs.send('service_aj22ubl', 'template_rzw3gxh', params);
+    document.getElementById('cForm').style.display = 'none';
+    document.getElementById('cOk').style.display = 'flex';
+  } catch(err) {
+    console.error('EmailJS error:', err);
+    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Consultation Request';
+    btn.disabled = false;
+    alert('Something went wrong. Please WhatsApp us at +91 98366 67866');
+  }
+}
+</script>
+</body>
+</html>
