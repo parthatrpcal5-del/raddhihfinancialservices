@@ -30,7 +30,7 @@ a{text-decoration:none;color:inherit}
 img,svg{display:block}
 
 /* ── CURSOR ── */
-#cur-ring,#cur-dot{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%)}
+#cur-ring,#cur-dot{position:fixed;top:-100px;left:-100px;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%);opacity:0;transition:opacity .3s}
 #cur-ring{width:36px;height:36px;border:1.5px solid var(--gold);transition:width .25s,height .25s,opacity .25s;opacity:.7}
 #cur-dot{width:6px;height:6px;background:var(--gold);transition:transform .1s}
 #cur-ring.big{width:56px;height:56px;opacity:.4}
@@ -411,7 +411,7 @@ select.fi{cursor:none;appearance:none;-webkit-appearance:none;background-image:u
 <button id="musicBtn" aria-label="Ambient music">
   <i class="fas fa-music" id="musicIco"></i><span>Ambience</span>
 </button>
-<iframe id="ytFrame" src="" allow="autoplay" style="display:none" frameborder="0"></iframe>
+<iframe id="ytFrame" src="" allow="autoplay; encrypted-media" style="position:fixed;top:-1px;left:-1px;width:1px;height:1px;opacity:0;pointer-events:none" frameborder="0"></iframe>
 
 <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
 <nav id="navbar">
@@ -866,7 +866,7 @@ select.fi{cursor:none;appearance:none;-webkit-appearance:none;background-image:u
         <div class="cd"><div class="cd-ico"><i class="fas fa-location-dot"></i></div><div><b>Office Address</b><p>AD-137, Tara Palace, Rabindrapally,<br>Kestopur, Kolkata, West Bengal — 700101</p></div></div>
         <div class="cd"><div class="cd-ico"><i class="fas fa-phone"></i></div><div><b>Phone</b><a href="tel:+919836667866">+91 98366 67866</a></div></div>
         <div class="cd"><div class="cd-ico"><i class="fab fa-whatsapp"></i></div><div><b>WhatsApp</b><a href="https://wa.me/919836667866" target="_blank">+91 98366 67866</a></div></div>
-        <div class="cd"><div class="cd-ico"><i class="fas fa-envelope"></i></div><div><b>Email</b><a href="/cdn-cgi/l/email-protection#4b3b2a393f232a3f393b282a277e0b2c262a222765282426"><span class="__cf_email__" data-cfemail="e3938291978b8297919380828fd6a3848e828a8fcd808c8e">[email&#160;protected]</span></a></div></div>
+        <div class="cd"><div class="cd-ico"><i class="fas fa-envelope"></i></div><div><b>Email</b><a href="mailto:parthatrpcal5@gmail.com">parthatrpcal5@gmail.com</a></div></div>
         <div class="ci-certs"><i class="fas fa-certificate"></i> SEBI Registered ARN Holder &nbsp;&middot;&nbsp; IRDA Certified Since 2014 &nbsp;&middot;&nbsp; TRP Certified Since 2009 &nbsp;&middot;&nbsp; AMFI Certified</div>
       </div>
       <div class="contact-form-wrap reveal-right">
@@ -925,11 +925,11 @@ select.fi{cursor:none;appearance:none;-webkit-appearance:none;background-image:u
         <ul class="fg-contact">
           <li><i class="fas fa-location-dot"></i>AD-137, Tara Palace, Rabindrapally, Kestopur, Kolkata 700101</li>
           <li><i class="fas fa-phone"></i><a href="tel:+919836667866">+91 98366 67866</a></li>
-          <li><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection#85f5e4f7f1ede4f1f7f5e6e4e9b0c5e2e8e4ece9abe6eae8"><span class="__cf_email__" data-cfemail="c5b5a4b7b1ada4b1b7b5a6a4a9f085a2a8a4aca9eba6aaa8">[email&#160;protected]</span></a></li>
+          <li><i class="fas fa-envelope"></i><a href="mailto:parthatrpcal5@gmail.com">parthatrpcal5@gmail.com</a></li>
         </ul>
         <div class="fg-social">
           <a href="https://wa.me/919836667866" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-          <a href="/cdn-cgi/l/email-protection#7e0e1f0c0a161f0a0c0e1d1f124b3e19131f1712501d1113" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="mailto:parthatrpcal5@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
           <a href="tel:+919836667866" aria-label="Phone"><i class="fas fa-phone"></i></a>
         </div>
       </div>
@@ -956,7 +956,7 @@ select.fi{cursor:none;appearance:none;-webkit-appearance:none;background-image:u
 </a>
 <button id="btt" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ════ LOADER — guaranteed exit, no window.load dependency ════ */
 (function(){
   var ld = document.getElementById('loader');
@@ -1001,7 +1001,7 @@ document.getElementById('btt').addEventListener('click', function(){ window.scro
 /* ════ CUSTOM CURSOR ════ */
 var ring = document.getElementById('cur-ring'), dot = document.getElementById('cur-dot');
 var mx=0, my=0, rx=0, ry=0;
-document.addEventListener('mousemove', function(e){ mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; }, { passive:true });
+document.addEventListener('mousemove', function(e){ mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; dot.style.opacity='1'; ring.style.opacity='.7'; }, { passive:true });
 (function af(){ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(af); })();
 document.querySelectorAll('a,button,.ch,.svc-card,.why-card,.tc,.pillar').forEach(function(el){
   el.addEventListener('mouseenter', function(){ ring.classList.add('big'); dot.classList.add('big'); });
@@ -1048,7 +1048,7 @@ window.addEventListener('scroll', function(){
 var musicOn = false, ytf = document.getElementById('ytFrame');
 document.getElementById('musicBtn').addEventListener('click', function(){
   musicOn = !musicOn;
-  ytf.src = musicOn ? 'https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&loop=1&playlist=Uezrcg6KJ44' : '';
+  ytf.src = musicOn ? 'https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&mute=1&loop=1&playlist=Uezrcg6KJ44&controls=0' : '';
   document.getElementById('musicIco').className = musicOn ? 'fas fa-pause' : 'fas fa-music';
   this.classList.toggle('on', musicOn);
 });
@@ -1111,270 +1111,3 @@ async function handleContact(e) {
 </script>
 </body>
 </html>
-
-<!-- BATTLE PLAN -->
-<section id="plan" class="section plan-sec">
-  <div class="container">
-    <div class="sec-hdr reveal"><div class="sec-tag">The Kurukshetra Protocol</div><h2 class="sec-title">Get Your Free <span class="gold">Battle Plan</span></h2><p class="sec-sub">Answer 5 questions. Receive a personalised financial strategy — free, no obligation.</p></div>
-    <div class="plan-wrap reveal">
-      <div class="plan-progress"><div class="pp-bar"><div id="ppFill" style="width:20%"></div></div><span id="ppLabel">Step 1 of 5</span></div>
-      <!-- STEP 1 -->
-      <div class="plan-step active" id="ps1">
-        <h3><span class="step-num">01</span> Your Life Stage</h3><p>What best describes your current situation?</p>
-        <div class="choices">
-          <label class="choice"><input type="radio" name="age" value="Young Professional 22-30"/><div class="ch-inner"><i class="fas fa-graduation-cap"></i><span>Young Professional</span><em>22-30 years</em></div></label>
-          <label class="choice"><input type="radio" name="age" value="Family Builder 31-45"/><div class="ch-inner"><i class="fas fa-house-chimney"></i><span>Family Builder</span><em>31-45 years</em></div></label>
-          <label class="choice"><input type="radio" name="age" value="Peak Earner 46-55"/><div class="ch-inner"><i class="fas fa-briefcase"></i><span>Peak Earner</span><em>46-55 years</em></div></label>
-          <label class="choice"><input type="radio" name="age" value="Pre-Retirement 56+"/><div class="ch-inner"><i class="fas fa-umbrella-beach"></i><span>Pre-Retirement</span><em>56+ years</em></div></label>
-        </div>
-        <button class="btn-next" onclick="planNext(1)">Next <i class="fas fa-arrow-right"></i></button>
-      </div>
-      <!-- STEP 2 -->
-      <div class="plan-step" id="ps2">
-        <h3><span class="step-num">02</span> Current Arsenal</h3><p>Which financial instruments do you already have?</p>
-        <div class="choices">
-          <label class="choice"><input type="checkbox" name="assets" value="Mutual Funds"/><div class="ch-inner"><i class="fas fa-chart-pie"></i><span>Mutual Funds</span></div></label>
-          <label class="choice"><input type="checkbox" name="assets" value="Life Insurance"/><div class="ch-inner"><i class="fas fa-shield-halved"></i><span>Life Insurance</span></div></label>
-          <label class="choice"><input type="checkbox" name="assets" value="Health Insurance"/><div class="ch-inner"><i class="fas fa-heart-pulse"></i><span>Health Insurance</span></div></label>
-          <label class="choice"><input type="checkbox" name="assets" value="Fixed Deposits"/><div class="ch-inner"><i class="fas fa-piggy-bank"></i><span>Fixed Deposits</span></div></label>
-          <label class="choice"><input type="checkbox" name="assets" value="Stocks"/><div class="ch-inner"><i class="fas fa-chart-line"></i><span>Stocks</span></div></label>
-          <label class="choice"><input type="checkbox" name="assets" value="Starting Fresh"/><div class="ch-inner"><i class="fas fa-plus-circle"></i><span>Starting Fresh</span></div></label>
-        </div>
-        <div class="plan-nav"><button class="btn-back" onclick="planBack(2)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn-next" onclick="planNext(2)">Next <i class="fas fa-arrow-right"></i></button></div>
-      </div>
-      <!-- STEP 3 -->
-      <div class="plan-step" id="ps3">
-        <h3><span class="step-num">03</span> The Enemy — Your Fear</h3><p>What is your biggest financial concern?</p>
-        <div class="choices">
-          <label class="choice"><input type="radio" name="risk" value="Market crash wiping savings"/><div class="ch-inner"><i class="fas fa-chart-line fa-flip-vertical"></i><span>Market Crash</span><em>Losing saved money</em></div></label>
-          <label class="choice"><input type="radio" name="risk" value="Medical emergency draining funds"/><div class="ch-inner"><i class="fas fa-hospital"></i><span>Medical Emergency</span><em>Family healthcare costs</em></div></label>
-          <label class="choice"><input type="radio" name="risk" value="Not saving enough for retirement"/><div class="ch-inner"><i class="fas fa-clock"></i><span>Retirement Shortfall</span><em>Outliving my savings</em></div></label>
-          <label class="choice"><input type="radio" name="risk" value="Tax burden eating into income"/><div class="ch-inner"><i class="fas fa-file-invoice-dollar"></i><span>High Tax Burden</span><em>Paying too much tax</em></div></label>
-        </div>
-        <div class="plan-nav"><button class="btn-back" onclick="planBack(3)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn-next" onclick="planNext(3)">Next <i class="fas fa-arrow-right"></i></button></div>
-      </div>
-      <!-- STEP 4 -->
-      <div class="plan-step" id="ps4">
-        <h3><span class="step-num">04</span> Victory Condition</h3><p>Your primary financial goal in the next 5 years?</p>
-        <div class="choices">
-          <label class="choice"><input type="radio" name="goal" value="Buy a home"/><div class="ch-inner"><i class="fas fa-house"></i><span>Buy a Home</span></div></label>
-          <label class="choice"><input type="radio" name="goal" value="Children education fund"/><div class="ch-inner"><i class="fas fa-user-graduate"></i><span>Children Education</span></div></label>
-          <label class="choice"><input type="radio" name="goal" value="Comfortable retirement"/><div class="ch-inner"><i class="fas fa-umbrella-beach"></i><span>Retirement</span></div></label>
-          <label class="choice"><input type="radio" name="goal" value="Grow wealth aggressively"/><div class="ch-inner"><i class="fas fa-rocket"></i><span>Wealth Growth</span></div></label>
-        </div>
-        <div class="plan-nav"><button class="btn-back" onclick="planBack(4)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn-next" onclick="planNext(4)">Next <i class="fas fa-arrow-right"></i></button></div>
-      </div>
-      <!-- STEP 5 -->
-      <div class="plan-step" id="ps5">
-        <h3><span class="step-num">05</span> Call Your Sarathi</h3><p>Where should we send your personalised Strategy Report?</p>
-        <div class="plan-fields">
-          <div class="pf-group"><label>Your Name *</label><input id="bpName" type="text" placeholder="Full name" class="pf-input"/></div>
-          <div class="pf-group"><label>Phone Number</label><input id="bpPhone" type="tel" placeholder="+91 XXXXX XXXXX" class="pf-input"/></div>
-          <div class="pf-group"><label>Email Address *</label><input id="bpEmail" type="email" placeholder="your@email.com" class="pf-input"/></div>
-          <div class="pf-group">
-            <label>Guidance Level</label>
-            <div class="choices" style="margin-top:8px;grid-template-columns:1fr 1fr">
-              <label class="choice"><input type="radio" name="engage" value="Full Sarathi - manage everything"/><div class="ch-inner" style="padding:10px"><span style="font-size:0.78rem">Full Sarathi</span></div></label>
-              <label class="choice"><input type="radio" name="engage" value="Guide me - I take decisions"/><div class="ch-inner" style="padding:10px"><span style="font-size:0.78rem">Guide Me</span></div></label>
-            </div>
-          </div>
-          <div class="pf-group full"><label>Additional Note</label><textarea id="bpNote" rows="3" placeholder="Any specific question for your advisor..." class="pf-input"></textarea></div>
-        </div>
-        <div class="plan-nav"><button class="btn-back" onclick="planBack(5)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn-submit" id="bpBtn" onclick="submitPlan()">Send My Battle Plan <i class="fas fa-paper-plane"></i></button></div>
-      </div>
-      <!-- SUCCESS -->
-      <div class="plan-success" id="planSuccess">
-        <div class="ps-whl"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="none" stroke="#C9A84C" stroke-width="2"/><path d="M 26 40 L 36 50 L 56 30" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/></svg></div>
-        <h3>Your Battle Plan is Sent!</h3>
-        <p>Our Sarathi will call you personally within 24 hours with a tailored strategy report.</p>
-        <a href="https://wa.me/919836667866?text=Hi%2C%20I%20just%20submitted%20my%20Battle%20Plan%20on%20your%20website." target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> Also Ping on WhatsApp</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials" class="section testi-sec">
-  <div class="container">
-    <div class="sec-hdr reveal"><div class="sec-tag">From the Battlefield</div><h2 class="sec-title">Warrior <span class="gold">Stories</span></h2><p class="sec-sub">Real voices from the 400+ families we protect across India.</p></div>
-    <div class="testi-grid">
-      <div class="testi-card reveal"><div class="tq">"</div><p>Started my SIP journey under their guidance 6 years ago. Today my portfolio has grown beyond what I thought possible on my salary. Every decision was explained — I always knew where my money was going.</p><div class="ta"><div class="tav">AR</div><div><strong>Amit Roy</strong><span>Software Engineer, Kolkata</span></div><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
-      <div class="testi-card reveal"><div class="tq">"</div><p>Tax filing used to be a nightmare. Now it's done in one call. The insurance restructuring also saved my family significant premiums. A true financial partner — not just an agent.</p><div class="ta"><div class="tav">PS</div><div><strong>Priya Sharma</strong><span>Business Owner, Salt Lake</span></div><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
-      <div class="testi-card reveal"><div class="tq">"</div><p>What I appreciate most is the transparency. Every recommendation comes with a clear explanation. After 5 years, I feel genuinely empowered about my money — not just dependent on an advisor.</p><div class="ta"><div class="tav">SK</div><div><strong>Suresh Kumar</strong><span>Doctor, Kestopur</span></div><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
-      <div class="testi-card reveal"><div class="tq">"</div><p>Got my complete family health floater sorted beautifully. When my father was hospitalised, the claim support was outstanding. That is when you know who your real advisor truly is.</p><div class="ta"><div class="tav">RB</div><div><strong>Rima Banerjee</strong><span>Teacher, Rabindrapally</span></div><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA BANNER -->
-<section class="cta-banner">
-  <div class="container"><div class="cta-c reveal"><h2>Your Financial Kurukshetra Awaits</h2><p>Every great journey begins with one decision. Begin yours today — with a trusted Sarathi by your side.</p><div class="cta-btns"><a href="#plan" class="btn-p">Get Your Free Strategy</a><a href="https://wa.me/919836667866" target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp Us Now</a></div></div></div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section contact-sec">
-  <div class="container">
-    <div class="sec-hdr reveal"><div class="sec-tag">Reach Your Sarathi</div><h2 class="sec-title">Let's <span class="gold">Connect</span></h2><p class="sec-sub">Reach out directly. We respond within hours, not days.</p></div>
-    <div class="contact-grid">
-      <div class="contact-info reveal">
-        <h3>Raddhih Financial Services</h3>
-        <p class="ci-reg">SEBI Registered ARN Holder · IRDA Certified 2014 · TRP Certified 2009</p>
-        <div class="ci-item"><i class="fas fa-location-dot"></i><div><strong>Office</strong><p>AD-137, Tara Palace, Rabindrapally,<br>Kestopur, Kolkata, West Bengal — 700101</p></div></div>
-        <div class="ci-item"><i class="fas fa-phone"></i><div><strong>Phone</strong><a href="tel:+919836667866">+91 98366 67866</a></div></div>
-        <div class="ci-item"><i class="fab fa-whatsapp"></i><div><strong>WhatsApp</strong><a href="https://wa.me/919836667866" target="_blank">+91 98366 67866</a></div></div>
-        <div class="ci-item"><i class="fas fa-envelope"></i><div><strong>Email</strong><a href="/cdn-cgi/l/email-protection#b7c7d6c5c3dfd6c3c5c7d4d6db82f7d0dad6dedb99d4d8da"><span class="__cf_email__" data-cfemail="54243526203c3520262437353861143339353d387a373b39">[email&#160;protected]</span></a></div></div>
-        <div class="ci-certs">
-          <span><i class="fas fa-certificate"></i> IRDA Certified Since 2014</span>
-          <span><i class="fas fa-award"></i> TRP Certified Since 2009</span>
-          <span><i class="fas fa-landmark"></i> SEBI Registered ARN</span>
-          <span><i class="fas fa-shield-halved"></i> AMFI Certified</span>
-        </div>
-      </div>
-      <div class="contact-form-wrap reveal">
-        <!-- FormSubmit.co: First submission triggers a verification email to parthatrpcal5@gmail.com.
-             Click the verify link ONCE. After that, every form submission lands directly in Gmail. -->
-        <form id="contactForm" class="cf">
-          <h3>Send a Consultation Request</h3>
-          <p class="cf-sub">Your message lands <strong>directly in our advisor's inbox</strong>. Response within 4 hours.</p>
-          <div class="cf-row">
-            <div class="cf-g"><label>Full Name *</label><input type="text" id="cfName" required placeholder="Your full name" class="cf-i"/></div>
-            <div class="cf-g"><label>Phone *</label><input type="tel" id="cfPhone" required placeholder="+91 XXXXX XXXXX" class="cf-i"/></div>
-          </div>
-          <div class="cf-g"><label>Email Address *</label><input type="email" id="cfEmail" required placeholder="your@email.com" class="cf-i"/></div>
-          <div class="cf-g"><label>Service Interested In</label>
-            <select id="cfService" class="cf-i">
-              <option value="">Select a service</option>
-              <option>Mutual Fund Investments</option><option>Life Insurance</option>
-              <option>Health Insurance</option><option>General Insurance</option>
-              <option>Income Tax Return Filing</option><option>Complete Financial Planning</option>
-            </select>
-          </div>
-          <div class="cf-g"><label>Best Time to Call</label>
-            <select id="cfTime" class="cf-i">
-              <option value="">Select time</option>
-              <option>Morning (9 AM - 12 PM)</option><option>Afternoon (12 PM - 4 PM)</option>
-              <option>Evening (4 PM - 8 PM)</option><option>Anytime</option>
-            </select>
-          </div>
-          <div class="cf-g"><label>Your Message / Goals</label><textarea id="cfMsg" rows="4" placeholder="Tell us about your financial goals or questions..." class="cf-i"></textarea></div>
-          <button type="button" class="btn-submit-form" id="cfBtn" onclick="submitContact()"><i class="fas fa-paper-plane"></i> Send Consultation Request</button>
-          <p class="cf-privacy"><i class="fas fa-lock"></i> 100% confidential. Data never shared.</p>
-        </form>
-        <div id="cfSuccess" class="cf-success" style="display:none">
-          <div class="cs-whl"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="none" stroke="#C9A84C" stroke-width="2"/><path d="M 26 40 L 36 50 L 56 30" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/></svg></div>
-          <h3>Message Delivered!</h3>
-          <p>Your consultation request is in our advisor's inbox. Expect a personal call or email within 4 hours.</p>
-          <a href="https://wa.me/919836667866?text=Hi%2C%20I%20just%20sent%20a%20consultation%20request%20on%20your%20website." target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> Also Ping on WhatsApp</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="fg-brand">
-        <div class="logo" style="margin-bottom:16px"><div class="logo-whl"><svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="none" stroke="#C9A84C" stroke-width="1.2"/><g stroke="#C9A84C" stroke-width="1.1"><line x1="25" y1="3" x2="25" y2="47"/><line x1="3" y1="25" x2="47" y2="25"/><line x1="9" y1="9" x2="41" y2="41"/><line x1="41" y1="9" x2="9" y2="41"/></g><circle cx="25" cy="25" r="5" fill="#C9A84C"/><circle cx="25" cy="25" r="2.5" fill="#060d1a"/></svg></div><span class="logo-txt"><strong>RADDHIH</strong> <em>Financial</em></span></div>
-        <p style="font-size:0.82rem;color:#8896aa;line-height:1.8">Your trusted financial Sarathi in Kolkata and across India. SEBI Registered. IRDA Certified 2014. TRP Certified 2009.</p>
-        <div class="footer-social"><a href="https://wa.me/919836667866" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="/cdn-cgi/l/email-protection#06766774726e6772747665676a3346616b676f6a2865696b"><i class="fas fa-envelope"></i></a><a href="tel:+919836667866"><i class="fas fa-phone"></i></a></div>
-      </div>
-      <div class="fg-col"><h4>Services</h4><a href="#services">Mutual Fund Investments</a><a href="#services">Life Insurance</a><a href="#services">Health Insurance</a><a href="#services">General Insurance</a><a href="#services">ITR Filing</a></div>
-      <div class="fg-col"><h4>Navigate</h4><a href="#why">Why Raddhih</a><a href="#sarathi">Our Sarathi</a><a href="#services">Services</a><a href="#plan">Battle Plan</a><a href="#testimonials">Warrior Stories</a><a href="#contact">Contact</a></div>
-      <div class="fg-col"><h4>Contact</h4><p style="font-size:0.8rem;color:#8896aa;line-height:1.8;margin-bottom:8px">AD-137, Tara Palace, Rabindrapally,<br>Kestopur, Kolkata - 700101</p><a href="tel:+919836667866">+91 98366 67866</a><a href="/cdn-cgi/l/email-protection#80f0e1f2f4e8e1f4f2f0e3e1ecb5c0e7ede1e9ecaee3efed"><span class="__cf_email__" data-cfemail="87f7e6f5f3efe6f3f5f7e4e6ebb2c7e0eae6eeeba9e4e8ea">[email&#160;protected]</span></a><div class="footer-certs" style="margin-top:12px"><span>IRDA Certified 2014</span><span>TRP Certified 2009</span><span>SEBI ARN Holder</span></div></div>
-    </div>
-    <div class="footer-bottom">
-      <p>2025 Raddhih Financial Services. All rights reserved.</p>
-      <p class="footer-disc">SEBI Registered ARN Holder | IRDA Certified Since 2014 | TRP Certified Since 2009 | AMFI Certified. Mutual fund investments are subject to market risks. Read all scheme-related documents carefully. Insurance is a subject matter of solicitation.</p>
-      <p class="footer-credit">Created by <strong>Pragyo Roy</strong> · Designed by <strong>Pragyo Roy</strong> · Maintained by <strong>Pragyo Roy</strong></p>
-    </div>
-  </div>
-</footer>
-
-<!-- FLOATING BUTTONS -->
-<a href="https://wa.me/919836667866?text=Hi%2C%20I%20found%20your%20website%20and%20would%20like%20a%20free%20financial%20consultation." target="_blank" class="wa-float"><i class="fab fa-whatsapp"></i><span class="wa-tooltip">Chat with us</span></a>
-<button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// LOADER — hard 2s cap, fires as early as possible, no window.load needed
-(function(){
-  function hide(){
-    var l=document.getElementById('loader');
-    if(!l||l.dataset.gone)return;
-    l.dataset.gone='1';
-    l.style.opacity='0';
-    setTimeout(function(){l.style.display='none';},500);
-  }
-  setTimeout(hide,2000); // absolute hard cap
-  if(document.readyState!=='loading'){setTimeout(hide,300);}
-  else{document.addEventListener('DOMContentLoaded',function(){setTimeout(hide,400);});}
-})();
-
-// CURSOR
-var co=document.getElementById('cur-out'),ci=document.getElementById('cur-in');
-var mx=0,my=0,ox=0,oy=0;
-if(!('ontouchstart' in window)&&co&&ci){
-  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;ci.style.left=mx+'px';ci.style.top=my+'px';});
-  (function r(){ox+=(mx-ox)*.12;oy+=(my-oy)*.12;co.style.left=ox+'px';co.style.top=oy+'px';requestAnimationFrame(r);})();
-  document.querySelectorAll('a,button,.choice,.svc-card,.why-card').forEach(function(el){el.addEventListener('mouseenter',function(){co.classList.add('hover');ci.classList.add('hover');});el.addEventListener('mouseleave',function(){co.classList.remove('hover');ci.classList.remove('hover');});});
-}else{if(co)co.style.display='none';if(ci)ci.style.display='none';}
-
-// NAVBAR
-window.addEventListener('scroll',function(){
-  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
-  document.getElementById('toTop').classList.toggle('show',window.scrollY>400);
-});
-function toggleNav(){document.getElementById('navLinks').classList.toggle('open');document.getElementById('navHam').classList.toggle('open');}
-document.querySelectorAll('.nav-links a,.nav-cta').forEach(function(a){a.addEventListener('click',function(){document.getElementById('navLinks').classList.remove('open');document.getElementById('navHam').classList.remove('open');});});
-
-// SCROLL REVEAL
-var ro=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.12});
-document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
-
-// HERO CONTENT REVEAL
-setTimeout(function(){var h=document.getElementById('heroContent');if(h)h.classList.add('visible');},2200);
-
-// STATS COUNTER
-var counted=false;
-new IntersectionObserver(function(e){if(e[0].isIntersecting&&!counted){counted=true;document.querySelectorAll('.stat-num[data-target]').forEach(function(el){var t=parseInt(el.dataset.target),t0=performance.now(),d=1800;(function f(n){var p=Math.min((n-t0)/d,1);el.textContent=Math.floor(p*t);if(p<1)requestAnimationFrame(f);else el.textContent=t;})(performance.now());});}},{threshold:0.3}).observe(document.querySelector('.stats-sec'));
-
-// BATTLE PLAN STEPS
-var steps=[null,'ps1','ps2','ps3','ps4','ps5'];
-var fills=['','20%','40%','60%','80%','100%'];
-var lbls=['','Step 1 of 5','Step 2 of 5','Step 3 of 5','Step 4 of 5','Step 5 of 5'];
-function planNext(n){document.getElementById(steps[n]).classList.remove('active');document.getElementById(steps[n+1]).classList.add('active');document.getElementById('ppFill').style.width=fills[n+1];document.getElementById('ppLabel').textContent=lbls[n+1];}
-function planBack(n){document.getElementById(steps[n]).classList.remove('active');document.getElementById(steps[n-1]).classList.add('active');document.getElementById('ppFill').style.width=fills[n-1];document.getElementById('ppLabel').textContent=lbls[n-1];}
-
-// BATTLE PLAN SUBMIT
-async function submitPlan(){
-  var name=document.getElementById('bpName').value.trim();
-  var email=document.getElementById('bpEmail').value.trim();
-  if(!name||!email){alert('Please enter your name and email.');return;}
-  var btn=document.getElementById('bpBtn');
-  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';btn.disabled=true;
-  var fd=new FormData();
-  fd.append('Warrior Name',name);fd.append('Phone',document.getElementById('bpPhone').value||'Not provided');
-  fd.append('Email',email);fd.append('Note',document.getElementById('bpNote').value||'None');
-  fd.append('Life Stage',(document.querySelector('input[name="age"]:checked')||{value:'Not selected'}).value);
-  fd.append('Assets',Array.from(document.querySelectorAll('input[name="assets"]:checked')).map(function(i){return i.value;}).join(', ')||'None');
-  fd.append('Fear',(document.querySelector('input[name="risk"]:checked')||{value:'Not selected'}).value);
-  fd.append('Goal',(document.querySelector('input[name="goal"]:checked')||{value:'Not selected'}).value);
-  fd.append('Guidance',(document.querySelector('input[name="engage"]:checked')||{value:'Not selected'}).value);
-  fd.append('_subject','Battle Plan Request from '+name);fd.append('_captcha','false');fd.append('_template','table');
-  try{await fetch('https://formsubmit.co/ajax/parthatrpcal5@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body:fd});}catch(e){}
-  document.getElementById('ps5').classList.remove('active');
-  document.getElementById('planSuccess').style.display='flex';
-  document.getElementById('ppFill').style.width='100%';document.getElementById('ppLabel').textContent='Complete!';
-}
-
-// CONTACT FORM SUBMIT
-async function submitContact(){
-  var name=document.getElementById('cfName').value.trim();
-  var phone=document.getElementById('cfPhone').value.trim();
-  var email=document.getElementById('cfEmail').value.trim();
-  if(!name||!email){alert('Please enter your name and email.');return;}
-  var btn=document.getElementById('cfBtn');
-  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';btn.disabled=true;
-  var fd=new FormData();
-  fd.append('Full Name',name);fd.append('Phone',phone);fd.append('email
