@@ -30,9 +30,9 @@ a{text-decoration:none;color:inherit}
 img,svg{display:block}
 
 /* ── CURSOR ── */
-#cur-ring,#cur-dot{position:fixed;top:-100px;left:-100px;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%);opacity:0;transition:opacity .3s}
-#cur-ring{width:36px;height:36px;border:1.5px solid var(--gold);transition:width .25s,height .25s,opacity .25s;opacity:.7}
-#cur-dot{width:6px;height:6px;background:var(--gold);transition:transform .1s}
+#cur-ring,#cur-dot{position:fixed;top:-200px;left:-200px;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%)}
+#cur-ring{width:36px;height:36px;border:1.5px solid var(--gold);opacity:0}
+#cur-dot{width:6px;height:6px;background:var(--gold);opacity:0}
 #cur-ring.big{width:56px;height:56px;opacity:.4}
 #cur-dot.big{transform:translate(-50%,-50%) scale(1.8)}
 @media(max-width:900px){body{cursor:auto}#cur-ring,#cur-dot{display:none}}
@@ -1031,10 +1031,32 @@ nls.querySelectorAll('a').forEach(function(a){
 document.getElementById('btt').addEventListener('click', function(){ window.scrollTo({ top:0, behavior:'smooth' }); });
 
 /* ════ CUSTOM CURSOR ════ */
-var ring = document.getElementById('cur-ring'), dot = document.getElementById('cur-dot');
-var mx=0, my=0, rx=0, ry=0;
-document.addEventListener('mousemove', function(e){ mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; dot.style.opacity='1'; ring.style.opacity='.7'; }, { passive:true });
-(function af(){ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(af); })();
+var ring = document.getElementById('cur-ring');
+var dot  = document.getElementById('cur-dot');
+var mx=window.innerWidth/2, my=window.innerHeight/2;
+var rx=mx, ry=my;
+var shown = false;
+
+document.addEventListener('mousemove', function(e){
+  mx = e.clientX;
+  my = e.clientY;
+  dot.style.left = mx + 'px';
+  dot.style.top  = my + 'px';
+  if(!shown){
+    shown = true;
+    dot.style.opacity  = '1';
+    ring.style.opacity = '0.7';
+  }
+}, {passive:true});
+
+function animCursor(){
+  rx += (mx - rx) * 0.15;
+  ry += (my - ry) * 0.15;
+  ring.style.left = rx + 'px';
+  ring.style.top  = ry + 'px';
+  requestAnimationFrame(animCursor);
+}
+animCursor();
 document.querySelectorAll('a,button,.ch,.svc-card,.why-card,.tc,.pillar').forEach(function(el){
   el.addEventListener('mouseenter', function(){ ring.classList.add('big'); dot.classList.add('big'); });
   el.addEventListener('mouseleave', function(){ ring.classList.remove('big'); dot.classList.remove('big'); });
