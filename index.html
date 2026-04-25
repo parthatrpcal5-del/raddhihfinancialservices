@@ -360,6 +360,25 @@ select.fi{cursor:pointer;appearance:none;-webkit-appearance:none;background-imag
 #btt{position:fixed;bottom:92px;right:28px;z-index:900;width:40px;height:40px;border-radius:50%;background:rgba(7,18,34,.9);border:1px solid rgba(201,168,76,.25);color:var(--gold);font-size:.85rem;cursor:pointer;opacity:0;pointer-events:none;transition:all .3s;display:flex;align-items:center;justify-content:center}
 #btt.show{opacity:1;pointer-events:all}
 #btt:hover{background:rgba(201,168,76,.15)}
+/* ── COOKIE BANNER ── */
+#cookieBanner{position:fixed;bottom:0;left:0;right:0;z-index:9997;background:rgba(5,13,26,.97);border-top:1px solid rgba(201,168,76,.25);padding:18px 24px;transform:translateY(100%);transition:transform .5s ease;backdrop-filter:blur(20px)}
+#cookieBanner.show{transform:translateY(0)}
+.cookie-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.cookie-left{display:flex;align-items:center;gap:16px}
+.cookie-left i{color:var(--gold);font-size:1.8rem;flex-shrink:0}
+.cookie-title{font-family:'Cinzel',serif;font-size:.82rem;letter-spacing:.1em;color:var(--gold);margin-bottom:4px}
+.cookie-sub{font-size:.75rem;color:rgba(248,244,238,.5);line-height:1.5;max-width:540px}
+.cookie-btns{display:flex;gap:10px;flex-shrink:0}
+#cookieAccept{padding:10px 22px;background:linear-gradient(135deg,var(--gold),#a07830);color:var(--navy);font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.1em;border:none;border-radius:3px;cursor:pointer;font-weight:600;transition:opacity .2s}
+#cookieAccept:hover{opacity:.85}
+#cookieDecline{padding:10px 18px;background:transparent;color:rgba(248,244,238,.4);border:1px solid rgba(248,244,238,.15);border-radius:3px;font-size:.72rem;cursor:pointer;transition:all .2s}
+#cookieDecline:hover{border-color:rgba(248,244,238,.35);color:rgba(248,244,238,.7)}
+@media(max-width:680px){.cookie-inner{flex-direction:column;align-items:flex-start}.cookie-btns{width:100%}#cookieAccept,#cookieDecline{flex:1;text-align:center}}
+
+/* ── RELEASE DATE ── */
+.site-meta{text-align:center;padding:14px 0 20px;border-top:1px solid rgba(201,168,76,.07);margin-top:8px}
+.site-meta p{font-size:.68rem;color:rgba(248,244,238,.2);letter-spacing:.08em}
+.site-meta span{color:rgba(201,168,76,.4)}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>emailjs.init("JcpOhuT8aIhqQ3HbB");</script>
@@ -963,7 +982,10 @@ select.fi{cursor:pointer;appearance:none;-webkit-appearance:none;background-imag
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
+    <div class="site-meta">
+  <p>Released <span>25 April 2026</span> &nbsp;&middot;&nbsp; Last Updated <span>25 April 2026</span></p>
+</div>
+<div class="footer-bottom">
       <p>&#169; 2025 Raddhih Financial Services. All Rights Reserved. &nbsp;|&nbsp; SEBI Registered ARN Holder &nbsp;|&nbsp; IRDA Certified Since 2014 &nbsp;|&nbsp; TRP Certified Since 2009 &nbsp;|&nbsp; AMFI Certified &nbsp;|&nbsp; Mutual Fund investments are subject to market risks. Please read all scheme-related documents carefully before investing.</p>
       <div class="footer-credits">
         <span>Created by <strong>Pragyo Roy</strong></span><span class="fc-dot">·</span>
@@ -977,6 +999,23 @@ select.fi{cursor:pointer;appearance:none;-webkit-appearance:none;background-imag
     </div>
   </div>
 </footer>
+
+<!-- Cookie Consent Banner -->
+<div id="cookieBanner">
+  <div class="cookie-inner">
+    <div class="cookie-left">
+      <i class="fas fa-cookie-bite"></i>
+      <div>
+        <p class="cookie-title">Enhance Your Experience</p>
+        <p class="cookie-sub">We use cookies to personalise content and play ambient music for a premium experience on Raddhih Financial Services.</p>
+      </div>
+    </div>
+    <div class="cookie-btns">
+      <button id="cookieAccept" onclick="acceptCookies()">Accept &amp; Continue</button>
+      <button id="cookieDecline" onclick="declineCookies()">Decline</button>
+    </div>
+  </div>
+</div>
 
 <!-- WhatsApp Float -->
 <a href="https://wa.me/919836667866?text=Hi%2C+I+want+to+know+more+about+your+financial+services." class="wa-float" target="_blank" aria-label="WhatsApp">
@@ -1071,7 +1110,7 @@ window.addEventListener('scroll', function(){
 var musicOn = false, ytf = document.getElementById('ytFrame');
 document.getElementById('musicBtn').addEventListener('click', function(){
   musicOn = !musicOn;
-  ytf.src = musicOn ? 'https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&mute=1&loop=1&playlist=Uezrcg6KJ44&controls=0' : '';
+  ytf.src = musicOn ? 'https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&mute=0&loop=1&playlist=Uezrcg6KJ44&controls=0&rel=0' : '';
   document.getElementById('musicIco').className = musicOn ? 'fas fa-pause' : 'fas fa-music';
   this.classList.toggle('on', musicOn);
 });
@@ -1157,6 +1196,38 @@ async function handleContact(e) {
     alert('Something went wrong. Please WhatsApp us at +91 98366 67866');
   }
 }
+
+/* ════ COOKIE CONSENT + AUTO MUSIC ════ */
+function acceptCookies(){
+  localStorage.setItem('raddhih_cookie','accepted');
+  document.getElementById('cookieBanner').style.transform='translateY(100%)';
+  // Auto play music after accept
+  var ytf = document.getElementById('ytFrame');
+  ytf.src = 'https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&mute=0&loop=1&playlist=Uezrcg6KJ44&controls=0&rel=0';
+  document.getElementById('musicIco').className = 'fas fa-pause';
+  document.getElementById('musicBtn').classList.add('on');
+}
+function declineCookies(){
+  localStorage.setItem('raddhih_cookie','declined');
+  document.getElementById('cookieBanner').style.transform='translateY(100%)';
+}
+// Show banner if not yet decided
+window.addEventListener('DOMContentLoaded', function(){
+  var consent = localStorage.getItem('raddhih_cookie');
+  if(!consent){
+    setTimeout(function(){
+      document.getElementById('cookieBanner').classList.add('show');
+    }, 2500);
+  } else if(consent === 'accepted'){
+    // Already accepted before — auto play music silently
+    setTimeout(function(){
+      var ytf = document.getElementById('ytFrame');
+      ytf.src = 'https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&mute=1&loop=1&playlist=Uezrcg6KJ44&controls=0&rel=0';
+      document.getElementById('musicIco').className = 'fas fa-pause';
+      document.getElementById('musicBtn').classList.add('on');
+    }, 1000);
+  }
+});
 </script>
 </body>
 </html>
