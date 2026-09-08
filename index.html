@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Raddhih Financial Services | Your Financial Sarathi — Kolkata</title>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FNXQSS25MC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FNXQSS25MC');
+</script>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23050d1a'/%3E%3Ccircle cx='50' cy='50' r='46' stroke='%23C9A84C' stroke-width='2' fill='none'/%3E%3Ccircle cx='50' cy='50' r='35' stroke='%23C9A84C' stroke-width='1' fill='none'/%3E%3Cg stroke='%23C9A84C' stroke-width='1.5'%3E%3Cline x1='50' y1='4' x2='50' y2='96'/%3E%3Cline x1='4' y1='50' x2='96' y2='50'/%3E%3Cline x1='18' y1='18' x2='82' y2='82'/%3E%3Cline x1='82' y1='18' x2='18' y2='82'/%3E%3Cline x1='32' y1='6' x2='68' y2='94'/%3E%3Cline x1='94' y1='32' x2='6' y2='68'/%3E%3Cline x1='68' y1='6' x2='32' y2='94'/%3E%3Cline x1='6' y1='32' x2='94' y2='68'/%3E%3C/g%3E%3Ccircle cx='50' cy='50' r='8' fill='%23C9A84C'/%3E%3Ccircle cx='50' cy='50' r='4' fill='%23050d1a'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23050d1a'/%3E%3Ccircle cx='50' cy='50' r='46' stroke='%23C9A84C' stroke-width='2' fill='none'/%3E%3Cg stroke='%23C9A84C' stroke-width='1.5'%3E%3Cline x1='50' y1='4' x2='50' y2='96'/%3E%3Cline x1='4' y1='50' x2='96' y2='50'/%3E%3Cline x1='18' y1='18' x2='82' y2='82'/%3E%3Cline x1='82' y1='18' x2='18' y2='82'/%3E%3C/g%3E%3Ccircle cx='50' cy='50' r='8' fill='%23C9A84C'/%3E%3Ccircle cx='50' cy='50' r='4' fill='%23050d1a'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#071526">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Cinzel:wght@400;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --navy: #0B1C2C;
+  --navy2: #0D1F30;
+  --navy3: #0A1828;
+  --gold: #E8A020;
+  --gold2: #F5B830;
+  --gold3: #F5D060;
+  --white: #F2EAD8;
+  --dim: rgba(7,21,38,.08);
+  --dim2: rgba(7,21,38,.04);
+  --glass: rgba(7,21,38,.92);
+  --r: .75rem
+  --burg: #071526
+  --brown: #F2EAD8
+  --cream: #112236;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:#0B1C2C;color:#F2EAD8;font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:auto}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#0A1828}::-webkit-scrollbar-thumb{background:#071526;border-radius:3px}
+::selection{background:#071526;color:#0B1C2C}
+a{text-decoration:none;color:inherit}
+img,svg{display:block}
+
+/* ── CURSOR ── */
+
+
+
+
+
+@media(max-width:900px){body{cursor:auto}}
+
+/* ── LOADER ── */
+#loader{position:fixed;inset:0;z-index:9998;background:#0B1C2C;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .5s ease}
+.ld-wheel svg{width:130px;height:130px;animation:spin 2.5s linear infinite}
+.ld-brand{font-family:'Cinzel',serif;font-size:1.6rem;letter-spacing:.35em;color:#E8A020}
+.ld-sub{font-size:.75rem;letter-spacing:.25em;color:rgba(232,160,32,.7);text-transform:uppercase}
+
+/* ── BG WHEELS ── */
+.bgw{position:fixed;pointer-events:none;z-index:0;opacity:.04;animation:spin var(--sp,120s) linear infinite}
+.bgw svg{width:100%;height:100%}
+.bgw1{width:700px;height:700px;top:-200px;right:-200px;--sp:90s}
+.bgw2{width:500px;height:500px;bottom:-100px;left:-150px;--sp:120s;animation-direction:reverse}
+.bgw3{width:350px;height:350px;top:50%;left:50%;transform:translate(-50%,-50%);--sp:150s}
+@media(max-width:768px){.bgw{display:none}}
+
+/* ── MUSIC ── */
+#musicBtn{position:fixed;top:22px;right:90px;z-index:1100;background:rgba(7,21,38,.85);border:1px solid rgba(232,160,32,.25);color:rgba(232,160,32,.7);padding:8px 14px;border-radius:30px;cursor:pointer;display:flex;align-items:center;gap:7px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;transition:all .3s;backdrop-filter:blur(10px)}
+#musicBtn:hover,#musicBtn.on{border-color:#E8A020;color:#E8A020}
+@media(max-width:768px){#musicBtn{right:14px;top:auto;bottom:80px;padding:8px 11px}}
+#musicBtn span{display:none}
+@media(min-width:900px){#musicBtn span{display:inline}}
+
+/* ── ANIMATIONS ── */
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinR{to{transform:rotate(-360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,160,32,.5)}50%{box-shadow:0 0 0 14px rgba(232,160,32,0)}}
+@keyframes scanLine{0%{background-position:0 0}100%{background-position:0 100vh}}
+
+/* ── REVEAL ── */
+.reveal,.reveal-left,.reveal-right{opacity:0;transition:opacity .7s ease,transform .7s ease}
+.reveal{transform:translateY(30px)}.reveal-left{transform:translateX(-40px)}.reveal-right{transform:translateX(40px)}
+.reveal.in,.reveal-left.in,.reveal-right.in{opacity:1;transform:none}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+section{position:relative;z-index:1}
+
+/* ── BUTTONS ── */
+.btn-gold{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:linear-gradient(135deg,#0B1C2C,#071526);color:#F2EAD8;font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.12em;font-weight:600;border:none;border-radius:3px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.btn-gold::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#F5B830,#E8A020);opacity:0;transition:opacity .3s}
+.btn-gold:hover::after{opacity:1}
+.btn-gold span,.btn-gold i{position:relative;z-index:1}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:transparent;color:#E8A020;border:1px solid rgba(232,160,32,.45);border-radius:3px;font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.1em;cursor:pointer;transition:all .3s}
+.btn-ghost:hover{background:rgba(232,160,32,.12);border-color:#E8A020}
+.btn-wa{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;background:#25d366;color:#fff;border-radius:3px;font-size:.85rem;font-weight:500;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.3)}
+.btn-wa-ok{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;background:#25d366;color:#fff;border-radius:3px;font-size:.85rem;margin-top:18px;cursor:pointer;transition:all .3s}
+.btn-wa-ok:hover{background:#1fba59}
+
+/* ── SECTION HEADS ── */
+.sec-tag{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.3em;color:#F5B830;text-transform:uppercase;margin-bottom:14px}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;margin-bottom:16px}
+.sec-sub{color:rgba(242,234,216,.7);font-size:.95rem;max-width:520px}
+.gold{color:#E8A020;font-style:italic}
+.sec-head{margin-bottom:52px}
+.sec-head .sec-sub{margin-top:10px}
+
+/* ════════════════ NAVBAR ════════════════ */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 0;transition:all .4s}
+#navbar.scrolled{background:rgba(5,12,26,.97);backdrop-filter:blur(20px);padding:12px 0;border-bottom:1px solid rgba(232,160,32,.2)}
+.nav-inner{display:flex;align-items:center;gap:24px;max-width:1200px;margin:0 auto;padding:0 24px}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nl-wheel{flex-shrink:0;animation:spin 18s linear infinite}
+.nl-wheel svg{width:42px;height:42px}
+.nl-text{display:flex;flex-direction:column;gap:1px}
+.nl-main{font-family:'Cinzel',serif;font-size:.9rem;letter-spacing:.22em;color:#E8A020}
+.nl-sub{font-size:.52rem;letter-spacing:.18em;color:rgba(242,234,216,.75);text-transform:uppercase}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;color:rgba(242,234,216,.9);transition:color .25s;border-radius:2px}
+.nav-links a:hover,.nav-links a.active{color:#E8A020}
+.nav-cta{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.15em;padding:9px 20px;background:linear-gradient(135deg,#0B1C2C,#071526);color:#0B1C2C;border-radius:2px;white-space:nowrap;transition:opacity .2s;cursor:pointer;flex-shrink:0}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:#E8A020;display:block;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+@media(max-width:960px){.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,12,26,.98);flex-direction:column;align-items:center;justify-content:center;gap:6px}.nav-links.open{display:flex}.nav-links a{font-size:1rem;padding:14px 24px}.hamburger{display:flex;margin-left:auto}}
+@media(max-width:960px){.nav-cta{display:none}}
+
+/* ════════════════ HERO ════════════════ */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding-top:88px;overflow:hidden;background:linear-gradient(135deg,#071526 0%,#071526 50%,#050F1C 100%)}
+.hero-glow{position:absolute;top:-10%;right:-5%;width:55%;height:120%;background:radial-gradient(ellipse at 70% 40%,rgba(232,160,32,.07) 0%,transparent 65%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(232,160,32,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(232,160,32,.06) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-content{padding:60px 0 60px 24px;max-width:580px;z-index:2}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:#F5B830;border:1px solid rgba(232,160,32,.45);padding:7px 16px;border-radius:30px;margin-bottom:28px;background:rgba(232,160,32,.1)}
+.pill-dot{width:6px;height:6px;border-radius:50%;background:#F5B830;animation:pulse 2s infinite}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5.5vw,4.8rem);font-weight:300;line-height:1.1;margin-bottom:24px}
+.h1-line{display:block;color:#F2EAD8}
+.h1-gold{display:block;color:#E8A020;font-style:italic;font-weight:600}
+.hero-p{font-size:1rem;color:rgba(242,234,216,.8);line-height:1.75;margin-bottom:32px;max-width:440px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px}
+.hero-badges span{display:flex;align-items:center;gap:6px;font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.8);background:rgba(232,160,32,.12);border:1px solid rgba(232,160,32,.3);padding:5px 12px;border-radius:20px}
+.hero-badges i{color:#E8A020;font-size:.7rem}
+.hero-wheel-wrap{position:relative;display:flex;align-items:center;justify-content:center;z-index:1}
+.hero-big-wheel{width:min(540px,90vw);height:min(540px,90vw);animation:spin 55s linear infinite;opacity:.75}
+.scroll-cue{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(232,160,32,.8)}
+.sc-line{width:1px;height:48px;background:linear-gradient(to bottom,rgba(232,160,32,.4),transparent);animation:fadeUp 2s infinite}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:100px}.hero-wheel-wrap{display:none}.hero-content{padding:40px 0;max-width:100%}}
+
+/* ════════════════ WHY US ════════════════ */
+.why-us{padding:110px 0;background:linear-gradient(180deg,#0B1C2C 0%,#0D1F30 100%)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-card{background:#0D1F30;border:1px solid rgba(232,160,32,.12);border-radius:var(--r);padding:32px 28px;transition:border-color .3s,transform .3s;box-shadow:0 2px 16px rgba(7,21,38,.06)}
+.why-card:hover{border-color:rgba(7,21,38,.3);transform:translateY(-4px);box-shadow:0 8px 32px rgba(7,21,38,.12)}
+.wc-icon{width:46px;height:46px;border-radius:50%;background:rgba(7,21,38,.08);border:1px solid rgba(7,21,38,.2);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.wc-icon i{color:#E8A020;font-size:1rem}
+.why-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:#F5B830;margin-bottom:10px}
+.why-card p{font-size:.88rem;color:rgba(242,234,216,.85);line-height:1.7}
+@media(max-width:860px){.why-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.why-grid{grid-template-columns:1fr}}
+
+/* ════════════════ SARATHI ════════════════ */
+.sarathi{padding:120px 0;position:relative;overflow:hidden;background:#0D1F30}
+.sarathi-bgw{position:absolute;right:-120px;top:50%;transform:translateY(-50%);width:500px;height:500px;opacity:.07;animation:spin 140s linear infinite;pointer-events:none}
+.sarathi-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.sarathi-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:300;line-height:1.25;margin-bottom:28px}
+.shloka-box{display:flex;gap:16px;background:rgba(7,21,38,.05);border:1px solid rgba(7,21,38,.18);border-radius:var(--r);padding:22px 20px;margin-bottom:26px}
+.shloka-bar{width:3px;background:linear-gradient(to bottom,#E8A020,transparent);border-radius:2px;flex-shrink:0}
+.shloka-text{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:#F5B830;line-height:1.7;margin-bottom:8px}
+.shloka-trans{font-size:.78rem;color:rgba(242,234,216,.72);letter-spacing:.05em}
+.sarathi-p{font-size:.92rem;color:rgba(242,234,216,.88);line-height:1.8;margin-bottom:16px}
+.pillar{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(232,160,32,.1)}
+.pillar:last-of-type{border-bottom:none}
+.pillar-ico{position:relative;width:44px;height:44px;flex-shrink:0}
+.pillar-ico svg{width:44px;height:44px;animation:spin 20s linear infinite}
+.p-fa{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#E8A020;font-size:.85rem}
+.pillar h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:#E8A020;margin-bottom:5px}
+.pillar p{font-size:.84rem;color:rgba(242,234,216,.82);line-height:1.65}
+.cert-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.cert-chip{display:flex;align-items:center;gap:8px;background:rgba(7,21,38,.06);border:1px solid rgba(7,21,38,.2);padding:9px 14px;border-radius:var(--r);font-size:.75rem}
+.cert-chip i{color:#E8A020;font-size:.85rem}
+.cert-chip div{display:flex;flex-direction:column;gap:1px}
+.cert-chip b{color:#E8A020;font-size:.77rem}
+.cert-chip span{color:rgba(242,234,216,.75);font-size:.68rem}
+@media(max-width:860px){.sarathi-layout{grid-template-columns:1fr;gap:40px}.sarathi-bgw{display:none}}
+
+/* ════════════════ SERVICES ════════════════ */
+.services{padding:110px 0;background:#0B1C2C}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{background:#112236;border:1px solid rgba(232,160,32,.12);border-radius:var(--r);padding:34px 28px;position:relative;transition:border-color .3s,transform .3s;box-shadow:0 2px 16px rgba(7,21,38,.05)}
+.svc-card:hover{border-color:rgba(7,21,38,.3);transform:translateY(-5px);box-shadow:0 8px 32px rgba(7,21,38,.12)}
+.svc-card:hover .svc-wheel-ico svg{animation:spin 4s linear infinite}
+.svc-featured{border-color:rgba(7,21,38,.35);background:#112236}
+.svc-badge{position:absolute;top:-1px;right:24px;background:#071526;color:#0B1C2C;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.15em;padding:5px 12px;border-radius:0 0 var(--r) var(--r)}
+.svc-wheel-ico{position:relative;width:68px;height:68px;margin-bottom:18px}
+.svc-wheel-ico svg{width:68px;height:68px;animation:spin 30s linear infinite;transition:animation-duration .3s}
+.svc-fa{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#E8A020;font-size:1.1rem}
+.svc-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:#F5B830;margin-bottom:8px}
+.svc-card h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:#F5B830;margin-bottom:10px}
+.svc-card p{font-size:.87rem;color:rgba(242,234,216,.85);line-height:1.7;margin-bottom:16px}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:22px}
+.svc-list li{font-size:.83rem;color:rgba(242,234,216,.88);display:flex;align-items:center;gap:8px}
+.svc-list i{color:#E8A020;font-size:.7rem}
+.svc-link{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.12em;color:#E8A020;display:flex;align-items:center;gap:7px;transition:gap .2s;font-weight:600}
+.svc-link:hover{gap:12px}
+@media(max-width:860px){.svc-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.svc-grid{grid-template-columns:1fr}}
+
+/* ════════════════ BATTLE PLAN ════════════════ */
+.battle-plan{padding:110px 0;background:#0D1F30;position:relative;overflow:hidden}
+.bp-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(232,160,32,.05) 0%,transparent 70%);pointer-events:none}
+.bp-shell{background:#0D1F30;border:1px solid rgba(232,160,32,.15);border-radius:10px;overflow:hidden;display:grid;grid-template-columns:240px 1fr;box-shadow:0 4px 32px rgba(7,21,38,.08)}
+.bp-steps{background:#071526;padding:24px 0;border-right:1px solid rgba(232,160,32,.2);display:flex;flex-direction:column;gap:2px}
+.bps{display:flex;align-items:center;gap:12px;padding:14px 20px;border-left:3px solid transparent;transition:all .3s;cursor:default;opacity:.55}
+.bps.active{border-left-color:#E8A020;background:rgba(232,160,32,.15);opacity:1}
+.bps.done{opacity:.8;border-left-color:rgba(232,160,32,.5)}
+.bps-n{font-family:'Cinzel',serif;font-size:.75rem;color:#E8A020;opacity:.9;width:22px;flex-shrink:0}
+.bps b{font-size:.8rem;color:#0B1C2C;display:block;line-height:1.3}
+.bps small{font-size:.68rem;color:rgba(242,234,216,.75);display:block}
+.bp-form-area{padding:36px 40px;position:relative;background:#0D1F30}
+.fs{display:none;animation:fadeUp .4s ease}
+.fs.active{display:block}
+.bp-ok{display:none;flex-direction:column;align-items:center;text-align:center;padding:20px}
+.fs-hd{margin-bottom:28px}
+.fs-tag{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:#F5B830;margin-bottom:8px}
+.fs-hd h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:#F2EAD8}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
+.choices-multi{grid-template-columns:repeat(3,1fr)}
+.ch{display:flex;align-items:center;gap:12px;background:#162D45;border:1px solid rgba(232,160,32,.22);border-radius:var(--r);padding:14px 16px;cursor:pointer;transition:all .25s}
+.ch:hover{border-color:rgba(7,21,38,.3);background:rgba(7,21,38,.04)}
+.ch input:checked ~ .ch-txt{color:#F2EAD8}
+.ch:has(input:checked){border-color:#E8A020;background:rgba(7,21,38,.08)}
+.ch input{display:none}
+.ch-ico{font-size:1.3rem;flex-shrink:0;line-height:1}
+.ch-txt{font-size:.83rem;color:#F2EAD8;opacity:1}
+.ch-txt b{display:block;font-size:.84rem;color:#F5B830;font-weight:600}
+.ch-txt small{font-size:.73rem;color:#F2EAD8}
+.report-box{background:#162840;border:1px solid rgba(232,160,32,.22);border-radius:var(--r);padding:22px;margin-bottom:22px}
+.rb-title{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.1em;color:#F5B830;margin-bottom:14px;font-weight:600}
+.rb-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.fi{width:100%;background:#0D1F30;border:1px solid rgba(232,160,32,.15);border-radius:4px;padding:11px 14px;color:#F2EAD8;font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:border-color .25s;margin-bottom:10px}
+.fi:focus{border-color:rgba(7,21,38,.5)}
+.fi::placeholder{color:rgba(242,234,216,.65)}
+textarea.fi{resize:vertical}
+select.fi{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23C9A84C' opacity='.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.fs-nav{display:flex;gap:12px;align-items:center}
+.btn-next{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;background:linear-gradient(135deg,#0B1C2C,#071526);color:#0B1C2C;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.1em;border:none;border-radius:3px;cursor:pointer;transition:opacity .2s;font-weight:600}
+.btn-next:hover{opacity:.85}
+.btn-back{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;background:transparent;color:rgba(232,160,32,.6);border:1px solid rgba(232,160,32,.2);border-radius:3px;font-size:.78rem;cursor:pointer;transition:all .2s}
+.btn-back:hover{border-color:#E8A020;color:#E8A020}
+.btn-submit{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;background:linear-gradient(135deg,#0B1C2C,#071526);color:#0B1C2C;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.1em;border:none;border-radius:3px;cursor:pointer;font-weight:600;transition:opacity .2s}
+.btn-submit:hover{opacity:.85}
+.bp-prog-wrap{position:relative;height:3px;background:rgba(7,21,38,.1);border-radius:2px;margin-top:28px}
+.bp-prog{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,#071526,#E8A020);border-radius:2px;transition:width .4s ease}
+.bp-prog-lbl{position:absolute;right:0;top:-20px;font-size:.65rem;color:#E8A020;letter-spacing:.1em;opacity:.7}
+.ok-wheel svg{width:90px;height:90px;animation:spin 8s linear infinite;margin-bottom:16px}
+.ok-wheel{margin-bottom:10px}
+.bp-ok h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;margin-bottom:12px;color:#F2EAD8}
+.bp-ok p{font-size:.9rem;color:rgba(242,234,216,.85);line-height:1.7;max-width:400px}
+@media(max-width:780px){.bp-shell{grid-template-columns:1fr}.bp-steps{flex-direction:row;overflow-x:auto;border-right:none;border-bottom:1px solid rgba(232,160,32,.1);padding:12px 16px}.bps{padding:10px 14px;border-left:none;border-bottom:3px solid transparent;flex-shrink:0}.bps.active{border-bottom-color:#E8A020;border-left-color:transparent}.bp-form-area{padding:24px 20px}.choices{grid-template-columns:1fr}.choices-multi{grid-template-columns:1fr 1fr}.rb-row{grid-template-columns:1fr}}
+
+/* ════════════════ STATS ════════════════ */
+.stats{padding:100px 0;background:linear-gradient(180deg,#0B1C2C 0%,#071526 100%);position:relative;overflow:hidden}
+.stats-bgw{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:520px;height:520px;opacity:.05;animation:spin 100s linear infinite;pointer-events:none}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.si{text-align:center;padding:44px 20px;position:relative}
+.si::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:linear-gradient(to bottom,transparent,rgba(232,160,32,.3),transparent)}
+.si:last-child::after{display:none}
+.sn{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4vw,3.8rem);font-weight:300;color:#E8A020;line-height:1;display:inline}
+.sc{font-size:clamp(1.8rem,3vw,2.8rem)}
+.sp{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);color:#E8A020;font-weight:300}
+.sl{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.15em;color:#F2EAD8;margin-top:8px}
+.ss{font-size:.73rem;color:rgba(242,234,216,.7);margin-top:5px;letter-spacing:.05em}
+@media(max-width:680px){.stats-grid{grid-template-columns:1fr 1fr}.si::after{display:none}}
+
+/* ════════════════ TESTIMONIALS ════════════════ */
+.testi{padding:110px 0;background:#0B1C2C}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tc{background:#112236;border:1px solid rgba(232,160,32,.12);border-radius:var(--r);padding:28px 24px;transition:border-color .3s,transform .3s;position:relative;box-shadow:0 2px 12px rgba(7,21,38,.05)}
+.tc:hover{border-color:rgba(232,160,32,.4);transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.3)}
+.tc-q{font-family:'Cormorant Garamond',serif;font-size:4rem;color:#E8A020;opacity:.2;line-height:.8;margin-bottom:10px;user-select:none}
+.tc p{font-size:.88rem;color:rgba(242,234,216,.88);line-height:1.75;margin-bottom:20px}
+.tc-auth{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tc-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#E8A020,#C4841A);color:#071526;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;flex-shrink:0;font-family:'Cinzel',serif}
+.tc-auth b{display:block;font-size:.83rem;color:#E8A020}
+.tc-auth span{font-size:.72rem;color:rgba(242,234,216,.65)}
+.tc-stars{font-size:.8rem;color:#E8A020;margin-left:auto;letter-spacing:2px}
+.tc-reply{font-size:.78rem;color:#F5B830;background:rgba(232,160,32,.06);border-left:2px solid #E8A020;padding:8px 12px;border-radius:0 4px 4px 0;margin:12px 0;line-height:1.6;font-style:italic}
+.tc-reply i{margin-right:6px;color:#F5B830;font-size:.7rem}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.testi-grid{grid-template-columns:1fr}}
+
+/* ════════════════ CTA BAND ════════════════ */
+.cta-band{padding:90px 0;background:linear-gradient(135deg,#0B1C2C 0%,#071526 100%);border-top:none;border-bottom:none;position:relative;overflow:hidden;text-align:center}
+.cta-bw{position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:380px;height:380px;opacity:.1;animation:spin 80s linear infinite;pointer-events:none}
+.cta-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;margin-bottom:14px;color:#F2EAD8}
+.cta-inner p{font-size:1rem;color:rgba(242,234,216,.85);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ════════════════ CONTACT ════════════════ */
+.contact{padding:110px 0;background:#0D1F30}
+.contact-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:52px;align-items:start}
+.contact-info{background:#0D1F30;border:1px solid rgba(232,160,32,.12);border-radius:var(--r);padding:36px 30px;box-shadow:0 2px 16px rgba(7,21,38,.06)}
+.ci-top{display:flex;align-items:center;gap:14px;padding-bottom:22px;border-bottom:1px solid rgba(232,160,32,.2);margin-bottom:24px}
+.ci-top h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.ci-reg{font-size:.72rem;color:#E8A020;letter-spacing:.06em;margin-top:3px;opacity:.7}
+.cd{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
+.cd-ico{width:36px;height:36px;border-radius:50%;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cd-ico i{color:#E8A020;font-size:.85rem}
+.cd b{font-size:.8rem;color:#F5B830;display:block;margin-bottom:3px}
+.cd p,.cd a{font-size:.85rem;color:rgba(242,234,216,.82);line-height:1.6}
+.cd a:hover{color:#E8A020;opacity:1}
+.ci-certs{font-size:.68rem;color:rgba(232,160,32,.8);line-height:1.8;margin-top:20px;padding-top:18px;border-top:1px solid rgba(232,160,32,.15);letter-spacing:.04em}
+.ci-certs i{margin-right:6px;color:#E8A020}
+.contact-form-wrap{background:#0D1F30;border:1px solid rgba(232,160,32,.12);border-radius:var(--r);padding:36px 32px;box-shadow:0 2px 16px rgba(7,21,38,.06)}
+.contact-form-wrap h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:8px;color:#F5B830}
+.cf-sub{font-size:.85rem;color:rgba(242,234,216,.82);margin-bottom:22px;line-height:1.6}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cf-g{margin-bottom:14px}
+.cf-g label{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#E8A020;margin-bottom:6px}
+.btn-cf{width:100%;padding:14px;background:linear-gradient(135deg,#E8A020,#C4841A);color:#071526;font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.12em;border:none;border-radius:3px;cursor:pointer;font-weight:600;transition:opacity .2s;margin-top:4px}
+.btn-cf:hover{opacity:.85}
+.cf-priv{font-size:.72rem;color:rgba(242,234,216,.6);margin-top:10px;text-align:center}
+.cf-priv i,.cf-note i{margin-right:5px;color:#E8A020}
+.cf-note{font-size:.68rem;color:rgba(232,160,32,.65);margin-top:6px;text-align:center;letter-spacing:.04em}
+.contact-ok{display:none;flex-direction:column;align-items:center;text-align:center;padding:20px 0}
+.contact-ok h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:10px;color:#E8A020}
+.contact-ok p{font-size:.9rem;color:rgba(242,234,216,.85);line-height:1.7;max-width:380px}
+@media(max-width:860px){.contact-layout{grid-template-columns:1fr}.cf-row{grid-template-columns:1fr}}
+
+/* ════════════════ FOOTER ════════════════ */
+.footer{padding:70px 0 30px;background:#071526;border-top:none;position:relative;overflow:hidden}
+.footer-bw{position:absolute;right:-80px;bottom:-80px;width:300px;height:300px;opacity:.06;animation:spin 120s linear infinite;pointer-events:none}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:36px;margin-bottom:48px}
+.fg-brand p{font-size:.83rem;color:rgba(242,234,216,.75);line-height:1.75;margin:14px 0 18px}
+.fg-logo{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.fg-badges{display:flex;gap:8px;flex-wrap:wrap}
+.fg-badges span{font-size:.65rem;letter-spacing:.08em;color:#E8A020;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.25);padding:4px 10px;border-radius:20px}
+.fg-badges i{margin-right:5px}
+.fg-col h4{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.18em;color:#E8A020;margin-bottom:16px}
+.fg-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.fg-col ul li{display:block}
+.fg-col ul a{font-size:.82rem;color:rgba(242,234,216,.7);transition:color .2s;display:block;line-height:1.4}
+.fg-col ul a:hover{color:#E8A020}
+.fg-contact li{display:flex;align-items:flex-start;gap:10px;font-size:.8rem;color:rgba(242,234,216,.75);margin-bottom:10px;line-height:1.5}
+.fg-contact i{color:#E8A020;margin-top:2px;font-size:.78rem;flex-shrink:0}
+.fg-contact a:hover{color:#E8A020}
+.fg-social{display:flex;gap:10px;margin-top:16px}
+.fg-social a{width:34px;height:34px;border-radius:50%;background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.18);display:flex;align-items:center;justify-content:center;color:#E8A020;font-size:.85rem;transition:all .2s;cursor:pointer}
+.fg-social a:hover{background:rgba(232,160,32,.25)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-align:center}
+.footer-bottom p{font-size:.7rem;color:rgba(242,234,216,.55);line-height:1.8;margin-bottom:10px}
+.footer-credits{display:flex;gap:14px;justify-content:center;font-size:.7rem;color:rgba(242,234,216,.55);flex-wrap:wrap}
+.footer-credits strong{color:#E8A020}
+.fc-dot{color:rgba(232,160,32,.4)}
+.footer-owner{text-align:center;margin-top:10px;font-size:.72rem;color:rgba(232,160,32,.8);letter-spacing:.05em}
+.footer-owner i{margin-right:6px;color:#E8A020}
+.footer-owner strong{color:#E8A020}
+@media(max-width:860px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.footer-grid{grid-template-columns:1fr}}
+
+/* ════════════════ FLOATING ELEMENTS ════════════════ */
+#btt{position:fixed;bottom:92px;right:28px;z-index:900;width:40px;height:40px;border-radius:50%;background:rgba(7,21,38,.9);border:1px solid rgba(232,160,32,.25);color:#E8A020;font-size:.85rem;cursor:pointer;opacity:0;pointer-events:none;transition:all .3s;display:flex;align-items:center;justify-content:center}
+#btt.show{opacity:1;pointer-events:all}
+#btt:hover{background:#050F1C}
+/* ── COOKIE BANNER ── */
+#cookieBanner{position:fixed;bottom:0;left:0;right:0;z-index:9997;background:rgba(5,12,26,.97);border-top:1px solid rgba(232,160,32,.3);padding:18px 24px;transform:translateY(100%);transition:transform .5s ease;backdrop-filter:blur(20px)}
+#cookieBanner.show{transform:translateY(0)}
+.cookie-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.cookie-left{display:flex;align-items:center;gap:16px}
+.cookie-left i{color:#E8A020;font-size:1.8rem;flex-shrink:0}
+.cookie-title{font-family:'Cinzel',serif;font-size:.82rem;letter-spacing:.1em;color:#E8A020;margin-bottom:4px}
+.cookie-sub{font-size:.75rem;color:rgba(242,234,216,.75);line-height:1.5;max-width:540px}
+.cookie-btns{display:flex;gap:10px;flex-shrink:0}
+#cookieAccept{padding:10px 22px;background:linear-gradient(135deg,#E8A020,#C4841A);color:#F2EAD8;font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.1em;border:none;border-radius:3px;cursor:pointer;font-weight:600;transition:opacity .2s}
+#cookieAccept:hover{opacity:.85}
+#cookieDecline{padding:10px 18px;background:transparent;color:rgba(242,234,216,.75);border:1px solid rgba(255,255,255,.2);border-radius:3px;font-size:.72rem;cursor:pointer;transition:all .2s}
+#cookieDecline:hover{border-color:rgba(248,244,238,.35);color:rgba(248,244,238,.7)}
+@media(max-width:680px){.cookie-inner{flex-direction:column;align-items:flex-start}.cookie-btns{width:100%}#cookieAccept,#cookieDecline{flex:1;text-align:center}}
+
+/* ── RELEASE DATE ── */
+.site-meta{text-align:center;padding:14px 0 20px;border-top:1px solid rgba(255,255,255,.1);margin-top:8px}
+.site-meta p{font-size:.68rem;color:rgba(242,234,216,.5);letter-spacing:.08em}
+.site-meta span{color:#E8A020}
+
+/* ════ BLOG ════ */
+.blog{padding:110px 0;background:#0A1828}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
+.blog-card{background:#112236;border:1px solid rgba(232,160,32,.2);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s,border-color .3s;display:flex;flex-direction:column}
+.blog-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(0,0,0,.4);border-color:rgba(232,160,32,.45)}
+.blog-card-top{padding:28px 28px 0}
+.blog-cat{display:inline-flex;align-items:center;gap:7px;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#E8A020;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.25);padding:5px 13px;border-radius:20px;margin-bottom:16px}
+.blog-card-top h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:#F2EAD8;line-height:1.45;margin-bottom:12px}
+.blog-card-top p{font-size:.84rem;color:rgba(242,234,216,.72);line-height:1.7;margin-bottom:18px}
+.blog-card-sep{height:1px;background:rgba(232,160,32,.12);margin:0 28px}
+.blog-card-foot{display:flex;align-items:center;justify-content:space-between;padding:16px 28px}
+.blog-card-date{font-size:.7rem;color:rgba(242,234,216,.65);letter-spacing:.06em;display:flex;align-items:center;gap:5px}
+.blog-read-btn{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.12em;color:#E8A020;display:flex;align-items:center;gap:6px;transition:gap .2s}
+.blog-card:hover .blog-read-btn{gap:10px}
+.blog-coming{opacity:.45;cursor:default;pointer-events:none}
+#blogModal{position:fixed;inset:0;z-index:9990;background:rgba(0,0,0,.88);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:32px 16px;backdrop-filter:blur(10px)}
+#blogModal.open{display:flex}
+.bm-wrap{background:#0B1C2C;border-radius:12px;max-width:860px;width:100%;margin:auto;overflow:hidden;animation:fadeUp .35s ease;border:1px solid rgba(232,160,32,.2);box-shadow:0 24px 80px rgba(0,0,0,.6)}
+.bm-header{background:linear-gradient(160deg,#050F1C 0%,#071526 60%,#0B1C2C 100%);padding:52px 56px 44px;position:relative;border-bottom:1px solid rgba(232,160,32,.15)}
+.bm-close{position:absolute;top:20px;right:20px;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.25);color:#E8A020;width:38px;height:38px;border-radius:50%;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s}
+.bm-close:hover{background:rgba(232,160,32,.22);transform:rotate(90deg)}
+.bm-cat{display:inline-flex;align-items:center;gap:7px;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;color:#E8A020;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.25);padding:5px 14px;border-radius:20px;margin-bottom:20px}
+.bm-header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.3rem);font-weight:600;color:#F2EAD8;line-height:1.3;margin-bottom:12px}
+.bm-header .bm-sub{font-size:.9rem;color:rgba(242,234,216,.7);font-style:italic;line-height:1.65;margin-bottom:22px}
+.bm-meta{display:flex;gap:20px;flex-wrap:wrap;padding-top:18px;border-top:1px solid rgba(232,160,32,.12)}
+.bm-meta span{font-size:.72rem;color:rgba(242,234,216,.65);display:flex;align-items:center;gap:7px;letter-spacing:.04em}
+.bm-meta i{color:#E8A020;font-size:.72rem}
+.bm-body{padding:52px 56px;background:#0D1F30}
+.bm-body p{font-size:.94rem;color:rgba(242,234,216,.85);line-height:1.95;margin-bottom:16px}
+.bm-body h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:#F2EAD8;margin:40px 0 16px;padding-bottom:12px;border-bottom:1px solid rgba(232,160,32,.18)}
+.bm-body h3{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.16em;font-weight:600;color:#E8A020;margin:26px 0 12px;text-transform:uppercase}
+.bm-body strong{color:#F5B830;font-weight:600}
+.bm-quote{border-left:3px solid #E8A020;padding:20px 26px;margin:30px 0;background:rgba(232,160,32,.05);border-radius:0 8px 8px 0}
+.bm-quote p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:#F5B830;line-height:1.75;margin:0}
+.bm-list{list-style:none;margin:14px 0 26px;display:flex;flex-direction:column;gap:10px}
+.bm-list li{display:flex;align-items:flex-start;gap:14px;font-size:.9rem;color:rgba(242,234,216,.85);line-height:1.65;padding:12px 16px;background:rgba(232,160,32,.04);border-radius:6px;border:1px solid rgba(232,160,32,.1)}
+.bm-list li::before{content:'✦';color:#E8A020;font-size:.65rem;margin-top:5px;flex-shrink:0}
+.bm-keybox{background:#071526;border:1px solid rgba(232,160,32,.2);border-radius:10px;padding:30px 32px;margin:28px 0}
+.bm-keybox h3{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.18em;color:#E8A020;margin-bottom:18px;text-transform:uppercase;padding-bottom:12px;border-bottom:1px solid rgba(232,160,32,.15)}
+.bm-keyrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bm-keyitem{display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(232,160,32,.06);border-radius:6px;border:1px solid rgba(232,160,32,.12);transition:background .2s}
+.bm-keyitem:hover{background:rgba(232,160,32,.1)}
+.bm-keyitem i{color:#E8A020;font-size:.9rem;flex-shrink:0;width:18px;text-align:center}
+.bm-keyitem span{font-size:.84rem;color:rgba(242,234,216,.88);line-height:1.45}
+.bm-cta{background:linear-gradient(135deg,#050F1C,#071526);border:1px solid rgba(232,160,32,.25);border-radius:10px;padding:40px 44px;text-align:center;margin:40px 0}
+.bm-cta h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:#F2EAD8;margin-bottom:12px;line-height:1.4}
+.bm-cta p{font-size:.9rem;color:rgba(242,234,216,.7);margin-bottom:24px;line-height:1.7}
+.bm-disclaimer{background:rgba(232,160,32,.04);border:1px solid rgba(232,160,32,.15);border-radius:8px;padding:20px 24px;margin-top:36px}
+.bm-disclaimer p{font-size:.78rem;color:rgba(242,234,216,.62);line-height:1.8;margin:0}
+.bm-disclaimer strong{color:rgba(242,234,216,.78);font-weight:600}
+@media(max-width:780px){.blog-grid{grid-template-columns:1fr}.bm-header{padding:32px 24px 28px}.bm-body{padding:32px 24px}.bm-keyrow{grid-template-columns:1fr}}
+
+/* ════ SIP CALCULATOR ════ */
+.sip-calc{padding:110px 0;background:#071526}
+.sip-wrap{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;margin-top:8px}
+.sip-left{background:#0D1F30;border:1px solid rgba(232,160,32,.2);border-radius:12px;padding:40px 36px}
+.sip-right{background:#0B1C2C;border:1px solid rgba(232,160,32,.15);border-radius:12px;padding:40px 36px;position:sticky;top:100px}
+.sip-field{margin-bottom:28px}
+.sip-field label{display:flex;justify-content:space-between;align-items:center;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.12em;color:#E8A020;text-transform:uppercase;margin-bottom:12px}
+.sip-field label span{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#F5B830;font-style:italic;letter-spacing:0;text-transform:none;font-weight:600}
+.sip-range{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:linear-gradient(to right,#E8A020 var(--pct,50%),rgba(232,160,32,.15) var(--pct,50%));outline:none;cursor:pointer}
+.sip-range::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#E8A020;border:3px solid #071526;box-shadow:0 0 0 2px #E8A020;cursor:pointer;transition:transform .2s}
+.sip-range::-webkit-slider-thumb:hover{transform:scale(1.2)}
+.sip-range::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#E8A020;border:3px solid #071526;box-shadow:0 0 0 2px #E8A020;cursor:pointer}
+.sip-ticks{display:flex;justify-content:space-between;margin-top:6px}
+.sip-ticks span{font-size:.65rem;color:rgba(242,234,216,.4);letter-spacing:.04em}
+.sip-result-title{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.18em;color:#E8A020;text-transform:uppercase;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid rgba(232,160,32,.15)}
+.sip-result-main{text-align:center;padding:24px 0 28px;border-bottom:1px solid rgba(232,160,32,.12);margin-bottom:22px}
+.sip-result-label{font-size:.72rem;color:rgba(242,234,216,.55);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.sip-result-value{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:#F5B830;line-height:1}
+.sip-result-sub{font-size:.78rem;color:rgba(242,234,216,.45);margin-top:6px}
+.sip-breakdown{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.sip-row{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-radius:6px}
+.sip-row.invested{background:rgba(232,160,32,.06);border:1px solid rgba(232,160,32,.1)}
+.sip-row.returns{background:rgba(72,187,120,.06);border:1px solid rgba(72,187,120,.12)}
+.sip-row-label{font-size:.8rem;color:rgba(242,234,216,.7);display:flex;align-items:center;gap:8px}
+.sip-row-label i{font-size:.75rem}
+.sip-row.invested .sip-row-label i{color:#E8A020}
+.sip-row.returns .sip-row-label i{color:#48bb78}
+.sip-row-val{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.sip-row.invested .sip-row-val{color:#E8A020}
+.sip-row.returns .sip-row-val{color:#48bb78}
+.sip-bar-wrap{margin:20px 0;height:8px;border-radius:4px;background:rgba(232,160,32,.1);overflow:hidden;display:flex}
+.sip-bar-inv{height:100%;background:#E8A020;border-radius:4px 0 0 4px;transition:width .6s ease}
+.sip-bar-ret{height:100%;background:#48bb78;border-radius:0 4px 4px 0;transition:width .6s ease}
+.sip-disc{font-size:.68rem;color:rgba(242,234,216,.35);text-align:center;line-height:1.6;margin-top:16px}
+.sip-cta-btn{width:100%;padding:14px;background:linear-gradient(135deg,#E8A020,#C4841A);color:#071526;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.14em;border:none;border-radius:6px;cursor:pointer;font-weight:700;transition:opacity .2s;margin-top:16px}
+.sip-cta-btn:hover{opacity:.88}
+@media(max-width:860px){.sip-wrap{grid-template-columns:1fr}.sip-right{position:static}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init("JcpOhuT8aIhqQ3HbB");</script>
+</head>
+<body>
+
+<!-- CURSOR -->
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-wheel">
+    <svg viewBox="0 0 160 160" fill="none">
+      <circle cx="80" cy="80" r="74" stroke="#E8A020" stroke-width="1.5" stroke-dasharray="5 8" opacity=".4"/>
+      <circle cx="80" cy="80" r="57" stroke="#E8A020" stroke-width="1" opacity=".25"/>
+      <g stroke="#E8A020" stroke-width="1.4" opacity=".7">
+        <line x1="80" y1="6" x2="80" y2="154"/>
+        <line x1="6" y1="80" x2="154" y2="80"/>
+        <line x1="24" y1="24" x2="136" y2="136"/>
+        <line x1="136" y1="24" x2="24" y2="136"/>
+        <line x1="52" y1="8" x2="108" y2="152"/>
+        <line x1="152" y1="52" x2="8" y2="108"/>
+        <line x1="108" y1="8" x2="52" y2="152"/>
+        <line x1="8" y1="52" x2="152" y2="108"/>
+      </g>
+      <circle cx="80" cy="80" r="9" fill="#E8A020"/>
+      <circle cx="80" cy="80" r="4" fill="#071526"/>
+      <g fill="#E8A020" opacity=".75">
+        <polygon points="80,6 83.5,16 76.5,16"/>
+        <polygon points="80,6 83.5,16 76.5,16" transform="rotate(45,80,80)"/>
+        <polygon points="80,6 83.5,16 76.5,16" transform="rotate(90,80,80)"/>
+        <polygon points="80,6 83.5,16 76.5,16" transform="rotate(135,80,80)"/>
+        <polygon points="80,6 83.5,16 76.5,16" transform="rotate(180,80,80)"/>
+        <polygon points="80,6 83.5,16 76.5,16" transform="rotate(225,80,80)"/>
+        <polygon points="80,6 83.5,16 76.5,16" transform="rotate(270,80,80)"/>
+        <polygon points="80,6 83.5,16 76.5,16" transform="rotate(315,80,80)"/>
+      </g>
+    </svg>
+  </div>
+  <p class="ld-brand">RADDHIH</p>
+  <p class="ld-sub">Financial Services</p>
+</div>
+
+<!-- BG WHEELS (SVG inline) -->
+<div class="bg-wheels">
+  <div class="bgw bgw1"><svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="96" stroke="#E8A020" stroke-width="1"/><g stroke="#E8A020" stroke-width=".8"><line x1="100" y1="4" x2="100" y2="196"/><line x1="4" y1="100" x2="196" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/><line x1="64" y1="7" x2="136" y2="193"/><line x1="193" y1="64" x2="7" y2="136"/><line x1="136" y1="7" x2="64" y2="193"/><line x1="7" y1="64" x2="193" y2="136"/></g><circle cx="100" cy="100" r="12" fill="#E8A020"/><circle cx="100" cy="100" r="5" fill="#071526"/></svg></div>
+  <div class="bgw bgw2"><svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="96" stroke="#E8A020" stroke-width="1"/><g stroke="#E8A020" stroke-width=".8"><line x1="100" y1="4" x2="100" y2="196"/><line x1="4" y1="100" x2="196" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/></g><circle cx="100" cy="100" r="12" fill="#E8A020"/><circle cx="100" cy="100" r="5" fill="#071526"/></svg></div>
+  <div class="bgw bgw3"><svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="96" stroke="#E8A020" stroke-width="1"/><g stroke="#E8A020" stroke-width=".8"><line x1="100" y1="4" x2="100" y2="196"/><line x1="4" y1="100" x2="196" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/></g><circle cx="100" cy="100" r="12" fill="#E8A020"/></svg></div>
+</div>
+
+<!-- MUSIC -->
+<button id="musicBtn" aria-label="Ambient music">
+  <i class="fas fa-music" id="musicIco"></i><span>Ambience</span>
+</button>
+<iframe id="ytFrame" src="" allow="autoplay; encrypted-media" style="position:fixed;top:-1px;left:-1px;width:1px;height:1px;opacity:0;pointer-events:none" frameborder="0"></iframe>
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav id="navbar" style="background:rgba(5,12,26,.97)">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <div class="nl-wheel">
+        <svg viewBox="0 0 56 56" fill="none">
+          <circle cx="28" cy="28" r="25" stroke="#E8A020" stroke-width="1.2"/>
+          <g stroke="#E8A020" stroke-width="1">
+            <line x1="28" y1="3" x2="28" y2="53"/>
+            <line x1="3" y1="28" x2="53" y2="28"/>
+            <line x1="10" y1="10" x2="46" y2="46"/>
+            <line x1="46" y1="10" x2="10" y2="46"/>
+            <line x1="17" y1="4" x2="39" y2="52"/>
+            <line x1="52" y1="17" x2="4" y2="39"/>
+            <line x1="39" y1="4" x2="17" y2="52"/>
+            <line x1="4" y1="17" x2="52" y2="39"/>
+          </g>
+          <circle cx="28" cy="28" r="5" fill="#E8A020"/>
+          <circle cx="28" cy="28" r="2" fill="#071526"/>
+        </svg>
+      </div>
+      <div class="nl-text">
+        <span class="nl-main">RADDHIH</span>
+        <span class="nl-sub">Financial Services</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nl">Home</a></li>
+      <li><a href="#why-us" class="nl">Why Us</a></li>
+      <li><a href="#sarathi" class="nl">Our Sarathi</a></li>
+      <li><a href="#services" class="nl">Services</a></li>
+      <li><a href="#battle-plan" class="nl">Battle Plan</a></li>
+      <li><a href="#stats" class="nl">Impact</a></li>
+      <li><a href="#testimonials" class="nl">Testimonials</a></li>
+      <li><a href="#sip-calculator" class="nl">SIP Calc</a></li>
+      <li><a href="#blog" class="nl">Blog</a></li>
+      <li><a href="#contact" class="nl">Contact</a></li>
+    </ul>
+    <a href="#battle-plan" class="nav-cta">Free Strategy</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content reveal">
+    <div class="hero-pill"><span class="pill-dot"></span>SEBI Registered &nbsp;·&nbsp; IRDA Certified 2014 &nbsp;·&nbsp; TRP Certified 2009</div>
+    <h1 class="hero-h1">
+      <span class="h1-line">We Build Your</span>
+      <em class="h1-gold">Financial Future</em>
+    </h1>
+    <p class="hero-p">Like Krishna guided Arjuna through the great battle of Kurukshetra — we guide you through every financial challenge with clarity, wisdom, and unwavering conviction.</p>
+    <div class="hero-actions">
+      <a href="#battle-plan" class="btn-gold"><span>Begin Your Strategy</span><i class="fas fa-arrow-right"></i></a>
+      <a href="#contact" class="btn-ghost">Speak to an Advisor</a>
+    </div>
+    <div class="hero-badges">
+      <span><i class="fas fa-shield-halved"></i>SEBI Registered</span>
+      <span><i class="fas fa-certificate"></i>IRDA Certified</span>
+      <span><i class="fas fa-award"></i>TRP Certified</span>
+      <span><i class="fas fa-lock"></i>100% Secure</span>
+    </div>
+  </div>
+  <div class="hero-wheel-wrap">
+    <svg class="hero-big-wheel" viewBox="0 0 520 520" fill="none">
+      <defs>
+        <radialGradient id="hwg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#C9A84C" stop-opacity=".15"/><stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/></radialGradient>
+      </defs>
+      <circle cx="260" cy="260" r="250" fill="url(#hwg)"/>
+      <circle cx="260" cy="260" r="245" stroke="#E8A020" stroke-width="2" opacity=".5"/>
+      <circle cx="260" cy="260" r="225" stroke="#E8A020" stroke-width=".7" stroke-dasharray="4 8" opacity=".25"/>
+      <circle cx="260" cy="260" r="180" stroke="#E8A020" stroke-width="1" opacity=".3"/>
+      <circle cx="260" cy="260" r="100" stroke="#E8A020" stroke-width="1.2" opacity=".4"/>
+      <circle cx="260" cy="260" r="40" stroke="#E8A020" stroke-width="1.8" opacity=".65"/>
+      <g stroke="#E8A020" stroke-width="1.4" opacity=".55">
+        <line x1="260" y1="15" x2="260" y2="505"/>
+        <line x1="15" y1="260" x2="505" y2="260"/>
+        <line x1="74" y1="74" x2="446" y2="446"/>
+        <line x1="446" y1="74" x2="74" y2="446"/>
+        <line x1="157" y1="21" x2="363" y2="499"/>
+        <line x1="499" y1="157" x2="21" y2="363"/>
+        <line x1="363" y1="21" x2="157" y2="499"/>
+        <line x1="21" y1="157" x2="499" y2="363"/>
+        <line x1="110" y1="40" x2="410" y2="480"/>
+        <line x1="480" y1="110" x2="40" y2="410"/>
+        <line x1="410" y1="40" x2="110" y2="480"/>
+        <line x1="40" y1="110" x2="480" y2="410"/>
+        <line x1="40" y1="205" x2="480" y2="315"/>
+        <line x1="315" y1="40" x2="205" y2="480"/>
+        <line x1="205" y1="40" x2="315" y2="480"/>
+        <line x1="480" y1="205" x2="40" y2="315"/>
+      </g>
+      <circle cx="260" cy="260" r="18" fill="#E8A020" opacity=".9"/>
+      <circle cx="260" cy="260" r="9" fill="#071526"/>
+      <circle cx="260" cy="260" r="4" fill="#E8A020"/>
+      <g fill="#E8A020" opacity=".8">
+        <polygon points="260,15 264,28 256,28"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(22.5,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(45,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(67.5,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(90,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(112.5,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(135,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(157.5,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(180,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(202.5,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(225,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(247.5,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(270,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(292.5,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(315,260,260)"/>
+        <polygon points="260,15 264,28 256,28" transform="rotate(337.5,260,260)"/>
+      </g>
+      <g stroke="#4a90d9" stroke-width="2" opacity=".4" fill="none">
+        <polyline points="80,330 135,295 190,315 244,245 294,265 344,205 394,228 450,170"/>
+      </g>
+    </svg>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><div class="sc-line"></div></div>
+</section>
+
+<!-- ═══════════════════════ WHY US ═══════════════════════ -->
+<section class="why-us" id="why-us">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">The Foundation — Dharma</div>
+      <h2 class="sec-title">Why Warriors Choose <em class="gold">Raddhih</em></h2>
+      <p class="sec-sub">Built on truth, transparency, and an unbroken commitment to your financial sovereignty.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal" style="--d:.05s">
+        <div class="wc-icon"><i class="fas fa-landmark"></i></div>
+        <h3>A Decade of Trust</h3>
+        <p>SEBI Registered, IRDA Certified since 2014, TRP Certified since 2009 — over 15 years navigating markets and client journeys with uncompromising integrity.</p>
+      </div>
+      <div class="why-card reveal" style="--d:.15s">
+        <div class="wc-icon"><i class="fas fa-eye"></i></div>
+        <h3>Radical Transparency</h3>
+        <p>No hidden commissions. No opaque structures. Every recommendation comes with a clear rationale and your best interest at its core.</p>
+      </div>
+      <div class="why-card reveal" style="--d:.25s">
+        <div class="wc-icon"><i class="fas fa-shield-halved"></i></div>
+        <h3>Fort-Grade Security</h3>
+        <p>Your data and investments protected under stringent SEBI and IRDA compliance norms and the highest digital security protocols.</p>
+      </div>
+      <div class="why-card reveal" style="--d:.35s">
+        <div class="wc-icon"><i class="fas fa-compass"></i></div>
+        <h3>Holistic Guidance</h3>
+        <p>From your first SIP to your retirement corpus — we build complete financial architectures for your life, not isolated products.</p>
+      </div>
+      <div class="why-card reveal" style="--d:.45s">
+        <div class="wc-icon"><i class="fas fa-users"></i></div>
+        <h3>Personal Sarathi</h3>
+        <p>You get a dedicated advisor — your own financial charioteer — who knows your goals, fears, and aspirations by heart.</p>
+      </div>
+      <div class="why-card reveal" style="--d:.55s">
+        <div class="wc-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Proven Track Record</h3>
+        <p>&#8377;10Cr+ in assets under advisory. 400+ families guided across India. Results that speak louder than any promise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SARATHI ═══════════════════════ -->
+<section class="sarathi" id="sarathi">
+  <div class="sarathi-bgw">
+    <svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="96" stroke="#E8A020" stroke-width="1"/><g stroke="#E8A020" stroke-width=".8"><line x1="100" y1="4" x2="100" y2="196"/><line x1="4" y1="100" x2="196" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/><line x1="64" y1="7" x2="136" y2="193"/><line x1="193" y1="64" x2="7" y2="136"/><line x1="136" y1="7" x2="64" y2="193"/><line x1="7" y1="64" x2="193" y2="136"/></g><circle cx="100" cy="100" r="12" fill="#E8A020"/><circle cx="100" cy="100" r="5" fill="#071526"/></svg>
+  </div>
+  <div class="wrap">
+    <div class="sarathi-layout">
+      <div class="sarathi-left reveal-left">
+        <div class="sec-tag" style="margin-bottom:20px">The Sarathi Principle</div>
+        <h2 class="sarathi-h2">
+          Like Krishna Led<br>
+          <em style="color:#E8A020;font-style:italic">Arjuna to Victory —</em><br>
+          We Lead You to<br>
+          <em style="color:#E8A020;font-style:italic">Financial Triumph</em>
+        </h2>
+        <div class="shloka-box">
+          <div class="shloka-bar"></div>
+          <div>
+            <p class="shloka-text">"Yada yada hi dharmasya, glanir bhavati Bharata,<br>abhyutthanam adharmasya, tadatmanam srjamy aham."</p>
+            <p class="shloka-trans">Whenever righteousness declines, I arise — Bhagavad Gita 4.7</p>
+          </div>
+        </div>
+        <p class="sarathi-p">On the great battlefield of Kurukshetra, Arjuna — the finest warrior of his age — froze. Not from weakness, but from doubt. His bow was mighty, his skills unmatched. Yet without the wisdom of a true guide, he could not move a single step forward.</p>
+        <p class="sarathi-p">It was <strong style="color:#E8A020">Krishna, as his Sarathi</strong> — his charioteer — who held the reins. Not fighting for him, but guiding him with divine clarity, cutting through confusion with timeless wisdom, steering him toward dharma with every word of the Gita.</p>
+        <p class="sarathi-p">That is the role of Raddhih Financial Services in your life. You carry the earnings, the ambitions, the will to build a great future. <strong style="color:#E8A020">We hold the reins.</strong> We read the markets, navigate regulations, steer through volatility — and with our guidance, you move forward with absolute clarity and confidence.</p>
+      </div>
+      <div class="sarathi-right reveal-right">
+        <div class="pillar">
+          <div class="pillar-ico"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" stroke="#E8A020" stroke-width=".8" opacity=".5"/><g stroke="#E8A020" stroke-width=".7" opacity=".5"><line x1="22" y1="2" x2="22" y2="42"/><line x1="2" y1="22" x2="42" y2="22"/><line x1="8" y1="8" x2="36" y2="36"/><line x1="36" y1="8" x2="8" y2="36"/></g><circle cx="22" cy="22" r="4.5" fill="#E8A020" opacity=".8"/></svg><i class="fas fa-eye p-fa"></i></div>
+          <div><h4>The Vision of Krishna</h4><p>Krishna saw the entire battlefield — past, present, and future. We analyse markets, regulations, and your life goals together, giving you foresight beyond the immediate moment.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-ico"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" stroke="#E8A020" stroke-width=".8" opacity=".5"/><g stroke="#E8A020" stroke-width=".7" opacity=".5"><line x1="22" y1="2" x2="22" y2="42"/><line x1="2" y1="22" x2="42" y2="22"/><line x1="8" y1="8" x2="36" y2="36"/><line x1="36" y1="8" x2="8" y2="36"/></g><circle cx="22" cy="22" r="4.5" fill="#E8A020" opacity=".8"/></svg><i class="fas fa-compass p-fa"></i></div>
+          <div><h4>The Direction of the Chariot</h4><p>A charioteer doesn't just hold reins — he chooses the path. We chart a complete financial roadmap aligned with your life's mission and your family's security.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-ico"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" stroke="#E8A020" stroke-width=".8" opacity=".5"/><g stroke="#E8A020" stroke-width=".7" opacity=".5"><line x1="22" y1="2" x2="22" y2="42"/><line x1="2" y1="22" x2="42" y2="22"/><line x1="8" y1="8" x2="36" y2="36"/><line x1="36" y1="8" x2="8" y2="36"/></g><circle cx="22" cy="22" r="4.5" fill="#E8A020" opacity=".8"/></svg><i class="fas fa-shield-halved p-fa"></i></div>
+          <div><h4>The Fearlessness of Dharma</h4><p>Krishna replaced Arjuna's doubt with fearlessness. We replace your financial anxiety with transparency and a plan so solid you face every market storm unshaken.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-ico"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" stroke="#E8A020" stroke-width=".8" opacity=".5"/><g stroke="#E8A020" stroke-width=".7" opacity=".5"><line x1="22" y1="2" x2="22" y2="42"/><line x1="2" y1="22" x2="42" y2="22"/><line x1="8" y1="8" x2="36" y2="36"/><line x1="36" y1="8" x2="8" y2="36"/></g><circle cx="22" cy="22" r="4.5" fill="#E8A020" opacity=".8"/></svg><i class="fas fa-map-marked-alt p-fa"></i></div>
+          <div><h4>400+ Warriors Guided Across India</h4><p>From Kolkata to across the nation — 400+ families have entrusted us as their financial Sarathi. Each one a victory. Each one, a legacy we protect.</p></div>
+        </div>
+        <div class="cert-row">
+          <div class="cert-chip"><i class="fas fa-certificate"></i><div><b>IRDA Certified</b><span>Since 2014</span></div></div>
+          <div class="cert-chip"><i class="fas fa-award"></i><div><b>TRP Certified</b><span>Since 2009</span></div></div>
+          <div class="cert-chip"><i class="fas fa-landmark"></i><div><b>SEBI Registered</b><span>ARN Holder</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SERVICES ═══════════════════════ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">The Armory</div>
+      <h2 class="sec-title">Your Complete <em class="gold">Financial Arsenal</em></h2>
+      <p class="sec-sub">Every warrior needs the right weapons. Choose yours.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal" style="--d:.05s">
+        <div class="svc-wheel-ico">
+          <svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="33" stroke="#E8A020" stroke-width="1" opacity=".4"/><g stroke="#E8A020" stroke-width=".9" opacity=".5"><line x1="36" y1="3" x2="36" y2="69"/><line x1="3" y1="36" x2="69" y2="36"/><line x1="13" y1="13" x2="59" y2="59"/><line x1="59" y1="13" x2="13" y2="59"/><line x1="23" y1="5" x2="49" y2="67"/><line x1="67" y1="23" x2="5" y2="49"/><line x1="49" y1="5" x2="23" y2="67"/><line x1="5" y1="23" x2="67" y2="49"/></g><circle cx="36" cy="36" r="7" fill="#E8A020" opacity=".85"/><circle cx="36" cy="36" r="3" fill="#071526"/></svg>
+          <i class="fas fa-arrow-trend-up svc-fa"></i>
+        </div>
+        <div class="svc-label">The Arrow — Lakshya</div>
+        <h3>Mutual Fund Investments</h3>
+        <p>Goal-based SIPs and lump-sum strategies crafted to hit your financial targets with precision. Equity, Debt, ELSS — curated for your kingdom.</p>
+        <ul class="svc-list">
+          <li><i class="fas fa-check"></i>SIP &amp; Lump Sum Planning</li>
+          <li><i class="fas fa-check"></i>ELSS Tax Saving Funds</li>
+          <li><i class="fas fa-check"></i>Portfolio Rebalancing</li>
+          <li><i class="fas fa-check"></i>Goal-Linked Investments</li>
+        </ul>
+        <a href="#contact" class="svc-link">Deploy This Arrow <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="svc-card svc-featured reveal" style="--d:.15s">
+        <div class="svc-badge">Most Chosen</div>
+        <div class="svc-wheel-ico">
+          <svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="33" stroke="#E8A020" stroke-width="1" opacity=".4"/><g stroke="#E8A020" stroke-width=".9" opacity=".5"><line x1="36" y1="3" x2="36" y2="69"/><line x1="3" y1="36" x2="69" y2="36"/><line x1="13" y1="13" x2="59" y2="59"/><line x1="59" y1="13" x2="13" y2="59"/><line x1="23" y1="5" x2="49" y2="67"/><line x1="67" y1="23" x2="5" y2="49"/><line x1="49" y1="5" x2="23" y2="67"/><line x1="5" y1="23" x2="67" y2="49"/></g><circle cx="36" cy="36" r="7" fill="#E8A020" opacity=".85"/><circle cx="36" cy="36" r="3" fill="#071526"/></svg>
+          <i class="fas fa-shield-halved svc-fa"></i>
+        </div>
+        <div class="svc-label">The Shield — Raksha</div>
+        <h3>Insurance Solutions</h3>
+        <p>Fortify your family's future. Life, Health, and General Insurance — your impenetrable shield against life's uncertainties, curated with care.</p>
+        <ul class="svc-list">
+          <li><i class="fas fa-check"></i>Term &amp; Life Insurance</li>
+          <li><i class="fas fa-check"></i>Health &amp; Mediclaim Plans</li>
+          <li><i class="fas fa-check"></i>General Insurance</li>
+          <li><i class="fas fa-check"></i>Claims Assistance</li>
+        </ul>
+        <a href="#contact" class="svc-link">Raise Your Shield <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="svc-card reveal" style="--d:.25s">
+        <div class="svc-wheel-ico">
+          <svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="33" stroke="#E8A020" stroke-width="1" opacity=".4"/><g stroke="#E8A020" stroke-width=".9" opacity=".5"><line x1="36" y1="3" x2="36" y2="69"/><line x1="3" y1="36" x2="69" y2="36"/><line x1="13" y1="13" x2="59" y2="59"/><line x1="59" y1="13" x2="13" y2="59"/><line x1="23" y1="5" x2="49" y2="67"/><line x1="67" y1="23" x2="5" y2="49"/><line x1="49" y1="5" x2="23" y2="67"/><line x1="5" y1="23" x2="67" y2="49"/></g><circle cx="36" cy="36" r="7" fill="#E8A020" opacity=".85"/><circle cx="36" cy="36" r="3" fill="#071526"/></svg>
+          <i class="fas fa-file-invoice-dollar svc-fa"></i>
+        </div>
+        <div class="svc-label">The Foundation — Dharma</div>
+        <h3>Income Tax Return Filing</h3>
+        <p>Tax compliance made effortless. From ITR filing to NPS optimisation — every rupee saved is a rupee earned for your kingdom.</p>
+        <ul class="svc-list">
+          <li><i class="fas fa-check"></i>ITR Filing (All Categories)</li>
+          <li><i class="fas fa-check"></i>Tax Planning &amp; Optimisation</li>
+          <li><i class="fas fa-check"></i>NPS &amp; ELSS Advisory</li>
+          <li><i class="fas fa-check"></i>Compliance Management</li>
+        </ul>
+        <a href="#contact" class="svc-link">Claim Your Dharma <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ BATTLE PLAN ═══════════════════════ -->
+<section class="battle-plan" id="battle-plan">
+  <div class="bp-bg"></div>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">The Kurukshetra Protocol</div>
+      <h2 class="sec-title">Your <em class="gold">Financial Battle Plan</em></h2>
+      <p class="sec-sub">Answer 5 questions. Receive your personalised Kurukshetra Strategy Report — free, directly in your inbox.</p>
+    </div>
+    <div class="bp-shell reveal">
+      <div class="bp-steps">
+        <div class="bps active" data-s="1"><span class="bps-n">01</span><div><b>The Terrain</b><small>Where are you now?</small></div></div>
+        <div class="bps" data-s="2"><span class="bps-n">02</span><div><b>The Quiver</b><small>Assets you hold</small></div></div>
+        <div class="bps" data-s="3"><span class="bps-n">03</span><div><b>The Enemy</b><small>What worries you?</small></div></div>
+        <div class="bps" data-s="4"><span class="bps-n">04</span><div><b>The Victory</b><small>Your ultimate goal</small></div></div>
+        <div class="bps" data-s="5"><span class="bps-n">05</span><div><b>The Charioteer</b><small>Guidance needed</small></div></div>
+      </div>
+      <div class="bp-form-area">
+        <!-- Step 1 -->
+        <div class="fs active" id="fs1">
+          <div class="fs-hd"><div class="fs-tag">Step 01 — The Terrain</div><h3>Where are you in life's journey, Warrior?</h3></div>
+          <div class="choices">
+            <label class="ch"><input type="radio" name="age" value="20s - The Apprentice"><span class="ch-ico">&#127807;</span><span class="ch-txt"><b>20s — The Apprentice</b><small>Building foundations</small></span></label>
+            <label class="ch"><input type="radio" name="age" value="30s - The Warrior"><span class="ch-ico">&#9876;&#65039;</span><span class="ch-txt"><b>30s — The Warrior</b><small>Growing aggressively</small></span></label>
+            <label class="ch"><input type="radio" name="age" value="40s - The Commander"><span class="ch-ico">&#127963;&#65039;</span><span class="ch-txt"><b>40s — The Commander</b><small>Consolidating wealth</small></span></label>
+            <label class="ch"><input type="radio" name="age" value="50+ - The King"><span class="ch-ico">&#128081;</span><span class="ch-txt"><b>50+ — The King</b><small>Preserving legacy</small></span></label>
+          </div>
+          <div class="fs-nav"><button class="btn-next" onclick="bpGo(2)">Next — The Quiver <i class="fas fa-arrow-right"></i></button></div>
+        </div>
+        <!-- Step 2 -->
+        <div class="fs" id="fs2">
+          <div class="fs-hd"><div class="fs-tag">Step 02 — The Quiver</div><h3>What weapons do you currently hold?</h3></div>
+          <div class="choices choices-multi">
+            <label class="ch"><input type="checkbox" name="assets" value="SIPs/Mutual Funds"><span class="ch-ico">&#128200;</span><span class="ch-txt">SIPs / Mutual Funds</span></label>
+            <label class="ch"><input type="checkbox" name="assets" value="Stocks/Equity"><span class="ch-ico">&#128202;</span><span class="ch-txt">Stocks / Equity</span></label>
+            <label class="ch"><input type="checkbox" name="assets" value="Life/Health Insurance"><span class="ch-ico">&#128737;&#65039;</span><span class="ch-txt">Insurance</span></label>
+            <label class="ch"><input type="checkbox" name="assets" value="Gold/SGBs"><span class="ch-ico">&#127885;</span><span class="ch-txt">Gold / SGBs</span></label>
+            <label class="ch"><input type="checkbox" name="assets" value="NPS/PPF"><span class="ch-ico">&#127963;&#65039;</span><span class="ch-txt">NPS / PPF</span></label>
+            <label class="ch"><input type="checkbox" name="assets" value="Just Starting"><span class="ch-ico">&#127379;</span><span class="ch-txt">Just Starting</span></label>
+          </div>
+          <div class="fs-nav"><button class="btn-back" onclick="bpGo(1)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn-next" onclick="bpGo(3)">Next — The Enemy <i class="fas fa-arrow-right"></i></button></div>
+        </div>
+        <!-- Step 3 -->
+        <div class="fs" id="fs3">
+          <div class="fs-hd"><div class="fs-tag">Step 03 — The Enemy</div><h3>What keeps you awake at night?</h3></div>
+          <div class="choices">
+            <label class="ch"><input type="radio" name="risk" value="Inflation eroding savings"><span class="ch-ico">&#128293;</span><span class="ch-txt">Inflation eating my savings</span></label>
+            <label class="ch"><input type="radio" name="risk" value="Market volatility"><span class="ch-ico">&#128201;</span><span class="ch-txt">Market volatility &amp; crashes</span></label>
+            <label class="ch"><input type="radio" name="risk" value="Debt and EMI burden"><span class="ch-ico">&#9939;&#65039;</span><span class="ch-txt">Debt &amp; EMI burden</span></label>
+            <label class="ch"><input type="radio" name="risk" value="Family financial security"><span class="ch-ico">&#128106;</span><span class="ch-txt">Family's financial security</span></label>
+          </div>
+          <div class="fs-nav"><button class="btn-back" onclick="bpGo(2)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn-next" onclick="bpGo(4)">Next — The Victory <i class="fas fa-arrow-right"></i></button></div>
+        </div>
+        <!-- Step 4 -->
+        <div class="fs" id="fs4">
+          <div class="fs-hd"><div class="fs-tag">Step 04 — The Victory</div><h3>What is your ultimate financial kingdom?</h3></div>
+          <div class="choices">
+            <label class="ch"><input type="radio" name="goal" value="Early retirement"><span class="ch-ico">&#127749;</span><span class="ch-txt">Early &amp; comfortable retirement</span></label>
+            <label class="ch"><input type="radio" name="goal" value="Child education and marriage"><span class="ch-ico">&#127891;</span><span class="ch-txt">Child's education &amp; marriage</span></label>
+            <label class="ch"><input type="radio" name="goal" value="Generational wealth"><span class="ch-ico">&#128142;</span><span class="ch-txt">Build generational wealth</span></label>
+            <label class="ch"><input type="radio" name="goal" value="Dream home"><span class="ch-ico">&#127968;</span><span class="ch-txt">Dream home / asset creation</span></label>
+          </div>
+          <div class="fs-nav"><button class="btn-back" onclick="bpGo(3)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn-next" onclick="bpGo(5)">Next — The Charioteer <i class="fas fa-arrow-right"></i></button></div>
+        </div>
+        <!-- Step 5 -->
+        <div class="fs" id="fs5">
+          <div class="fs-hd"><div class="fs-tag">Step 05 — The Charioteer</div><h3>How much guidance do you seek from your Sarathi?</h3></div>
+          <div class="choices" style="margin-bottom:18px">
+            <label class="ch"><input type="radio" name="guide" value="Full management - guide everything"><span class="ch-ico">&#127919;</span><span class="ch-txt">Full management — guide everything</span></label>
+            <label class="ch"><input type="radio" name="guide" value="Advisory - help me decide"><span class="ch-ico">&#129517;</span><span class="ch-txt">Advisory — help me decide</span></label>
+            <label class="ch"><input type="radio" name="guide" value="DIY - just point me right"><span class="ch-ico">&#128295;</span><span class="ch-txt">DIY — just point me right</span></label>
+          </div>
+          <div class="report-box">
+            <p class="rb-title">&#128221; Receive Your Kurukshetra Strategy Report — Free</p>
+            <div class="rb-row">
+              <input type="text" id="bpName" placeholder="Your Full Name *" class="fi">
+              <input type="tel" id="bpPhone" placeholder="Your Phone Number" class="fi">
+            </div>
+            <input type="email" id="bpEmail" placeholder="Your Email Address * (report sent here)" class="fi" style="width:100%;margin-bottom:0">
+            <textarea id="bpNote" placeholder="Any specific concern or goal? (Optional)" class="fi" rows="3" style="width:100%;margin-top:10px;margin-bottom:0"></textarea>
+          </div>
+          <div class="fs-nav" style="margin-top:18px">
+            <button class="btn-back" onclick="bpGo(4)"><i class="fas fa-arrow-left"></i> Back</button>
+            <button class="btn-submit" id="bpBtn" onclick="bpSubmit()"><i class="fas fa-scroll"></i> Send My Strategy Report</button>
+          </div>
+        </div>
+        <!-- Success -->
+        <div class="fs bp-ok" id="fsOk">
+          <div class="ok-wheel">
+            <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="46" stroke="#E8A020" stroke-width="1.8"/><g stroke="#E8A020" stroke-width="1.2"><line x1="50" y1="4" x2="50" y2="96"/><line x1="4" y1="50" x2="96" y2="50"/><line x1="18" y1="18" x2="82" y2="82"/><line x1="82" y1="18" x2="18" y2="82"/></g><path d="M33 50 L45 62 L70 37" stroke="#E8A020" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Your Battle Plan is Dispatched!</h3>
+          <p>Your personalised <strong>Kurukshetra Strategy Report</strong> is being prepared and will arrive in your inbox. Our Sarathi will also personally reach out within 24–48 hours.</p>
+          <a href="https://wa.me/919836667866" target="_blank" class="btn-wa-ok"><i class="fab fa-whatsapp"></i> Connect on WhatsApp</a>
+        </div>
+        <div class="bp-prog-wrap">
+          <div class="bp-prog" id="bpProg" style="width:20%"></div>
+          <span class="bp-prog-lbl" id="bpLbl">Step 1 of 5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ STATS ═══════════════════════ -->
+<section class="stats" id="stats">
+  <div class="stats-bgw">
+    <svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="96" stroke="#E8A020" stroke-width="1"/><g stroke="#E8A020" stroke-width=".8"><line x1="100" y1="4" x2="100" y2="196"/><line x1="4" y1="100" x2="196" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/></g><circle cx="100" cy="100" r="12" fill="#E8A020"/></svg>
+  </div>
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="si reveal" style="--d:.05s"><div class="sn" data-t="400">0</div><span class="sp">+</span><div class="sl">Warriors Guided</div><div class="ss">Families across India we protect</div></div>
+      <div class="si reveal" style="--d:.15s"><div class="sn sc">&#8377;10Cr</div><span class="sp">+</span><div class="sl">Assets Under Advisory</div><div class="ss">Wealth we actively guard and grow</div></div>
+      <div class="si reveal" style="--d:.25s"><div class="sn" data-t="15">0</div><span class="sp">+</span><div class="sl">Years of Experience</div><div class="ss">TRP 2009 · IRDA 2014 · SEBI Registered</div></div>
+      <div class="si reveal" style="--d:.35s"><div class="sn" data-t="98">0</div><span class="sp">%</span><div class="sl">Client Satisfaction</div><div class="ss">Trusted, recommended, renewed every year</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ TESTIMONIALS ═══════════════════════ -->
+<section class="testi" id="testimonials">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Voices from the Battlefield</div>
+      <h2 class="sec-title">What Warriors <em class="gold">Say About Us</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="tc reveal" style="--d:.05s">
+        <div class="tc-q">"</div>
+        <p>Raddhih completely transformed how I look at investments. From my very first SIP to building a proper portfolio, Partha guided me every step with patience and deep expertise. Truly a Sarathi for life.</p>
+        <div class="tc-reply"><i class="fas fa-reply"></i> <em>Thank you CN Arun! Your trust and consistency is what makes this journey so rewarding. We are always here for you.</em></div>
+        <div class="tc-auth"><div class="tc-av">CA</div><div><b>CN Arun Rangesh</b><span>Bangalore</span></div><div class="tc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+      </div>
+      <div class="tc reveal" style="--d:.1s">
+        <div class="tc-q">"</div>
+        <p>Being based in Mumbai, I was sceptical about working with an advisor from Kolkata. But Raddhih Financial Services proved distance means nothing when the service is this exceptional. My mutual fund portfolio speaks for itself.</p>
+        <div class="tc-reply"><i class="fas fa-reply"></i> <em>Pritam, distance is never a barrier when trust is the foundation. Proud to be your Sarathi from Mumbai to Kolkata!</em></div>
+        <div class="tc-auth"><div class="tc-av">PG</div><div><b>Pritam Gayen</b><span>Mumbai</span></div><div class="tc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+      </div>
+      <div class="tc reveal" style="--d:.15s">
+        <div class="tc-q">"</div>
+        <p>I approached Raddhih for ITR filing and ended up getting my entire financial life organised. Health insurance, SIPs, tax planning — everything sorted under one trusted advisor. Highly recommended to every professional in Noida.</p>
+        <div class="tc-reply"><i class="fas fa-reply"></i> <em>Suman, your financial discipline inspires us too! Thank you for allowing us to be part of your journey. Always at your service.</em></div>
+        <div class="tc-auth"><div class="tc-av">SR</div><div><b>Suman Roy</b><span>Noida</span></div><div class="tc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+      </div>
+      <div class="tc reveal" style="--d:.2s">
+        <div class="tc-q">"</div>
+        <p>Managing finances from Malaysia is complicated, but Raddhih made it seamless. The NRI investment guidance, insurance coverage and regular portfolio updates give me complete peace of mind from abroad.</p>
+        <div class="tc-reply"><i class="fas fa-reply"></i> <em>Puspendu, serving you across borders is a matter of great pride for us. Your confidence in Raddhih from Malaysia means everything!</em></div>
+        <div class="tc-auth"><div class="tc-av">PG</div><div><b>Puspendu Ghosh</b><span>Malaysia</span></div><div class="tc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+      </div>
+      <div class="tc reveal" style="--d:.25s">
+        <div class="tc-q">"</div>
+        <p>From Oman, handling India-based investments felt risky without a trustworthy advisor. Raddhih Financial Services has been managing my portfolio and insurance for years now with complete transparency and zero hassle.</p>
+        <div class="tc-reply"><i class="fas fa-reply"></i> <em>Sanjoy, your trust from Oman is our greatest honour. We will always ensure your wealth back home is in the safest hands!</em></div>
+        <div class="tc-auth"><div class="tc-av">SB</div><div><b>Sanjoy Banik</b><span>Oman</span></div><div class="tc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+      </div>
+      <div class="tc reveal" style="--d:.3s">
+        <div class="tc-q">"</div>
+        <p>I have been a client of Raddhih Financial Services for over three years now and I can say with complete confidence — this is the most trustworthy financial advisory I have ever worked with. Based right here in Kolkata, Partha understands our needs deeply. My insurance portfolio, SIP investments and tax filings are all managed seamlessly. What sets Raddhih apart is the personal attention — you never feel like just another client. You feel genuinely cared for.</p>
+        <div class="tc-reply"><i class="fas fa-reply"></i> <em>Shelly, it is always our privilege to serve those who serve others. Thank you for your kind words and continued trust in us!</em></div>
+        <div class="tc-auth"><div class="tc-av">SS</div><div><b>Shelly Shamim</b><span>Kolkata</span></div><div class="tc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ SIP CALCULATOR ═══════════════════════ -->
+<section class="sip-calc" id="sip-calculator">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Plan Your Wealth</div>
+      <h2 class="sec-title">SIP <em class="gold">Returns Calculator</em></h2>
+      <p class="sec-sub">See how your monthly SIP grows into wealth over time. Adjust the sliders and watch your future unfold.</p>
+    </div>
+    <div class="sip-wrap reveal">
+
+      <!-- LEFT: Inputs -->
+      <div class="sip-left">
+        <div class="sip-field">
+          <label>Monthly Investment <span id="lbl-sip">₹5,000</span></label>
+          <input type="range" class="sip-range" id="sl-sip" min="500" max="100000" step="500" value="5000" oninput="calcSIP()">
+          <div class="sip-ticks"><span>₹500</span><span>₹50,000</span><span>₹1L</span></div>
+        </div>
+        <div class="sip-field">
+          <label>Expected Annual Return <span id="lbl-ret">12%</span></label>
+          <input type="range" class="sip-range" id="sl-ret" min="6" max="30" step="0.5" value="12" oninput="calcSIP()">
+          <div class="sip-ticks"><span>6%</span><span>18%</span><span>30%</span></div>
+        </div>
+        <div class="sip-field">
+          <label>Investment Period <span id="lbl-yr">10 Years</span></label>
+          <input type="range" class="sip-range" id="sl-yr" min="1" max="40" step="1" value="10" oninput="calcSIP()">
+          <div class="sip-ticks"><span>1 Yr</span><span>20 Yrs</span><span>40 Yrs</span></div>
+        </div>
+        <div style="background:rgba(232,160,32,.05);border:1px solid rgba(232,160,32,.12);border-radius:8px;padding:18px 20px;margin-top:8px">
+          <p style="font-size:.78rem;color:rgba(242,234,216,.65);line-height:1.7;margin:0"><i class="fas fa-lightbulb" style="color:#E8A020;margin-right:8px"></i>Historically, Indian equity mutual funds have delivered <strong style="color:#F5B830">12–15% CAGR</strong> over long periods. Use 12% for a conservative estimate.</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: Results -->
+      <div class="sip-right">
+        <div class="sip-result-title"><i class="fas fa-chart-line" style="margin-right:8px"></i>Your Wealth Projection</div>
+        <div class="sip-result-main">
+          <div class="sip-result-label">Total Corpus Value</div>
+          <div class="sip-result-value" id="res-corpus">₹11.6L</div>
+          <div class="sip-result-sub" id="res-sub">After 10 years at 12% p.a.</div>
+        </div>
+        <div class="sip-breakdown">
+          <div class="sip-row invested">
+            <div class="sip-row-label"><i class="fas fa-coins"></i>Amount Invested</div>
+            <div class="sip-row-val" id="res-inv">₹6.0L</div>
+          </div>
+          <div class="sip-row returns">
+            <div class="sip-row-label"><i class="fas fa-chart-line"></i>Estimated Returns</div>
+            <div class="sip-row-val" id="res-ret">₹5.6L</div>
+          </div>
+        </div>
+        <div class="sip-bar-wrap">
+          <div class="sip-bar-inv" id="bar-inv" style="width:52%"></div>
+          <div class="sip-bar-ret" id="bar-ret" style="width:48%"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:6px;margin-bottom:16px">
+          <span style="font-size:.65rem;color:#E8A020"><i class="fas fa-square" style="margin-right:4px"></i>Invested</span>
+          <span style="font-size:.65rem;color:#48bb78"><i class="fas fa-square" style="margin-right:4px"></i>Returns</span>
+        </div>
+        <button class="sip-cta-btn" onclick="window.location.href='#contact'">
+          <i class="fas fa-arrow-right" style="margin-right:8px"></i>Start This SIP with Your Sarathi
+        </button>
+        <div class="sip-disc">* Calculations are illustrative only. Actual returns may vary. Mutual Fund investments are subject to market risks.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CTA ═══════════════════════ -->
+<section class="cta-band">
+  <div class="cta-bw"><svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="96" stroke="#E8A020" stroke-width="1"/><g stroke="#E8A020" stroke-width=".8"><line x1="100" y1="4" x2="100" y2="196"/><line x1="4" y1="100" x2="196" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/><line x1="64" y1="7" x2="136" y2="193"/><line x1="193" y1="64" x2="7" y2="136"/><line x1="136" y1="7" x2="64" y2="193"/><line x1="7" y1="64" x2="193" y2="136"/></g><circle cx="100" cy="100" r="12" fill="#E8A020"/></svg></div>
+  <div class="wrap">
+    <div class="cta-inner reveal">
+      <h2>Your Financial Kurukshetra Awaits</h2>
+      <p>Every great journey begins with a single decision. Begin yours today — with a trusted Sarathi by your side.</p>
+      <div class="cta-btns">
+        <a href="#battle-plan" class="btn-gold"><span>Get Your Free Strategy Report</span><i class="fas fa-arrow-right"></i></a>
+        <a href="https://wa.me/919836667866" target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp Us Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Reach Your Sarathi</div>
+      <h2 class="sec-title">Let's <em class="gold">Connect</em></h2>
+      <p class="sec-sub">Reach out directly. We respond within 24–48 hours.</p>
+    </div>
+    <div class="contact-layout">
+      <div class="contact-info reveal-left">
+        <div class="ci-top">
+          <div class="nl-wheel" style="width:40px;height:40px;flex-shrink:0">
+            <svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="25" stroke="#E8A020" stroke-width="1.2"/><g stroke="#E8A020" stroke-width="1"><line x1="28" y1="3" x2="28" y2="53"/><line x1="3" y1="28" x2="53" y2="28"/><line x1="10" y1="10" x2="46" y2="46"/><line x1="46" y1="10" x2="10" y2="46"/></g><circle cx="28" cy="28" r="5" fill="#E8A020"/><circle cx="28" cy="28" r="2" fill="#071526"/></svg>
+          </div>
+          <div>
+            <h3>Raddhih Financial Services</h3>
+            <p class="ci-reg">SEBI Registered ARN Holder · Est. 2014</p>
+          </div>
+        </div>
+        <div class="cd"><div class="cd-ico"><i class="fas fa-location-dot"></i></div><div><b>Office Address</b><p>AD-137, Tara Palace, Rabindrapally,<br>Kestopur, Kolkata, West Bengal — 700101</p></div></div>
+        <div class="cd"><div class="cd-ico"><i class="fas fa-phone"></i></div><div><b>Phone</b><a href="tel:+919836667866">+91 98366 67866</a></div></div>
+        <div class="cd"><div class="cd-ico"><i class="fab fa-whatsapp"></i></div><div><b>WhatsApp</b><a href="https://wa.me/919836667866" target="_blank">+91 98366 67866</a></div></div>
+        <div class="cd"><div class="cd-ico"><i class="fas fa-envelope"></i></div><div><b>Email</b><a href="mailto:parthatrpcal5@gmail.com">parthatrpcal5@gmail.com</a></div></div>
+        <div class="ci-certs"><i class="fas fa-certificate"></i> SEBI Registered ARN Holder &nbsp;&middot;&nbsp; IRDA Certified Since 2014 &nbsp;&middot;&nbsp; TRP Certified Since 2009 &nbsp;&middot;&nbsp; AMFI Certified</div>
+      </div>
+      <div class="contact-form-wrap reveal-right">
+        <!-- FormSubmit: First submit → verify email sent to parthatrpcal5@gmail.com → click confirm once → all future submissions arrive as formatted table in Gmail -->
+        <form id="cForm" onsubmit="handleContact(event)">
+          <h3>Send a Consultation Request</h3>
+          <p class="cf-sub">Your details land <strong>directly in our advisor's inbox</strong>. We reply within 24–48 hours.</p>
+          <div class="cf-row">
+            <div class="cf-g"><label>Full Name *</label><input type="text" name="Full Name" required placeholder="e.g. Arjun Sharma" class="fi"></div>
+            <div class="cf-g"><label>Phone Number *</label><input type="tel" name="Phone Number" required placeholder="+91 XXXXX XXXXX" class="fi"></div>
+          </div>
+          <div class="cf-g"><label>Email Address *</label><input type="email" name="email" required placeholder="your@email.com" class="fi"></div>
+          <div class="cf-g"><label>Service Interested In</label>
+            <select name="Service" class="fi"><option value="" style="background:#0B1C2C;color:#F2EAD8">— Select a service —</option><option>Mutual Fund Investments</option><option>Life Insurance</option><option>Health Insurance</option><option>General Insurance</option><option>Income Tax Return Filing</option><option>Complete Financial Planning</option></select>
+          </div>
+          <div class="cf-g"><label>Best Time to Call</label>
+            <select name="Best Time to Call" class="fi"><option value="" style="background:#0B1C2C;color:#F2EAD8">— Select time —</option><option>Morning (9 AM – 12 PM)</option><option>Afternoon (12 PM – 4 PM)</option><option>Evening (4 PM – 8 PM)</option><option>Anytime</option></select>
+          </div>
+          <div class="cf-g"><label>Message / Financial Goals</label><textarea name="Message" rows="4" placeholder="Tell us about your goals or any questions…" class="fi"></textarea></div>
+          <button type="submit" class="btn-cf" id="cfBtn"><i class="fas fa-paper-plane"></i> Send Consultation Request</button>
+          <p class="cf-priv"><i class="fas fa-lock"></i> 100% confidential. Your data is never shared.</p>
+          <p class="cf-note"><i class="fas fa-info-circle"></i> Delivered directly to advisor's Gmail via FormSubmit</p>
+        </form>
+        <div id="cOk" class="contact-ok">
+          <div class="ok-wheel" style="width:72px;height:72px"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="46" stroke="#E8A020" stroke-width="2"/><path d="M30 50 L44 64 L72 36" stroke="#E8A020" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Message Sent!</h3>
+          <p>Your consultation request has been delivered directly to our advisor's inbox. We will personally call or email you within <strong>24–48 hours</strong>.</p>
+          <a href="https://wa.me/919836667866?text=Hi%2C+I+submitted+a+consultation+request+on+your+website." class="btn-wa-ok" target="_blank"><i class="fab fa-whatsapp"></i> Also Ping on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ BLOG ═══════════════════════ -->
+<section class="blog" id="blog">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Insights &amp; Knowledge</div>
+      <h2 class="sec-title">Financial <em class="gold">Articles &amp; Blog</em></h2>
+      <p class="sec-sub">Expert insights on mutual funds, insurance, tax planning and wealth creation — written by Team Raddhih for informed investors.</p>
+    </div>
+    <div class="blog-grid">
+
+      <div class="blog-card reveal" style="--d:.05s" onclick="openBlog('boi')">
+        <div class="blog-card-top">
+          <div class="blog-cat"><i class="fas fa-chart-line"></i>Mutual Funds</div>
+          <h3>Bank of India Mid &amp; Small Cap Fund — Building Wealth Through India's Growth Story</h3>
+          <p>How mid and small cap investments can unlock superior long-term wealth creation in India's expanding economy through disciplined SIP investing.</p>
+        </div>
+        <div class="blog-card-sep"></div>
+        <div class="blog-card-foot">
+          <span class="blog-card-date"><i class="fas fa-calendar-alt" style="margin-right:5px;color:#E8A020"></i>April 2026 &nbsp;·&nbsp; 8 min read</span>
+          <span class="blog-read-btn">Read <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <div class="blog-card blog-coming reveal" style="--d:.15s">
+        <div class="blog-card-top">
+          <div class="blog-cat"><i class="fas fa-shield-halved"></i>Insurance</div>
+          <h3>Term vs Whole Life Insurance — Which is Right for Your Family?</h3>
+          <p>A comprehensive guide to understanding the key differences and making the right insurance choice for your loved ones' financial security.</p>
+        </div>
+        <div class="blog-card-sep"></div>
+        <div class="blog-card-foot">
+          <span class="blog-card-date"><i class="fas fa-clock" style="margin-right:5px;color:#E8A020"></i>Coming Soon</span>
+          <span class="blog-read-btn" style="color:rgba(242,234,216,.65)">Upcoming <i class="fas fa-clock"></i></span>
+        </div>
+      </div>
+
+      <div class="blog-card blog-coming reveal" style="--d:.25s">
+        <div class="blog-card-top">
+          <div class="blog-cat"><i class="fas fa-file-invoice-dollar"></i>Tax Planning</div>
+          <h3>ELSS vs PPF vs NPS — The Ultimate Tax Saving Guide for FY 2025-26</h3>
+          <p>Compare the top tax-saving instruments and build a strategy that maximises your savings under Section 80C and beyond.</p>
+        </div>
+        <div class="blog-card-sep"></div>
+        <div class="blog-card-foot">
+          <span class="blog-card-date"><i class="fas fa-clock" style="margin-right:5px;color:#E8A020"></i>Coming Soon</span>
+          <span class="blog-read-btn" style="color:rgba(242,234,216,.65)">Upcoming <i class="fas fa-clock"></i></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BLOG MODAL -->
+<div id="blogModal" onclick="closeBlogOutside(event)">
+  <div class="bm-wrap" id="blogContent"></div>
+</div>
+
+<script>
+var articles = {
+  'boi': `
+    <div class="bm-header">
+      <button class="bm-close" onclick="closeBlog()"><i class="fas fa-times"></i></button>
+      <div class="bm-cat"><i class="fas fa-chart-line"></i>Mutual Funds</div>
+      <h1>Bank of India Mid &amp; Small Cap Fund</h1>
+      <p class="bm-sub">Building Wealth Through India's Growth Story — Unlocking Long-Term Growth Potential in a Dynamic Market</p>
+      <div class="bm-meta">
+        <span><i class="fas fa-calendar"></i>April 2026</span>
+        <span><i class="fas fa-clock"></i>8 min read</span>
+        <span><i class="fas fa-pen"></i>Team Raddhih Financial Services</span>
+        <span><i class="fas fa-tag"></i>Mutual Funds</span>
+      </div>
+    </div>
+    <div class="bm-body">
+
+      <p>In today's rapidly evolving investment landscape, market volatility has become the new normal. While short-term fluctuations often create uncertainty, they also present genuine opportunities for disciplined, long-term investors. One investment avenue that stands out for wealth creation is the <strong>Bank of India Mid &amp; Small Cap Fund.</strong></p>
+
+      <p>This fund is designed to capitalise on India's expanding economy by investing in promising mid-cap and small-cap companies — businesses that carry the potential to become tomorrow's industry leaders.</p>
+
+      <h2>Why Mid &amp; Small Cap Funds?</h2>
+
+      <p>Large-cap companies provide stability and predictability. However, history has consistently shown that mid-cap and small-cap businesses often deliver superior long-term growth as they scale operations, increase market share, and benefit from India's structural economic expansion.</p>
+
+      <p>These are companies in the growth phase — not yet large enough to attract mass institutional attention, yet fundamentally strong enough to sustain long-term momentum. For patient investors, this segment has historically rewarded discipline.</p>
+
+      <div class="bm-keybox">
+        <h3>Key Advantages</h3>
+        <div class="bm-keyrow">
+          <div class="bm-keyitem"><i class="fas fa-chart-line"></i><span>Higher long-term wealth creation potential</span></div>
+          <div class="bm-keyitem"><i class="fas fa-building"></i><span>Exposure to emerging industry leaders</span></div>
+          <div class="bm-keyitem"><i class="fas fa-th-large"></i><span>Diversification across multiple sectors</span></div>
+          <div class="bm-keyitem"><i class="fas fa-user-tie"></i><span>Professionally managed portfolio</span></div>
+          <div class="bm-keyitem"><i class="fas fa-coins"></i><span>Opportunity to outperform traditional investments</span></div>
+          <div class="bm-keyitem"><i class="fas fa-seedling"></i><span>Long-term value creation philosophy</span></div>
+        </div>
+      </div>
+
+      <h2>Why Bank of India Mid &amp; Small Cap Fund?</h2>
+
+      <p>The Bank of India Mid &amp; Small Cap Fund follows a disciplined, research-driven investment approach. The fund focuses on identifying fundamentally strong businesses with sustainable growth prospects, sound financial structures, and capable management teams.</p>
+
+      <h3>Investment Philosophy</h3>
+      <ul class="bm-list">
+        <li>Growth-oriented companies with strong financial fundamentals</li>
+        <li>Scalable business models built for the long term</li>
+        <li>High-quality management with a clear vision</li>
+        <li>Long-term value creation over short-term market timing</li>
+        <li>A diversified approach across sectors to manage concentration risk</li>
+      </ul>
+
+      <h2>Why This Fund Matters in a Volatile Market</h2>
+
+      <p>Market corrections are a natural part of investing. Many investors react to short-term volatility by exiting positions — often at the worst possible time. However, the most successful long-term investors treat volatility differently.</p>
+
+      <div class="bm-quote">
+        <p>"Volatility is not the enemy of long-term investors — it is an opportunity. During periods of market uncertainty, quality businesses become available at attractive valuations."</p>
+      </div>
+
+      <p>During market downturns, SIP investors accumulate more units at lower prices. When markets recover — and they historically always have — these additional units amplify long-term returns. This is the compounding advantage of staying invested through cycles.</p>
+
+      <h2>The Power of Compounding</h2>
+
+      <p>Compounding is the most powerful force in long-term investing. When you invest consistently through a Systematic Investment Plan, your returns begin generating their own returns. Over time — particularly over 7 to 10 years or more — this creates a snowball effect that can significantly multiply the initial investment.</p>
+
+      <p>The key is time and consistency. The longer you remain invested and the more disciplined your contributions, the greater the compounding advantage. This is precisely why financial planners recommend remaining invested through market cycles rather than reacting to short-term volatility.</p>
+
+      <h2>Who Should Consider This Fund?</h2>
+
+      <ul class="bm-list">
+        <li>Investors with a long-term investment horizon of 7 to 10 years or more</li>
+        <li>Those seeking meaningful capital appreciation and wealth creation</li>
+        <li>Investors who can tolerate short-term market fluctuations with composure</li>
+        <li>Those who wish to participate in India's structural economic growth</li>
+        <li>Investors who want professional fund management with a disciplined approach</li>
+      </ul>
+
+      <h2>India's Growth Story</h2>
+
+      <p>India remains one of the most compelling long-term investment destinations in the world. The country continues to benefit from strong GDP growth, rising domestic consumption, a manufacturing renaissance, rapid digital transformation, large-scale infrastructure development, and landmark government reforms.</p>
+
+      <p>Many of today's mid-sized companies are positioned to become tomorrow's large-cap leaders. Investors who recognise this early and stay invested through the journey stand to benefit enormously from India's decade-long growth trajectory.</p>
+
+      <div class="bm-keybox">
+        <h3>India's Structural Growth Drivers</h3>
+        <div class="bm-keyrow">
+          <div class="bm-keyitem"><i class="fas fa-chart-bar"></i><span>Strong &amp; sustained GDP growth</span></div>
+          <div class="bm-keyitem"><i class="fas fa-shopping-cart"></i><span>Rising domestic consumption</span></div>
+          <div class="bm-keyitem"><i class="fas fa-industry"></i><span>Manufacturing expansion</span></div>
+          <div class="bm-keyitem"><i class="fas fa-mobile-alt"></i><span>Digital transformation</span></div>
+          <div class="bm-keyitem"><i class="fas fa-road"></i><span>Infrastructure development</span></div>
+          <div class="bm-keyitem"><i class="fas fa-landmark"></i><span>Government policy reforms</span></div>
+        </div>
+      </div>
+
+      <div class="bm-cta">
+        <h3>Invest with Confidence. Stay Invested with Discipline. Grow with India's Future.</h3>
+        <p>Wondering whether the Bank of India Mid &amp; Small Cap Fund aligns with your financial goals and risk profile? Your personal Sarathi at Raddhih is ready to guide you with a personalised strategy.</p>
+        <a href="#contact" onclick="closeBlog()" class="btn-gold"><span>Consult Your Sarathi</span><i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="bm-disclaimer">
+        <p><strong>Disclaimer:</strong> Mutual Fund investments are subject to market risks. Read all scheme-related documents carefully before investing. Past performance may or may not be sustained in the future and is not indicative of future results. The information provided in this article is for educational and informational purposes only and does not constitute financial advice. Please consult a qualified Mutual Fund Distributor or financial advisor before making any investment decisions.</p>
+      </div>
+
+    </div>
+  `
+};
+
+function openBlog(id){
+  var modal = document.getElementById('blogModal');
+  var content = document.getElementById('blogContent');
+  content.innerHTML = articles[id];
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  content.scrollTop = 0;
+}
+function closeBlog(){
+  document.getElementById('blogModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeBlogOutside(e){
+  if(e.target.id === 'blogModal') closeBlog();
+}
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeBlog(); });
+</script>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+
+<footer class="footer">
+  <div class="footer-bw"><svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="96" stroke="#E8A020" stroke-width="1"/><g stroke="#E8A020" stroke-width=".8"><line x1="100" y1="4" x2="100" y2="196"/><line x1="4" y1="100" x2="196" y2="100"/><line x1="32" y1="32" x2="168" y2="168"/><line x1="168" y1="32" x2="32" y2="168"/></g><circle cx="100" cy="100" r="12" fill="#E8A020"/></svg></div>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="fg-brand">
+        <div class="fg-logo">
+          <div class="nl-wheel" style="width:36px;height:36px;flex-shrink:0"><svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="25" stroke="#E8A020" stroke-width="1.2"/><g stroke="#E8A020" stroke-width="1"><line x1="28" y1="3" x2="28" y2="53"/><line x1="3" y1="28" x2="53" y2="28"/><line x1="10" y1="10" x2="46" y2="46"/><line x1="46" y1="10" x2="10" y2="46"/></g><circle cx="28" cy="28" r="5" fill="#E8A020"/><circle cx="28" cy="28" r="2" fill="#071526"/></svg></div>
+          <div class="nl-text"><span class="nl-main">RADDHIH</span><span class="nl-sub">Financial Services</span></div>
+        </div>
+        <p>Your trusted Sarathi on the path to financial sovereignty. SEBI Registered. IRDA Certified. TRP Certified. Client-First. Always.</p>
+        <div class="fg-badges"><span><i class="fas fa-certificate"></i>SEBI 2014</span><span><i class="fas fa-award"></i>IRDA 2014</span><span><i class="fas fa-landmark"></i>TRP 2009</span></div>
+      </div>
+      <div class="fg-col"><h4>The Armory</h4><ul><li><a href="#services">Mutual Fund Investments</a></li><li><a href="#services">Life Insurance</a></li><li><a href="#services">Health Insurance</a></li><li><a href="#services">General Insurance</a></li><li><a href="#services">ITR Filing</a></li></ul></div>
+      <div class="fg-col"><h4>Navigate</h4><ul><li><a href="#home">Home</a></li><li><a href="#why-us">Why Choose Us</a></li><li><a href="#sarathi">Our Sarathi</a></li><li><a href="#battle-plan">Battle Plan</a></li><li><a href="#testimonials">Testimonials</a></li></ul></div>
+      <div class="fg-col">
+        <h4>Reach Us</h4>
+        <ul class="fg-contact">
+          <li><i class="fas fa-location-dot"></i>AD-137, Tara Palace, Rabindrapally, Kestopur, Kolkata 700101</li>
+          <li><i class="fas fa-phone"></i><a href="tel:+919836667866">+91 98366 67866</a></li>
+          <li><i class="fas fa-envelope"></i><a href="mailto:parthatrpcal5@gmail.com">parthatrpcal5@gmail.com</a></li>
+        </ul>
+        <div class="fg-social">
+          <a href="https://wa.me/919836667866" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:parthatrpcal5@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="tel:+919836667866" aria-label="Phone"><i class="fas fa-phone"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="site-meta">
+  <p>Released <span>25 April 2026</span> &nbsp;&middot;&nbsp; Last Updated <span>25 April 2026</span></p>
+</div>
+<div class="footer-bottom">
+      <p>&#169; 2025 Raddhih Financial Services. All Rights Reserved. &nbsp;|&nbsp; SEBI Registered ARN Holder &nbsp;|&nbsp; IRDA Certified Since 2014 &nbsp;|&nbsp; TRP Certified Since 2009 &nbsp;|&nbsp; AMFI Certified &nbsp;|&nbsp; Mutual Fund investments are subject to market risks. Please read all scheme-related documents carefully before investing.</p>
+      <div class="footer-credits">
+        <span>Created by <strong>Pragyo Roy</strong></span><span class="fc-dot">·</span>
+        <span>Designed by <strong>Pragyo Roy</strong></span><span class="fc-dot">·</span>
+        <span>Maintained by <strong>Pragyo Roy</strong></span><span class="fc-dot">·</span>
+        <span>Developer <strong>Pragyo Roy</strong></span>
+      </div>
+      <div class="footer-owner">
+        <i class="fas fa-crown"></i> Owner &amp; Founder &nbsp;—&nbsp; <strong>Partha Sarathi Roy</strong>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Cookie Consent Banner -->
+<div id="cookieBanner">
+  <div class="cookie-inner">
+    <div class="cookie-left">
+      <i class="fas fa-cookie-bite"></i>
+      <div>
+        <p class="cookie-title">Enhance Your Experience</p>
+        <p class="cookie-sub">We use cookies to personalise content and play ambient music for a premium experience on Raddhih Financial Services.</p>
+      </div>
+    </div>
+    <div class="cookie-btns">
+      <button id="cookieAccept" onclick="acceptCookies()">Accept &amp; Continue</button>
+      <button id="cookieDecline" onclick="declineCookies()">Decline</button>
+    </div>
+  </div>
+</div>
+
+<button id="btt" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<script>
+/* ════ LOADER — guaranteed exit, no window.load dependency ════ */
+(function(){
+  var ld = document.getElementById('loader');
+  var gone = false;
+  function hide() {
+    if (gone) return; gone = true;
+    ld.style.opacity = '0';
+    setTimeout(function(){ ld.style.display = 'none'; }, 520);
+  }
+  setTimeout(hide, 1800);                        /* hard cap 1.8s */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(hide, 700); });
+  } else {
+    setTimeout(hide, 400);
+  }
+})();
+
+/* ════ SMOOTH SCROLL ════ */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var t = document.querySelector(this.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth', block:'start' }); }
+  });
+});
+
+/* ════ NAVBAR ════ */
+var nb = document.getElementById('navbar');
+var ham = document.getElementById('hamburger');
+var nls = document.getElementById('navLinks');
+window.addEventListener('scroll', function(){
+  nb.classList.toggle('scrolled', window.scrollY > 55);
+  document.getElementById('btt').classList.toggle('show', window.scrollY > 400);
+}, { passive:true });
+ham.addEventListener('click', function(){
+  ham.classList.toggle('open'); nls.classList.toggle('open');
+});
+nls.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click', function(){ ham.classList.remove('open'); nls.classList.remove('open'); });
+});
+document.getElementById('btt').addEventListener('click', function(){ window.scrollTo({ top:0, behavior:'smooth' }); });
+
+/* ════ CUSTOM CURSOR ════ */
+
+
+
+/* ════ SCROLL REVEAL ════ */
+var rObs = new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if (e.isIntersecting) {
+      var d = parseFloat(e.target.style.getPropertyValue('--d')) || 0;
+      setTimeout(function(){ e.target.classList.add('in'); }, d * 1000);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){ rObs.observe(el); });
+
+/* ════ COUNTER ════ */
+var cObs = new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if (e.isIntersecting && !e.target.dataset.done) {
+      e.target.dataset.done = '1';
+      var target = +e.target.dataset.t, count = 0, step = target / 60;
+      var t = setInterval(function(){
+        count += step;
+        if (count >= target) { count = target; clearInterval(t); }
+        e.target.textContent = Math.floor(count);
+      }, 20);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.sn[data-t]').forEach(function(el){ cObs.observe(el); });
+
+/* ════ ACTIVE NAV ════ */
+var secs = document.querySelectorAll('section[id]');
+var navAs = document.querySelectorAll('.nl');
+window.addEventListener('scroll', function(){
+  var cur = '';
+  secs.forEach(function(s){ if (window.scrollY >= s.offsetTop - 130) cur = s.id; });
+  navAs.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+}, { passive:true });
+
+/* ════ MUSIC ════ */
+var musicOn = false, ytf = document.getElementById('ytFrame');
+document.getElementById('musicBtn').addEventListener('click', function(){
+  musicOn = !musicOn;
+  ytf.src = musicOn ? 'https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&mute=0&loop=1&playlist=Uezrcg6KJ44&controls=0&rel=0' : '';
+  document.getElementById('musicIco').className = musicOn ? 'fas fa-pause' : 'fas fa-music';
+  this.classList.toggle('on', musicOn);
+});
+
+/* ════ BATTLE PLAN ════ */
+var bpCur = 1;
+function bpGo(n) {
+  document.getElementById('fs' + bpCur).classList.remove('active');
+  bpCur = n;
+  document.getElementById('fs' + n).classList.add('active');
+  document.querySelectorAll('.bps').forEach(function(s){
+    var v = +s.dataset.s;
+    s.classList.toggle('active', v === n);
+    s.classList.toggle('done', v < n);
+  });
+  document.getElementById('bpProg').style.width = (n / 5 * 100) + '%';
+  document.getElementById('bpLbl').textContent = 'Step ' + n + ' of 5';
+}
+
+async function bpSubmit() {
+  var name  = document.getElementById('bpName').value.trim();
+  var email = document.getElementById('bpEmail').value.trim();
+  var phone = document.getElementById('bpPhone').value.trim();
+  if (!name || !email) { alert('Please enter your name and email to receive the Strategy Report.'); return; }
+  var btn = document.getElementById('bpBtn');
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…'; btn.disabled = true;
+  var fd = new FormData();
+  fd.append('Warrior Name', name);
+  fd.append('Phone', phone || 'Not provided');
+  fd.append('email', email);
+  fd.append('Life Stage',     (document.querySelector('input[name="age"]:checked')  || {value:'—'}).value);
+  fd.append('Current Assets', Array.from(document.querySelectorAll('input[name="assets"]:checked')).map(function(i){return i.value;}).join(', ') || 'None');
+  fd.append('Primary Fear',   (document.querySelector('input[name="risk"]:checked') || {value:'—'}).value);
+  fd.append('Financial Goal', (document.querySelector('input[name="goal"]:checked') || {value:'—'}).value);
+  fd.append('Guidance Level', (document.querySelector('input[name="guide"]:checked')|| {value:'—'}).value);
+  fd.append('Note', document.getElementById('bpNote').value || 'None');
+  fd.append('_subject', 'Strategy Report Request — ' + name);
+  fd.append('_captcha', 'false'); fd.append('_template', 'table');
+  try {
+    var bpParams = {
+      from_name:  fd.get('Warrior Name'),
+      phone:      fd.get('Phone'),
+      from_email: fd.get('email'),
+      service:    fd.get('Life Stage') + ' | ' + fd.get('Financial Goal'),
+      call_time:  fd.get('Guidance Level'),
+      message:    'Fear: ' + fd.get('Primary Fear') + ' | Assets: ' + fd.get('Current Assets') + ' | Note: ' + fd.get('Note'),
+      time:       new Date().toLocaleString('en-IN', {timeZone:'Asia/Kolkata'})
+    };
+    await emailjs.send('service_aj22ubl', 'template_gfasjib', bpParams);
+    await emailjs.send('service_aj22ubl', 'template_rzw3gxh', bpParams);
+  } catch(err) { console.error('EmailJS BP error:', err); }
+  document.getElementById('fs5').classList.remove('active');
+  var ok = document.getElementById('fsOk'); ok.style.display = 'flex';
+  document.getElementById('bpProg').style.width = '100%';
+  document.getElementById('bpLbl').textContent = 'Complete!';
+  document.querySelectorAll('.bps').forEach(function(s){ s.classList.add('done'); s.classList.remove('active'); });
+}
+
+/* ════ CONTACT FORM — EmailJS ════ */
+async function handleContact(e) {
+  e.preventDefault();
+  var btn = document.getElementById('cfBtn');
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…'; btn.disabled = true;
+  var form = e.target;
+  var params = {
+    from_name:  form.querySelector('[name="Full Name"]').value,
+    phone:      form.querySelector('[name="Phone Number"]').value,
+    from_email: form.querySelector('[name="email"]').value,
+    service:    form.querySelector('[name="Service"]').value,
+    call_time:  form.querySelector('[name="Best Time to Call"]').value,
+    message:    (form.querySelector('[name="Message"]') ? form.querySelector('[name="Message"]').value : ''),
+    time:       new Date().toLocaleString('en-IN', {timeZone:'Asia/Kolkata'})
+  };
+  try {
+    await emailjs.send('service_aj22ubl', 'template_gfasjib', params);
+    await emailjs.send('service_aj22ubl', 'template_rzw3gxh', params);
+    document.getElementById('cForm').style.display = 'none';
+    document.getElementById('cOk').style.display = 'flex';
+  } catch(err) {
+    console.error('EmailJS error:', err);
+    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Consultation Request';
+    btn.disabled = false;
+    alert('Something went wrong. Please WhatsApp us at +91 98366 67866');
+  }
+}
+
+/* ════ COOKIE CONSENT + AUTO MUSIC ════ */
+function acceptCookies(){
+  localStorage.setItem('raddhih_cookie','accepted');
+  document.getElementById('cookieBanner').style.transform='translateY(100%)';
+  // Auto play music after accept
+  var ytf = document.getElementById('ytFrame');
+  ytf.src = 'https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&mute=0&loop=1&playlist=Uezrcg6KJ44&controls=0&rel=0';
+  document.getElementById('musicIco').className = 'fas fa-pause';
+  document.getElementById('musicBtn').classList.add('on');
+}
+function declineCookies(){
+  localStorage.setItem('raddhih_cookie','declined');
+  document.getElementById('cookieBanner').style.transform='translateY(100%)';
+}
+// Show banner if not yet decided
+window.addEventListener('DOMContentLoaded', function(){
+  var consent = localStorage.getItem('raddhih_cookie');
+  if(!consent){
+    setTimeout(function(){
+      document.getElementById('cookieBanner').classList.add('show');
+    }, 2500);
+  } else if(consent === 'accepted'){
+    // Already accepted before — auto play music silently
+    setTimeout(function(){
+      var ytf = document.getElementById('ytFrame');
+      ytf.src = 'https://www.youtube.com/embed/Uezrcg6KJ44?autoplay=1&mute=1&loop=1&playlist=Uezrcg6KJ44&controls=0&rel=0';
+      document.getElementById('musicIco').className = 'fas fa-pause';
+      document.getElementById('musicBtn').classList.add('on');
+    }, 1000);
+  }
+});
+
+/* ════ SIP CALCULATOR ════ */
+function fmtINR(n){
+  if(n>=10000000) return '₹'+(n/10000000).toFixed(2)+'Cr';
+  if(n>=100000)   return '₹'+(n/100000).toFixed(1)+'L';
+  if(n>=1000)     return '₹'+(n/1000).toFixed(1)+'K';
+  return '₹'+Math.round(n);
+}
+function calcSIP(){
+  var sip = +document.getElementById('sl-sip').value;
+  var r   = +document.getElementById('sl-ret').value;
+  var yr  = +document.getElementById('sl-yr').value;
+  var mn  = yr * 12;
+  var mr  = r / 100 / 12;
+  var corpus = sip * ((Math.pow(1+mr,mn)-1)/mr) * (1+mr);
+  var invested = sip * mn;
+  var returns  = corpus - invested;
+  document.getElementById('lbl-sip').textContent = fmtINR(sip).replace('₹','₹');
+  document.getElementById('lbl-ret').textContent = r + '%';
+  document.getElementById('lbl-yr').textContent  = yr + (yr===1?' Year':' Years');
+  document.getElementById('res-corpus').textContent = fmtINR(corpus);
+  document.getElementById('res-inv').textContent    = fmtINR(invested);
+  document.getElementById('res-ret').textContent    = fmtINR(returns);
+  document.getElementById('res-sub').textContent    = 'After '+yr+' year'+(yr===1?'':'s')+' at '+r+'% p.a.';
+  var invPct = (invested/corpus*100).toFixed(1);
+  var retPct = (returns/corpus*100).toFixed(1);
+  document.getElementById('bar-inv').style.width = invPct+'%';
+  document.getElementById('bar-ret').style.width = retPct+'%';
+  // Update range gradient fill
+  ['sl-sip','sl-ret','sl-yr'].forEach(function(id){
+    var el = document.getElementById(id);
+    var pct = (el.value - el.min) / (el.max - el.min) * 100;
+    el.style.setProperty('--pct', pct+'%');
+    el.style.background = 'linear-gradient(to right,#E8A020 '+pct+'%,rgba(232,160,32,.15) '+pct+'%)';
+  });
+}
+calcSIP();
+
+</script>
+</body>
+</html>
