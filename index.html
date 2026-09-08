@@ -141,8 +141,10 @@
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23050d1a'/%3E%3Ccircle cx='50' cy='50' r='46' stroke='%23C9A84C' stroke-width='2' fill='none'/%3E%3Cg stroke='%23C9A84C' stroke-width='1.5'%3E%3Cline x1='50' y1='4' x2='50' y2='96'/%3E%3Cline x1='4' y1='50' x2='96' y2='50'/%3E%3Cline x1='18' y1='18' x2='82' y2='82'/%3E%3Cline x1='82' y1='18' x2='18' y2='82'/%3E%3C/g%3E%3Ccircle cx='50' cy='50' r='8' fill='%23C9A84C'/%3E%3Ccircle cx='50' cy='50' r='4' fill='%23050d1a'/%3E%3C/svg%3E">
 <meta name="theme-color" content="#071526">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Cinzel:wght@400;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Cinzel:wght@400;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Cinzel:wght@400;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 <style>
 :root {
   --navy: #0B1C2C;
@@ -178,7 +180,7 @@ img,svg{display:block}
 
 /* ── LOADER ── */
 #loader{position:fixed;inset:0;z-index:9998;background:#0B1C2C;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
-.ld-wheel svg{width:130px;height:130px;animation:spin 2.5s linear infinite}
+.ld-wheel svg{width:130px;height:130px;animation:spin 1.5s linear 2}
 .ld-brand{font-family:'Cinzel',serif;font-size:1.6rem;letter-spacing:.35em;color:#E8A020}
 .ld-sub{font-size:.75rem;letter-spacing:.25em;color:rgba(232,160,32,.7);text-transform:uppercase}
 
@@ -609,7 +611,13 @@ select.fi{cursor:pointer;appearance:none;-webkit-appearance:none;background-imag
 <script>emailjs.init("JcpOhuT8aIhqQ3HbB");</script>
 </head>
 <body>
-
+<!-- KILL LOADER INSTANTLY -->
+<script>
+setTimeout(function(){
+  var l=document.getElementById('loader');
+  if(l){l.style.transition='none';l.style.opacity='0';l.style.display='none';}
+},500);
+</script>
 <!-- CURSOR -->
 <!-- LOADER -->
 <div id="loader">
@@ -1242,18 +1250,4 @@ select.fi{cursor:pointer;appearance:none;-webkit-appearance:none;background-imag
         <div id="cOk" class="contact-ok">
           <div class="ok-wheel" style="width:72px;height:72px"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="46" stroke="#E8A020" stroke-width="2"/><path d="M30 50 L44 64 L72 36" stroke="#E8A020" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <h3>Message Sent!</h3>
-          <p>Your consultation request has been delivered directly to our advisor's inbox. We will personally call or email you within <strong>24–48 hours</strong>.</p>
-          <a href="https://wa.me/919836667866?text=Hi%2C+I+submitted+a+consultation+request+on+your+website." class="btn-wa-ok" target="_blank"><i class="fab fa-whatsapp"></i> Also Ping on WhatsApp</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════ BLOG ═══════════════════════ -->
-<section class="blog" id="blog">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-tag">Insights &amp; Knowledge</div>
-      <h2 class="sec-title">Financial <em class="gold">Articles &amp; Blog</em></h2>
-      <p class="sec-sub">Expert insights on mutual funds, insurance, t
+          <p>Your consultation request has been delivered directly to our advisor's inbox. We will personally call or email you within <
