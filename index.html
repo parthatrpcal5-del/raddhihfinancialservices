@@ -36,7 +36,7 @@
   "description": "SEBI Registered Mutual Fund Distributor and Tax Advisor in Kestopur, Kolkata offering ITR Filing, TDS Filing, GST Registration, GST Filing, Mutual Fund Investment, Life Insurance, Health Insurance and complete financial planning services.",
   "url": "https://raddhihfinancialservices.com",
   "telephone": "+919836667866",
-  "email": "parthatrpcal5@gmail.com",
+  "email": "raddhihfin@gmail.com",
   "founder": {
     "@type": "Person",
     "name": "Partha Sarathi Roy"
@@ -601,6 +601,12 @@ select.fi{cursor:pointer;appearance:none;-webkit-appearance:none;background-imag
 .footer-owner{text-align:center;margin-top:10px;font-size:.72rem;color:rgba(232,160,32,.8);letter-spacing:.05em}
 .footer-owner i{margin-right:6px;color:#E8A020}
 .footer-owner strong{color:#E8A020}
+.views-pill{display:inline-flex;align-items:center;gap:9px;margin:14px auto 0;padding:7px 16px;border:1px solid rgba(232,160,32,.3);border-radius:999px;background:rgba(232,160,32,.06);font-size:.72rem;letter-spacing:.08em;color:rgba(242,234,216,.85)}
+.views-wrap{text-align:center;padding-bottom:18px}
+.views-pill i{color:#E8A020;font-size:.78rem}
+.views-pill strong{font-family:'Cinzel',serif;font-size:.85rem;color:#F5B830;letter-spacing:.06em}
+.views-dot{width:7px;height:7px;border-radius:50%;background:#3DDC84;box-shadow:0 0 0 0 rgba(61,220,132,.6);animation:viewsPulse 2s infinite}
+@keyframes viewsPulse{0%{box-shadow:0 0 0 0 rgba(61,220,132,.55)}70%{box-shadow:0 0 0 7px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}
 @media(max-width:860px){.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.footer-grid{grid-template-columns:1fr}}
 
@@ -1421,11 +1427,11 @@ setTimeout(function(){
         <div class="cd"><div class="cd-ico"><i class="fas fa-location-dot"></i></div><div><b>Office Address</b><p>AD-137, Tara Palace, Rabindrapally,<br>Kestopur, Kolkata, West Bengal — 700101</p></div></div>
         <div class="cd"><div class="cd-ico"><i class="fas fa-phone"></i></div><div><b>Phone</b><a href="tel:+919836667866">+91 98366 67866</a></div></div>
         <div class="cd"><div class="cd-ico"><i class="fab fa-whatsapp"></i></div><div><b>WhatsApp</b><a href="https://wa.me/919836667866" target="_blank">+91 98366 67866</a></div></div>
-        <div class="cd"><div class="cd-ico"><i class="fas fa-envelope"></i></div><div><b>Email</b><a href="mailto:parthatrpcal5@gmail.com">parthatrpcal5@gmail.com</a></div></div>
+        <div class="cd"><div class="cd-ico"><i class="fas fa-envelope"></i></div><div><b>Email</b><a href="mailto:raddhihfin@gmail.com">raddhihfin@gmail.com</a></div></div>
         <div class="ci-certs"><i class="fas fa-certificate"></i> SEBI Registered ARN Holder &nbsp;&middot;&nbsp; IRDA Certified Since 2014 &nbsp;&middot;&nbsp; TRP Certified Since 2009 &nbsp;&middot;&nbsp; AMFI Certified</div>
       </div>
       <div class="contact-form-wrap reveal-right">
-        <!-- FormSubmit: First submit → verify email sent to parthatrpcal5@gmail.com → click confirm once → all future submissions arrive as formatted table in Gmail -->
+        <!-- FormSubmit: First submit → verify email sent to raddhihfin@gmail.com → click confirm once → all future submissions arrive as formatted table in Gmail -->
         <form id="cForm" onsubmit="handleContact(event)">
           <h3>Send a Consultation Request</h3>
           <p class="cf-sub">Your details land <strong>directly in our advisor's inbox</strong>. We reply within 24–48 hours.</p>
@@ -1663,11 +1669,11 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeBlog
         <ul class="fg-contact">
           <li><i class="fas fa-location-dot"></i>AD-137, Tara Palace, Rabindrapally, Kestopur, Kolkata 700101</li>
           <li><i class="fas fa-phone"></i><a href="tel:+919836667866">+91 98366 67866</a></li>
-          <li><i class="fas fa-envelope"></i><a href="mailto:parthatrpcal5@gmail.com">parthatrpcal5@gmail.com</a></li>
+          <li><i class="fas fa-envelope"></i><a href="mailto:raddhihfin@gmail.com">raddhihfin@gmail.com</a></li>
         </ul>
         <div class="fg-social">
           <a href="https://wa.me/919836667866" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-          <a href="mailto:parthatrpcal5@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="mailto:raddhihfin@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
           <a href="tel:+919836667866" aria-label="Phone"><i class="fas fa-phone"></i></a>
         </div>
       </div>
@@ -1682,6 +1688,9 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeBlog
       </div>
       <div class="footer-owner">
         <i class="fas fa-crown"></i> Owner &amp; Founder &nbsp;—&nbsp; <strong>Partha Sarathi Roy</strong>
+      </div>
+      <div class="views-wrap">
+        <span class="views-pill" title="Site views"><span class="views-dot"></span><i class="fas fa-eye"></i> Views <strong id="viewCount">103</strong></span>
       </div>
     </div>
   </div>
@@ -1851,6 +1860,46 @@ window.addEventListener('scroll', function(){
   navAs.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
   navMoreBtn.classList.toggle('active', !!document.querySelector('.nav-menu a.nl.active'));
 }, { passive:true });
+
+/* ════ LIVE VIEWS COUNT (real visits via Abacus; shown as 103 + real count) ════ */
+(function(){
+  var el = document.getElementById('viewCount'); if (!el) return;
+  var BASE = 103, NS = 'raddhihfinancialservices.com', KEY = 'visits';
+  var API = 'https://abacus.jasoncameron.dev';
+  var shown = parseInt(localStorage.getItem('rfs_views_last'), 10) || BASE;
+  el.textContent = shown;
+
+  function show(n){
+    n = BASE + n;
+    if (n < shown) n = shown;                       /* never go backwards */
+    var from = shown, steps = Math.min(20, n - from), i = 0;
+    shown = n;
+    try { localStorage.setItem('rfs_views_last', n); } catch(e){}
+    if (steps <= 0) { el.textContent = n; return; }
+    var t = setInterval(function(){
+      i++; el.textContent = Math.round(from + (n - from) * i / steps);
+      if (i >= steps) clearInterval(t);
+    }, 40);
+  }
+  function call(path){
+    return fetch(API + path).then(function(r){
+      if (!r.ok) throw new Error(r.status);
+      return r.json();
+    });
+  }
+  /* count each browser once per day; otherwise just read the number */
+  var today = new Date().toISOString().slice(0,10), counted = null;
+  try { counted = localStorage.getItem('rfs_views_day'); } catch(e){}
+  var first = counted === today ? '/get/' : '/hit/';
+  call(first + NS + '/' + KEY).then(function(d){
+    if (first === '/hit/') { try { localStorage.setItem('rfs_views_day', today); } catch(e){} }
+    show(d.value || 0);
+  }).catch(function(){});
+  /* refresh every minute so the number stays live while the page is open */
+  setInterval(function(){
+    call('/get/' + NS + '/' + KEY).then(function(d){ show(d.value || 0); }).catch(function(){});
+  }, 60000);
+})();
 
 /* ════ MUSIC ════ */
 var musicOn = false, ytf = document.getElementById('ytFrame');
